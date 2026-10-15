@@ -281,6 +281,8 @@ def _auto_badge(verdict: dict | None) -> str:
 
 
 def build(run: Path, slots: list[dict], embed: bool = True,
+          only: set | None = None, filename: str = "sheet.html",
+          title_suffix: str = "",
           size: int = 320, quality: int = 78) -> Path:
     panels_path = run / "panels.json"
     if not panels_path.exists():
@@ -313,6 +315,8 @@ def build(run: Path, slots: list[dict], embed: bool = True,
         domains.add(slot["domain"])
         cells = []
         for (slot_id, llm, renderer) in keys:
+            if only is not None and f"{slot_id}__{llm}__{renderer}" not in only:
+                continue
             combo = f"{llm} x {renderer}"
             combos.add(combo); arm_set.add(llm); ren_set.add(renderer)
             cell_id = f"{slot_id}__{llm}__{renderer}"
@@ -358,6 +362,8 @@ def build(run: Path, slots: list[dict], embed: bool = True,
                 f'<div class="verdict">{buttons}</div>'
                 f'<input class="note" placeholder="메모 (선택)"></div>')
 
+        if not cells:
+            continue
         item = items.get((slot["id"], keys[0][1])) or {}
         search = f'{slot["id"]} {slot["subtype"]} {item.get("question", "")}'.lower()
         cards.append(
@@ -403,7 +409,9 @@ def build(run: Path, slots: list[dict], embed: bool = True,
                f'조합 {len(combos)}개</span></div>')
 
     doc = (
-        f"<!doctype html><meta charset='utf-8'><title>itemgen 검수 — {html.escape(run.name)}</title>"
+        f"<!doctype html><meta charset='utf-8'>"
+        f"<title>itemgen 검수 — {html.escape(run.name)}"
+        f"{(' · ' + html.escape(title_suffix)) if title_suffix else ''}</title>"
         f"<style>{CSS}</style>"
         "<h1>문항 생성 벤치마크 검수</h1>"
         f'<div class="sub">슬롯 {len(cards)}개 · (LLM × 렌더러) 조합 {len(combos)}개 · '
@@ -424,6 +432,6 @@ def build(run: Path, slots: list[dict], embed: bool = True,
         + '<dialog id="zoom"><img alt=""></dialog>'
         + f"<script>window.__CELLS__={json.dumps(cell_ids, ensure_ascii=False)};{JS}</script>"
     )
-    out = run / "sheet.html"
+    out = run / filename
     out.write_text(doc, encoding="utf-8")
     return out

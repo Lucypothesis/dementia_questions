@@ -37,10 +37,14 @@
 GPU도 API 키도 필요 없다. stub 어댑터가 실제 모델 자리에 들어가 배선만 돌린다.
 
 ```bash
+python3 -m venv .venv && source .venv/bin/activate   # 권장
 pip install -e .
 itemgen demo        # 1초 안에 전 구간: 문항 생성 -> 검증 -> 렌더 -> 채점 -> 시트
 itemgen serve --run demo
 ```
+
+`itemgen: command not found`가 나오면 설치한 가상환경이 활성화되지 않은 것이다.
+`source <venv>/bin/activate` 하거나 `<venv>/bin/itemgen` 전체 경로로 부른다.
 
 구조를 먼저 눈으로 확인한 뒤 실제 모델을 꽂는 순서를 권한다.
 

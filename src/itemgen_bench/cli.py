@@ -4,6 +4,8 @@
   itemgen run --stages gen,check --llms gpt6_sol
   itemgen selftest        외부 모델 없이 48항목 자기검증
   itemgen watch           실시간 진행
+  itemgen analyze         judge 결과를 실패 유형별로 집계
+  itemgen calibrate       judge가 사람 판정과 얼마나 맞는지 측정
   itemgen thumbs          검수용 축소본 생성 (저장소에 넣을 용도)
   itemgen serve           결과 시트를 브라우저로 (캐시 금지)
 """
@@ -51,6 +53,16 @@ def main(argv=None) -> None:
         from . import watch
         sys.argv = ["itemgen watch"] + rest
         watch.main()
+        return
+
+    if cmd == "calibrate":
+        from . import calibrate
+        calibrate.main(rest)
+        return
+
+    if cmd == "analyze":
+        from . import analyze
+        analyze.main(rest)
         return
 
     if cmd == "thumbs":
