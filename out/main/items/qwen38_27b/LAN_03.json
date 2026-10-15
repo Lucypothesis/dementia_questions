@@ -1,0 +1,81 @@
+{
+  "slot_id": "LAN_03",
+  "question": "그림에서 사각형으로 표시된 신체 부위를 말해 주세요.",
+  "answer": "코",
+  "answer_rationale": "사각형 주석은 nose ref인 코에만 적용되고, 나머지 눈·귀·입은 주석 밖이므로 정답은 코뿐이다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 배경",
+        "objects": [
+          {
+            "ref": "left_eye",
+            "name": "눈",
+            "appearance": "단순한 만화 눈, 검은색, 낱개 하나",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "right_eye",
+            "name": "눈",
+            "appearance": "단순한 만화 눈, 검은색, 낱개 하나",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "left_ear",
+            "name": "귀",
+            "appearance": "단순한 만화 귀, 살색, 낱개 하나",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "nose",
+            "name": "코",
+            "appearance": "단순한 만화 코, 살색, 낱개 하나",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "right_ear",
+            "name": "귀",
+            "appearance": "단순한 만화 귀, 살색, 낱개 하나",
+            "cell": [
+              1,
+              2
+            ]
+          },
+          {
+            "ref": "mouth",
+            "name": "입",
+            "appearance": "단순한 만화 입, 검은색 선, 낱개 하나",
+            "cell": [
+              2,
+              1
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "type": "box",
+            "target": "nose"
+          }
+        ]
+      }
+    }
+  ]
+}

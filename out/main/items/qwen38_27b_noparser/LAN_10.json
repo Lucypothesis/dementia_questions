@@ -1,0 +1,52 @@
+{
+  "stage": "main",
+  "kind": "scene",
+  "scene": {
+    "layout": "grid",
+    "rows": 2,
+    "cols": 2,
+    "background": "흰 바닥이 보인다",
+    "objects": [
+      {
+        "ref": "cup",
+        "name": "머그컵",
+        "appearance": "손잡이 달린 흰색 낱개 하나",
+        "cell": [
+          0,
+          0
+        ],
+        "is_target": true
+      },
+      {
+        "ref": "key",
+        "name": "열쇠",
+        "appearance": "열쇠고리 없는 금속 낱개 하나",
+        "cell": [
+          0,
+          1
+        ],
+        "is_target": true
+      },
+      {
+        "ref": "apple",
+        "name": "사과",
+        "color": "빨강",
+        "cell": [
+          1,
+          0
+        ],
+        "is_target": true
+      },
+      {
+        "ref": "glasses",
+        "name": "안경",
+        "appearance": "검은 뿔테 낱개 하나",
+        "cell": [
+          1,
+          1
+        ],
+        "is_target": true
+      }
+    ]
+  }
+}

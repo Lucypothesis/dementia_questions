@@ -1,0 +1,72 @@
+{
+  "slot_id": "EXE_09",
+  "question": "다음 그림에서 사과를 머그컵 옆에 놓으세요.",
+  "answer": "사과를 머그컵 옆에 놓는다.",
+  "answer_rationale": "사과를 머그컵 옆에 놓으면 목표가 달성된다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "glass",
+            "name": "안경",
+            "appearance": "검은 뿔테",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "move",
+          "target": "apple",
+          "to_cell": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

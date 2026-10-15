@@ -1,0 +1,80 @@
+We need answer user's request. Need output JSON only, no markdown. Need design cognitive test item for slot LAN_04: language ability, subtype naming object parts, construct part vocabulary, panels: one main scene, response open, answer_kind object name. Need likely ask to name a part of an object shown. Need produce JSON object with slot_id, question, answer, panels. Need ensure question only and image. Need answer unique. Need scene structured. Need no text in image. Need maybe use annotations? But no need. Need likely main scene with object and target part. Since answer_kind 사물명, answer should be part name. Need question: "그림에서 빨간색으로 표시된 부분의 이름을 말해 주세요." But cannot have red? We can mark target with is_target and maybe appearance color? But question can refer to highlighted part? If image has no annotation? We can use annotation box around target? But annotations can be box. However if question says "빨간색으로 표시된" need annotation? Better: "그림에서 손잡이가 달린 부분의 이름을 말해 주세요." But that gives away? For part naming, ask "그림에서 물건의 손잡이 부분을 가리키는 이름을 말해 주세요." Hmm.
+
+Need ensure answer unique. Could show a common object with a distinctive part, e.g. "머그컵" and ask "그림에서 컵의 손잡이 부분을 가리키는 단어를 말해 주세요." Answer "손잡이". But if question includes 손잡이, too easy. Need ask "그림에서 컵의 옆에 붙어 있는 부분의 이름을 말해 주세요." Answer 손잡이. But maybe unique? Could be "귀"? In Korean, mug handle is 손잡이. Need part vocabulary. Could use "빗" and ask "그림에서 빗의 이가 있는 부분의 이름을 말해 주세요." Answer "이"? But part of comb is "이" (teeth). Could be ambiguous.
+
+Need design scene with one object, target part. Since open response, answer string. Need answer_rationale. Need panels one main scene. Need scene layout maybe free or grid. Need object with appearance and is_target? The target part is not separate object? We can represent part as separate object? The scene objects are things. For part naming, we can include whole object and target part as separate object? But if part is part of object, maybe draw as separate? The pipeline likely can draw objects. We can have object "cup" and object "handle" as part? But if handle is separate object, question can ask name of the part. Need ensure part is visually identifiable. Could use "머그컵" with handle. But if handle is separate object, it may look detached. Better use appearance: "손잡이가 달린 흰색 머그컵" and is_target on cup? But answer part name? If target is whole cup, not part. Need target part. Could include object "handle" with name "머그컵 손잡이"? But answer should be part name, maybe "손잡이". If object name includes part, question can ask "그림에서 컵에 붙어 있는 작은 부분의 이름을 말해 주세요." The image shows a mug with handle. The target part can be marked by annotation box? We can add annotation box target handle. But scene objects cannot have part? We can add object ref "handle", name "머그컵 손잡이", appearance "머그컵 오른쪽에 붙은 반원형 손잡이 하나", cell maybe [0,1]? But if layout grid with cup and handle separate cells, not attached. Could use free layout with pos to place handle adjacent to cup. But generation may not merge. Maybe better choose object where part is a separate visible component, e.g. "빗" has teeth as part; can draw comb with teeth. But part "이" maybe not separate.
+
+Could use "자물쇠" and ask "열쇠 구멍"? Part name. Scene: padlock with keyhole. Target part keyhole. But keyhole is small, generation may draw. Answer "열쇠구멍" or "열쇠 구멍". Need unique. Question: "그림에서 자물쇠 앞면에 있는 작은 구멍의 이름을 말해 주세요." Answer "열쇠구멍". But if question says 구멍, maybe answer "열쇠구멍". Good.
+
+Could use "전화기" and ask "수화기"? Part. But old phone. Scene: telephone with handset. Answer "수화기". Question: "그림에서 전화기의 위쪽에 있는, 귀에 대는 부분의 이름을 말해 주세요." Answer "수화기". Unique? Could be "핸드셋" but answer_kind object name maybe accept? We need one answer. Could specify "한국어 일반 명칭". But answer field one string. Rationale can mention accepted? But answer must be exact? For open, scoring maybe semantic. Need choose common part with unambiguous Korean term.
+
+Part naming: "사물의 부분 명명". Could ask to name part of a familiar object. Need image only. Maybe use "빗" and part "이". But "이" also tooth. If comb, "빗의 이" is part. Question: "그림에서 빗의 끝부분에 나 있는 작은 돌기들의 이름을 말해 주세요." Answer "이". But "돌기" maybe too descriptive. Could be "빗살"? In Korean, comb teeth are "이" or "빗이". Common? Maybe "이" is body part, but for comb it's "이". Could be ambiguous with "tooth". But image of comb makes context.
+
+Maybe "가위" part "날". Question: "그림에서 가위의 날카로운 금속 부분의 이름을 말해 주세요." Answer "날". But "날" also blade. Unique? Could be "날". Good.
+
+Need scene: scissors? Hard to draw. Could use "가위" with two blades and handles. Part "날". But target part maybe one blade. Answer "날". However "날" can be edge. Common part of scissors: "날". Good.
+
+Maybe "문" part "손잡이". Scene: door with handle. Answer "손잡이". Very common. Question: "그림에서 문 옆에 달린, 문을 열 때 잡는 부분의 이름을 말해 주세요." Answer "손잡이". Unique? Could be "도어 핸들" but Korean common "손잡이". Good. But if question says 잡는 부분, maybe too easy but okay. Need image: door with handle. Part target handle. Could represent door and handle as separate objects in free layout. But handle attached to door. Use free layout: door at pos [0.35,0.5], handle at [0.62,0.5]. But generation may draw separate. Could use grid: door in cell [0,0], handle in [0,1]? Not attached. Maybe use appearance: "손잡이가 달린 나무 문" and target object? If only one object door, is_target true? But answer part? The question can ask "그림에서 문에 달린 손잡이 부분의 이름을 말해 주세요." But if question includes 손잡이, answer trivial. Need not include answer word. Could ask "그림에서 문 옆에 달린, 손으로 잡는 부분의 이름을 말해 주세요." The image shows door with handle. The target part is handle. We can mark target with annotation box around handle? But if handle is part of door object, annotation target? Annotation target can be ref? We can add object ref "handle" as separate to target. But if separate, maybe okay: a door and a handle next to it? It may look like handle not attached. Could use "문 손잡이" as object name, appearance "나무 문 오른쪽에 붙은 금속 손잡이 하나". But if object name includes answer, not in image text, okay. The pipeline draws object named "문 손잡이"? It may draw a handle. The whole scene could have door and handle. But if handle separate, still visually a handle. Question asks name of part. Answer "손잡이". Good.
+
+Need ensure no text. Use annotations? Could add box around handle to indicate target. But question can say "그림에서 문 옆에 달린, 손으로 잡는 부분". No need highlight. But to make unique, maybe target part is only one. If door has handle, answer unique.
+
+But part naming maybe should not give functional clue? It's okay. Need answer unique. Could be "손잡이". But if door has knob, answer could be "도어 핸들", "손잡이", "노브". In Korean common "손잡이". Rationale: only handle part matches; other parts (문, 손잡이) etc.
+
+Need consider schema: panels array one item: stage "main", kind "scene", scene. No option_index. Need answer string. Need answer_rationale. Need slot_id "LAN_04".
+
+Need scene layout. If free, objects need pos. Could use layout "free", background "흰 바닥", objects: door, handle. But door is large, handle small. Need pos normalized. Door at [0.35,0.5], handle at [0.62,0.5]. But if door object appearance "손잡이가 달린 나무 문" and handle separate, duplicate? Better: object door: name "나무 문", appearance "직사각형 나무 문 하나", pos [0.35,0.5], is_target false. object handle: name "문 손잡이", appearance "문 오른쪽에 붙은 금속 원형 손잡이 하나", pos [0.62,0.5], is_target true. But if handle is separate object, it's not part? It is a part. The question asks part name. The image shows a handle. Good.
+
+But if handle object name includes "문 손잡이", the generation may draw a handle. The answer is "손잡이". Need maybe target part is "손잡이". Could there be another part like "문"? The question specifically asks "문 옆에 달린, 손으로 잡는 부분". So answer handle.
+
+Need maybe use grid? Free is okay. Need pos values 0-1. Door pos [0.35,0.5], handle [0.62,0.5]. But door may be centered at pos? Usually pos is center? Not specified. Fine.
+
+Could use "빗" with comb and teeth. Scene: comb object with teeth? If one object, target part? Could add object "comb_teeth" as part? Hard.
+
+Maybe better: "자물쇠" and "열쇠구멍". Scene: padlock body and keyhole. Object padlock: name "자물쇠", appearance "금속 자물쇠 하나", pos [0.4,0.5]. Object keyhole: name "열쇠구멍", appearance "자물쇠 앞면 중앙의 작은 열쇠구멍 하나", pos [0.4,0.55], is_target true. But keyhole is part of padlock, separate object may overlay. Question: "그림에서 자물쇠 앞면에 있는, 열쇠를 넣는 작은 구멍의 이름을 말해 주세요." Answer "열쇠구멍". This is a part vocabulary. Unique? Yes. But if question says "열쇠를 넣는 작은 구멍", answer likely "열쇠구멍". Good. It is more specific part. But "열쇠구멍" is a part of lock. Common.
+
+Need ensure answer_kind 사물명: answer is object name? "열쇠구멍" is part name. Good.
+
+Could use "전화기" and "수화기". Scene: telephone base and handset. Object handset: name "전화기 수화기", appearance "전화기 위쪽에 놓인 검은색 수화기 하나", pos. Question: "그림에서 전화기 위쪽에 있는, 귀에 대는 부분의 이름을 말해 주세요." Answer "수화기". Unique? Could be "핸드셋". But common Korean "수화기". Good.
+
+Which is best for part naming? "수화기" is a part of telephone, but also whole device? In Korean, "수화기" can mean handset or receiver. Good. Image: old telephone with handset. Need draw. Could be ambiguous with "전화기". But question asks part.
+
+Maybe "가방" part "지퍼". Scene: bag with zipper. Answer "지퍼". Question: "그림에서 가방 앞면에 있는, 여닫는 부분의 이름을 말해 주세요." Answer "지퍼". Common. But zipper is part. Good.
+
+Need avoid text. No annotations necessary.
+
+Need think about pipeline: It will generate image from scene objects. If we include part as separate object, it may draw part as independent item, not integrated. But for cognitive test, image should show object with part. If part separate, maybe still okay if visually adjacent. But if part is "열쇠구멍" as separate object on padlock, generation may draw a keyhole symbol floating. Could be okay if pos same as padlock? But two objects at same pos may overlap. Maybe better to describe whole object with part in appearance and use is_target on whole object? But then question asks part, image shows whole object. The target part is not separately marked. The respondent can see part. We don't need separate object for part; we can just draw object with part. But schema objects are things; can include "padlock" with appearance "앞면에 열쇠구멍이 있는 금속 자물쇠 하나". is_target true? But target is part, not whole. However is_target just for direct relation. Could set is_target true on padlock. The question asks name of keyhole. The image shows padlock with keyhole. That's enough. No need separate part object. But if no target part object, answer unique? Yes.
+
+But rule: "정답과 직접 관계된 사물에 is_target: true를 붙인다." The directly related object is padlock? Or keyhole? If keyhole not object, padlock. Could set is_target true. But if only one object, okay.
+
+Need scene objects min 1. Could have one object: padlock. appearance includes keyhole. But if answer is keyhole, the object name is padlock. The question: "그림에서 자물쇠 앞면에 있는, 열쇠를 넣는 작은 구멍의 이름을 말해 주세요." The image shows padlock. Good.
+
+But if appearance includes "열쇠구멍", does that leak answer? It is in metadata not shown to respondent? The pipeline uses appearance to generate image, not shown. The respondent only sees image and question. So okay. But if appearance includes answer word, generation may draw keyhole. Fine.
+
+Need ensure question doesn't include answer. It includes "열쇠를 넣는 작은 구멍" not "열쇠구멍". Good.
+
+Could answer be "열쇠구멍" or "열쇠 구멍". Need choose one. In Korean, standard "열쇠구멍". Use answer "열쇠구멍". Rationale: only keyhole matches; other parts like 자물쇠, 잠금장치 not the small hole.
+
+Need maybe use "문 손잡이" answer "손잡이". Which is more common and less ambiguous? "손잡이" is very common. But question "문 옆에 달린, 손으로 잡는 부분" answer "손잡이". The image of door with handle. If only one object door with handle in appearance. Good. Part naming: handle. Maybe easier. But "손잡이" can be part of many objects; image door. Unique.
+
+Need consider cognitive test: part naming often uses line drawings of objects and asks name of part. Could be "빗의 이", "가위의 날", "전화기의 수화기". Need choose one with clear visual part. "열쇠구멍" is a small feature, may be hard to draw. "손잡이" is clear. "수화기" is clear. "지퍼" clear.
+
+Maybe "가방의 지퍼" is good. Scene: backpack with zipper. Answer "지퍼". Question: "그림에서 가방 앞면에 있는, 여닫는 부분의 이름을 말해 주세요." Answer "지퍼". But "지퍼" is a brand? Common. Could be "지퍼". Part vocabulary. Image: bag with zipper. If only one object bag with zipper. Good.
+
+Need ensure no text. Use appearance "앞면에 지퍼가 달린 검은색 가방 하나". But if appearance includes answer, okay. But question says "여닫는 부분". Answer "지퍼". Unique? Could be "지퍼", "지퍼줄", "지퍼 헤드". The part is zipper. Good.
+
+Maybe "자물쇠의 열쇠구멍" more specific. But small.
+
+Let's think about scoring: open answer, answer_kind 사물명. They likely expect a single word. "손잡이" is safe. "열쇠구멍" safe. "수화기" safe. Which construct "부분 어휘" maybe part vocabulary. Any.
+
+Need maybe avoid question giving too much: "그림에서 문 옆에 달린, 손으로 잡는 부분의 이름을 말해 주세요." This is functional definition, maybe too easy but okay. For cognitive test, maybe ask "그림에서 문에 달린 부분 중 손으로 잡는 부분의 이름을 말해 주세요." Good.
+
+Need image: door with handle. If only one object "나무 문" appearance "오른쪽에 금속 손잡이가 달린 나무 문 하나". is_target true. But target part is handle, not door. Could set is_target true on door. But if there is only one object, okay. However if appearance includes "손잡이", generation draws handle. The question asks name of part. Good.
+
+But rule: "정답과 직접 관계된 사물에 is_target: true를 붙인다." If answer is handle, the directly related object might be handle. But handle not separate. Could create separate object "handle" to mark. But then image may have separate handle. Maybe better to have two objects: door and handle. The handle is directly related. Use free layout. Door at [0.35,0.5], handle at [0.62,0.5]. But if handle separate, it may not look attached. Could use appearance "문 오른쪽 가장자리에 붙은 금속 원형 손잡이 하나". The generation may place it near door. It's okay.
+
+But if two objects, question "문 옆에 달린" maybe handle is next to door, not attached. Still.
+
+Could use grid: door cell [0,0], handle cell [0,1]. But not attached. Free better.
+
+Need maybe use "free" layout with pos. Door pos [0.35,0.5], handle pos [0.62,0.5]. But door may be large and cover handle? If door centered at 0.35, width maybe 0.4, handle at 0.62. Good.
+

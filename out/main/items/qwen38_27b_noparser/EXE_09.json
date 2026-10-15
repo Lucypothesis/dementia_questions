@@ -1,0 +1,8 @@
+{
+  "op": "move",
+  "target": "cup",
+  "to_cell": [
+    1,
+    0
+  ]
+}

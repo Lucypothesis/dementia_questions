@@ -1,0 +1,40 @@
+{
+  "slot_id": "VIS_10",
+  "question": "사람의 입장에서 빨간 공은 왼쪽에 있나요, 오른쪽에 있나요?",
+  "answer": "오른쪽",
+  "answer_rationale": "사람이 정면을 바라보고 있으므로 그림의 왼쪽은 그 사람의 오른쪽이다. 빨간 공은 그림에서 사람의 왼쪽에 있으므로 사람의 입장에서는 오른쪽에 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "person",
+            "name": "사람",
+            "appearance": "두 팔을 자연스럽게 내리고 똑바로 서 있는 사람 한 명",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "facing": "정면",
+            "is_target": true
+          },
+          {
+            "ref": "ball",
+            "name": "공",
+            "appearance": "둥근 공 낱개 하나",
+            "color": "빨강",
+            "pos": [
+              0.22,
+              0.5
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

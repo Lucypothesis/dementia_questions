@@ -1,0 +1,194 @@
+We need answer in Korean likely. User gave task: design cognitive test item JSON for slot EXE_08. Need output only JSON object, no markdown. Need satisfy schema. Slot: id EXE_08, domain 집행기능, subtype 행·열 제약 추론, construct 제약 만족, panels: [{stage main, kind scene}], response open, answer_kind 사물명. Need create one item. Need likely question asks to identify object satisfying row/column constraints. Need image scene with grid and objects. Answer is object name. Need ensure question only with image determines answer. Need no text in image. Need scene structured. Need maybe use annotations? Could use annotations for constraints? But no text? annotations can have text? It says code can synthesize, but maybe avoid text? The question can state constraints verbally. Need open response answer_kind 사물명. So question: "아래 그림에서 행과 열의 조건을 모두 만족하는 사물의 이름을 말해라. 조건: 같은 행에 빨간 사물이 있고, 같은 열에 원형 사물이 있다." But answer must be unique. Need design scene. Need ensure no text in image. Could use grid 3x3 with objects. Need constraints that uniquely identify one object. Since answer is object name, question can specify constraints. Need image only objects. Need maybe target object is_target true. Need avoid ambiguity. Let's design simple 3x3 grid. Objects: red circle at [0,0], blue square [0,1], green triangle [0,2], yellow star [1,0], purple hexagon [1,1], orange diamond [1,2], brown cross [2,0], teal crescent [2,1], black plus? Need constraints: "빨간 사물과 같은 행에 있고, 파란 사물과 같은 열에 있는 사물" maybe unique. Let's set red at [0,0], blue at [1,1]? Then object same row as red and same column as blue: row 0, col 1 => object at [0,1]. Need unique. But if only one object in row0 col1. Good. But question: "빨간 사물과 같은 행에 있고, 파란 사물과 같은 열에 있는 사물의 이름을 말해라." Answer: blue square? Wait if blue at [1,1], same column as blue is col1; same row as red row0 => [0,1]. Put target there. Need name unique. Could be "파란 사각형"? But if blue is at [1,1] and target also blue? Avoid color conflict. Let's set red circle at [0,0], blue triangle at [1,1], target green square at [0,1]. Question: "빨간 원과 같은 행에 있고, 파란 삼각형과 같은 열에 있는 사물의 이름을 말해라." Answer: "초록 사각형". But if target name includes color/shape. Need ensure no other object same row/col? Only one at intersection. Good. But maybe row/col constraints with named objects. Need image scene: 3x3 grid, background white. Objects: red_circle [0,0] name 빨간 원? But name should be object name, maybe "빨간 원". target green_square [0,1] name "초록 사각형". blue_triangle [1,1] name "파란 삼각형". Other objects fill grid? Need maybe all cells? Not necessary. But to make row/col clear, maybe fill all 9 with distinct objects. Need ensure no other object with same name? Answer object name unique. If question asks name, answer should be exact name. Need maybe answer "초록 사각형". But if there is another green square? no. Need is_target true for target. Need maybe use appearance for rare shapes. For basic shapes okay. Need no text. Need question not meta. Need answer rationale: red circle row 0, blue triangle col 1, intersection [0,1] only green square. Need ensure panel stage main kind scene. Schema: top-level required slot_id, question, answer, panels. additionalProperties false. Can include answer_rationale? Schema properties includes answer_rationale, yes. Need only one JSON object. Need ensure panel object: stage main, kind scene, scene. No edit_of. Scene layout grid rows 3 cols 3 background. objects array. Each object required ref, name. Can include cell, color, appearance, is_target. Need refs pattern lowercase. Use red_circle, green_square, blue_triangle, etc. Need maybe names in Korean. Need ensure answer string matches name exactly. Could answer "초록 사각형". But if object name is "초록 사각형" and appearance maybe "모서리가 곧은 초록색 사각형 하나". Good.
+
+Need consider cognitive test: row/column constraint reasoning. Could be more executive: constraints: "빨간 사물과 같은 행에 있는 사물 중, 파란 사물과 같은 열에 있는 사물". That's simple. Need maybe open response. Good.
+
+Need ensure question only and image determines answer. If question names red circle and blue triangle, image shows positions. Good.
+
+Potential issue: If answer_kind 사물명, answer should be object name, not ref. Use "초록 사각형". But if there are multiple 사각형? Only one. Good.
+
+Need maybe avoid using color in question if color perception? It's okay. Could use shape names: "빨간 원" and "파란 삼각형". Need image has those exact. Good.
+
+Need maybe include annotations? Not necessary. But maybe to indicate rows/columns? No text. Could use divider annotations? But not needed.
+
+Need ensure no negative statements. background positive.
+
+Need maybe all objects single. For shapes, "낱개 하나" in appearance. Good.
+
+Let's design 3x3:
+[0,0] red_circle: name "빨간 원", appearance "동그란 빨간색 원 하나", color 빨강, is_target false.
+[0,1] green_square: name "초록 사각형", appearance "모서리가 곧은 초록색 사각형 하나", color 초록, is_target true.
+[0,2] yellow_star: name "노란 별", appearance "五个? Korean: 다섯 꼭짓점의 노란 별 하나". Need maybe rare? star okay.
+[1,0] orange_diamond: name "주황색 마름모", appearance "네 변이 같은 길이의 주황색 마름모 하나".
+[1,1] blue_triangle: name "파란 삼각형", appearance "세 꼭짓점의 파란색 삼각형 하나", color 파랑.
+[1,2] purple_hexagon: name "보라색 육각형", appearance "여섯 변의 보라색 육각형 하나".
+[2,0] brown_cross: name "갈색 십자", appearance "세로와 가로 막대가 교차하는 갈색 십자 하나".
+[2,1] teal_crescent: name "청록색 초승달", appearance "달 모양의 청록색 초승달 하나".
+[2,2] black_plus? Maybe "검은 더하기"? But plus similar cross. Use "검은 원"? But red circle already. Need distinct. "검은 별"? star already. "검은 사각형"? square already. Could use "검은 원" but name maybe "검은 원" distinct from red 원? If answer by name, okay. But maybe shape duplicate not issue. But to avoid duplicate shape, use "검은 팔각형". appearance eight-sided. Good.
+
+Need ensure question: "빨간 원과 같은 행에 있고, 파란 삼각형과 같은 열에 있는 사물의 이름을 말해라." This uniquely identifies green square. But if there are other objects in row 0: yellow star at [0,2], not same column as blue triangle (col1). Other objects in col1: teal crescent [2,1], not same row as red circle. Good.
+
+Need answer_rationale: "빨간 원은 0행, 파란 삼각형은 1열에 있으므로 교차하는 0행 1열에만 초록 사각형이 있다. 다른 사물은 행 또는 열 조건 중 하나만 만족한다." Good.
+
+Need ensure JSON valid. No markdown. Need maybe include $schema? Schema says top-level properties? It includes $schema in example? The output schema has properties: slot_id, question, answer, answer_rationale, panels. additionalProperties false. It does not list $schema as property? In schema properties only those? It has required slot_id question answer panels. additionalProperties false. So cannot include $schema. Need only those properties. answer_rationale allowed. Good.
+
+Need panel: stage enum includes main. kind scene. scene required. No additionalProperties in panel? It has additionalProperties false, properties stage, kind, option_index, scene, edit_of, changes. So okay.
+
+Need scene additionalProperties false: layout, rows, cols, background, objects, annotations. Good.
+
+Object additionalProperties false: ref, name, appearance, color, cell, pos, rotation, mirrored, scale, facing, is_target. We can use ref, name, appearance, color, cell, is_target. Good.
+
+Need maybe color property optional. Use color for red, green, blue. For others maybe color too. Good.
+
+Need ensure refs unique and pattern. Use lowercase letters digits underscore. red_circle, green_square, yellow_star, orange_diamond, blue_triangle, purple_hexagon, brown_cross, teal_crescent, black_octagon.
+
+Need maybe "name" in Korean. Answer exact. If answer "초록 사각형" and object name exactly. Good.
+
+Need think about possible issue: question says "빨간 원" but object name "빨간 원". If image generation may render red circle. Good. "파란 삼각형" object name. Good.
+
+Need maybe row/column constraints: In Korean, "행" and "열" may be understood. Could specify "가로 줄" and "세로 줄" to be clearer. But subtype 행·열. Use "같은 행" and "같은 열". Good.
+
+Need maybe open response: answer_kind 사물명. The question asks name. Good.
+
+Need ensure no text in image. We don't use annotations. Good.
+
+Need maybe if grid cells not visually labeled, row/col positions are inferable. Good.
+
+Need maybe target is_target true. Good.
+
+Need maybe all objects are single. appearance includes 하나. Good.
+
+Need maybe background: "흰 바닥". Good.
+
+Need final only JSON. Ensure no trailing commas. Let's craft.
+
+Double-check schema: top-level additionalProperties false, properties include answer_rationale. Good.
+
+Potential hidden requirement: "수검자에게는 question과 해당 단계의 이미지만 제시된다." So question should not mention "0행 1열" maybe okay but image needed. It can mention row/column. Good.
+
+Need maybe answer unique if there is only one object at intersection. Yes.
+
+Could there be issue with "빨간 원" and "파란 삼각형" being target? No.
+
+Need maybe if answer is open, scoring may accept synonyms? But answer field exact. Good.
+
+Let's consider if using colors may be problematic for color blindness? Not specified. Could use shapes only: "원형 사물과 같은 행, 삼각형 사물과 같은 열". But if multiple circles? We can make unique. But color is okay. To be safer, use shape names without color? But answer_kind 사물명 could be "초록 사각형". If question: "원형 사물과 같은 행에 있고, 삼각형 사물과 같은 열에 있는 사물의 이름을 말해라." If only one circle and one triangle, unique. But if target is square. Could avoid color. But image has red circle, blue triangle. The question can refer to "빨간 원" and "파란 삼각형" to be unambiguous. Good.
+
+Need maybe if there are other circles? no.
+
+Need maybe if "사각형" includes square/rectangle? We specify square. Good.
+
+Let's ensure Korean spelling: 초록, 파란, 빨간. "주황색" maybe. "보라색". "청록색". "갈색". "검은". Good.
+
+Need maybe "육각형" is regular hexagon. appearance "여섯 변이 같은 길이의 보라색 육각형 하나". Good.
+
+Need maybe "팔각형" eight-sided. Good.
+
+Need maybe "십자" could be plus sign, but no text. It's a shape. Good.
+
+Need maybe "초승달" facing? It has orientation? Could add facing? Not necessary. But if direction? Crescent has orientation. Could set facing "오른쪽" maybe. But not needed. If direction object? It's not person/animal/arrow. But could have orientation. Not required.
+
+Need maybe "별" has orientation? not.
+
+Need maybe "마름모" orientation? not.
+
+Need maybe "삼각형" orientation? Could be pointing up. Not needed. But if rotation? no.
+
+Need maybe "원" no facing.
+
+Need maybe "사각형" no facing.
+
+Need maybe all objects in grid cells. Good.
+
+Let's think if there is any requirement for "행·열 제약 추론" maybe more complex: multiple constraints? Could be "빨간 사물과 같은 행에 있고, 파란 사물과 같은 열에 있으며, 노란 사물과 대각선으로 마주 보는 사물". But simple enough. Executive function maybe constraint satisfaction. Could add third constraint to make more executive but still unique. Need ensure not too hard. Maybe two constraints enough. But subtype 행·열 제약 추론, construct 제약 만족. Could ask to find object satisfying two constraints. Good.
+
+Could make question: "빨간 원과 같은 행에 있고, 파란 삼각형과 같은 열에 있는 사물의 이름을 말해라." That's a row/column constraint. Good.
+
+Need maybe answer_rationale should mention uniqueness. Good.
+
+Now final JSON. Ensure no code fence. Need only object. Let's produce.
+</think>
+
+{
+  "slot_id": "EXE_08",
+  "question": "빨간 원과 같은 행에 있고, 파란 삼각형과 같은 열에 있는 사물의 이름을 말해라.",
+  "answer": "초록 사각형",
+  "answer_rationale": "빨간 원은 0행에 있고, 파란 삼각형은 1열에 있다. 두 조건이 교차하는 0행 1열에는 초록 사각형만 있다. 같은 행의 노란 별은 1열이 아니고, 같은 열의 청록색 초승달은 0행이 아니므로 정답은 초록 사각형으로 유일하다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "빨간 원",
+            "appearance": "동그란 빨간색 원 하나",
+            "color": "빨강",
+            "cell": [0, 0]
+          },
+          {
+            "ref": "green_square",
+            "name": "초록 사각형",
+            "appearance": "모서리가 곧은 초록색 사각형 하나",
+            "color": "초록",
+            "cell": [0, 1],
+            "is_target": true
+          },
+          {
+            "ref": "yellow_star",
+            "name": "노란 별",
+            "appearance": "다섯 꼭짓점의 노란 별 하나",
+            "color": "노랑",
+            "cell": [0, 2]
+          },
+          {
+            "ref": "orange_diamond",
+            "name": "주황색 마름모",
+            "appearance": "네 변이 같은 길이의 주황색 마름모 하나",
+            "color": "주황",
+            "cell": [1, 0]
+          },
+          {
+            "ref": "blue_triangle",
+            "name": "파란 삼각형",
+            "appearance": "세 꼭짓점의 파란색 삼각형 하나",
+            "color": "파랑",
+            "cell": [1, 1]
+          },
+          {
+            "ref": "purple_hexagon",
+            "name": "보라색 육각형",
+            "appearance": "여섯 변이 같은 길이의 보라색 육각형 하나",
+            "color": "보라",
+            "cell": [1, 2]
+          },
+          {
+            "ref": "brown_cross",
+            "name": "갈색 십자",
+            "appearance": "세로와 가로 막대가 교차하는 갈색 십자 하나",
+            "color": "갈색",
+            "cell": [2, 0]
+          },
+          {
+            "ref": "teal_crescent",
+            "name": "청록색 초승달",
+            "appearance": "달 모양의 청록색 초승달 하나",
+            "color": "청록",
+            "cell": [2, 1]
+          },
+          {
+            "ref": "black_octagon",
+            "name": "검은 팔각형",
+            "appearance": "여덟 변이 같은 길이의 검은색 팔각형 하나",
+            "color": "검정",
+            "cell": [2, 2]
+          }
+        ]
+      }
+    }
+  ]
+}

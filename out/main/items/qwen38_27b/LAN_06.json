@@ -1,0 +1,124 @@
+{
+  "slot_id": "LAN_06",
+  "question": "첫 번째 그림과 같은 범주인 과일에 속하는 보기를 고르세요.",
+  "answer": "1",
+  "answer_rationale": "기준은 사과로 범주는 과일이다. 보기 1의 바나나만 과일이고, 보기 2의 당근은 채소, 보기 3의 빵은 곡류로 만든 음식, 보기 4의 우유는 유제품이므로 정답은 1이다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "banana",
+            "name": "바나나",
+            "appearance": "노란 바나나 낱개 하나",
+            "color": "노랑",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "carrot",
+            "name": "당근",
+            "appearance": "주황색 당근 낱개 하나",
+            "color": "주황",
+            "cell": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 3,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "bread",
+            "name": "빵",
+            "appearance": "갈색 바게트 빵 낱개 하나",
+            "color": "갈색",
+            "cell": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 4,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "milk",
+            "name": "우유",
+            "appearance": "흰색 우유 팩 하나",
+            "color": "흰색",
+            "cell": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

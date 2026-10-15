@@ -1,0 +1,196 @@
+We need answer user's request. Need output JSON only, no markdown. Need design item for slot ATT_10: attention, subtype designated area selective attention, construct attention inhibition, panels: main scene, response open, answer_kind count. Need likely count target objects in designated area? Need question in Korean. Need JSON schema. Need ensure only one JSON object. Need think carefully.
+
+Slot: ATT_10, domain 주의력, subtype 지정 구역 선택 주의, construct 주의 억제, panels: [{stage: main, kind: scene}], response open, answer_kind 개수.
+
+We need create a scene with objects and maybe annotations to designate area? Since no text in image, can use annotation box to mark designated area? The schema allows annotations: arrow, box, divider, number. We can use box to designate area. But question can say "파란색 사각형 안에 있는 빨간 사과 몇 개?" But image cannot have text? Annotation box can be blue? The annotation schema only type, target, from, to, text. No color property. Maybe pipeline can draw box. But question can refer to "사각형으로 표시된 구역". Need avoid text in image. Use annotation box around a region. But scene layout grid? If use grid, annotation box from/to normalized coordinates? Could be okay. But maybe simpler: use free layout and place objects, with annotation box around target area. Need count objects inside designated area, ignoring distractors outside. Attention inhibition: must suppress irrelevant objects outside. Answer count.
+
+Need ensure question only with image? It says question and image presented. Question can specify target: "사각형으로 표시된 구역 안에 있는 빨간 사과 몇 개?" Need image has box annotation. But if annotation box is code synthesized, okay. Need answer unique. Need scene objects enumerated with positions. Use free layout with pos. Need objects: target apples inside box, distractors outside maybe same color? To test selective attention/inhibition, include similar distractors outside designated area. Count only inside. Need maybe target objects are red apples inside a blue box? But no color for annotation? Could use question: "검은 사각형으로 표시된 구역 안에 있는 빨간 사과 몇 개?" If box color not specified? Annotation type box maybe default black. Could say "사각형으로 표시된 구역". Need avoid relying on color of box if not specified. Use "사각형으로 표시된 구역 안에 있는 빨간 사과". Need ensure box clearly encloses some apples. Use annotation from/to coordinates. But if using free layout, positions normalized. Need define box around e.g. [0.1,0.1] to [0.5,0.5]. Put 3 red apples inside, 2 red apples outside, maybe 1 green apple inside? If question asks red apples inside, green inside distractor. Need count 3. But if green apple inside, target? Need is_target true for red apples inside? Maybe target objects are red apples inside box. But answer count is 3. Need ensure no ambiguity: box annotation may not be an object; target objects are apples inside. Use is_target true for those? It says attach to objects directly related to answer. Could mark red apples inside as is_target true. But if all red apples inside are target, okay. Outside red apples not target? They are distractors. Could mark only inside red apples. Need maybe use appearance "빨간 사과 낱개 하나". Need count by objects array length inside. Need positions.
+
+Potential issue: annotation box from/to coordinates may not align with grid? If layout free, pos. Need ensure box coordinates enclose target objects. Let's design:
+layout: free, background: "흰 바닥이 보인다".
+objects:
+- apple1: name "사과", appearance "빨간 사과 낱개 하나", color "빨강", pos [0.2,0.2], is_target true
+- apple2: pos [0.35,0.25], is_target true
+- apple3: pos [0.25,0.35], is_target true
+- apple4: pos [0.7,0.2], color 빨강, appearance "빨간 사과 낱개 하나" (outside)
+- apple5: pos [0.75,0.35], outside
+- apple6: pos [0.3,0.7], color "초록", appearance "초록 사과 낱개 하나" (inside? maybe inside box? If box [0.1,0.1] to [0.5,0.5], pos 0.3,0.7 outside. Need inside green distractor? Could put green apple inside at [0.4,0.4] to require color selection. But question asks red apples inside, so green inside not counted. That's good. But if box encloses [0.1,0.1] to [0.5,0.5], green at [0.4,0.4] inside. Need target red apples inside: 3. Outside red apples: 2. Inside green: 1. Total red inside 3.
+- maybe add blue circle outside? Not necessary.
+Need annotation: {"type":"box", "from":[0.1,0.1], "to":[0.5,0.5]} maybe target? Could target? Not needed. But annotation schema has target optional. Could include target? no.
+Question: "사각형으로 표시된 구역 안에 있는 빨간 사과 몇 개?" Answer "3". Rationale: box encloses 3 red apples and 1 green apple; 2 red apples outside; only red apples inside counted, so unique 3.
+
+Need ensure schema: top-level required slot_id, question, answer, panels. additionalProperties false. We can include answer_rationale? It's in properties but not required. Yes include. panels array one panel: stage main, kind scene, scene object. Panel additionalProperties false: allowed stage, kind, option_index, scene, edit_of, changes. For kind scene, required scene. Good.
+
+Scene additionalProperties false: layout, objects, background, annotations allowed. layout free, no rows/cols. objects min 1 max 24. object required ref, name. additionalProperties false: allowed ref,name,appearance,color,cell,pos,rotation,mirrored,scale,facing,is_target. We use pos, color, appearance, is_target. Good.
+
+Annotation required type. additionalProperties false: allowed type,target,from,to,text. We use type, from, to. Good.
+
+Need ensure no text in image. Question has text but okay. Annotation no text.
+
+Need consider if "사각형으로 표시된 구역" is clear if box annotation drawn. Yes.
+
+Need maybe answer_kind count expects numeric string. answer "3".
+
+Need ensure question not meta. Good.
+
+Potential issue: If annotation box is drawn over objects, could obscure? Pipeline likely draws box outline. Fine.
+
+Need maybe use "파란색 사각형"? Annotation color not specified, avoid.
+
+Need maybe use "검은색 사각형"? Not specified. Use "사각형으로 표시된".
+
+Need maybe target area could be ambiguous if box overlaps outside? We set coordinates.
+
+Need self-check:
+1. question only? Need image to see box and apples. Yes.
+2. unique? 3 red inside. Need ensure no red apple partially outside? Positions all inside. Box from 0.1 to 0.5. apple1 0.2,0.2; apple2 0.35,0.25; apple3 0.25,0.35; green 0.4,0.4. Outside red 0.7,0.2; 0.75,0.35. Good.
+3. rationale includes uniqueness.
+4. no edit.
+5. slot panels match: one main scene.
+
+Need output JSON only. Ensure valid JSON. Korean strings. No markdown.
+
+Double-check schema top-level additionalProperties false: properties include $schema? Wait schema in prompt includes $schema property? It says properties: slot_id, question, answer, panels, answer_rationale? Actually in output format schema: required slot_id, question, answer, panels; additionalProperties false; properties: slot_id, question, answer, answer_rationale, panels. It does not include $schema in properties? It shows "$schema": "http..." at top of schema, not property. So we should not include $schema in output. Good.
+
+Need maybe include "answer_rationale" allowed. Yes.
+
+Potential hidden requirement: "수검자에게는 question과 해당 단계의 이미지만 제시된다." For main only one image. Good.
+
+Could there be issue with open response and answer_kind count: answer should be count maybe "3". Good.
+
+Need maybe use "개수" answer as integer? Schema answer string. Use "3".
+
+Need maybe ensure objects are single units: appearance "빨간 사과 낱개 하나". Good.
+
+Need maybe rare objects? Apple common, but color specified. Good.
+
+Need maybe no negative. background positive.
+
+Need maybe facing not needed.
+
+Need maybe is_target: true for target objects. If we mark only red apples inside, okay. But answer count is number of target objects? Could be. Mark green inside false, outside red false. Good.
+
+Need maybe annotation box target? Could set target? Not necessary. If target expects ref? no.
+
+Let's craft JSON:
+{
+ "slot_id": "ATT_10",
+ "question": "사각형으로 표시된 구역 안에 있는 빨간 사과 몇 개?",
+ "answer": "3",
+ "answer_rationale": "사각형 안에는 빨간 사과 3개와 초록 사과 1개가 있고, 사각형 밖에는 빨간 사과 2개가 있습니다. 질문은 사각형 안의 빨간 사과만 세므로 3개만 유일한 정답입니다.",
+ "panels": [
+  {
+   "stage": "main",
+   "kind": "scene",
+   "scene": {
+    "layout": "free",
+    "background": "흰 바닥이 보인다",
+    "objects": [
+     {"ref":"apple1","name":"사과","appearance":"빨간 사과 낱개 하나","color":"빨강","pos":[0.20,0.20],"is_target":true},
+     {"ref":"apple2","name":"사과","appearance":"빨간 사과 낱개 하나","color":"빨강","pos":[0.35,0.25],"is_target":true},
+     {"ref":"apple3","name":"사과","appearance":"빨간 사과 낱개 하나","color":"빨강","pos":[0.25,0.35],"is_target":true},
+     {"ref":"apple4","name":"사과","appearance":"빨간 사과 낱개 하나","color":"빨강","pos":[0.70,0.20]},
+     {"ref":"apple5","name":"사과","appearance":"빨간 사과 낱개 하나","color":"빨강","pos":[0.75,0.35]},
+     {"ref":"apple6","name":"사과","appearance":"초록 사과 낱개 하나","color":"초록","pos":[0.40,0.40]}
+    ],
+    "annotations": [
+     {"type":"box","from":[0.10,0.10],"to":[0.50,0.50]}
+    ]
+   }
+  }
+ ]
+}
+
+Need check object additionalProperties: no cell, okay. pos numbers. Good.
+
+Could there be issue with annotation box from/to normalized coordinates relative to image, but objects pos also normalized. Good.
+
+Need maybe if box drawn from [0.1,0.1] to [0.5,0.5], apple6 at [0.4,0.4] inside. Good.
+
+Need maybe if object size default may extend beyond box? If apple at 0.4,0.4 with default scale maybe radius could cross 0.5? But likely centered. To be safe, move green inside to [0.38,0.38] and red inside not too close to edge. Box 0.1-0.5. apple3 0.25,0.35; apple2 0.35,0.25; apple1 0.2,0.2. If object size maybe 0.1, apple1 at 0.2 extends to 0.15, okay. apple2 0.35 extends to 0.4, okay. apple3 0.35 y extends 0.4. green 0.38 extends 0.43. Good. Outside red at 0.7,0.2 and 0.75,0.35 clearly outside. Could add more distractors? Not necessary.
+
+Need maybe attention inhibition: outside similar red apples. Good.
+
+Potential issue: "사각형으로 표시된 구역" if annotation box is not colored or labeled, but visible. Good.
+
+Need final only JSON. Ensure no trailing commas. Use double quotes.
+
+One more thought: The prompt says "이미지에 글자를 요구하지 않는다. 글자·숫자·보기 번호·라벨·화살표는 생성 모델이 그리지 못한다. 필요하면 annotations에 선언하면 파이프라인이 코드로 정확히 합성한다." We use box annotation, okay. It doesn't specify color, but box type likely drawn. Could question say "검은 사각형"? If pipeline default maybe black. But safer "사각형으로 표시된".
+
+Need maybe "구역 안에 있는" could be ambiguous if box outline passes through? No.
+
+Need maybe answer_rationale not shown to subject, okay.
+
+Need ensure no markdown. final JSON.
+</think>
+
+{
+  "slot_id": "ATT_10",
+  "question": "사각형으로 표시된 구역 안에 있는 빨간 사과 몇 개?",
+  "answer": "3",
+  "answer_rationale": "사각형 안에는 빨간 사과 3개와 초록 사과 1개가 있고, 사각형 밖에는 빨간 사과 2개가 있습니다. 질문은 사각형 안의 빨간 사과만 세므로 3개만 유일한 정답입니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "apple1",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "color": "빨강",
+            "pos": [0.20, 0.20],
+            "is_target": true
+          },
+          {
+            "ref": "apple2",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "color": "빨강",
+            "pos": [0.35, 0.25],
+            "is_target": true
+          },
+          {
+            "ref": "apple3",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "color": "빨강",
+            "pos": [0.25, 0.35],
+            "is_target": true
+          },
+          {
+            "ref": "apple4",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "color": "빨강",
+            "pos": [0.70, 0.20]
+          },
+          {
+            "ref": "apple5",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "color": "빨강",
+            "pos": [0.75, 0.35]
+          },
+          {
+            "ref": "apple6",
+            "name": "사과",
+            "appearance": "초록 사과 낱개 하나",
+            "color": "초록",
+            "pos": [0.38, 0.38]
+          }
+        ],
+        "annotations": [
+          {
+            "type": "box",
+            "from": [0.10, 0.10],
+            "to": [0.50, 0.50]
+          }
+        ]
+      }
+    }
+  ]
+}

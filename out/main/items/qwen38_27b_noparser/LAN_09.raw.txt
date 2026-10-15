@@ -1,0 +1,88 @@
+We need answer user's request. Need produce JSON only, no markdown. Need design cognitive test item for slot LAN_09: language ability, subtype antonym relationship, construct semantic relation. Panels: 기준 scene, 보기 option n=4, response choice4, answer_kind 보기번호. Need output one JSON object matching schema. Need likely create a scene with objects representing antonym relationship? Need question asks to choose option that is opposite? But images only. Need design image-based item for antonym relation. Need avoid text in image. Need use scene structure. Need options derived? Slot doesn't have derived true. But for antonym maybe options should be controlled variants? Need ensure answer unique. Need panels: one 기준 scene, four 보기 options. Since response choice4, answer is number 1-4. Need question in Korean, no meta. Need image-based: 기준 scene shows e.g. a cup full? Options show empty? But antonym relationship maybe choose the picture that is opposite in meaning to the base. Need be careful: if base scene has "열린 문" and options include "닫힌 문" etc. But images can't have text. Need use objects with states. Need scene objects with appearance. Could use door open/closed? Need antonym: open vs closed. Base scene: a door open? Options: one closed door, others variants? But options should be controlled variants: if antonym, correct is opposite state; distractors maybe same state, different object, different color? Need unique.
+
+Need schema: panels array max 8. Each panel stage enum includes 기준, 보기. kind scene/edit/option. For option, can have scene directly or edit_of. Since slot not derived, can use scene directly. But to ensure controlled variants, maybe use edit_of from 기준? The schema allows option with edit_of? It says option can scene directly or edit_of. But if kind option and edit_of, does it require changes? The allOf only requires option_index for option. It doesn't require changes. But if using edit_of without changes? It might be okay? The panel definition has edit_of and changes optional. But if kind option and edit_of, maybe pipeline expects changes? The examples for derived options use kind option, edit_of, changes. For correct same as base, omit changes. But if we use edit_of for options, need target refs exist in 기준. Could be good. But if option is antonym, need change state? Ops available: move remove add recolor rotate rescale mirror. No "state" op. Could represent open/closed by moving door? Hmm.
+
+Alternative: use objects with orientation/facing to represent antonyms: up/down, left/right, front/back. Base scene: arrow pointing up? Options: arrow pointing down (antonym), left, right, same up? But arrow is direction, antonym of up is down. Need no text. Use arrow object with facing? facing enum includes 위, 아래, 왼쪽, 오른쪽. Could have base scene with an arrow facing up. Options: arrow facing down (correct), arrow facing left, arrow facing right, arrow facing up? But if options are controlled variants of same shape rotated. Need answer unique. But is "up/down" antonym? Yes. But language ability semantic relation? Could be. Need question: "첫 번째 그림과 반대인 그림을 고르세요." But "반대" maybe spatial opposite, not semantic antonym? It's okay? subtype 반의 관계. Could be "위" and "아래" are antonyms. But image-based: base shows arrow pointing up; choose arrow pointing down. Need ensure no text. Use annotations? Not needed.
+
+But need scene objects: arrow. Need appearance: "위쪽을 가리키는 화살표 낱개 하나" maybe facing 위. But if appearance says 위쪽, that's okay? It's not text. Need object name "화살표", appearance "검은색 직선 화살표 낱개 하나", facing "위", is_target true. Layout maybe free or grid. Use free with pos center. For options, if using scene directly, each option scene with arrow facing different. But to ensure same shape, could use edit_of from 기준 with rotate changes. But rotate op changes rotation, not facing? If object has facing, rotate might rotate image? The pipeline may apply rotation to object. But facing is semantic. Better to use scene directly with same appearance but different facing. However rule 6 says wrong options should be controlled variants. If same arrow shape, only facing differs. Good.
+
+Need consider if question can be answered by image only. Yes.
+
+Need answer unique: option 2 maybe down. Need answer_rationale: base arrow faces up; only option 2 faces down, which is antonym of up; others face left/right/up. Need ensure option 4 not also down. Use option indices 1-4.
+
+Need panels:
+- stage 기준, kind scene, scene: layout free, background "흰 바닥", objects: arrow ref arrow, name "화살표", appearance "검은색 직선 화살표 낱개 하나", facing "위", pos [0.5,0.5], is_target true.
+- stage 보기, kind option, option_index 1, scene: arrow facing "왼쪽" maybe.
+- option 2: facing "아래" correct.
+- option 3: facing "오른쪽".
+- option 4: facing "위" (same as base). But if same as base, is it a distractor? Yes, not antonym. Need controlled variant: same shape, only facing. Good.
+
+But is "left/right" antonym of up? No. Good.
+
+Potential issue: "반의 관계" in language could be semantic antonyms like big/small, hot/cold. Up/down is spatial antonym. Acceptable? Maybe. Could use "열린/닫힌" but state not supported. Could use "위/아래" as words? But no text. The construct is semantic relation; spatial antonyms are semantic. Good.
+
+Need ensure no text in image. We don't use annotations. Question: "첫 번째 그림의 화살표 방향과 반대인 방향을 고르세요." But this mentions 화살표, okay. It asks image. Could be "첫 번째 그림과 반대인 그림을 고르세요." But "반대" ambiguous. Better: "첫 번째 그림의 방향과 반대인 방향을 고르는 그림을 선택하세요." But question should be read to subject. Maybe "첫 번째 그림의 화살표가 가리키는 방향과 반대인 방향을 가리키는 그림을 고르세요." This is clear. It references arrow. It doesn't include meta. Good.
+
+Need answer: "2".
+
+Need answer_rationale: "기준 그림의 화살표는 위를 가리킨다. 보기 2만 아래를 가리키므로 위와 아래는 반의 관계다. 보기 1은 왼쪽, 3은 오른쪽, 4는 위이므로 정답이 아니다." Good.
+
+Need schema validation: top-level required slot_id, question, answer, panels. additionalProperties false. We can include answer_rationale? Schema properties includes answer_rationale? Yes in properties? It lists required slot_id question answer panels; properties include slot_id, question, answer, answer_rationale, panels. additionalProperties false, so answer_rationale allowed. Good.
+
+Panel schema: required stage, kind. additionalProperties false. Properties: stage, kind, option_index, scene, edit_of, changes. For option with scene, okay. Need no extra.
+
+Scene schema: required layout, objects. additionalProperties false. Properties layout, rows, cols, background, objects, annotations. For layout free, pos required? Description says free면 pos 필수, but schema doesn't enforce. We'll include pos. No rows/cols. background positive. objects min 1.
+
+Object schema: required ref, name. additionalProperties false. Properties ref, name, appearance, color, cell, pos, rotation, mirrored, scale, facing, is_target. For free, use pos. Need ref pattern ^[a-z][a-z0-9_]*$. Use "arrow". name "화살표". appearance "검은색 직선 화살표 낱개 하나". color maybe "검정". facing enum. pos [0.5,0.5]. is_target true. Good.
+
+Need maybe use "appearance" to ensure same shape across options. Use same appearance string. For facing, if facing is "위", appearance maybe not include direction to avoid conflict? Could say "검은색 직선 화살표 낱개 하나". facing determines direction. Good.
+
+Need consider if facing "위" means arrow points up? Yes.
+
+Potential issue: If options are separate scenes, the arrow shape may vary due to generation. But rule says controlled variants. We can't guarantee pixel identical, but we can specify same appearance. Could use edit_of to guarantee same base? But changing facing not an op. Could use rotate op to rotate arrow. If base arrow facing up, rotate 180 gives down, 90 gives right? But facing might not update? The pipeline may rotate image, but facing field remains? If we use edit_of with rotate, the object's facing might still be up in data but visual rotated. That could be inconsistent. Better direct scenes with facing. The rule 6 says if derived true, options must be derived. Slot doesn't have derived. So direct okay.
+
+Need maybe include annotations? No.
+
+Need ensure question doesn't require reading text in image. Good.
+
+But let's think deeper: The task is "이미지 기반 인지검사 문항 작성" for language ability antonym. They might expect a scene with two objects representing antonym? For example base scene: "큰 사과" and options: "작은 사과"? But antonym relation maybe choose the option that is opposite in meaning to the base. Using arrow direction is simple. But is it language? It tests semantic relation of spatial terms. Could be acceptable.
+
+Need maybe avoid "화살표" because arrow is a symbol, not a real object? It's okay. But rule: no text/numbers/labels/arrows? Wait section 5: "이미지에 글자를 요구하지 않는다. 글자·숫자·보기 번호·라벨·화살표는 생성 모델이 그리지 못한다. 필요하면 annotations에 선언하면 파이프라인이 코드로 정확히 합성한다." It says arrows are not drawable by generation model? It says 글자·숫자·보기 번호·라벨·화살표는 생성 모델이 그리지 못한다. Need if need arrow, use annotations. But we are using object name "화살표" in scene.objects. Is that disallowed? It says don't require text in image; arrows are generated by code via annotations. It might mean don't ask generation model to draw arrows as objects? It lists arrows among things generation model can't draw. Need use annotations for arrows. But our scene object is an arrow. That may violate. We should avoid using arrow as object. Use annotations? But annotations types include arrow. Could use annotation arrow to indicate direction? But scene.objects must have at least one object. Could have a simple object (e.g., ball) and an annotation arrow? But question about direction? Maybe use annotation arrow as the stimulus. But annotations are code-synthesized, okay. However object schema requires objects min 1. Could include a neutral object? But if the key stimulus is annotation arrow, is that allowed? The scene objects are for generation model; annotations for code. We can have background and an annotation arrow. But objects minItems 1, so need at least one object. Could put a "점" or "원" as target? But then question about arrow? Maybe use object "원" and annotation arrow? Hmm.
+
+Maybe better avoid arrows entirely. Use objects with facing: person/animal facing up/down? But facing enum includes 위/아래 for people? A person facing up is weird. Could use "꽃" blooming up/down? Not facing. Use "나무" growing up/down? Not.
+
+Could use "열린/닫힌" via door? But state not op. Could use object "문" with appearance "열려 있는 문" vs "닫혀 있는 문". Generation model can draw door open/closed? Maybe. But options controlled? Could be. But antonym open/closed. Base scene: open door. Options: closed door (correct), open door, window? Need controlled variants. But generation may vary. Could use edit? No state op. Direct scenes.
+
+But rule 5 specifically says arrows can't be drawn by generation model; use annotations. If we use annotation arrow, we can avoid object arrow. But need objects min 1. Could have a simple "흰 바닥" and an annotation arrow? objects min 1, so maybe include a "점" object? But then the image has a dot and arrow. The question can refer to arrow. But if arrow is annotation, it's exact. Need scene.objects can include a "점" maybe not relevant. But is it okay to have irrelevant object? It might confuse. Could make the object be the arrow? But disallowed? Let's parse: "이미지에 글자를 요구하지 않는다. 글자·숫자·보기 번호·라벨·화살표는 생성 모델이 그리지 못한다. 필요하면 annotations에 선언하면 파이프라인이 코드로 정확히 합성한다. scene.objects의 name이나 appearance에 "①이라고 적힌" 같은 표현을 넣지 않는다." It says don't require text in image. Arrows are listed as things generation model can't draw. So likely we should not put arrow in objects. Use annotations for arrow. But then what object? Maybe the scene can have a "화살표" annotation and no objects? Schema requires objects min 1. Could include a "흰 원" as a reference point? But question: "첫 번째 그림의 화살표 방향과 반대인 방향을 고르세요." The arrow annotation is the key. The object could be a "점" at center, but arrow from point? Maybe annotation arrow from [0.5,0.5] to [0.5,0.2] for up. But if there is a dot object, okay. But the dot is irrelevant. Could make object "원" and annotation arrow starting from it. But then options need same dot and arrow direction. Use direct scenes with same dot object and annotation arrow. But annotations are not part of objects; can be in each scene. That's okay. Need ensure no text.
+
+But is annotation arrow allowed in scene? Yes annotation type arrow. It has from/to. Need maybe target? Not required. We can specify from and to. For up: from [0.5,0.5] to [0.5,0.2] (y smaller is up). For down: from [0.5,0.5] to [0.5,0.8]. Left: from [0.5,0.5] to [0.2,0.5]. Right: from [0.5,0.5] to [0.8,0.5]. Need object: maybe "dot" name "점", appearance "검은색 원점 낱개 하나", pos [0.5,0.5], is_target true? But the target is arrow? Could mark dot is_target? Maybe not. The answer relation is arrow direction. But is_target should be on object directly related to answer. If arrow is annotation, no object to mark. Could mark dot as target? It's the origin. Maybe okay. Or use object "원" as the thing the arrow points from. But question about arrow.
+
+However, if we use annotation arrow, the generation model only draws dot; arrow is code. Good. But does the scene need objects min 1; dot is fine. But is a dot too trivial? It's okay.
+
+Alternative: Use object "사람" with facing left/right? Antonym left/right? Base person facing left, options facing right (correct), facing front, back, left. But facing left/right are antonyms? Yes. Person facing left vs right. But "front/back" not antonym? Could be. Need no arrow. Use person object with facing. Generation model can draw person. But controlled variants? Direct scenes with same appearance "검은색 실루엣 사람 낱개 하나" and facing. This avoids arrow. But is left/right antonym? Yes. But question: "첫 번째 그림의 사람 방향과 반대인 방향을 고르세요." Could be. But facing left/right is spatial. Person facing left vs right. Options: right (correct), front, back, left. But front/back are also antonyms? If base left, front/back not opposite. Good. But if base facing left, the opposite is right. Unique. This may be better than arrow because no annotation issue. But rule: 방향이 있는 사물에는 facing을 적는다. Good. Use person. Need ensure "사람" can face left/right. Yes.
+
+But is "left/right" language antonym? Yes. But maybe too simple. Could use "위/아래" with person? Person facing up/down not natural. Use "꽃" blooming up/down? Not facing. Use "나무" up/down? Not.
+
+Could use "열린/닫힌" with door. But state not facing. Could use appearance. But generation may not be controlled. Person facing is good.
+
+Need consider if "반의 관계" expects word pairs like "위-아래", "왼쪽-오른쪽". Using person facing left/right tests spatial antonym. Good.
+
+But if base person facing left, option right is antonym. Option front/back? Are front/back antonyms of each other, but not of left. Option left same. Good.
+
+Need question: "첫 번째 그림의 사람이 바라보는 방향과 반대인 방향을 바라보는 사람을 고르세요." This is clear. It references person. No meta.
+
+Need panels:
+기준 scene: layout free, background "흰 바닥", objects: person ref person, name "사람", appearance "검은색 실루엣 사람 낱개 하나", facing "왼쪽", pos [0.5,0.5], is_target true.
+보기 1: person facing "정면" maybe.
+보기 2: person facing "오른쪽" correct.
+보기 3: person facing "뒷면".
+보기 4: person facing "왼쪽" same.
+Need ensure answer unique. Yes.
+
+But is "정면" and "뒷면" antonyms? They are opposite, but not relevant. If base left, only right is opposite. Good.
+
+Potential issue: If person facing left, the opposite direction could be right, but also "뒷면" if considering orientation? No, opposite of left is right. Good.
+
+Need maybe use "바라보는 방향" not "가리키는". Person facing. Good.
+
+Need answer_rationale: "기준 그림의 사람은 왼쪽을 바라본다. 보기 2만 오른쪽을 바라보며, 왼쪽과 오른쪽은 반의 관계다. 보기 1은 정면, 3은 뒷면, 4는 왼쪽이므로

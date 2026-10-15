@@ -1,0 +1,67 @@
+{
+  "slot_id": "MEM_08",
+  "question": "이전과 비교했을 때 추가된 사물을 말해보세요.",
+  "answer": "사과",
+  "answer_rationale": "검사 단계에서 사과가 추가되었기 때문에 사과가 정답입니다.",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "glass",
+            "name": "안경",
+            "appearance": "검은 뿔테",
+            "cell": [
+              1,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "학습",
+      "changes": [
+        {
+          "op": "add",
+          "target": "apple",
+          "object": {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

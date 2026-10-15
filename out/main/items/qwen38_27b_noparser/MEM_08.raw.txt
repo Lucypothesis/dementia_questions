@@ -1,0 +1,148 @@
+We need answer user's request. Need output JSON only, no markdown. Need design cognitive test item for slot MEM_08. Need likely Korean. Need ensure valid JSON per schema. Need think through requirements.
+
+Slot:
+{
+ id MEM_08, domain 기억력, subtype 사물 추가 탐지, construct 변화 탐지,
+ panels: [ {stage 학습, kind scene}, {stage 검사, kind edit, edit_of 학습, ops ["add"], n_changes 1} ],
+ response open, answer_kind 사물명
+}
+
+Need output one JSON object with slot_id, question, answer, panels. Panels exactly two? likely yes. 학습 scene, 검사 edit with one add. answer is object name added. Need question open: e.g. "첫 번째 그림과 두 번째 그림을 비교했을 때, 두 번째 그림에 새로 추가된 사물은 무엇입니까?" But question should not meta? It can ask compare images. It says 수검자에게 question과 해당 단계의 이미지만 제시. Need question only. It can mention first/second? Probably okay. Need answer unique. Need scene objects with cells. Need add target new ref. Need ensure edit target for add is new ref? Schema change target: 건드릴 object의 ref. add면 새 ref. So changes: [{"op":"add","target":"pencil","object":{...}}]. Need object in add with ref, name, appearance, cell maybe. Since layout grid. Need ensure added object not in learning. Need answer name exactly maybe "연필". Need is_target true? For added object maybe is_target true. But in edit object? Could include is_target true. Need maybe learning scene has several objects. Need ensure no text. Need positive background. Need directions? no.
+
+Need consider if open response answer_kind 사물명: answer string should be object name. Could be "연필". Need rationale: only added object is pencil; all other objects identical due edit. Need ensure question asks name of newly added object. Need maybe avoid "첫 번째/두 번째" if images shown in order? It's okay.
+
+Need JSON only. Need no code fence. Need valid schema. Let's construct.
+
+Panel 1:
+stage 학습, kind scene, scene: layout grid rows 2 cols 2 background "흰 바닥이 보인다" objects:
+- ref cup name 머그컵 appearance "손잡이 달린 흰색 낱개" cell [0,0]
+- ref key name 열쇠 appearance "열쇠고리 없는 금속 낱개 하나" cell [0,1]
+- ref apple name 사과 color "빨강" cell [1,0]
+- ref glass name 안경 appearance "검은 뿔테 낱개" cell [1,1]
+Maybe include is_target? Not needed. But maybe target? The added object is target. Could mark learning objects not target.
+
+Panel 2:
+stage 검사, kind edit, edit_of 학습, changes: [{"op":"add","target":"pencil","object":{"ref":"pencil","name":"연필","appearance":"노란색 몸체에 검은색 심이 있는 낱개 하나","color":"노랑","cell":[1,1]? Wait cell [1,1] occupied by 안경. In grid, can multiple objects same cell? Probably not ideal. Need add to empty cell. Learning 2x2 full. Need add object to empty cell. Use 2x3 grid? Learning scene can have rows 2 cols 3 with 4 objects leaving empty cell. Then add to empty cell. Better.
+
+Scene layout grid rows 2 cols 3. Objects:
+cup [0,0], key [0,1], apple [1,0], glass [1,1]. Empty [0,2], [1,2]. Add pencil at [1,2]. Need ensure no overlap. Good.
+
+Need maybe appearance for apple? color red enough? Could add appearance "빨간색 원형 낱개". But color field. Need rare? apple common. But to avoid ambiguity, appearance "빨간색 사과 낱개 하나". For key, appearance. For glass? name 안경, appearance "검은 뿔테 안경 낱개". Good.
+
+Question: "두 번째 그림에 처음 그림에 없던 사물이 하나 추가되었습니다. 추가된 사물의 이름을 말해 주세요." This is open. It mentions two images. Good.
+
+Answer: "연필". Rationale: 검사 panel only adds pencil to empty cell [1,2]; all other objects copied from 학습; no other changes; therefore unique.
+
+Need ensure schema: top-level additionalProperties false, only slot_id, question, answer, panels. We can include answer_rationale? Schema properties includes answer_rationale but not required. It says additionalProperties false, properties include answer_rationale. So can include. Need maybe include. Good.
+
+Panel schema: required stage, kind. additionalProperties false. For scene kind, required scene. For edit, required edit_of, changes. We can include stage, kind, edit_of, changes. No scene. Good.
+
+Change schema: required op, target. additionalProperties false. properties op, target, to_cell, to_pos, to_color, to_rotation, to_scale, object. For add, include object. Good.
+
+Object schema: required ref, name. additionalProperties false. properties ref, name, appearance, color, cell, pos, rotation, mirrored, scale, facing, is_target. We can include ref, name, appearance, color, cell, is_target. For add object, is_target true. For learning objects maybe no is_target. Good.
+
+Need ensure ref pattern ^[a-z][a-z0-9_]*$. cup, key, apple, glass, pencil ok.
+
+Need maybe stage enum includes "학습", "검사". Good.
+
+Need maybe answer_rationale in Korean. Good.
+
+Potential issue: question says "두 번째 그림에 처음 그림에 없던 사물이 하나 추가되었습니다." This reveals there is one added. Slot n_changes 1. Fine. But maybe open response should not give away? It's okay. Could ask "첫 번째 그림과 두 번째 그림을 비교했을 때, 두 번째 그림에 새로 추가된 사물은 무엇입니까?" It doesn't reveal count? It implies one? "새로 추가된 사물" singular. Fine.
+
+Need ensure no markdown. Final JSON only.
+
+Double-check schema: top-level required slot_id, question, answer, panels. We include answer_rationale. additionalProperties false but answer_rationale is allowed. Good.
+
+Panel max 8. Good.
+
+Scene layout grid requires rows/cols? Schema says if grid then rows/cols required? It's in description but not formal allOf. We include.
+
+Background positive: "흰 바닥이 보인다". Good.
+
+Objects count 4. Add one. Good.
+
+Need maybe "appearance" for added pencil: "노란색 몸체에 검은색 심이 있는 낱개 하나". color "노랑". Good.
+
+Could there be issue with answer name "연필" but appearance says 노란색. If user answers "노란 연필"? answer_kind 사물명, scoring maybe exact? We can answer "연필". Rationale says added object name is 연필. Good.
+
+Need maybe question should not include meta "이미지"? It says question만 읽고 답할 수 있는가? 이미지를 봐야만 답이 정해지는가? It asks about images, so need images. It says 이미지에 관한 메타설명을 넣지 않는다. "첫 번째 그림과 두 번째 그림" is meta? Maybe okay? It refers to stimuli. Could be "앞의 그림과 비교했을 때, 뒤에 새로 나타난 사물의 이름을 말해 주세요." That's less meta? Still. Need question to be read aloud. Maybe "앞의 그림과 비교했을 때, 뒤에 새로 나타난 사물의 이름을 말해 주세요." Good. It doesn't say "이미지". It says 그림. Fine.
+
+Need ensure answer unique: if added object is pencil, but learning has no pencil. Good.
+
+Could there be issue with edit add object cell [1,2] in 2x3 grid. Good.
+
+Need maybe use "검사" stage edit_of "학습". Good.
+
+Let's produce final JSON. Ensure no trailing commas. Use Korean strings.
+
+Potential hidden requirement: The user included random Korean gibberish at end. Ignore.
+
+Need maybe "answer" minLength 1. Good.
+
+Let's final.
+</think>
+
+{
+  "slot_id": "MEM_08",
+  "question": "앞의 그림과 비교했을 때, 뒤에 새로 나타난 사물의 이름을 말해 주세요.",
+  "answer": "연필",
+  "answer_rationale": "검사 패널은 학습 패널을 그대로 복제한 뒤 연필 하나만 빈 칸에 추가합니다. 다른 사물의 이동·삭제·변형이 없으므로 새로 추가된 사물은 연필로 유일합니다.",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [0, 0]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [0, 1]
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "appearance": "빨간색 원형 낱개 하나",
+            "color": "빨강",
+            "cell": [1, 0]
+          },
+          {
+            "ref": "glass",
+            "name": "안경",
+            "appearance": "검은 뿔테 안경 낱개",
+            "cell": [1, 1]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "학습",
+      "changes": [
+        {
+          "op": "add",
+          "target": "pencil",
+          "object": {
+            "ref": "pencil",
+            "name": "연필",
+            "appearance": "노란색 몸체에 검은색 심이 있는 낱개 하나",
+            "color": "노랑",
+            "cell": [1, 2],
+            "is_target": true
+          }
+        }
+      ]
+    }
+  ]
+}

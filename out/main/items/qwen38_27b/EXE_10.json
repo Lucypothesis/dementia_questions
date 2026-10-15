@@ -1,0 +1,78 @@
+{
+  "slot_id": "EXE_10",
+  "question": "그림에서 사물 3개만 고르시오. 조건: (1) 빨간색 사물 1개 이상, (2) 파란색 사물 1개 이상, (3) 고른 사물 중 가장 큰 사물은 빨간색이어야 합니다. 조건을 모두 만족하면서 고른 사물의 크기의 합이 가장 큰 조합의 사물 이름을 모두 쓰시오.",
+  "answer": "빨간 원, 파란 원, 초록 삼각형",
+  "answer_rationale": "사물의 크기는 빨간 원 > 파란 원 > 초록 삼각형 > 빨간 사각형 > 파란 사각형입니다. 3개를 고르고 빨강·파랑을 각각 1개 이상 포함해야 하며, 고른 사물 중 가장 큰 사물이 빨강이어야 하므로 빨간 원을 반드시 골라야 합니다. 빨간 원을 고른 뒤 남은 2개를 크기가 큰 순서대로 파란 원과 초록 삼각형으로 채우면 크기의 합이 최대가 됩니다. 다른 조합은 파란 원 또는 초록 삼각형을 빼고 더 작은 사물을 넣거나, 빨간 원을 빼면 가장 큰 사물이 빨강이 아니어서 조건을 만족하지 못합니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "빨간 원",
+            "appearance": "단색 원 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "scale": 3.0,
+            "is_target": true
+          },
+          {
+            "ref": "blue_circle",
+            "name": "파란 원",
+            "appearance": "단색 원 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "scale": 2.5,
+            "is_target": true
+          },
+          {
+            "ref": "green_triangle",
+            "name": "초록 삼각형",
+            "appearance": "단색 삼각형 하나",
+            "color": "초록",
+            "cell": [
+              0,
+              2
+            ],
+            "scale": 2.0,
+            "is_target": true
+          },
+          {
+            "ref": "red_square",
+            "name": "빨간 사각형",
+            "appearance": "단색 사각형 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "scale": 1.5
+          },
+          {
+            "ref": "blue_square",
+            "name": "파란 사각형",
+            "appearance": "단색 사각형 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ],
+            "scale": 1.0
+          }
+        ]
+      }
+    }
+  ]
+}

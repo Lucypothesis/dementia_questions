@@ -1,0 +1,141 @@
+{
+  "slot_id": "ATT_07",
+  "question": "다른 물고기들과 반대 방향을 바라보는 물고기는 몇 행 몇 열에 있나요? 맨 위 행과 맨 왼쪽 열부터 1로 세세요.",
+  "answer": "2행 3열",
+  "answer_rationale": "2행 3열의 물고기만 왼쪽을 바라보고, 나머지는 모두 오른쪽을 바라본다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 4,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "fish_01",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              0,
+              0
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_02",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              0,
+              1
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_03",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              0,
+              2
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_04",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              0,
+              3
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_05",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              1,
+              0
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_06",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              1,
+              1
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_07",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              1,
+              2
+            ],
+            "facing": "왼쪽",
+            "is_target": true
+          },
+          {
+            "ref": "fish_08",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              1,
+              3
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_09",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              2,
+              0
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_10",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              2,
+              1
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_11",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              2,
+              2
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "fish_12",
+            "name": "물고기",
+            "appearance": "파란색 물고기 낱개 한 마리",
+            "cell": [
+              2,
+              3
+            ],
+            "facing": "오른쪽"
+          }
+        ]
+      }
+    }
+  ]
+}

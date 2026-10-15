@@ -1,0 +1,203 @@
+We need answer user's request. Need output JSON only, no markdown. Need design item for slot ATT_01: attention, single feature search, selective attention, panels: main scene, response open, answer_kind count. Need likely count target objects in a scene. Need ensure question asks count. Need JSON schema. Need only one JSON object. Need no extra. Need think in Korean? User Korean. Need final JSON only.
+
+Need satisfy schema:
+Top required slot_id, question, answer, panels. additionalProperties false. Can include answer_rationale? Schema properties includes answer_rationale optional. Yes.
+panels array min1 max8. Each panel required stage, kind. For main kind scene, stage main. scene required layout, objects. layout grid requires rows/cols? Schema says if grid rows/cols required? In description but not formal allOf? scene properties rows/cols not required formally, but likely need. Use grid rows 3 cols 3 maybe. background positive. objects array 1..24. Need count target objects. For single feature search, maybe target is red circles among blue squares? Need count. Need avoid text. Use objects with is_target true for target. But answer count should be number of target objects. Need question: "빨간 동그라미가 몇 개 있나요?" But image only. Need answer numeric string e.g. "3". Need rationale unique.
+
+Need ensure objects: target red circles, distractors blue squares maybe. Need each object ref unique, name, appearance, color, cell. For target, is_target true. Need maybe 3 red circles among 6 blue squares. Need count 3. Need ensure no ambiguity: all red circles are target, all blue squares distractors. But if question asks red circles, color red and shape circle. Need appearance: "빨간 원형 낱개 하나" etc. But color field red. Need maybe use "빨간 동그라미" in question. In scene, objects name "빨간 동그라미" appearance "단색 빨간 원형 낱개 하나". Distractors "파란 사각형" appearance "단색 파란 정사각형 낱개 하나". Need ensure no other red objects. Use 3x3 grid with 9 objects? Could have 3 red circles and 6 blue squares. Need cells unique. Let's design:
+rows 3 cols 3.
+objects:
+red1 cell [0,0]
+blue1 [0,1]
+red2 [0,2]
+blue2 [1,0]
+blue3 [1,1]
+red3 [1,2]
+blue4 [2,0]
+blue5 [2,1]
+blue6 [2,2]
+Count 3.
+Question: "그림에서 빨간 동그라미가 몇 개 있나요?" Answer "3". Rationale: only three objects with red color and circular shape; six blue squares not counted; no other red/circle. Need maybe answer_kind count, open response. Good.
+
+Need check schema: object required ref, name. additionalProperties false. We can include appearance, color, cell, is_target. Good.
+Panel: {"stage":"main","kind":"scene","scene":{...}}. No edit_of.
+Top: slot_id "ATT_01", question, answer, answer_rationale, panels.
+Need ensure no markdown. JSON valid.
+
+Potential issue: "answer" type string minLength 1. "3" ok.
+Need maybe question not meta. Good.
+Need maybe use Korean. Good.
+
+Double-check self-validation:
+1 question only? It asks count red circles; image needed.
+2 unique answer 3.
+3 rationale.
+4 no edit.
+5 slot panels one main scene.
+
+Need maybe include background "흰 바닥". Good.
+
+Need ensure no text in image. No annotations.
+
+Could there be issue with "빨간 동그라미" in name and appearance? It's okay, not text label. It describes object.
+
+Need final only JSON. Ensure no trailing commas.
+
+Let's craft:
+{
+  "slot_id": "ATT_01",
+  "question": "그림에서 빨간 동그라미가 몇 개 있나요?",
+  "answer": "3",
+  "answer_rationale": "장면에는 빨간색이고 원형인 사물이 정확히 3개이며, 나머지 6개는 파란색 정사각형이므로 빨간 동그라미로 세지 않습니다. 따라서 정답은 3으로 유일합니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {"ref":"red_circle_1","name":"빨간 동그라미","appearance":"단색 빨간 원형 낱개 하나","color":"빨강","cell":[0,0],"is_target":true},
+...
+        ]
+      }
+    }
+  ]
+}
+
+Need ensure object name singular? "빨간 동그라미" okay. "낱개 하나" explicit.
+
+Could use "빨간 원" instead of 동그라미? Question uses 동그라미. Good.
+
+Need maybe all target is_target true. Good.
+
+Potential hidden requirement: single feature search maybe target defined by one feature, e.g. red among blue. If question asks red circles, that's two features (color+shape). But subtype single feature search: maybe search for one feature (e.g. red) among distractors differing in shape? If target is red circles and distractors blue squares, target defined by color and shape? Actually if all red are circles and all blue squares, color alone identifies target. But question asks red circles, requiring both? To be single feature, maybe ask "빨간 사물이 몇 개 있나요?" and target red circles, distractors blue circles? But then shape same, color single feature. Or target red among blue, shape can vary? Single feature search: find target based on one feature. Better: target red circles among blue circles? Then question "빨간 동그라미가 몇 개 있나요?" still color+shape? If all objects are circles, red is single feature. But if distractors are blue circles, target red circles. That is single feature (color) because shape constant. But if question says red circles, shape is redundant. Could be okay. But to align subtype, make all objects circles, target red, distractors blue. Then count red circles. But if all circles, question "빨간 동그라미" is color feature. Good. However if all circles, distractors blue circles. Need count 3. Use 9 circles: 3 red, 6 blue. That is cleaner single feature. But if all circles, target and distractors same shape, only color differs. Good.
+
+Need maybe "단일 특징 탐색" means search for a single feature among distractors. Use color only. Let's use all circles. Objects: red_circle_1 etc, blue_circle_1 etc. Name "빨간 동그라미", "파란 동그라미". Appearance "단색 빨간 원형 낱개 하나". This avoids shape ambiguity. Question: "그림에서 빨간 동그라미가 몇 개 있나요?" Since all are circles, red is feature. Good.
+
+Need ensure no other red. Good.
+
+Could use 4x4 grid with 16 objects? Max 24. 3x3 enough. Attention maybe more distractors? 9 okay. Could use 4x4 with 16, 4 targets? But answer count maybe 4. More items maybe better. But 3x3 simple. Need maybe avoid too easy? Could use 4x4 with 16 objects, 5 red? But generation complexity. 3x3 fine.
+
+Need maybe target count not too low? 3.
+
+Need ensure cells unique. Let's assign:
+red1 [0,0]
+blue1 [0,1]
+blue2 [0,2]
+blue3 [1,0]
+red2 [1,1]
+blue4 [1,2]
+blue5 [2,0]
+red3 [2,1]
+blue6 [2,2]
+Count 3.
+
+Need maybe is_target true for red only. Good.
+
+Need final JSON. Ensure no code fence.
+
+Double-check schema additionalProperties: top properties allowed: slot_id, question, answer, answer_rationale, panels. Yes.
+Panel properties allowed: stage, kind, option_index, scene, edit_of, changes. We use stage, kind, scene. Good.
+Scene properties allowed: layout, rows, cols, background, objects, annotations. We use layout, rows, cols, background, objects. Good.
+Object properties allowed: ref, name, appearance, color, cell, pos, rotation, mirrored, scale, facing, is_target. We use ref, name, appearance, color, cell, is_target. Good.
+ref pattern ^[a-z][a-z0-9_]*$; red_circle_1 ok.
+cell min 0. Good.
+
+Need maybe "background" positive: "흰 바닥이 보인다". Good.
+
+Potential issue: question asks "그림에서" but only one image. okay.
+
+Need no annotations.
+
+Let's final.
+</think>
+
+{
+  "slot_id": "ATT_01",
+  "question": "그림에서 빨간 동그라미가 몇 개 있나요?",
+  "answer": "3",
+  "answer_rationale": "장면에는 빨간색 원형 사물이 정확히 3개이고, 나머지 6개는 파란색 원형 사물이므로 빨간 동그라미로 세지 않습니다. 따라서 정답은 3으로 유일합니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "red_circle_1",
+            "name": "빨간 동그라미",
+            "appearance": "단색 빨간 원형 낱개 하나",
+            "color": "빨강",
+            "cell": [0, 0],
+            "is_target": true
+          },
+          {
+            "ref": "blue_circle_1",
+            "name": "파란 동그라미",
+            "appearance": "단색 파란 원형 낱개 하나",
+            "color": "파랑",
+            "cell": [0, 1]
+          },
+          {
+            "ref": "blue_circle_2",
+            "name": "파란 동그라미",
+            "appearance": "단색 파란 원형 낱개 하나",
+            "color": "파랑",
+            "cell": [0, 2]
+          },
+          {
+            "ref": "blue_circle_3",
+            "name": "파란 동그라미",
+            "appearance": "단색 파란 원형 낱개 하나",
+            "color": "파랑",
+            "cell": [1, 0]
+          },
+          {
+            "ref": "red_circle_2",
+            "name": "빨간 동그라미",
+            "appearance": "단색 빨간 원형 낱개 하나",
+            "color": "빨강",
+            "cell": [1, 1],
+            "is_target": true
+          },
+          {
+            "ref": "blue_circle_4",
+            "name": "파란 동그라미",
+            "appearance": "단색 파란 원형 낱개 하나",
+            "color": "파랑",
+            "cell": [1, 2]
+          },
+          {
+            "ref": "blue_circle_5",
+            "name": "파란 동그라미",
+            "appearance": "단색 파란 원형 낱개 하나",
+            "color": "파랑",
+            "cell": [2, 0]
+          },
+          {
+            "ref": "red_circle_3",
+            "name": "빨간 동그라미",
+            "appearance": "단색 빨간 원형 낱개 하나",
+            "color": "빨강",
+            "cell": [2, 1],
+            "is_target": true
+          },
+          {
+            "ref": "blue_circle_6",
+            "name": "파란 동그라미",
+            "appearance": "단색 파란 원형 낱개 하나",
+            "color": "파랑",
+            "cell": [2, 2]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "slot_id": "VIS_10",
+  "question": "다음 그림에서 사람과 사과가 서로 어떻게 위치해 있는지 설명하세요.",
+  "answer": "2",
+  "answer_rationale": "사람이 사과의 오른쪽에 위치해 있기 때문에 정답은 2번입니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "person",
+            "name": "사람",
+            "appearance": "남자",
+            "facing": "오른쪽",
+            "pos": [
+              0.3,
+              0.5
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "person",
+            "name": "사람",
+            "appearance": "남자",
+            "facing": "오른쪽",
+            "pos": [
+              0.3,
+              0.5
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          }
+        ],
+        "annotations": [
+          {
+            "type": "arrow",
+            "from": [
+              0.3,
+              0.5
+            ],
+            "to": [
+              0.5,
+              0.5
+            ],
+            "text": "1"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "person",
+            "name": "사람",
+            "appearance": "남자",
+            "facing": "왼쪽",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "pos": [
+              0.3,
+              0.5
+            ],
+            "is_target": true
+          }
+        ],
+        "annotations": [
+          {
+            "type": "arrow",
+            "from": [
+              0.5,
+              0.5
+            ],
+            "to": [
+              0.3,
+              0.5
+            ],
+            "text": "2"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+We need answer in Korean likely. User asks to fill slot EXE_05, output JSON only. Need design cognitive test item. Need ensure JSON valid, no markdown. Need think thoroughly.
+
+Slot:
+{
+ id EXE_05, domain 집행기능, subtype 두 규칙 동시 적용, construct 규칙 통합,
+ panels: [ {stage 기준, kind scene}, {stage 보기, kind option, n:4, derived:true, edit_of: 기준, ops: [recolor, rescale, rotate]} ],
+ response choice4, answer_kind 보기번호
+}
+
+Need output one JSON object with slot_id, question, answer, answer_rationale, panels. Panels max 8. Need one 기준 scene and four 보기 options derived from 기준 using only ops recolor, rescale, rotate. Need answer unique. Need question only and image determine answer. Need two rules simultaneously applied? subtype 두 규칙 동시 적용, construct 규칙 통합. Need design a rule integration task: maybe choose option that follows both rules: e.g., "기준 그림에서 빨간 사물은 90도 시계 방향으로 회전하고, 파란 사물은 크기를 1.5배로 바꾼 그림을 고르시오." But options derived from 기준 with ops recolor, rescale, rotate. Need answer option that applies both rules to target objects? Need ensure options are controlled variants. Need use only allowed ops per option? The slot says derived true, edit_of 기준, ops [recolor, rescale, rotate]. That likely means each option can be derived using those ops. We can create options with changes arrays using only those ops. Need answer unique. Need question asks to apply two rules simultaneously. Need maybe two target objects: one red circle and one blue square? Rules: red object rotate 90 clockwise; blue object rescale 1.5. But if object is symmetric, rotation may not be visible. Need use asymmetric shape to make rotation visible. But scene objects can have rotation. Need appearance maybe "왼쪽 끝이 뾰족한 삼각형" etc. Need recolor? The allowed ops include recolor, but rules may not require recolor. Options can include distractors with recolor/rescale/rotate. Need ensure answer is unique.
+
+Need consider pipeline: options derived from 기준 by changes. If answer option should be identical to 기준? No, if rules transform, answer option changes. We can set answer option changes: rotate target shape, rescale another target. Distractors: only one rule, wrong angle, wrong scale, recolor irrelevant, etc. Need all options derived from 기준. Need ensure changes target refs exist in 기준. Need maybe use two objects: "arrow" and "star"? But rotation of arrow visible. Rescale of star visible. Recolor distractor. Need question: "두 규칙을 모두 적용한 그림을 고르세요. 규칙 1: 화살표는 90도 시계 방향으로 회전합니다. 규칙 2: 별은 1.5배로 커집니다." But image generation cannot draw text; question can include. Need no labels in image. Need options: 1 correct: rotate arrow 90, rescale star 1.5. 2: rotate arrow 90 only. 3: rescale star 1.5 only. 4: rotate arrow 180 and rescale star 1.5? Or recolor star? Need controlled variants. But if option 4 has rotate 180 + rescale 1.5, it violates rule 1 angle. Unique.
+
+Need ensure "두 규칙 동시 적용" maybe both rules must be applied simultaneously. Good.
+
+Need scene: layout grid maybe 2x2? Need objects with refs. Need maybe background white. Need objects: arrow (asymmetric) and star. Need appearance: arrow: "왼쪽 끝이 뾰족한 화살표 하나, 몸통은 직사각형, 머리 삼각형" maybe facing right? If rotation 90 clockwise, facing down? Need define facing? For arrow, direction matters. Could set facing "오른쪽". But if rotation applied, facing changes? The change op rotate target to_rotation 90. The object's facing maybe not automatically updated? The pipeline likely rotates image. But for question, we can say "화살표는 90도 시계 방향으로 회전합니다". Need not rely on facing. But if object has facing, maybe rotation changes visual. Need set facing right in base. For star, rotation not visible if symmetric; rescale visible.
+
+Need maybe use "삼각형" with one colored vertex? But recolor allowed. Need two rules: rotate arrow, enlarge star. Need answer option with both. Need distractors controlled.
+
+Potential issue: If option changes include rotate arrow to_rotation 90 and rescale star to_scale 1.5. But if base arrow has rotation 0, to_rotation 90. Good. Star scale 1.0 to 1.5. Need ensure scale max 3.0. Good.
+
+Need options:
+- option 1 correct: changes: rotate arrow to_rotation 90, rescale star to_scale 1.5.
+- option 2: rotate arrow to_rotation 90 only.
+- option 3: rescale star to_scale 1.5 only.
+- option 4: rotate arrow to_rotation 180, rescale star to_scale 1.5. Or maybe recolor star to red? But if recolor star, still maybe not both? Need controlled. Use rotate 180 + rescale 1.5 to test angle. But if arrow is symmetric? Need arrow asymmetric so 90 vs 180 visible. Good.
+
+Need answer "1". Need rationale: only option 1 applies both: arrow 90 clockwise and star 1.5; option 2 lacks rescale, option 3 lacks rotate, option 4 wrong rotation angle.
+
+Need ensure question doesn't mention meta. "아래 기준 그림에서 두 규칙을 모두 적용한 그림을 고르세요. 규칙 1: 화살표는 90도 시계 방향으로 회전합니다. 규칙 2: 별은 1.5배로 커집니다." Good. But if star is symmetric, rescale visible. Need maybe star appearance "다섯 꼭짓점 별 하나". Good.
+
+Need scene objects:
+- ref arrow, name "화살표", appearance "몸통이 직사각형이고 오른쪽 끝이 삼각형 화살촉인 낱개 하나", color maybe "검정", cell [0,0], facing "오른쪽", is_target true.
+- ref star, name "별", appearance "다섯 꼭짓점 별 낱개 하나", color "노랑", cell [0,1], is_target true.
+Maybe layout row? Use grid 1x2? rows 1 cols 2. background "흰 바닥". Need objects count 2. Good.
+
+Need options derived: stage "보기", kind "option", option_index 1..4, edit_of "기준", changes arrays. Need no scene. For correct, changes: [{"op":"rotate","target":"arrow","to_rotation":90},{"op":"rescale","target":"star","to_scale":1.5}]. For option2: rotate only. Option3: rescale only. Option4: rotate 180 + rescale 1.5. Need all changes use allowed ops. Good.
+
+Need check schema: panel required stage, kind. For option, required option_index. It can have edit_of and changes. additionalProperties false: allowed properties: stage, kind, option_index, scene, edit_of, changes. Good. For option, no scene. Good.
+
+Need top-level additionalProperties false: only slot_id, question, answer, answer_rationale, panels. Good.
+
+Need ensure answer is string "1". Good.
+
+Need maybe question should be read aloud, no meta. Good.
+
+Need self-validation:
+1. question only? It references 기준 그림 and options. Need image to see which option. Good.
+2. answer unique? Yes if options as defined.
+3. rationale includes uniqueness.
+4. edit targets exist: arrow, star in 기준.
+5. slot panels: one 기준 scene, four 보기 options derived. Good.
+
+Potential issue: "derived": true means 보기도 edit_of로 기준에서 파생. We do. ops allowed recolor, rescale, rotate. We don't use recolor, okay? It says ops that can be used, not must use all. Good.
+
+Potential issue: If option 4 rotate 180 + rescale 1.5, it applies two rules but wrong angle. Good.
+
+Need maybe "두 규칙 동시 적용" could require both rules applied to same object? But our two rules apply to two objects. It's still two rules simultaneously. Could be okay. Maybe better to have one object with two attributes: e.g., "빨간 삼각형은 90도 회전하고 파란 원은 1.5배". But two objects fine.
+
+Need consider if rotation of arrow with facing right: to_rotation 90 clockwise. In image, arrow initially facing right. 90 clockwise faces down. 180 faces left. Good.
+
+Need maybe star rescale 1.5 could overlap if grid cell? It's in cell [0,1], scale 1.5 may overflow but okay. Could use 1.2 to be safe? Rule says 1.5. Scale max 3.0. Good.
+
+Need maybe use "rescale" op with to_scale 1.5. Good.
+
+Need maybe use "rotate" op with to_rotation 90. If base rotation absent default 0. Good.
+
+Need maybe include annotations? Not needed. No text.
+
+Need output JSON only, no markdown. Ensure valid JSON. Korean strings okay.
+
+Double-check schema: scene required layout, objects. layout grid requires rows/cols? Schema doesn't enforce but description. We'll include rows 1 cols 2. background positive. objects min 1. object required ref, name. additionalProperties false: we can include appearance, color, cell, facing, is_target. Good. ref pattern lowercase. arrow, star. Good.
+
+Panel: kind option, option_index integer. edit_of string. changes array minItems 1. For correct, 2 changes. Good.
+
+Need maybe stage enum includes "기준", "보기". Good.
+
+Potential hidden issue: The slot's panels array says 보기 n:4 derived true edit_of 기준 ops [recolor, rescale, rotate]. It may expect exactly 4 option panels. We have 5 total panels (1+4) within max 8. Good.
+
+Need maybe answer_kind 보기번호, answer string "1". Good.
+
+Need maybe question should not say "아래 기준 그림" if only question and images presented? It's okay. It can say "기준 그림에서". Need no meta like "이미지에". It's about image. Good.
+
+Need maybe if options are derived, the correct option's changes should not be empty. Good.
+
+Need maybe if option 2 and 3 are single rule, they are controlled variants. Good.
+
+Could there be ambiguity if star is yellow and arrow black; option 4 rotate 180 + rescale 1.5: It applies rescale and rotate but not 90. Unique.
+
+Need maybe include recolor distractor to use allowed op? Not necessary. But maybe to make more controlled, option 4 could recolor star to red and rotate arrow 90? That would violate no recolor? But rule doesn't forbid recolor? If question says only two rules, recolor would be extra change. But if option 4 has recolor star to red + rotate arrow 90, it lacks rescale and has extra recolor. Could be less controlled. Our option 4 is better.
+
+Need maybe if option 4 rotate 180 + rescale 1.5, it still has two changes, one wrong. Good.
+
+Need maybe if arrow is symmetric under 180? A typical arrow with triangular head and rectangular tail is not symmetric under 180? It is symmetric under 180? Let's think: arrow facing right: tail rectangle, head triangle pointing right. Rotate 180: head points left, tail on right. Not same. 90: head down. Good.
+
+Need maybe if arrow has facing property, rotation op might not update facing metadata but visual rotation. The question uses visual rotation. Good.
+
+Need maybe if star is symmetric, rescale visible. Good.
+
+Need maybe if base star color yellow, no recolor. Good.
+
+Need maybe if option 2 rotate arrow only, star same size. Option 3 star enlarged only, arrow same. Good.
+
+Need maybe if option 1 correct: arrow rotated 90, star enlarged. Good.
+
+Need maybe if option 4: arrow rotated 180, star enlarged. Good.
+
+Need maybe if question says "90도 시계 방향으로" and option 4 180. Good.
+
+Need maybe if "1.5배로 커집니다" could be interpreted as scale relative to original. Good.
+
+Need maybe if option 3 only rescale star, arrow not rotated. Good.
+
+Need maybe if option 2 only rotate arrow, star not enlarged. Good.
+
+Need maybe if there is no recolor, but allowed ops include recolor. Fine.
+
+Need maybe if "두 규칙 동시 적용" could be tested by requiring both changes in same option. Good.
+
+Need maybe if answer_rationale in Korean. Good.
+
+Let's craft final JSON:
+{
+ "slot_id": "EXE_05",
+ "question": "기준 그림에서 두 규칙을 모두 적용한 그림을 고르세요. 규칙 1: 화살표는 90도 시계 방향으로 회전합니다. 규칙 2: 별은 1.5배로 커집니다.",
+ "answer": "1",
+ "answer_rationale": "보기 1만 화살표를 90도 시계 방향으로 회전시키고 별을 1.5배로 확대했습니다. 보기 2는 회전만, 보기 3은 확대만, 보기 4는 화살표 회전 각도가 180도로 규칙 1을 위반합니다.",
+ "panels": [
+  {"stage":"기준","kind":"scene","scene":{"layout":"grid","rows":1,"cols":2,"background":"흰 바닥이 보인다","objects":[{"ref":"arrow","name":"화살표","appearance":"몸통이 직사각형이고 오른쪽 끝이 삼각형 화살촉인 낱개 하나","color":"검정","cell":[0,0],"facing":"오른쪽","is_target":true},{"ref":"star","name":"별","appearance":"다섯 꼭짓점 별 낱개 하나","color":"노랑","cell":[0,1],"is_target":true}]}},
+  {"stage":"보기","kind":"option","option_index":1,"edit_of":"기준","changes":[{"op":"rotate","target":"arrow","to_rotation":90},{"op":"rescale","target":"star","to_scale":1.5}]},
+  {"stage":"보기","kind":"option","option_index":2,"edit_of":"기준","changes":[{"op":"rotate","target":"arrow","to_rotation":90}]},
+  {"stage":"보기","kind":"option","option_index":3,"edit_of":"기준","changes":[{"op":"rescale","target":"star","to_scale":1.5}]},
+  {"stage":"보기","kind":"option","option_index":4,"edit_of":"기준","changes":[{"op":"rotate","target":"arrow","to_rotation":180},{"op":"rescale","target":"star","to_scale":1.5}]}
+ ]
+}
+
+Need ensure no additional properties in panel: stage, kind, option_index, edit_of, changes. Good.
+
+Need maybe "background": "흰 바닥" default, but positive "흰 바닥이 보인다". Good.
+
+Need maybe object appearance "오른쪽 끝이 삼각형 화살촉" includes direction. Good.
+
+Need maybe if facing "오른쪽" and appearance says right end, consistent.
+
+Need maybe if rotation 90 clockwise of arrow with facing right: The appearance text in base says right end; after rotation, visual head down. Good.
+
+Potential issue: The pipeline may apply rotate to object but not update facing; if facing remains right, could conflict? But likely visual. Could omit facing to avoid conflict? But rule says 방향이 있는 사물에는 facing을 적는다. Arrow has direction. We should include. If rotate op changes visual but metadata facing not updated, maybe not relevant. But if pipeline uses facing to render orientation and rotation separately? Hmm. Object has facing and rotation. If facing right and rotation 90, maybe final orientation? Could be ambiguous. But likely rotation is applied to rendered object. To be safe, maybe use an asymmetric shape without explicit facing? But arrow is direction. The rule says facing for people/animals/arrows. We can include facing. If rotation op to_rotation 90, maybe it rotates the object around center, facing metadata maybe not used after? It's okay.
+
+Could use "삼각형" with one vertex colored? But recolor? Need rotation visible. A triangle with one vertex up is asymmetric under 90? Yes. But facing not needed. However two rules: rotate triangle, enlarge circle. But triangle rotation 90 visible. Could avoid facing. But arrow is fine.
+
+Need maybe if star is symmetric, rescale visible. Good.
+
+Need maybe if option 4 rotate 180: If arrow has facing right, 180 faces left. Good.
+
+Need maybe if question says "화살표는 90도 시계 방향으로 회전합니다" but base arrow facing right. Good.
+
+Need maybe if "별은 1.5배로 커집니다" star in grid cell may overlap arrow if scale 1.5? In 1x2 grid, star in right cell, scale 1.5 might extend beyond cell but not necessarily overlap. Could use 1.2 to reduce overlap, but rule says 1.5. Could use layout free with positions far apart. But grid okay. If scale 1.5 in cell, might overflow but pipeline likely handles. To be safe, use layout free with pos arrow [0.25,0.5], star [0.75,0.5], scale 1.5 maybe still okay. But grid is simpler. The schema for grid requires cell. Free requires pos. Could use free to avoid cell overflow? But still scale. Maybe use 1.3? But question can say 1.5. Need exact. Could use smaller base scale 0.8 so 1.5 relative? Wait rescale to_scale is absolute? It says to_scale number. If base scale default 1.0, to_scale 1.5. If we set base star scale 0.8, to_scale 1.5 would be larger relative 1

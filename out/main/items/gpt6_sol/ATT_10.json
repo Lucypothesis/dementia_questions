@@ -1,0 +1,156 @@
+{
+  "slot_id": "ATT_10",
+  "question": "사각 테두리 안에 있는 빨간 사과는 몇 개입니까?",
+  "answer": "3",
+  "answer_rationale": "테두리 안의 빨간 사과는 3개다. 테두리 밖의 빨간 사과와 테두리 안의 다른 과일은 세지 않는다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 4,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "apple_1",
+            "name": "사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple_2",
+            "name": "사과",
+            "appearance": "낱개 하나",
+            "color": "초록",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "apple_3",
+            "name": "사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "tomato_1",
+            "name": "토마토",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              3
+            ]
+          },
+          {
+            "ref": "tomato_2",
+            "name": "토마토",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "apple_4",
+            "name": "사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple_5",
+            "name": "사과",
+            "appearance": "낱개 하나",
+            "color": "초록",
+            "cell": [
+              1,
+              2
+            ]
+          },
+          {
+            "ref": "tomato_3",
+            "name": "토마토",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              3
+            ]
+          },
+          {
+            "ref": "apple_6",
+            "name": "사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "cell": [
+              2,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple_7",
+            "name": "사과",
+            "appearance": "낱개 하나",
+            "color": "초록",
+            "cell": [
+              2,
+              1
+            ]
+          },
+          {
+            "ref": "tomato_4",
+            "name": "토마토",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "cell": [
+              2,
+              2
+            ]
+          },
+          {
+            "ref": "apple_8",
+            "name": "사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "cell": [
+              2,
+              3
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "type": "box",
+            "from": [
+              0.02,
+              0.02
+            ],
+            "to": [
+              0.49,
+              0.98
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

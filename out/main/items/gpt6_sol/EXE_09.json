@@ -1,0 +1,81 @@
+{
+  "slot_id": "EXE_09",
+  "question": "두 번째 그림의 물건 하나를 옮겨 첫 번째 그림과 같은 배치로 만들려면, 무엇을 어디로 옮겨야 하나요?",
+  "answer": "열쇠를 아래쪽 오른쪽 칸에서 위쪽 가운데 칸으로 옮긴다.",
+  "answer_rationale": "두 그림에서 위치가 다른 물건은 열쇠뿐이다. 열쇠를 위쪽 가운데 칸으로 옮기면 첫 번째 그림과 모든 물건의 위치가 같아진다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개 하나",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "ball",
+            "name": "공",
+            "color": "파랑",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "comb",
+            "name": "빗",
+            "appearance": "손잡이 달린 검은색 낱개 하나",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "move",
+          "target": "key",
+          "to_cell": [
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  ]
+}

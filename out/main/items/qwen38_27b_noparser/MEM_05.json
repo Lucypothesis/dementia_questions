@@ -1,0 +1,26 @@
+{
+  "id": "MEM_05",
+  "domain": "기억력",
+  "subtype": "시각 무늬 재인",
+  "construct": "비언어 재인",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene"
+    },
+    {
+      "stage": "검사 보기",
+      "kind": "option",
+      "n": 4,
+      "derived": true,
+      "edit_of": "학습",
+      "ops": [
+        "recolor",
+        "rotate",
+        "move"
+      ]
+    }
+  ],
+  "response": "choice4",
+  "answer_kind": "보기번호"
+}

@@ -1,0 +1,96 @@
+{
+  "slot_id": "EXE_02",
+  "question": "화살표가 가리키는 사물이 아니라, 화살표가 가리키지 않는 사물의 이름을 말하세요.",
+  "answer": "사과",
+  "answer_rationale": "2×2 격자에 머그컵, 열쇠, 사과, 안경이 각각 배치되어 있고, 화살표 3개는 머그컵, 열쇠, 안경만 가리킨다. 사과는 화살표가 없으므로 정답은 사과로 유일하다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "appearance": "빨간 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "glass",
+            "name": "안경",
+            "appearance": "검은 뿔테 낱개 하나",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "type": "arrow",
+            "target": "cup",
+            "from": [
+              0.05,
+              0.05
+            ],
+            "to": [
+              0.25,
+              0.25
+            ]
+          },
+          {
+            "type": "arrow",
+            "target": "key",
+            "from": [
+              0.95,
+              0.05
+            ],
+            "to": [
+              0.75,
+              0.25
+            ]
+          },
+          {
+            "type": "arrow",
+            "target": "glass",
+            "from": [
+              0.95,
+              0.95
+            ],
+            "to": [
+              0.75,
+              0.75
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

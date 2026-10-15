@@ -1,0 +1,73 @@
+{
+  "slot_id": "MEM_09",
+  "question": "처음 보았을 때와 색깔이 달라진 물건은 무엇인가요?",
+  "answer": "머그컵",
+  "answer_rationale": "검사 장면에서는 머그컵만 파란색에서 보라색으로 바뀌고, 다른 물건의 색깔은 그대로이다.",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple",
+            "name": "사과",
+            "appearance": "둥근 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "mug",
+            "name": "머그컵",
+            "appearance": "손잡이가 달린 도자기 컵 낱개 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "umbrella",
+            "name": "우산",
+            "appearance": "접힌 우산 낱개 하나",
+            "color": "노랑",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "comb",
+            "name": "빗",
+            "appearance": "손잡이가 달린 빗 낱개 하나",
+            "color": "초록",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "학습",
+      "changes": [
+        {
+          "op": "recolor",
+          "target": "mug",
+          "to_color": "보라"
+        }
+      ]
+    }
+  ]
+}

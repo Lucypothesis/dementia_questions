@@ -1,0 +1,165 @@
+We need answer user's request. Need produce JSON only, no markdown. Need design cognitive test item for slot EXE_01: executive function, classification rule switching, construct cognitive switching. Panels: 기준 scene, 보기 option n=2. response choice2, answer_kind 보기번호. Need output one JSON object with slot_id, question, answer, panels. Need likely two options (choice2) so answer 1 or 2. Need panels: stage "기준" kind scene, stage "보기" kind option n=2? The slot says panels: [{stage 기준 kind scene}, {stage 보기 kind option n:2}]. But schema panels max 8, each panel object. For choice2, likely need two option panels? The instruction says response choice4 slots create 4 option panels. For choice2 likely create 2 option panels. The slot's panels array has one entry with n:2 maybe indicates two options. We need output panels array with 3 panels: 기준 scene, 보기 option option_index 1, 보기 option option_index 2. Need ensure schema: panel required stage, kind; option requires option_index. stage enum includes "보기". kind option. Need maybe no scene in option? It can have scene or edit_of. Since not derived? Slot doesn't have derived true. We can use scene for each option. But for classification rule switching, need a base scene and two options? Let's think.
+
+Task: classification rule switching. Need question only and images. Need answer unique. We need design a simple rule switch: e.g., first classify by color, then by shape? But only one question and panels: 기준 scene and two options. Maybe show a rule in 기준? Need test cognitive switching: subject must switch classification rule based on some cue? But only question and images. Could be: "첫 번째 그림의 규칙을 바꾸어 두 번째 그림에서 맞는 것을 고르시오"? Need question readable, no meta. Need images: 기준 scene maybe shows objects with a highlighted target? Options are two scenes? Need answer choice2.
+
+We need ensure images don't contain text. Can use annotations for numbers? But no need. Need maybe use is_target. Need scene as structure.
+
+Let's parse slot: domain 집행기능, subtype 분류 규칙 전환, construct 인지 전환. Panels: 기준 scene, 보기 option n=2. response choice2. So likely a two-alternative forced choice after a rule switch. Need design item where 기준 panel establishes a rule? Then options are two possible next items? Hmm.
+
+Maybe a classic Wisconsin Card Sorting-like: cards with shapes/colors, rule changes. But images can't have text. We can use objects with color/shape. Need question: "첫 번째 그림에서 빨간 사물을 고르는 규칙을 바꾸고, 두 번째 그림에서 모양이 같은 사물을 고르시오"? But only one 기준 scene and two option scenes? Let's think.
+
+The panels: one 기준 scene, two 보기 options. The subject sees question and images. If question says "첫 번째 그림의 규칙을 바꾸어, 두 번째 그림에서 정답을 고르시오" but options are two scenes? Need answer one of two option panels. Could be: 기준 scene contains a set of objects and a target? Options are two possible target objects? But option kind can be scene, maybe each option panel is a scene with one object? Need choose which object follows switched rule.
+
+Maybe design: 기준 scene: 2x2 grid with four objects: red circle, blue square, red square, blue circle. A target? Need rule: initially classify by color? But no prior learning panel. Only one 기준. Could question specify rule switch: "첫 번째 그림에서 색으로 분류하던 규칙을 모양으로 바꾸어, 두 번째 그림에서 같은 규칙에 맞는 사물을 고르시오." But options are two objects? Need answer unique.
+
+Maybe better: 기준 scene shows a sequence of three objects with a rule? Options show two possible next objects. Rule switching: the rule changes from color to shape at a cue? But no cue image? Could use a special cue object in 기준? Hmm.
+
+Need only one question and images. Could be: "첫 번째 그림의 사물들은 색으로 묶였다. 이제 묶는 규칙을 모양으로 바꾼다. 두 번째 그림에서 새로운 규칙에 맞는 사물을 고르시오." But options are two scenes? Maybe each option is a pair of objects? Need choose which pair matches new rule.
+
+Let's design robustly:
+- 기준 scene: a 1x4 row? Contains four objects: red circle, red square, blue circle, blue square? Maybe with a divider? Need show old rule? Could show two groups? But no text.
+- Options: two scenes each with two objects? Option 1: red circle and blue circle (same color? no, same shape? both circle) maybe new rule shape. Option 2: red circle and red square (same color). If question says switch from color to shape, answer option with same shape. But need ensure unique.
+
+But the slot says panels: 기준 scene, 보기 option n=2. It doesn't specify option scenes contain what. We can make each option a scene with two objects. Need answer 1 or 2.
+
+Need question: "첫 번째 그림에서 사물을 색으로 묶는 규칙을 모양으로 바꿉니다. 두 번째 그림에서 새로운 규칙에 맞는 묶음을 고르시오." But "첫 번째 그림" and "두 번째 그림" maybe meta? It's okay? It refers to images. But rule says question only and image; no meta? It says don't put meta about image? "이미지에 관한 메타설명을 넣지 않는다" maybe means don't say "이미지에"? But question must refer to images. Could say "색으로 묶던 규칙을 모양으로 바꿉니다. 새로운 규칙에 맞는 묶음을 고르시오." The 기준 image shows old grouping? Options show candidate groupings.
+
+Need ensure answer unique. Let's define:
+기준 scene: layout row? 1x4? Objects: red circle, red square, blue circle, blue square. But how show old rule? Maybe use annotations divider to separate two groups? Could use box? But no text. Maybe not needed; question states old rule color. But if question states old rule, image just provides objects.
+
+Options:
+Option 1: two objects: red circle and blue circle (same shape, different color) -> matches shape rule.
+Option 2: two objects: red circle and red square (same color, different shape) -> matches old color rule.
+Answer 1.
+
+But need "분류 규칙 전환" maybe subject must switch from color to shape. The question can specify switch. Is that too verbal? It's a rule switch task. Could be okay.
+
+Need ensure no text in images. Use scene objects only. Need maybe is_target on option objects? The target is the option? Could mark objects in options is_target true? Maybe not necessary but can.
+
+Need schema: panels array:
+1. {"stage":"기준","kind":"scene","scene":{...}}
+2. {"stage":"보기","kind":"option","option_index":1,"scene":{...}}
+3. {"stage":"보기","kind":"option","option_index":2,"scene":{...}}
+
+Need ensure additionalProperties false: panel can have stage, kind, option_index, scene. Good.
+Scene required layout, objects. For row layout, do we need rows/cols? Schema says grid if rows/cols, free if pos. row maybe no rows/cols? It says layout enum grid,row,free; description: grid면 rows/cols 필수, free면 pos 필수. For row, maybe objects need pos? Or cell? The object schema allows cell or pos. If layout row, maybe use pos? To be safe, use layout "free" with pos for all objects. But grid is easier. For options with two objects, use grid 1x2 with cells. For 기준 maybe grid 1x4? rows 1 cols 4. Objects cell [0,0] etc. Good.
+
+Need background positive: "흰 바닥".
+
+Need objects:
+기준:
+- ref "red_circle", name "빨간 원", appearance "단색 원 하나", color "빨강", cell [0,0], is_target? maybe false.
+- ref "red_square", name "빨간 사각형", appearance "단색 사각형 하나", color "빨강", cell [0,1]
+- ref "blue_circle", name "파란 원", appearance "단색 원 하나", color "파랑", cell [0,2]
+- ref "blue_square", name "파란 사각형", appearance "단색 사각형 하나", color "파랑", cell [0,3]
+This shows color pairs? But not grouped. Could use annotations divider between 1 and 2? Maybe not.
+
+Option 1:
+- red_circle at [0,0], blue_circle at [0,1]. Same shape.
+Option 2:
+- red_circle at [0,0], red_square at [0,1]. Same color.
+
+Question: "색으로 묶던 규칙을 모양으로 바꿉니다. 새로운 규칙에 맞는 묶음을 고르시오." But does 기준 show color grouping? It has red objects adjacent and blue adjacent? Actually cells: red circle, red square, blue circle, blue square. That groups by color in order. Options: option1 circles adjacent, option2 red adjacent. Good.
+
+Need answer rationale: Option 1 contains two circles (same shape) and different colors, so matches switched shape rule; option 2 contains two red objects (same color) and different shapes, so matches old color rule. Unique.
+
+But is there any issue: Option 1 has red circle and blue circle; both are circles, yes. Option 2 red circle and red square; both red. Good.
+
+Need maybe "분류 규칙 전환" requires a cue to switch? The question itself says switch. Could be acceptable. But maybe better to make rule switch implicit via a cue object? For cognitive switching, maybe need a "switch" cue in 기준? But only one 기준 scene. Could include a special cue object (e.g., yellow triangle) indicating switch? But then options? Hmm.
+
+Alternative: 기준 scene shows a sequence: first two objects grouped by color, then a cue object (e.g., star) indicating rule change, then two objects? Options are next? But too complex.
+
+Given slot only requires one scene and two options, likely a simple rule switch question is fine.
+
+Need ensure question doesn't require reading text in image. It doesn't.
+
+Need maybe answer as string "1".
+
+Need self-check:
+1. question only? It says color to shape, choose matching grouping. Need images to see which option matches. Yes.
+2. unique? yes.
+3. rationale includes uniqueness.
+4. no edit targets.
+5. panel composition: slot says panels: 기준 scene, 보기 option n=2. We output 3 panels. Good.
+
+Potential schema issue: "panels" max 8, min 1. Good.
+"answer" minLength 1. Good.
+"additionalProperties" at top: only slot_id, question, answer, answer_rationale, panels. Good.
+Panel additionalProperties false: we include only allowed. For option, no edit_of. Good.
+Scene additionalProperties false: include layout, rows, cols, background, objects. Good.
+Object additionalProperties false: include ref, name, appearance, color, cell, is_target maybe. Good.
+Need ref pattern lowercase. Good.
+
+Could there be issue with "name" and "appearance" both describing color? It's okay. But "빨간 원" name includes color; appearance "단색 원 하나". Good.
+
+Need maybe use "사각형" not "네모"? Fine.
+
+Need maybe "원" and "사각형" are shapes. Good.
+
+Need maybe "색으로 묶던 규칙" but 기준 doesn't explicitly show grouping? It shows red objects first two, blue last two. Could be interpreted as color order. Options show pairs. Good.
+
+Could make 기준 more explicit with annotations divider? But no need. If we add annotation divider between cells? Annotation type divider maybe can separate groups. But schema annotation has type, target, from, to, text. We don't know how pipeline uses. Could avoid.
+
+Need maybe use "layout": "grid", rows 1, cols 4. For options rows 1 cols 2.
+
+Need maybe background: "흰 바닥".
+
+Need maybe is_target: true for objects in options? The target is the whole option, but can mark both objects in correct option? If mark is_target on option1 objects, might leak answer? The image shown to subject includes is_target? It's a metadata field, not rendered? It says 정답과 직접 관계된 사물에 is_target true. It may not be visible. Could mark in option1 both objects true, option2 false. But if pipeline uses for highlighting? It might not. But to be safe, mark target objects in all? The question asks choose grouping; the objects in correct option are target. But marking could be used for scoring? It's okay. However if is_target is rendered as highlight, it would leak. The spec says is_target for production/inspection, not necessarily rendered. But to avoid leaking, maybe not use is_target? It says 정답과 직접 관계된 사물에 붙인다. For choice options, the correct option's objects are target. But if not rendered, okay. If rendered, bad. The instruction likely expects is_target for target object in scene, not for options? Hmm.
+
+In examples, is_target true on object. It might be used to define answer? But answer is separate. I can omit is_target to avoid any visual highlight. But rule says "정답과 직접 관계된 사물에 is_target: true를 붙인다." It's a rule. Should we include? For this item, the answer is an option, not a specific object. But the objects in the correct option are directly related. Could mark both in option 1. But if the pipeline renders target highlight, it would reveal answer. Usually is_target is metadata not shown. The spec says 수검자에게 question과 해당 단계의 이미지만 제시된다. 다른 필드는 제작·검수용이다. So is_target not shown. So okay.
+
+Need maybe mark in 기준? The old rule target? Not necessary.
+
+Could there be a problem: Option 1 and Option 2 both contain a red circle. The subject might choose based on presence of red circle? But rule says shape. Unique by rule.
+
+Need maybe make option 2 same shape? No, we want distractor old rule. Good.
+
+Need maybe ensure option 1 not also same color? It is different colors. Option 2 not same shape? different shapes. Good.
+
+Need maybe use "묶음" in question. Options are two objects side by side. Good.
+
+Could the question be too abstract? "색으로 묶던 규칙을 모양으로 바꿉니다." It tells the switch. For executive function, maybe the subject must apply new rule. Good.
+
+Need maybe answer_rationale in Korean. Good.
+
+Now, need final output JSON only. Ensure no markdown. Need valid JSON. Let's craft.
+
+{
+ "slot_id": "EXE_01",
+ "question": "색으로 묶던 규칙을 모양으로 바꿉니다. 새로운 규칙에 맞는 묶음을 고르시오.",
+ "answer": "1",
+ "answer_rationale": "보기 1은 빨간 원과 파란 원으로 색은 다르지만 모양이 모두 원이므로 새로운 모양 규칙에 맞습니다. 보기 2는 빨간 원과 빨간 사각형으로 색은 같지만 모양이 다르므로 이전 색 규칙에 해당합니다. 따라서 새로운 규칙에 맞는 묶음은 보기 1뿐입니다.",
+ "panels": [
+  {"stage":"기준","kind":"scene","scene":{"layout":"grid","rows":1,"cols":4,"background":"흰 바닥","objects":[
+    {"ref":"red_circle","name":"빨간 원","appearance":"단색 원 하나","color":"빨강","cell":[0,0]},
+    {"ref":"red_square","name":"빨간 사각형","appearance":"단색 사각형 하나","color":"빨강","cell":[0,1]},
+    {"ref":"blue_circle","name":"파란 원","appearance":"단색 원 하나","color":"파랑","cell":[0,2]},
+    {"ref":"blue_square","name":"파란 사각형","appearance":"단색 사각형 하나","color":"파랑","cell":[0,3]}
+  ]}},
+  {"stage":"보기","kind":"option","option_index":1,"scene":{"layout":"grid","rows":1,"cols":2,"background":"흰 바닥","objects":[
+    {"ref":"red_circle","name":"빨간 원","appearance":"단색 원 하나","color":"빨강","cell":[0,0],"is_target":true},
+    {"ref":"blue_circle","name":"파란 원","appearance":"단색 원 하나","color":"파랑","cell":[0,1],"is_target":true}
+  ]}},
+  {"stage":"보기","kind":"option","option_index":2,"scene":{"layout":"grid","rows":1,"cols":2,"background":"흰 바닥","objects":[
+    {"ref":"red_circle","name":"빨간 원","appearance":"단색 원 하나","color":"빨강","cell":[0,0]},
+    {"ref":"red_square","name":"빨간 사각형","appearance":"단색 사각형 하나","color":"빨강","cell":[0,1]}
+  ]}}
+ ]
+}
+
+Need check schema: object additionalProperties false, is_target allowed. Good.
+Panel additionalProperties false: option panel has stage, kind, option_index, scene. Good.
+Top additionalProperties false: includes answer_rationale allowed. Good.
+
+Potential issue: slot panels specified "n":2 but our panels array has 3. That's expected.
+
+Potential issue: "response": "choice2" but answer_kind 보기번호. We output answer "1". Good.
+
+Potential issue: The question says "색으로 묶던 규칙" but 기준 scene doesn't show a grouping rule explicitly except order. Could be okay. Maybe add annotations to show two groups? But no text. Could use divider annotation between cell 1 and 2? But annotation schema not clear. Could add "divider" with from/to? Might be risky. Avoid.
+
+Could make 기준 scene a 2x2 grid with color groups in rows? e.g., row0 red circle red square, row1 blue circle blue square. That more clearly groups by color. Options 1x2. Let's consider: 기준 2x2:
+[red circle, red square]
+[blue circle, blue square]
+This shows two color groups (rows). Options:
+1: [red circle, blue circle] (same shape, different color)
+2: [red circle, red square] (same color, different shape

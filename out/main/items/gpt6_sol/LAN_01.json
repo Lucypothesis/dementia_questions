@@ -1,0 +1,30 @@
+{
+  "slot_id": "LAN_01",
+  "question": "이 물건의 이름은 무엇인가요?",
+  "answer": "숟가락",
+  "answer_rationale": "긴 손잡이 끝에 음식을 뜨는 오목한 부분이 있는 낱개 사물이므로 숟가락이다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "spoon",
+            "name": "숟가락",
+            "appearance": "타원형의 오목한 부분과 긴 손잡이가 이어진 은색 금속 낱개 하나",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

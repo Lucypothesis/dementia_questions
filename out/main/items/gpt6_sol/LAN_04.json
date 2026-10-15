@@ -1,0 +1,52 @@
+{
+  "slot_id": "LAN_04",
+  "question": "네모로 표시된 주전자의 부분을 무엇이라고 하나요?",
+  "answer": "주둥이",
+  "answer_rationale": "네모는 주전자에서 물이 흘러나오는 관 모양의 부분만 표시한다. 이 부분의 이름은 주둥이다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "kettle_body",
+            "name": "주전자 몸통",
+            "appearance": "둥근 은색 몸통과 뚜껑",
+            "pos": [
+              0.47,
+              0.53
+            ]
+          },
+          {
+            "ref": "kettle_handle",
+            "name": "주전자 손잡이",
+            "appearance": "몸통 왼쪽에 붙은 둥근 검은색 손잡이",
+            "pos": [
+              0.27,
+              0.5
+            ]
+          },
+          {
+            "ref": "spout",
+            "name": "주전자 주둥이",
+            "appearance": "몸통 오른쪽에 붙어 오른쪽 위로 뻗은 좁은 은색 관",
+            "pos": [
+              0.7,
+              0.43
+            ],
+            "is_target": true
+          }
+        ],
+        "annotations": [
+          {
+            "type": "box",
+            "target": "spout"
+          }
+        ]
+      }
+    }
+  ]
+}

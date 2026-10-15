@@ -1,0 +1,111 @@
+{
+  "slot_id": "ATT_10",
+  "question": "사각형 테두리 안에 있는 빨간 사과 몇 개입니까?",
+  "answer": "3",
+  "answer_rationale": "사각형 테두리 안에는 빨간 사과 3개와 초록 사과 1개가 있고, 테두리 밖의 빨간 사과는 제외되므로 3이 유일하게 정답입니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "apple1",
+            "name": "빨간 사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "pos": [
+              0.25,
+              0.25
+            ],
+            "scale": 0.25,
+            "is_target": true
+          },
+          {
+            "ref": "apple2",
+            "name": "빨간 사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "pos": [
+              0.45,
+              0.25
+            ],
+            "scale": 0.25,
+            "is_target": true
+          },
+          {
+            "ref": "apple3",
+            "name": "빨간 사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "pos": [
+              0.25,
+              0.45
+            ],
+            "scale": 0.25,
+            "is_target": true
+          },
+          {
+            "ref": "apple4",
+            "name": "초록 사과",
+            "appearance": "낱개 하나",
+            "color": "초록",
+            "pos": [
+              0.45,
+              0.45
+            ],
+            "scale": 0.25
+          },
+          {
+            "ref": "apple5",
+            "name": "빨간 사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "pos": [
+              0.8,
+              0.25
+            ],
+            "scale": 0.25
+          },
+          {
+            "ref": "apple6",
+            "name": "빨간 사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "pos": [
+              0.8,
+              0.45
+            ],
+            "scale": 0.25
+          },
+          {
+            "ref": "apple7",
+            "name": "빨간 사과",
+            "appearance": "낱개 하나",
+            "color": "빨강",
+            "pos": [
+              0.25,
+              0.8
+            ],
+            "scale": 0.25
+          }
+        ],
+        "annotations": [
+          {
+            "type": "box",
+            "from": [
+              0.05,
+              0.05
+            ],
+            "to": [
+              0.65,
+              0.65
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "slot_id": "EXE_01",
+  "question": "처음에는 같은 모양끼리 가로줄에 놓았습니다. 이제 같은 색깔끼리 가로줄에 놓은 것은 몇 번인가요?",
+  "answer": "2",
+  "answer_rationale": "1번은 기준처럼 같은 모양끼리 가로줄에 있다. 2번만 윗줄에 빨간색 두 개, 아랫줄에 파란색 두 개가 있어 색깔별로 묶은 유일한 보기다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "원",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_circle",
+            "name": "원",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_triangle",
+            "name": "삼각형",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_triangle",
+            "name": "삼각형",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "edit_of": "기준"
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "move",
+          "target": "blue_circle",
+          "to_cell": [
+            1,
+            0
+          ]
+        },
+        {
+          "op": "move",
+          "target": "red_triangle",
+          "to_cell": [
+            0,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

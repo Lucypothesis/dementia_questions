@@ -1,0 +1,104 @@
+{
+  "slot_id": "ATT_04",
+  "question": "사각형 테두리 안에 있는 빨간 사과 몇 개?",
+  "answer": "3",
+  "answer_rationale": "사각형 테두리 안에는 빨간 사과 3개가 있고, 테두리 밖에는 빨간 사과 2개가 있다. 테두리 안의 파란 원 2개는 사과가 아니므로 제외된다. 따라서 정답은 3뿐이다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple_in_1",
+            "name": "사과",
+            "color": "빨강",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.35,
+              0.35
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple_in_2",
+            "name": "사과",
+            "color": "빨강",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.65,
+              0.35
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple_in_3",
+            "name": "사과",
+            "color": "빨강",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.5,
+              0.65
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple_out_1",
+            "name": "사과",
+            "color": "빨강",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.1,
+              0.1
+            ]
+          },
+          {
+            "ref": "apple_out_2",
+            "name": "사과",
+            "color": "빨강",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.9,
+              0.9
+            ]
+          },
+          {
+            "ref": "circle_in_1",
+            "name": "파란 원",
+            "color": "파랑",
+            "appearance": "파란 원 낱개 하나",
+            "pos": [
+              0.35,
+              0.65
+            ]
+          },
+          {
+            "ref": "circle_in_2",
+            "name": "파란 원",
+            "color": "파랑",
+            "appearance": "파란 원 낱개 하나",
+            "pos": [
+              0.65,
+              0.65
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "type": "box",
+            "from": [
+              0.25,
+              0.25
+            ],
+            "to": [
+              0.75,
+              0.75
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

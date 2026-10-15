@@ -1,0 +1,49 @@
+{
+  "slot_id": "LAN_05",
+  "question": "이 사람은 무엇을 하고 있나요?",
+  "answer": "이를 닦고 있습니다.",
+  "answer_rationale": "칫솔모가 사람의 치아에 닿아 있고 입가에 치약 거품이 있어, 이를 닦는 동작으로 판단할 수 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "밝은 욕실 바닥과 벽",
+        "objects": [
+          {
+            "ref": "person",
+            "name": "사람",
+            "appearance": "정면을 향해 입을 벌리고 한 손을 입 가까이 든 모습",
+            "pos": [
+              0.5,
+              0.53
+            ],
+            "facing": "정면",
+            "is_target": true
+          },
+          {
+            "ref": "toothbrush",
+            "name": "칫솔",
+            "appearance": "사람의 손에 쥐어진 낱개 하나, 칫솔모가 앞니에 닿은 모습",
+            "pos": [
+              0.53,
+              0.39
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "foam",
+            "name": "치약 거품",
+            "appearance": "앞니와 입가에 붙은 흰 거품",
+            "pos": [
+              0.49,
+              0.38
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

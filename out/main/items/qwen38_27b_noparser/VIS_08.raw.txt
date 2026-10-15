@@ -1,0 +1,83 @@
+We need answer user's request. Need produce JSON only. Need design cognitive test item for slot VIS_08: domain spatial, subtype top view, construct perspective taking. Panels: 기준 scene, 보기 option n=4. response choice4. Need output one JSON object only, no markdown. Need ensure schema. Need likely no derived? Slot doesn't have derived true. But for top view perspective, options should be controlled variants. Could use option kind with scene directly? Schema allows option with scene or edit_of. Since not derived, can use scene. But to ensure options are controlled variants, maybe use edit_of from 기준? However option kind with edit_of? Schema: option requires option_index, can have scene or edit_of? It says option is scene directly or edit_of. But allOf only requires option_index. It doesn't forbid edit_of. But if kind option and edit_of, changes? The change schema? For option, if edit_of maybe changes? The panel definition has edit_of and changes properties. But allOf for kind option doesn't require changes. However if using edit_of with changes, is it allowed? It doesn't explicitly require changes for option. But section 6 says if derived true, options must be derived. Here not derived. But can still use edit_of? It says option can be scene directly or edit_of. So yes. But if using edit_of, need changes? For answer option identical to 기준, omit changes. For wrong options, changes. But if kind option and edit_of, does pipeline know to copy? likely yes. But schema for panel additionalProperties false includes stage, kind, option_index, scene, edit_of, changes. So okay. But if kind option and edit_of without changes? It may be allowed. But if changes present, minItems 1. Need ensure target exists in 기준. For top view, we need a scene from top? Wait subtype "위에서 본 모습" (view from above). Construct perspective taking. Need question: maybe "위에서 본 모습으로 가장 잘 맞는 그림을 고르시오." But panels: 기준 scene (probably a 3D-ish scene? But image generation can't do 3D? We can design top-down scene? Need test perspective: given a scene with objects and a person facing direction, ask what they see from above? Hmm.
+
+Slot: subtype "위에서 본 모습", construct "관점 전환". Panels: 기준 scene, 4 options. Need likely show a scene from a certain perspective (maybe side/front) and ask which option is the top view? But image generation can't render 3D reliably. We can use 2D top-down scene with objects and a person? Need perspective taking: maybe 기준 is a top-down map with a person facing a direction; options are what the person sees from their perspective (rotated/mirrored). But subtype "위에서 본 모습" suggests the correct answer is the top view of a scene. Could be: 기준 shows a table with objects from front? But we can't draw 3D. We can use a top-down scene as 기준? Then options are rotations? But "위에서 본 모습" maybe ask: "아래 그림은 위에서 본 모습입니다. 왼쪽에서 본 모습은?" No, subtype is top view.
+
+Need design valid with 2D objects. Since image generation can't do 3D, use simple 2D symbols representing objects from above. For perspective taking, we can have a person (or arrow) in a top-down scene indicating observer's facing direction. The question: "위에서 본 그림에서, 사람 앞에 있는 사물의 위치를 사람 눈높이에서 본 모습으로 고르시오"? But subtype top view? Hmm.
+
+Maybe better: 기준 is a top-down scene with a person facing right and objects around. Options are four possible views from the person's perspective (front view) but represented as 2D arrangements? But options would need be from person's viewpoint, not top view. The subtype says "위에서 본 모습" maybe the item is about identifying top view among options. Could be: 기준 shows a 3D arrangement? But we can't. Could use a "side view" scene with objects on a table, and options are top views. But generating side view with 2D objects? We can make a simple scene: a table edge? Not reliable.
+
+Alternative: Use a top-down scene as 기준, and options are rotations of the same scene. The question: "위에서 본 모습에서, 화살표가 가리키는 방향을 정면으로 보았을 때의 모습을 고르시오." This is perspective taking: rotate scene so arrow direction becomes up/front. The subtype "위에서 본 모습" because all are top views. Construct perspective taking. That seems feasible: 기준 is a top-down grid with a person/arrow facing a direction and objects. Options are top-down scenes rotated (or mirrored) to represent view from that person's perspective. Need controlled variants: rotate entire scene? But our edit ops can rotate individual objects, not whole scene. We can create options as separate scenes with same objects but positions transformed. Since not derived, can write scenes. But to ensure controlled, we can manually define same objects in each option with transformed cells. Need answer unique.
+
+Need be careful: If options are rotations of top-down scene, the correct one should be the scene as seen by the person facing direction. Suppose 기준: top-down map, person at bottom center facing up? If person facing up, their view is same as map? But options include rotations. Need question: "위에서 본 그림에서, 사람 앞쪽을 정면으로 보았을 때의 모습을 고르시오." If person facing up, correct is same orientation. But too easy? Could set person facing right, correct is rotate map 90 degrees counterclockwise? Need define.
+
+But image generation: person with facing. We can use an arrow object instead of person? Directional object. Use "화살표" with facing? But arrow itself indicates direction. For perspective, maybe use a "사람" facing right. Need options: top-down views from person's perspective. If person is in scene, when rotating view, person should be at bottom facing up? In a perspective view from person's eyes, the person themselves not visible. But options could show objects relative to person, with person omitted? Hmm.
+
+Maybe simpler: 기준 shows a top-down scene with a "카메라" or "사람" at one side facing a direction. Options show the scene as seen from that camera, i.e., a 2D arrangement where the camera's forward is up. The person/camera not included in options. But then options are just rotated object arrangements. Need controlled.
+
+Let's design a top-down scene with 3 objects in a 3x3 grid and a person at one cell facing a cardinal direction. The correct option is the arrangement of objects as seen from the person's perspective: person's forward becomes up, left/right accordingly. We can compute transformed positions.
+
+Need ensure options are top views? The options are "위에서 본 모습"? Actually if person looks from their position, it's not top view, it's front view. But we can phrase: "위에서 본 그림에서, 사람 앞쪽을 위쪽으로 보았을 때의 모습을 고르시오." That is a rotated top view, not perspective from person's eyes. Construct perspective taking: reorient map. Subtype top view: all panels are top views. Good.
+
+Question: "위에서 본 그림에서, 사람 앞쪽을 위쪽으로 보았을 때의 모습을 고르시오." The 기준 includes a person facing e.g. 오른쪽. Options are top-down arrangements of the same objects (without person? maybe include person? If person front becomes up, person would be at bottom facing up? But if we include person, options should show person at bottom center facing up? But then object positions transformed. Could include person in options to make it clear. But if person is included, the correct option has person at bottom facing up, objects transformed. Wrong options are rotations/mirrors.
+
+However if we include person in options, the person's facing in options should be up (front). But the original person facing right. When reorienting so person's front is up, the person rotates to facing up. That is a controlled transformation. We can create options as scenes with person and objects. Need use same refs? For separate scenes, refs can be same. Need ensure object positions.
+
+Let's choose a 3x3 grid. 기준: person at [2,1] (bottom middle) facing "오른쪽"? If person front is right, to make front up, rotate scene 90 degrees counterclockwise? Let's define coordinate: grid rows top to bottom, cols left to right. Person at bottom middle facing right (east). If we rotate the entire map so east becomes up (north), that's rotate 90 degrees counterclockwise? Let's test: original east vector (0, +1 col). After CCW 90, east becomes north? In screen coordinates, rotate CCW: (x,y) -> (-y,x) if y down? Let's use intuitive: map with right arrow. To make right arrow point up, rotate map 90 degrees counterclockwise. Yes.
+
+Original objects:
+- apple at [0,0] top-left
+- cup at [0,2] top-right
+- key at [2,0] bottom-left
+Person at [2,1] facing right.
+After CCW 90 on 3x3: new cell (r,c) = (c, rows-1-r)? For CCW? Let's derive. Original coordinates (r,c). Rotate CCW 90: new_r = c, new_c = (n-1 - r). Check top-left (0,0) -> (0,2) top-right. Top-right (0,2)->(2,2) bottom-right. Bottom-left (2,0)->(0,0) top-left. Person (2,1)->(1,0) left middle. Facing right becomes up? Person at left middle facing up. But if we want person at bottom middle facing up? Not necessary. The view from person's perspective might place person at bottom? Hmm.
+
+If we just rotate map so person's front is up, person may be at left middle facing up. That's okay? The question says "사람 앞쪽을 위쪽으로 보았을 때의 모습" not necessarily person at bottom. The correct option would have person at [1,0] facing up, objects transformed. But options with person at different positions? Could be confusing.
+
+Maybe better to not include person in options; just objects as seen from person's perspective with person's forward as up and person's position as bottom center? In mental rotation, you imagine standing at person's location looking in facing direction; the resulting view has objects arranged relative to you, with your position at bottom center. That is more perspective taking. But then options are not simply rotations of entire map; they are projections from person's location. Need compute relative positions.
+
+Let's design a simple scene where person at one side, objects in front. For top-down map, person at bottom middle facing up. Then the view from person's perspective is same as map (objects above). Too easy. If person at left middle facing right, view from person: objects to right become up, objects above/below become left/right? Need compute.
+
+Maybe use a 3x3 grid with person at left middle facing right. Objects: apple at top middle, cup at middle right, key at bottom middle. From person's perspective (looking right), the forward direction is right (east). Up in view = east. Left in view = north? If facing east, your left is north (top), right is south (bottom). So objects:
+- apple at top middle (north of person) -> left side, same distance? In view, left.
+- cup at middle right (east) -> center front/up.
+- key at bottom middle (south) -> right side.
+Thus correct option could be a 3x3 grid with cup at top middle? Wait if forward is up, object directly east at same row -> center? If person at left middle, cup at middle right is two cells east, so in view it is ahead, maybe top middle? Apple north -> left middle? Key south -> right middle. We can represent as a 3x3 view grid: [0,1] cup? [1,0] apple? [1,2] key? Need consistent.
+
+But options as top-down? The question could be: "위에서 본 그림에서, 사람 눈높이에서 본 앞쪽의 모습을 고르시오." But subtype top view? Hmm.
+
+Maybe use "위에서 본 모습" as the correct answer type: Given a side/front scene, choose top view. But we can simulate with 2D objects? Let's think of standard cognitive test: "Top view" tasks show a 3D arrangement of blocks and ask which is the top view. But image generation can't do 3D. We can use 2D top-down as base and ask which option is the top view of a described arrangement? Not good.
+
+Given constraints, best is a top-down perspective-taking item: all panels are top views, options are rotated/mirrored versions. The subtype "위에서 본 모습" can be satisfied because the scenes are top views. The construct perspective taking is satisfied by reorienting to person's front.
+
+Need output JSON only. Need ensure schema: top-level required slot_id, question, answer, panels. additionalProperties false, so only those plus answer_rationale? Schema properties include answer_rationale, so allowed. Need no extra.
+
+Panels: stage enum includes "기준", "보기". kind: scene for 기준, option for 보기. For option, can include scene. Since not derived, use scene for each option. Need 4 options. Each option panel: stage "보기", kind "option", option_index 1-4, scene. Need answer string "2" etc.
+
+Need design scenes with grid 3x3. Need objects: person, apple, cup, key maybe. Need facing for person. For options, if we include person, need facing maybe "위" in correct? But if options are reoriented top views, person facing should be "위" in all? If wrong rotations, person facing may differ. But if question asks "사람 앞쪽을 위쪽으로 보았을 때", the correct option should have person facing up. Wrong options could have person facing left/right/down or object arrangement mirrored. But if all options include person facing up, then only object positions differ. That may be clearer: options are candidate top views after reorientation; person is drawn facing up in all options (as the observer's front is up). But then the person's original position? If we include person, in correct option person should be at bottom? Let's define a transformation that places person at bottom middle facing up in the view. That is a perspective view, not a global rotation. We can manually set correct option: person at [2,1] facing up, objects arranged relative to person's view. Wrong options: same person at [2,1] facing up but objects misplaced (rotated/mirrored). This is controlled: only object positions differ. That seems good.
+
+Need base scene: top-down map with person at some location and facing direction, objects around. The options show what the person sees when looking forward, represented as a top-down? Actually if person at bottom middle facing up, objects in front are above. This is a "view from person's perspective" but still top-down? It's like a 2D array of objects relative to observer. Could be acceptable.
+
+Let's choose base scene:
+- layout grid 3x3, background "흰 바닥".
+- person ref "person", name "사람", appearance "위에서 본 사람, 머리만 보이는 원형", facing "오른쪽", cell [1,0] (left middle), is_target true.
+- apple ref "apple", name "사과", color "빨강", cell [0,1] (top middle).
+- cup ref "cup", name "머그컵", appearance "손잡이 달린 흰색 낱개", cell [1,2] (right middle).
+- key ref "key", name "열쇠", appearance "열쇠고리 없는 금속 낱개 하나", cell [2,1] (bottom middle).
+
+Person facing right. From person's perspective looking right:
+- forward = right (east) -> up in view.
+- left = top (north) -> left in view.
+- right = bottom (south) -> right in view.
+Objects relative to person at [1,0]:
+- cup at [1,2] is directly forward (east) 2 cells -> should be center front? In a 3x3 view with observer at bottom middle, directly ahead maybe top middle [0,1] or center [1,1]? Need choose. If person at bottom middle, objects ahead are above. Directly ahead at distance 2 could be top middle. Let's set cup at [0,1].
+- apple at [0,1] is north (left) and one cell forward? Relative: row -1, col +1. In view coordinates: x = forward distance (col difference) = +1, y = lateral? left positive? If view grid rows top to bottom correspond forward distance? Let's define view grid: row 0 far, row 1 middle, row 2 near (observer). col 0 left, col 1 center, col 2 right. Person at [2,1]. For an object at relative (dr, dc) from person in base: forward = dc (east positive), lateral = -dr? If north (dr=-1) is left, so lateral left = -dr? For apple dr=-1, dc=+1: forward=1, left=1. Map to view: forward 1 -> row 1? left 1 -> col 0. So apple at [1,0].
+- key at [2,1] relative dr=+1, dc=+1: forward=1, right=1 -> row 1, col 2. So key at [1,2].
+Thus correct option: person [2,1] facing up, cup [0,1], apple [1,0], key [1,2]. This is a nice pattern: cup ahead center, apple left, key right.
+
+Wrong options should be controlled variants:
+1. Correct: option 2 maybe.
+2. Mirror left-right: cup [0,1], apple [1,2], key [1,0] (swap apple/key). This is what if facing left? Or mirror.
+3. Rotate 90? Maybe cup [1,0], apple [0,1], key [1,2]? Need controlled.
+4. Rotate 180? cup [2,1]? But person occupies [2,1]; can't overlap. Need avoid overlap. Options can have person at [2,1] always. Objects must not overlap person. We can place objects in other cells.
+
+Need ensure each option scene has same objects: person, apple, cup, key. Person at [2

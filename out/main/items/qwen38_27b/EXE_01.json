@@ -1,0 +1,166 @@
+{
+  "slot_id": "EXE_01",
+  "question": "위 그림의 사물들을 색으로 분류한 뒤, 이제 분류 기준을 모양으로 바꿉니다. 보기 중 새로운 기준에 맞는 것을 고르시오.",
+  "answer": "2",
+  "answer_rationale": "새로운 기준은 모양입니다. 보기 2는 동그라미가 위 행에, 네모가 아래 행에 모여 있고, 보기 1은 빨간 사물이 위 행에, 파란 사물이 아래 행에 모여 있어 색 기준입니다. 따라서 정답은 2뿐입니다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "동그라미",
+            "appearance": "단색의 작은 원 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "blue_square",
+            "name": "네모",
+            "appearance": "단색의 작은 사각형 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "red_square",
+            "name": "네모",
+            "appearance": "단색의 작은 사각형 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "blue_circle",
+            "name": "동그라미",
+            "appearance": "단색의 작은 원 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "동그라미",
+            "appearance": "단색의 작은 원 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "red_square",
+            "name": "네모",
+            "appearance": "단색의 작은 사각형 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "blue_circle",
+            "name": "동그라미",
+            "appearance": "단색의 작은 원 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "blue_square",
+            "name": "네모",
+            "appearance": "단색의 작은 사각형 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "동그라미",
+            "appearance": "단색의 작은 원 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "blue_circle",
+            "name": "동그라미",
+            "appearance": "단색의 작은 원 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "red_square",
+            "name": "네모",
+            "appearance": "단색의 작은 사각형 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "blue_square",
+            "name": "네모",
+            "appearance": "단색의 작은 사각형 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

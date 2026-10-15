@@ -1,0 +1,30 @@
+{
+  "slot_id": "LAN_04",
+  "question": "그림에서 빨간색인 부분은 무엇입니까?",
+  "answer": "손잡이",
+  "answer_rationale": "이미지에는 갈색 문 몸체와 오른쪽에 붙은 빨간색 원형 손잡이만 있습니다. 빨간색인 유일한 부분은 문 손잡이이므로 '손잡이'가 유일한 정답입니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "door",
+            "name": "문",
+            "appearance": "갈색 나무 문, 직사각형 낱개 하나, 문 몸체는 갈색이고 오른쪽 중간에 빨간색 원형 손잡이 하나가 붙어 있다",
+            "color": "갈색",
+            "pos": [
+              0.45,
+              0.5
+            ],
+            "scale": 1.2,
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

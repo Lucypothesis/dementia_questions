@@ -1,0 +1,133 @@
+{
+  "slot_id": "ATT_09",
+  "question": "손잡이가 파란색인 컵은 모두 몇 개입니까?",
+  "answer": "5",
+  "answer_rationale": "파란색 손잡이가 달린 컵은 5개이고, 나머지 7개는 빨간색 손잡이가 달려 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 4,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "cup01",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 파란색 손잡이가 달린 낱개 하나",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "cup02",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 빨간색 손잡이가 달린 낱개 하나",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "cup03",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 빨간색 손잡이가 달린 낱개 하나",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "cup04",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 파란색 손잡이가 달린 낱개 하나",
+            "cell": [
+              0,
+              3
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "cup05",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 빨간색 손잡이가 달린 낱개 하나",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "cup06",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 파란색 손잡이가 달린 낱개 하나",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "cup07",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 빨간색 손잡이가 달린 낱개 하나",
+            "cell": [
+              1,
+              2
+            ]
+          },
+          {
+            "ref": "cup08",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 빨간색 손잡이가 달린 낱개 하나",
+            "cell": [
+              1,
+              3
+            ]
+          },
+          {
+            "ref": "cup09",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 빨간색 손잡이가 달린 낱개 하나",
+            "cell": [
+              2,
+              0
+            ]
+          },
+          {
+            "ref": "cup10",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 파란색 손잡이가 달린 낱개 하나",
+            "cell": [
+              2,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "cup11",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 빨간색 손잡이가 달린 낱개 하나",
+            "cell": [
+              2,
+              2
+            ]
+          },
+          {
+            "ref": "cup12",
+            "name": "머그컵",
+            "appearance": "흰색 몸체와 파란색 손잡이가 달린 낱개 하나",
+            "cell": [
+              2,
+              3
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

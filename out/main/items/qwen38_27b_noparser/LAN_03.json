@@ -1,0 +1,29 @@
+{
+  "slot_id": "LAN_03",
+  "question": "그림에 있는 신체 부위를 말해 주세요.",
+  "answer": "코",
+  "answer_rationale": "이미지에는 사람 코 하나만 그려져 있고 다른 신체 부위나 사물이 없으므로 정답은 코로 유일합니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "nose",
+            "name": "코",
+            "appearance": "사람 코 하나, 측면에서 본 단순한 윤곽, 콧등과 콧구멍이 보이는 낱개",
+            "color": "살색",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

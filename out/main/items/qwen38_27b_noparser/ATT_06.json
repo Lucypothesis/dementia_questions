@@ -1,0 +1,25 @@
+{
+  "id": "ATT_06",
+  "domain": "주의력",
+  "subtype": "여러 차이 찾기",
+  "construct": "변화 탐지",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene"
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "기준",
+      "ops": [
+        "move",
+        "recolor",
+        "remove"
+      ],
+      "n_changes": 3
+    }
+  ],
+  "response": "open",
+  "answer_kind": "목록"
+}

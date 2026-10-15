@@ -1,0 +1,106 @@
+We need answer user's request. Need output JSON only. Need design cognitive test item for slot EXE_07: executive function, shortest path planning, construct planning, panels: main scene, response open, answer_kind 경로. Need likely produce a scene with grid and ask shortest path? Need output JSON object only, no markdown. Need ensure schema. Need think in Korean? User Korean. Need final JSON only.
+
+We need satisfy: slot_id EXE_07, question, answer, panels. panels max 8, one panel stage main kind scene. response open, answer_kind 경로. Need answer likely a path string? Since open response, answer can be sequence of moves or cells. Need design image-based shortest path planning. Need no text in image. Use grid layout with objects, maybe start and goal, obstacles. Need question asks to plan shortest path from start to goal avoiding obstacles. But image cannot have text labels? We can use annotations? It says no letters/numbers in image; annotations can add number/arrow/box. But maybe avoid. Need make start/goal identifiable by objects: e.g. green circle start, red flag goal? But no text. Need question can say "초록 동그라미에서 빨간 깃발까지 가장 짧은 경로". That's okay, question text can name colors. Image objects: start, goal, obstacles. Need answer unique shortest path. Need ensure grid coordinates. Need maybe 3x3 or 4x4. Need path answer as sequence of cells or directions. Since answer_kind 경로, answer string maybe "위, 오른쪽, 오른쪽, 아래" or coordinates. Need unique. Need avoid ambiguity with multiple shortest paths. Design grid with obstacles forcing unique shortest path.
+
+Need scene layout grid rows/cols. Objects each cell. Need background positive. Need objects: start (green circle), goal (red flag), obstacles (gray walls). Need maybe 4x4. Need shortest path unique. Let's design 4x4 grid. Coordinates [row, col] 0 top. Start at [0,0], goal at [3,3]. Obstacles to force unique path? If open grid, many shortest paths length 6. Need obstacles create unique shortest path. But if obstacles block, need ensure unique shortest path. Could use 3x3 with obstacles. Start [0,0], goal [2,2]. Obstacles at [0,1], [1,0], [1,2], [2,1]? Then only path? From [0,0] can't move right/down if obstacles, impossible. Need allow.
+
+Maybe 4x4: start [0,0], goal [3,3]. Obstacles: [0,1], [1,0], [1,2], [2,1], [2,3], [3,2]? Let's map.
+Rows 0..3, cols 0..3.
+S at 0,0. G at 3,3.
+Obstacles: (0,1), (1,0), (1,2), (2,1), (2,3), (3,2). Free: (0,0), (0,2), (0,3), (1,1), (1,3), (2,0), (2,2), (3,0), (3,1), (3,3).
+Path from S: only down? (1,0) obstacle, right (0,1) obstacle -> impossible. Need at least one.
+
+Let's design with unique shortest path using corridor. 4x4 corridor: S (0,0) -> (1,0) -> (2,0) -> (2,1) -> (2,2) -> (3,2) -> (3,3) G. Obstacles all other cells? But if all other cells obstacles, unique path length 6. Need objects max 24, okay. But if all non-path cells obstacles, image crowded but okay. Need ensure no alternative shorter? If obstacles block all, unique. But maybe too trivial? Could be okay. Need shortest path planning. But if all non-path obstacles, path is only path. Need answer unique.
+
+But maybe better 5x5 with some open cells but unique shortest. Need answer path directions. Need ensure no diagonal. Usually grid path moves up/down/left/right. Need question specify "한 칸씩 위·아래·왼쪽·오른쪽으로만 이동". Need avoid text in image. Use objects: start green circle, goal red flag, obstacles gray square. Need maybe 4x4 with path.
+
+Need consider schema: scene objects require ref, name. For grid, each object cell. Can have multiple objects? One per cell. Need obstacles many. Need appearance for rare? "회색 벽돌" maybe. Need start and goal is_target true? Maybe both? The target maybe goal? Could mark start and goal. Need no facing unless direction. No facing needed.
+
+Need answer: If path cells: [0,0] -> [1,0] -> [2,0] -> [2,1] -> [2,2] -> [3,2] -> [3,3]. Directions: 아래, 아래, 오른쪽, 오른쪽, 아래, 오른쪽. Need answer string maybe "아래, 아래, 오른쪽, 오른쪽, 아래, 오른쪽". Need ensure unique. If all non-path cells obstacles, yes. But if start at [0,0], goal [3,3], obstacles at all other 14 cells? 4x4 has 16 cells, path 7 cells, obstacles 9. Let's list path cells: (0,0) start, (1,0), (2,0), (2,1), (2,2), (3,2), (3,3) goal. Obstacles: (0,1),(0,2),(0,3),(1,1),(1,2),(1,3),(2,3),(3,0),(3,1). That's 9. But (3,0) obstacle adjacent to (2,0) and (3,1) obstacle; okay. Path from (2,0) can go right to (2,1), down to (3,0) obstacle, up to (1,0) back. Unique. From (2,2) can go down to (3,2), right to (2,3) obstacle, left back, up to (1,2) obstacle. Good.
+
+But is it too easy? Maybe okay for research. Need maybe use 5x5 to make more planning. But answer path longer. Need ensure unique shortest. Could design a maze with unique shortest but not all blocked. Need maybe 5x5 with obstacles. Let's think.
+
+Need question: "초록 동그라미에서 빨간 깃발까지 한 칸씩 위·아래·왼쪽·오른쪽으로만 이동할 때, 가장 짧은 경로를 순서대로 답하세요." This is open. Answer directions. Need image: grid 5x5? Need objects. Could use 5x5 with start [0,0], goal [4,4], obstacles to force unique shortest path of length 8? Manhattan distance 8. If unique shortest, must be monotone path (only down/right) with obstacles blocking alternatives. Could create a single monotone corridor. But if only down/right, any obstacle blocking all but one sequence. For 5x5, path length 8. Need obstacles to force unique monotone path. But if non-monotone possible longer, shortest still unique if only one monotone path. Need ensure no alternative monotone path. Could place obstacles to create a staircase. Example path: (0,0)->(0,1)->(1,1)->(1,2)->(2,2)->(2,3)->(3,3)->(3,4)->(4,4). Obstacles all other cells that could allow alternative monotone? Need block cells not on path? If all non-path obstacles, unique. 5x5 25 cells, path 9, obstacles 16. Max objects 24? Wait objects max 24. 25 cells with one object each would be 25 objects, exceeds max 24. But we don't need object for every empty cell? Obstacles are objects; start/goal objects. If all non-path obstacles, total objects = path cells (9) + obstacles (16) = 25, too many. For 4x4 total 16 objects okay. 5x5 all blocked too many. Could leave some empty cells without objects? But empty cells are traversable? In scene, if no object, background white floor, likely traversable. If we want obstacles, need object. Max 24 means can have at most 24 objects. For 5x5, if 9 path objects (start/goal plus maybe path markers? Actually path cells don't need objects except start/goal; empty path cells can be background. Obstacles need objects. If we leave non-path empty, they are traversable, may create alternatives. Could use obstacles count <=24 - 2 =22. 5x5 has 23 non-start/goal cells; can obstacle 22, leave one empty. That empty might create alternative? Need design. But maybe 4x4 simpler.
+
+Need maybe use 4x4 with 16 objects, okay. But all non-path obstacles means 9 obstacles + start + goal = 11 objects? Wait path intermediate cells don't need objects; they are empty floor. So objects: start, goal, 9 obstacles = 11. Good. Empty path cells are background. That's fine. Need ensure empty cells are traversable. The question can say "회색 벽돌은 지나갈 수 없고, 빈 칸은 지나갈 수 있다." But image has no text. Good.
+
+Need maybe mark path cells? No, answer is path. Need not mark. Need start and goal identifiable. Use "초록 동그라미" and "빨간 깃발". Need appearance: start: "초록색 동그라미 하나", goal: "빨간 깃발 하나". Obstacles: "회색 벽돌 하나". Need maybe each obstacle ref unique: wall1...wall9. Need cells.
+
+Need answer rationale: only one route because walls block all alternatives; shortest path is forced and length 6 moves. Need ensure no other path of same length? If all non-path walls, only path. But wait empty cells not on path? In our 4x4 design, path cells are empty except start/goal. Non-path cells are walls. So only connected component path. Unique.
+
+Need check coordinates:
+4x4 rows=4 cols=4.
+start cell [0,0]
+goal cell [3,3]
+walls:
+[0,1], [0,2], [0,3]
+[1,1], [1,2], [1,3]
+[2,3]
+[3,0], [3,1]
+What about [1,0] empty path, [2,0] empty, [2,1] empty, [2,2] empty, [3,2] empty. Good.
+Path: start (0,0) down to (1,0), down to (2,0), right to (2,1), right to (2,2), down to (3,2), right to (3,3). Moves: 아래, 아래, 오른쪽, 오른쪽, 아래, 오른쪽.
+Could there be path from (2,2) to (3,2) down, then (3,3) right. Yes.
+Could there be path from (2,0) to (2,1) right, (2,2) right, (2,3) wall, (1,2) wall, (3,2) down. Good.
+Could there be path from (0,0) to (0,1) wall, (1,0) empty. Good.
+Unique.
+
+Need maybe answer as coordinates? Since answer_kind 경로, maybe answer should be path sequence. Which format best? Could be "아래, 아래, 오른쪽, 오른쪽, 아래, 오른쪽". Need open response scoring maybe compare. Could also include cells: "[0,0] → [1,0] → [2,0] → [2,1] → [2,2] → [3,2] → [3,3]". But answer field string. Which is more unambiguous? Directions are natural. But if question asks "경로를 순서대로 답하세요", directions okay. Need maybe specify in question "이동 방향을 순서대로 답하세요" to align. But answer_kind 경로, maybe path. Could ask "가장 짧은 경로의 이동 방향을 순서대로 답하세요." Then answer directions. Good.
+
+Need ensure question only read? It references image objects. Need no meta. "초록 동그라미에서 빨간 깃발까지 한 칸씩 위·아래·왼쪽·오른쪽으로만 이동할 때, 가장 짧은 경로의 이동 방향을 순서대로 답하세요." Good.
+
+Need panels: one panel stage main kind scene. Scene layout grid rows 4 cols 4 background "흰 바닥". objects array. Need maybe include annotations? Not necessary. Could add box around start/goal? No.
+
+Need schema: top-level additionalProperties false, required slot_id, question, answer, panels. We can include answer_rationale (allowed? properties includes answer_rationale, yes). Need no extra. Panel additionalProperties false, required stage kind. For kind scene, required scene. Panel can have stage main, kind scene, scene. No option_index. Good.
+
+Scene additionalProperties false: layout, rows, cols, background, objects. Good.
+Object additionalProperties false: ref, name, appearance, color, cell, is_target. Need ref pattern lowercase. Use start, goal, wall1... wall9. For walls, name "회색 벽돌", appearance "네모난 회색 벽돌 하나". color maybe "회색". For start, name "초록 동그라미", appearance "초록색 동그라미 하나", color "초록". For goal, name "빨간 깃발", appearance "빨간 깃발 하나", color "빨강". Need maybe facing? Flag has direction? Not necessary? It says direction objects like person/animal/arrow. Flag maybe not. Could avoid.
+
+Need is_target true for start and goal? "정답과 직접 관계된 사물" both. Could mark both true. Or only goal? Maybe both. It's okay.
+
+Need ensure no text in image. Names not rendered? The pipeline likely uses name/appearance to generate. No labels. Good.
+
+Potential issue: "빨간 깃발" may have pole, direction? Not needed. Could use "빨간 별" goal? But flag okay. Need rare? Flag common. Start green circle. Good.
+
+Need maybe obstacles as "벽" not "벽돌". If wall occupies cell. Use "회색 벽". appearance "네모난 회색 벽 하나". Good.
+
+Need answer rationale: "회색 벽이 시작과 목표 사이를 제외한 모든 대각선·대체 칸을 막아, 시작에서 목표까지 연결된 통로는 아래-아래-오른쪽-오른쪽-아래-오른쪽 하나뿐이다. 따라서 이 경로가 유일하고 최단이다." Need mention no alternative same length. Good.
+
+Need self-check:
+1. question only? Need image to see walls. Good.
+2. answer unique? Yes.
+3. rationale uniqueness. Yes.
+4. edit target? none.
+5. slot panels: one main scene. Yes.
+
+Need output JSON only. Ensure valid JSON. No markdown. Need maybe Korean strings. Need no trailing commas.
+
+Double-check schema: top-level properties: slot_id, question, answer, answer_rationale, panels. additionalProperties false. Good.
+Panel: stage enum includes main. kind scene. scene required. Good.
+Scene: layout grid, rows 4, cols 4, background, objects. Good.
+Object: cell array ints. Good.
+Need max objects 24: 11. Good.
+
+Could there be issue with empty cells not explicitly "traversable"? The question says "빈 칸은 지나갈 수 있다" maybe add to question. But question should not meta? It can specify rules. "회색 벽은 지나갈 수 없고, 빈 칸은 지나갈 수 있다." This is necessary. But question only read? It references image. Good. Add: "초록 동그라미에서 빨간 깃발까지 한 칸씩 위·아래·왼쪽·오른쪽으로만 이동할 때, 회색 벽은 지나갈 수 없고 빈 칸은 지나갈 수 있다. 가장 짧은 경로의 이동 방향을 순서대로 답하세요." This is clear. But maybe too long. Fine.
+
+Need answer maybe include commas. "아래, 아래, 오른쪽, 오른쪽, 아래, 오른쪽". Good.
+
+Potential ambiguity: In Korean, "아래" could mean down. Good.
+
+Could answer be expected as path cells? If answer_kind 경로, maybe open scoring can accept directions. But to be safe, answer could be both directions and coordinates? But answer field one string. If we include both, might be less standard. Need choose. Since question asks 이동 방향, answer directions. Good.
+
+Need maybe use "위" not "상"? Use consistent.
+
+Need maybe ensure shortest path length: Manhattan distance from (0,0) to (3,3) is 6. Our path length 6, so shortest possible. Unique. Good.
+
+Could there be a shorter path if diagonal? Question restricts one cell up/down/left/right. Good.
+
+Need maybe no annotations. Good.
+
+Let's craft final JSON:
+{
+ "slot_id": "EXE_07",
+ "question": "초록 동그라미에서 빨간 깃발까지 한 칸씩 위·아래·왼쪽·오른쪽으로만 이동할 때, 회색 벽은 지나갈 수 없고 빈 칸은 지나갈 수 있다. 가장 짧은 경로의 이동 방향을 순서대로 답하세요.",
+ "answer": "아래, 아래, 오른쪽, 오른쪽, 아래, 오른쪽",
+ "answer_rationale": "시작 [0,0]에서 목표 [3,3]까지 맨해튼 거리는 6칸이다. 회색 벽이 [0,1], [0,2], [0,3], [1,1], [1,2], [1,3], [2,3], [3,0], [3,1]을 막아 시작과 목표 사이를 잇는 통로는 [0,0]→[1,0]→[2,0]→[2,1]→[2,2]→[3,2]→[3,3] 하나뿐이다. 따라서 아래, 아래, 오른쪽, 오른쪽, 아래, 오른쪽이 유일하게 최단이다.",
+ "panels": [
+  {"stage

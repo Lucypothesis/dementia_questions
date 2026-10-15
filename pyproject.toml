@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "itemgen-bench"
+version = "1.0.0"
+description = "인지검사 문항 생성 벤치마크 — LLM의 문항 작성 능력과 이미지 생성 모델의 명세 준수 능력을 따로 측정하는 파이프라인"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+# 문항 생성·검증·채점·시트까지는 이것만으로 돈다. 무거운 것은 아래 extras로 뺐다.
+dependencies = [
+    "pyyaml>=6.0",
+    "requests>=2.28",
+    "pillow>=9.0",
+]
+
+[project.optional-dependencies]
+# 이미지를 직접 그릴 때만 필요하다. torch는 환경에 맞는 빌드를 먼저 깔아두는 쪽이 낫다.
+render = [
+    "diffusers>=0.37",
+    "transformers>=4.40",
+    "accelerate>=1.0",
+    "safetensors>=0.4",
+    "peft>=0.10",          # Lightning LoRA. 없으면 LoRA 렌더가 전량 실패한다
+]
+# 오픈 가중치 모델을 직접 서빙할 때만 필요하다.
+serve = ["vllm>=0.19"]
+
+[project.scripts]
+itemgen = "itemgen_bench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+itemgen_bench = ["py.typed"]

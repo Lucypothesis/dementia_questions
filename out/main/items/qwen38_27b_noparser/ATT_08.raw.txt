@@ -1,0 +1,140 @@
+We need answer user's request. Need output JSON only, no markdown. Need design cognitive test item for slot ATT_08: attention, overlapping outline separation, figure-ground separation. Panels: 기준 scene, 보기 option n=4, response choice4, answer_kind 보기번호. Need likely derived? Slot doesn't have derived true. But for figure-ground separation, options should be controlled variants? We can create base scene with overlapping outlines? Need image generation constraints: no text, no arrows? annotations allowed. Need scene as structured objects with coordinates. Need question only and image. Need answer unique.
+
+We need think carefully. The slot: "겹친 윤곽 분리" (overlapping outline separation), construct "도형-배경 분리". Need a base image (기준) and 4 options. The test likely asks which option contains the same hidden figure? Or which option is the target shape extracted from overlapping outlines? We need design with panels: 기준 scene, then 4 option panels. Since no derived flag, options can be scenes directly or edit_of? Schema allows option with scene or edit_of. But rule 6 says if derived true use derived; not present. But for consistency, maybe use edit_of from 기준 for options? It says option can be scene directly or edit_of. For figure-ground, options should be controlled variants of same shape? Could use edit_of to ensure same base and only changes. But if options are all derived from 기준, answer maybe one option that matches a target? Need question.
+
+We need produce valid JSON according to schema. Top-level required slot_id, question, answer, panels. additionalProperties false. panels max 8: 1 기준 + 4 options = 5.
+
+Need ensure panel schema: stage enum includes "기준", "보기". kind enum scene/edit/option. For option, required option_index. If kind option, can have scene or edit_of? allOf only requires option_index. It doesn't forbid scene. But if using edit_of, do we need changes? For kind option, changes not required? Schema: changes minItems 1 if present. For kind edit, required edit_of and changes. For option, if edit_of used maybe changes optional? The description says option can use edit_of to derive; if answer option same as base, omit changes and only edit_of. But schema doesn't require changes for option. However if edit_of present and changes absent, is that allowed? likely yes. But if we use edit_of for options, need ensure target refs exist in 기준. If changes include rotate etc.
+
+Need design a figure-ground separation item. Base scene: overlapping outlines? We can represent objects with outlines? The image generation may draw objects. Need "겹친 윤곽 분리" maybe target is a shape formed by overlapping outlines? We need avoid text. Could use simple geometric shapes: a red triangle hidden among overlapping blue circles? But figure-ground separation: identify which option shows the same target shape (e.g., a black outline shape) that appears in the base when separating overlapping outlines.
+
+Maybe base scene: a grid with several overlapping outline shapes: a red square outline, a blue circle outline, a green triangle outline overlapping. The target is the red square? But question: "첫 번째 그림에서 빨간 사각형 윤곽만 따로 떼어낸 그림은 어느 것입니까?" But options: 1 red square, 2 red circle, 3 blue square, 4 red square rotated? Need controlled variants. But if base has red square, answer is option with red square. However figure-ground separation requires separating overlapping outlines. Could be more subtle: target shape is formed by the intersection/overlap of outlines? Need not too complex for image generation.
+
+Need ensure no text in image. Question can mention colors and shapes. Options can be generated as scenes. Need answer unique.
+
+Potential design:
+- 기준 scene: layout free, background white. Objects:
+  - ref "square", name "빨간 사각형 윤곽", appearance "빨간색 테두리만 있는 빈 사각형 하나", pos [0.35,0.35], rotation 0, is_target true.
+  - ref "circle", name "파란 원 윤곽", appearance "파란색 테두리만 있는 빈 원 하나", pos [0.45,0.45], maybe overlapping.
+  - ref "triangle", name "초록 삼각형 윤곽", appearance "초록색 테두리만 있는 빈 삼각형 하나", pos [0.55,0.35].
+But overlapping outlines: positions close. Need maybe scale to overlap. Use free layout with pos normalized. Could set scale 1.2. But image generation may not guarantee exact overlap? We can specify appearance "서로 겹쳐 보이는". But scene objects separate. Need coordinates.
+
+Question: "첫 번째 그림에서 빨간 사각형 윤곽만 남기고 나머지를 지운 그림은 어느 것입니까?" Then options:
+1: red square only (same pos? maybe centered)
+2: red circle only
+3: blue square only
+4: red square rotated 45? But if question says red square outline only, option 4 rotated square might still be a red square outline but rotated; if base square is axis-aligned, rotated is not same? Need controlled variants: maybe option 1 same red square, option 2 red circle, option 3 blue square, option 4 red square with extra line? But options should be controlled variants of answer. For figure-ground, maybe all options are single shapes, one matches target exactly.
+
+But if options are scenes directly, they can be different shapes. Need ensure answer unique. Could use edit_of from 기준 to create options by removing other objects and maybe recoloring/rotating target. For option 1 (answer): edit_of 기준, changes: remove circle, remove triangle. That leaves red square. Option 2: remove circle, remove triangle, recolor square to blue? But then it's blue square, not red. Option 3: remove square, remove triangle, recolor circle to red? That leaves red circle. Option 4: remove circle, remove triangle, rotate square 45. That leaves rotated red square. If question asks "빨간 사각형 윤곽의 모양과 방향이 그대로인 그림", option 4 not answer. But if question just "빨간 사각형 윤곽만 남긴 그림", rotated square is still red square outline? It might be considered same shape but rotated; to make unique, specify "모양과 방향이 그대로". But figure-ground separation maybe not about rotation. Could ask "첫 번째 그림에서 빨간 사각형 윤곽을 그대로 분리한 그림은?" Then rotated is not 그대로. Good.
+
+Need ensure changes target refs exist. For option 2: remove circle, remove triangle, recolor square to_color "파랑". But if recolor square, it becomes blue square. Option 3: remove square, remove triangle, recolor circle to_color "빨강". Leaves red circle. Option 4: remove circle, remove triangle, rotate square to_rotation 45. Leaves rotated red square. All derived from base, controlled.
+
+But base scene: if square, circle, triangle overlap. Need maybe target square is partially hidden by circle/triangle? Overlapping outlines. Use free layout. Need coordinates such that they overlap. But image generation may place objects at pos center? We can set pos and scale. Need maybe use layout free. Objects:
+- square: pos [0.42,0.42], scale 1.0, appearance "빨간색 테두리만 있는 빈 사각형 하나, 테두리 두께 중간"
+- circle: pos [0.52,0.48], scale 1.0, appearance "파란색 테두리만 있는 빈 원 하나"
+- triangle: pos [0.48,0.38], scale 0.9, appearance "초록색 테두리만 있는 빈 삼각형 하나, 꼭짓점이 위를 향함"
+Need facing? triangle direction? Could set facing "위"? Schema facing enum includes 위. For triangle, direction maybe not necessary but can set facing "위". But if rotate option 4, facing? Not needed.
+
+Need ensure no text. Good.
+
+But question: "첫 번째 그림에서 빨간 사각형 윤곽만 그대로 분리한 그림은 어느 것입니까?" It mentions first image. The panels: 기준 then 보기. The subject sees question and images. Good.
+
+Need answer: "1". answer_rationale: option 1 is base with only red square remaining, same color, shape, orientation; option 2 blue square, option 3 red circle, option 4 rotated red square. Need mention unique.
+
+Need check schema: top-level additionalProperties false, only slot_id, question, answer, answer_rationale, panels. answer_rationale allowed? Schema properties includes answer_rationale? Yes in schema properties? It lists required slot_id question answer panels; properties include slot_id, question, answer, answer_rationale, panels. additionalProperties false. Good.
+
+Panel objects: For 기준: stage "기준", kind "scene", scene. For options: stage "보기", kind "option", option_index, edit_of "기준", changes. Is edit_of allowed for option? Schema panel properties include edit_of, changes. allOf for kind option only requires option_index. It doesn't require scene. So okay. But if kind option and edit_of present, changes present. Need changes minItems 1. For answer option, if we want same as base minus others, changes remove circle and triangle. That's not same as base; it's derived. Good. We don't need omit changes. All options have changes. Need ensure changes not all same. They differ.
+
+Potential issue: If option 1 changes remove circle and triangle, leaves square. Option 4 changes remove circle, triangle, rotate square. Good.
+
+Need ensure target ref in changes exists in edit_of panel. edit_of "기준" has refs square, circle, triangle. Good.
+
+Need ensure object refs pattern: square, circle, triangle lowercase. Good.
+
+Need scene layout free: objects require pos. Schema: if layout free, pos required? It says free면 pos 필수. We include pos. No rows/cols. background positive: "흰 바닥이 보인다". Good.
+
+Need object appearance: no negative? "빈 사각형" maybe okay? It says don't use negative sentences like "아무것도 없다". "빈" might be okay? Could say "테두리만 있는". Positive. "빨간색 테두리만 있는 사각형 하나". Good.
+
+Need maybe "겹친 윤곽" explicitly: appearance can say "서로 겹쳐 보이는"? But each object appearance individual. Could set background? Maybe not. Need overlapping: positions close. Could add annotations? Not necessary. But to ensure overlap, maybe use scale and pos. However image generation may not guarantee exact overlap from pos? It likely places objects at normalized positions. We can make them clearly overlapping by positions very close and scales large. For free layout, pos is center? likely. Use square pos [0.45,0.45], circle [0.55,0.5], triangle [0.5,0.4]. Scales 1.2. But if objects are large, may overlap. Need not too large to fit. scale max 3. Use 1.2.
+
+Could use grid layout? Overlap not possible in grid cells. Use free.
+
+Need maybe target is "빨간 사각형 윤곽". In base, if circle and triangle overlap square, the square outline may be partially occluded? Since outlines, maybe all visible. Figure-ground separation: identify target among overlapping. Good.
+
+But is this too easy? It's attention figure-ground. Could be okay. Need maybe more challenging: target shape is a specific outline that is partially hidden by other outlines. Options include same shape but with different orientation/color/shape. Good.
+
+Need consider if question says "첫 번째 그림" but panels order: 기준 then 보기. The subject sees all images. Good.
+
+Need ensure no meta description in question. "첫 번째 그림에서" is okay? It refers to image. Not meta? It's necessary. Could say "위 그림에서 빨간 사각형 윤곽만 그대로 분리한 그림은 어느 것입니까?" But there are multiple images. "첫 번째 그림" okay.
+
+Need maybe answer_kind 보기번호, answer string "1". Good.
+
+Need validate JSON only. No markdown.
+
+But let's think if there are hidden requirements: "기존 표준화 검사 문항을 그대로 옮기지 않는다. 구인만 참고." okay.
+
+"수검자에게는 question과 해당 단계의 이미지만 제시된다." So question should not mention fields. okay.
+
+"이미지에 글자를 요구하지 않는다." We don't.
+
+"보기형 문항: response choice4 slots are 4 option panels. Each panel kind option, option_index 1~4. answer number. Wrong options controlled variants. If derived true use derived. Slot no derived. But we use derived anyway. Is that allowed? It says option can be scene directly or edit_of. If slot not derived, maybe direct scenes expected? But using edit_of should be okay? The schema allows. However the instruction: "슬롯에 derived: true가 있으면 보기도 파생으로 쓴다" implies if not derived, maybe not required but allowed? It says "보기 4장이 같은 도형의 변환판이어야 하는 문항(심상 회전, 거울 반전, 재인 …)에서 보기마다 장면을 새로 쓰면 보기끼리 도형이 달라져 문항이 깨진다. 이런 슬롯에서는 보기도 edit_of로 기준에서 파생시킨다." Our item is figure-ground, options are same base with removals/variants. It is beneficial. Should be okay.
+
+Need maybe stage "검사 보기" not used. Slot panels specify stage "보기". Use that.
+
+Potential issue: For option panels with kind "option" and edit_of, if changes include remove target? For option 3 remove square, remove triangle, recolor circle. That leaves red circle. Good. But if recolor circle to red, and remove square, the remaining object is red circle. Good.
+
+Need maybe option 2: remove circle, remove triangle, recolor square to blue. Leaves blue square. Good.
+
+Need maybe option 4: remove circle, remove triangle, rotate square to_rotation 45. Leaves rotated red square. If square is symmetric, rotation 45 changes orientation. Good. But a square rotated 45 is still a square, but orientation different. Question says "그대로 분리" implies same orientation. Good.
+
+Could there be ambiguity: A square rotated 45 degrees might be considered same shape if not specifying orientation. To avoid, question: "첫 번째 그림에서 빨간 사각형 윤곽의 색, 모양, 방향을 그대로 분리한 그림은 어느 것입니까?" That makes unique. But "방향" for square? It has orientation. Good.
+
+Need maybe base square axis-aligned. Option 4 rotated 45. Good.
+
+Need maybe option 2 blue square: color different. Option 3 red circle: shape different. Good.
+
+Need answer_rationale: "정답 1번은 기준 장면에서 파란 원과 초록 삼각형을 제거하고 빨간 사각형만 색·모양·방향 그대로 남긴 보기이다. 2번은 사각형이 파란색으로 변하고, 3번은 빨간 원만 남으며, 4번은 빨간 사각형이 45도 회전하므로 질문의 '그대로' 조건을 만족하지 못한다." Good.
+
+Need ensure JSON strings no unescaped quotes. Use Korean.
+
+Let's consider if scene objects with "appearance" including "하나" good. Need "낱개 하나" for objects that can be bunch. Square/circle/triangle are single. Could say "낱개 하나". Good.
+
+Need maybe "is_target": true for square. Good.
+
+Need maybe "facing" for triangle? If triangle has direction, set facing "위". But if option 4 rotates square, no facing. For triangle, facing "위" maybe helps. But if triangle is rotated? Not in options. Good.
+
+Need maybe "rotation" for square base 0. Could include rotation 0. Good.
+
+Need maybe "scale" for all. Good.
+
+Need maybe "color" field separate? We can include color and appearance. For square: color "빨강", appearance "빨간색 테두리만 있는 사각형 낱개 하나". For circle: color "파랑". For triangle: color "초록". Good.
+
+Need maybe "background": "흰 바닥이 보인다". Good.
+
+Need maybe annotations? Not needed.
+
+Let's check schema for object: additionalProperties false. We can include ref, name, appearance, color, pos, rotation, scale, facing, is_target. All allowed. For triangle facing allowed. For square facing? not needed. For circle facing? not needed.
+
+Change schema: required op, target. additionalProperties false. We can include to_color, to_rotation. For remove, only op target. Good. For recolor, target and to_color. For rotate, target and to_rotation. Good.
+
+Panel schema: additionalProperties false. For option panel, we include stage, kind, option_index, edit_of, changes. All allowed. No scene. Good.
+
+Top-level: include answer_rationale. Good.
+
+Need maybe "slot_id": "ATT_08". Good.
+
+Potential issue: The schema for panel allOf: if kind edit then required edit_of changes. If kind scene then required scene. If kind option then required option_index. It doesn't say if option with edit_of but no scene is okay. It is okay because no condition forbids. But maybe pipeline expects option either scene or edit_of. Good.
+
+Potential issue: If option panel uses edit_of "기준", but stage "기준" is not a unique panel id? It says edit_of: 복제할 앞선 패널의 stage 이름. There is only one 기준. Good.
+
+Potential issue: If multiple options edit_of same stage, pipeline can replicate base and apply changes. Good.
+
+Need maybe ensure changes arrays not empty. Yes.
+
+Now, is the item truly "겹친 윤곽 분리"? Base has overlapping outlines. The task is to separate target outline. Good.
+
+Could make it more "figure-ground" by target shape is not a simple object but a shape formed by overlapping outlines? But simple is safer.
+
+Need maybe avoid "첫 번째 그림" because there are 5 images; the first is 기준. Good.
+
+Let's think about possible generation issues: "빨간색 테두리만 있는 빈 사각형" might generate a filled square? "테두리만 있는" should be outline. Could say "빨간색 윤곽선만 있는 사각형 하나". Good. "윤곽선" maybe outline. Use "빨간색 윤곽선만 있는 사각형 낱개 하나". For circle: "파란색 윤곽선만 있는 원 낱개 하나". Triangle: "초록색 윤곽선

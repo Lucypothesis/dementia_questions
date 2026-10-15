@@ -1,0 +1,23 @@
+{
+  "id": "MEM_07",
+  "domain": "기억력",
+  "subtype": "사물 삭제 탐지",
+  "construct": "변화 탐지",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene"
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "학습",
+      "ops": [
+        "remove"
+      ],
+      "n_changes": 1
+    }
+  ],
+  "response": "open",
+  "answer_kind": "사물명"
+}

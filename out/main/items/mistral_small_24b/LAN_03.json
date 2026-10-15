@@ -1,0 +1,78 @@
+{
+  "slot_id": "LAN_03",
+  "question": "이 그림에서 보이는 신체 부위를 모두 말해보세요.",
+  "answer": "눈, 코, 입, 귀",
+  "answer_rationale": "눈, 코, 입, 귀는 모두 얼굴의 주요 신체 부위로, 이 그림에서 명확하게 구분될 수 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "eye_left",
+            "name": "눈",
+            "appearance": "왼쪽 눈",
+            "pos": [
+              0.25,
+              0.3
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "eye_right",
+            "name": "눈",
+            "appearance": "오른쪽 눈",
+            "pos": [
+              0.75,
+              0.3
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "nose",
+            "name": "코",
+            "appearance": "코",
+            "pos": [
+              0.5,
+              0.4
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "mouth",
+            "name": "입",
+            "appearance": "입",
+            "pos": [
+              0.5,
+              0.6
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "ear_left",
+            "name": "귀",
+            "appearance": "왼쪽 귀",
+            "pos": [
+              0.2,
+              0.4
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "ear_right",
+            "name": "귀",
+            "appearance": "오른쪽 귀",
+            "pos": [
+              0.8,
+              0.4
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

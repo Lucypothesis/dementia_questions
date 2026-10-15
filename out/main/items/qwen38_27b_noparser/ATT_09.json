@@ -1,0 +1,114 @@
+{
+  "slot_id": "ATT_09",
+  "question": "가운데 검은 점이 있는 빨간색 원의 개수는 몇 개인가요?",
+  "answer": "4",
+  "answer_rationale": "3×3 격자에 놓인 9개의 빨간색 원 중 가운데 검은 점이 있는 원은 c1, c3, c6, c8의 4개뿐이고, 나머지 c2, c4, c5, c7, c9는 단색 빨간색 원이므로 정답은 4로 유일합니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "c1",
+            "name": "빨간색 원",
+            "appearance": "가운데 검은 점 하나 있는 빨간색 원",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "c2",
+            "name": "빨간색 원",
+            "appearance": "단색 빨간색 원",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "c3",
+            "name": "빨간색 원",
+            "appearance": "가운데 검은 점 하나 있는 빨간색 원",
+            "color": "빨강",
+            "cell": [
+              0,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "c4",
+            "name": "빨간색 원",
+            "appearance": "단색 빨간색 원",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "c5",
+            "name": "빨간색 원",
+            "appearance": "단색 빨간색 원",
+            "color": "빨강",
+            "cell": [
+              1,
+              1
+            ]
+          },
+          {
+            "ref": "c6",
+            "name": "빨간색 원",
+            "appearance": "가운데 검은 점 하나 있는 빨간색 원",
+            "color": "빨강",
+            "cell": [
+              1,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "c7",
+            "name": "빨간색 원",
+            "appearance": "단색 빨간색 원",
+            "color": "빨강",
+            "cell": [
+              2,
+              0
+            ]
+          },
+          {
+            "ref": "c8",
+            "name": "빨간색 원",
+            "appearance": "가운데 검은 점 하나 있는 빨간색 원",
+            "color": "빨강",
+            "cell": [
+              2,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "c9",
+            "name": "빨간색 원",
+            "appearance": "단색 빨간색 원",
+            "color": "빨강",
+            "cell": [
+              2,
+              2
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

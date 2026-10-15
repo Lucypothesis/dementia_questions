@@ -1,0 +1,57 @@
+{
+  "slot_id": "EXE_07",
+  "question": "다음 그림에서 빨간색 사과를 파란색 사과로 옮기기 위해 가장 짧은 경로를 찾아보세요.",
+  "answer": "오른쪽 아래, 오른쪽 위, 왼쪽 위, 왼쪽 아래",
+  "answer_rationale": "사과를 옮기기 위해 가장 짧은 경로는 오른쪽 아래, 오른쪽 위, 왼쪽 위, 왼쪽 아래를 거쳐야 한다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple_red",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple_blue",
+            "name": "사과",
+            "color": "파랑",
+            "cell": [
+              2,
+              2
+            ]
+          },
+          {
+            "ref": "apple_red2",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              1,
+              1
+            ]
+          },
+          {
+            "ref": "apple_blue2",
+            "name": "사과",
+            "color": "파랑",
+            "cell": [
+              2,
+              0
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

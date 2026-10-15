@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "인지검사 문항 1개",
+  "type": "object",
+  "required": ["slot_id", "question", "answer", "panels"],
+  "additionalProperties": false,
+  "properties": {
+    "slot_id": {"type": "string", "description": "채우는 슬롯의 id. slots.json과 일치해야 한다"},
+    "question": {"type": "string", "minLength": 5, "description": "수검자에게 읽어줄 질문. 이미지에 관한 메타설명을 넣지 않는다"},
+    "answer": {"type": "string", "minLength": 1, "description": "정답. 보기형이면 1~4 숫자 하나"},
+    "answer_rationale": {"type": "string", "description": "왜 그 답만 유일한 정답인지"},
+    "panels": {
+      "type": "array", "minItems": 1, "maxItems": 8,
+      "items": {"$ref": "#/definitions/panel"}
+    }
+  },
+  "definitions": {
+    "panel": {
+      "type": "object",
+      "required": ["stage", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "stage": {"enum": ["학습", "검사", "기준", "보기", "검사 보기", "인물 보기", "main"]},
+        "kind": {"enum": ["scene", "edit", "option"]},
+        "option_index": {"type": "integer", "minimum": 1, "maximum": 6},
+        "scene": {"$ref": "#/definitions/scene"},
+        "edit_of": {"type": "string", "description": "복제할 앞선 패널의 stage 이름"},
+        "changes": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/change"},
+                    "description": "정답 보기는 changes를 빈 배열 대신 생략하고 edit_of만 둔다"}
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "edit"}}},
+         "then": {"required": ["edit_of", "changes"]}},
+        {"if": {"properties": {"kind": {"const": "scene"}}},
+         "then": {"required": ["scene"]}},
+        {"if": {"properties": {"kind": {"const": "option"}}},
+         "then": {"required": ["option_index"],
+                  "description": "보기는 scene을 직접 쓰거나, edit_of로 기준에서 파생시킨다. 슬롯이 derived면 후자만 허용된다"}}
+      ]
+    },
+    "scene": {
+      "type": "object",
+      "required": ["layout", "objects"],
+      "additionalProperties": false,
+      "properties": {
+        "layout": {"enum": ["grid", "row", "free"], "description": "grid면 rows/cols 필수, free면 pos 필수"},
+        "rows": {"type": "integer", "minimum": 1, "maximum": 6},
+        "cols": {"type": "integer", "minimum": 1, "maximum": 6},
+        "background": {"type": "string", "default": "흰 바닥", "description": "빈자리를 긍정문으로 기술한다"},
+        "objects": {"type": "array", "minItems": 1, "maxItems": 24, "items": {"$ref": "#/definitions/object"}},
+        "annotations": {"type": "array", "items": {"$ref": "#/definitions/annotation"}}
+      }
+    },
+    "object": {
+      "type": "object",
+      "required": ["ref", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "ref": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$", "description": "이 장면 안에서 유일한 식별자. edit에서 이걸로 지목한다"},
+        "name": {"type": "string", "description": "사물 이름. 낱개 단위로 쓴다"},
+        "appearance": {"type": "string", "description": "생김새. 희귀 사물은 반드시 적는다"},
+        "color": {"type": "string"},
+        "cell": {"type": "array", "items": {"type": "integer", "minimum": 0}, "minItems": 2, "maxItems": 2,
+                 "description": "layout=grid일 때 [행, 열]. 0부터 센다"},
+        "pos": {"type": "array", "items": {"type": "number", "minimum": 0, "maximum": 1}, "minItems": 2, "maxItems": 2,
+                "description": "layout=free일 때 [x, y]. 0~1 정규화, 좌상단 원점"},
+        "rotation": {"type": "integer", "description": "시계 방향 각도"},
+        "mirrored": {"type": "boolean", "default": false},
+        "scale": {"type": "number", "minimum": 0.1, "maximum": 3.0, "default": 1.0},
+        "facing": {"enum": ["정면", "뒷면", "왼쪽", "오른쪽", "위", "아래"],
+                   "description": "사람·동물처럼 방향이 있는 사물에 필수. 관점 문항의 좌우 계산 기준이 된다"},
+        "is_target": {"type": "boolean", "default": false, "description": "정답과 직접 관계된 사물"}
+      }
+    },
+    "change": {
+      "type": "object",
+      "required": ["op", "target"],
+      "additionalProperties": false,
+      "properties": {
+        "op": {"enum": ["move", "remove", "add", "recolor", "rotate", "rescale", "mirror"]},
+        "target": {"type": "string", "description": "건드릴 object의 ref. add면 새 ref"},
+        "to_cell": {"type": "array", "items": {"type": "integer"}, "minItems": 2, "maxItems": 2},
+        "to_pos": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+        "to_color": {"type": "string"},
+        "to_rotation": {"type": "integer"},
+        "to_scale": {"type": "number"},
+        "object": {"$ref": "#/definitions/object", "description": "op=add일 때 넣을 사물"}
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["arrow", "box", "divider", "number"],
+                 "description": "이미지 위에 코드로 합성한다. 생성 모델에 맡기지 않는다"},
+        "target": {"type": "string"},
+        "from": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+        "to": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+        "text": {"type": "string"}
+      }
+    }
+  }
+}

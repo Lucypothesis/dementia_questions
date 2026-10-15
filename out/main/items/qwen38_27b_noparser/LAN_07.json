@@ -1,0 +1,41 @@
+{
+  "slot_id": "LAN_07",
+  "question": "주황색 사물이 파란 사물의 열려 있는 상태를 만드는 기능을 설명하세요.",
+  "answer": "주황색 열쇠는 파란 자물쇠를 여는 기능을 한다.",
+  "answer_rationale": "주황색 사물은 열쇠이고 파란 사물은 열려 있는 자물쇠이다. 열쇠가 자물쇠에 대해 열려 있는 상태를 만드는 기능은 여는 기능뿐이므로 이 설명이 유일하다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 2,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "주황색 금속 낱개 하나, 이빨이 있는 열쇠",
+            "color": "주황",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "lock",
+            "name": "자물쇠",
+            "appearance": "열려 있는 파란색 금속 낱개 하나, 열쇠구멍이 있는 자물쇠",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "slot_id": "LAN_05",
+  "question": "이미지를 보고 어떤 동작을 하고 있는가?",
+  "answer": "열기",
+  "answer_rationale": "문은 열리는 동작을 하고 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "door",
+            "name": "문",
+            "appearance": "나무 문",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "rotation": 0,
+            "facing": "정면",
+            "is_target": true
+          },
+          {
+            "ref": "hand",
+            "name": "손",
+            "appearance": "사람의 손",
+            "pos": [
+              0.4,
+              0.5
+            ],
+            "rotation": 0,
+            "facing": "오른쪽",
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "VIS_03",
+  "domain": "시공간능력",
+  "subtype": "회전과 반전 구별",
+  "construct": "변환 변별",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene"
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "n": 4,
+      "derive": "transform",
+      "derived": true,
+      "edit_of": "기준",
+      "ops": [
+        "rotate",
+        "mirror"
+      ]
+    }
+  ],
+  "response": "choice4",
+  "answer_kind": "보기번호"
+}

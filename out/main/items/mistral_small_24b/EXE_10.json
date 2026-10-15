@@ -1,0 +1,58 @@
+{
+  "slot_id": "EXE_10",
+  "question": "다음 그림에서 빨간색 사과와 노란색 사과를 각각 하나씩 선택하세요.",
+  "answer": "빨간색 사과: [1, 0], 노란색 사과: [1, 1]",
+  "answer_rationale": "빨간색 사과와 노란색 사과는 각각 한 개씩 존재하며, 빨간색 사과는 [1, 0] 위치에, 노란색 사과는 [1, 1] 위치에 있습니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_apple",
+            "name": "빨간색 사과",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "yellow_apple",
+            "name": "노란색 사과",
+            "color": "노랑",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "green_apple",
+            "name": "초록색 사과",
+            "color": "초록",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "blue_apple",
+            "name": "파란색 사과",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

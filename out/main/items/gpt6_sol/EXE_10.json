@@ -1,0 +1,164 @@
+{
+  "slot_id": "EXE_10",
+  "question": "쟁반 두 개를 골라 과일을 모두 가져가세요. 과일은 합쳐서 여섯 개까지만 가져갈 수 있습니다. 사과를 가장 많이 가져가려면 어느 쟁반 두 개를 골라야 하나요?",
+  "answer": "왼쪽 위 쟁반, 왼쪽 아래 쟁반",
+  "answer_rationale": "왼쪽 위 쟁반에는 사과 3개와 바나나 2개, 왼쪽 아래 쟁반에는 사과 1개가 있다. 두 쟁반을 고르면 과일이 총 6개이고 사과는 4개다. 다른 두 쟁반을 골라 여섯 개 제한을 지키면 사과를 최대 3개까지 가져갈 수 있으므로 정답이 유일하다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "tray_tl",
+            "name": "쟁반",
+            "appearance": "넓고 얕은 연한 회색 사각 쟁반",
+            "pos": [
+              0.25,
+              0.25
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "tray_tr",
+            "name": "쟁반",
+            "appearance": "넓고 얕은 연한 회색 사각 쟁반",
+            "pos": [
+              0.75,
+              0.25
+            ]
+          },
+          {
+            "ref": "tray_bl",
+            "name": "쟁반",
+            "appearance": "넓고 얕은 연한 회색 사각 쟁반",
+            "pos": [
+              0.25,
+              0.75
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "tray_br",
+            "name": "쟁반",
+            "appearance": "넓고 얕은 연한 회색 사각 쟁반",
+            "pos": [
+              0.75,
+              0.75
+            ]
+          },
+          {
+            "ref": "tl_apple_1",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.16,
+              0.2
+            ]
+          },
+          {
+            "ref": "tl_apple_2",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.25,
+              0.2
+            ]
+          },
+          {
+            "ref": "tl_apple_3",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.34,
+              0.2
+            ]
+          },
+          {
+            "ref": "tl_banana_1",
+            "name": "바나나",
+            "appearance": "노란 바나나 낱개 하나",
+            "pos": [
+              0.2,
+              0.3
+            ]
+          },
+          {
+            "ref": "tl_banana_2",
+            "name": "바나나",
+            "appearance": "노란 바나나 낱개 하나",
+            "pos": [
+              0.3,
+              0.3
+            ]
+          },
+          {
+            "ref": "tr_apple_1",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.66,
+              0.2
+            ]
+          },
+          {
+            "ref": "tr_apple_2",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.75,
+              0.2
+            ]
+          },
+          {
+            "ref": "tr_banana_1",
+            "name": "바나나",
+            "appearance": "노란 바나나 낱개 하나",
+            "pos": [
+              0.75,
+              0.3
+            ]
+          },
+          {
+            "ref": "bl_apple_1",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.25,
+              0.75
+            ]
+          },
+          {
+            "ref": "br_apple_1",
+            "name": "사과",
+            "appearance": "빨간 사과 낱개 하나",
+            "pos": [
+              0.66,
+              0.7
+            ]
+          },
+          {
+            "ref": "br_banana_1",
+            "name": "바나나",
+            "appearance": "노란 바나나 낱개 하나",
+            "pos": [
+              0.75,
+              0.7
+            ]
+          },
+          {
+            "ref": "br_banana_2",
+            "name": "바나나",
+            "appearance": "노란 바나나 낱개 하나",
+            "pos": [
+              0.75,
+              0.8
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

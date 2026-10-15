@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.run_all.lock
+
+# 실행 로그·중간 산출물
+out/*/logs/
+out/*/.run_all.lock
+out_run_all.log
+
+# 생성 원본 768px PNG (682MB). 저장소에는 검수용 축소본(thumbs/, 256px 15MB)만 넣는다.
+# 원본이 필요하면 `itemgen run --stages render`로 다시 그린다.
+out/*/images/
+
+# 데모 실행 결과
+out/demo/
+
+# 키가 들어갈 수 있는 것
+.env
+*.key

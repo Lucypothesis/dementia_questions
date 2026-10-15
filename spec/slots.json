@@ -1,0 +1,960 @@
+{
+  "version": "1.0",
+  "note": "문항 슬롯 50개. 영역 5개 x 10개. LLM은 이 칸을 채우기만 한다. 슬롯을 고정해야 모델 간 문항이 1:1 대응되고 렌더러 비교가 공정해진다.",
+  "panel_grammar": {
+    "scene": "장면을 처음부터 기술하는 패널",
+    "edit": "앞선 패널을 복제하고 선언된 변경만 적용하는 패널. 동일성이 보장된다",
+    "option": "보기 카드 한 장. option_index로 번호를 매긴다"
+  },
+  "slots": [
+    {
+      "id": "MEM_01",
+      "domain": "기억력",
+      "subtype": "물건 목록 회상",
+      "construct": "시각 자극 즉시 회상",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "목록"
+    },
+    {
+      "id": "MEM_02",
+      "domain": "기억력",
+      "subtype": "지연 재인",
+      "construct": "재인 기억",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사 보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "학습",
+          "ops": [
+            "recolor",
+            "move",
+            "rescale"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "MEM_03",
+      "domain": "기억력",
+      "subtype": "위치 변화 탐지",
+      "construct": "공간 기억",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "학습",
+          "ops": [
+            "move"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "MEM_04",
+      "domain": "기억력",
+      "subtype": "쌍 연합 학습",
+      "construct": "연합 기억",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사 보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "학습",
+          "ops": [
+            "recolor",
+            "move"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "MEM_05",
+      "domain": "기억력",
+      "subtype": "시각 무늬 재인",
+      "construct": "비언어 재인",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사 보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "학습",
+          "ops": [
+            "recolor",
+            "rotate",
+            "move"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "MEM_06",
+      "domain": "기억력",
+      "subtype": "제시 순서 기억",
+      "construct": "순서 기억",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사 보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "학습",
+          "ops": [
+            "move"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "MEM_07",
+      "domain": "기억력",
+      "subtype": "사물 삭제 탐지",
+      "construct": "변화 탐지",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "학습",
+          "ops": [
+            "remove"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "MEM_08",
+      "domain": "기억력",
+      "subtype": "사물 추가 탐지",
+      "construct": "변화 탐지",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "학습",
+          "ops": [
+            "add"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "MEM_09",
+      "domain": "기억력",
+      "subtype": "속성 변화 탐지",
+      "construct": "세부 기억",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "학습",
+          "ops": [
+            "recolor"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "MEM_10",
+      "domain": "기억력",
+      "subtype": "장면 세부 기억",
+      "construct": "일화 기억",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사 보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "학습",
+          "ops": [
+            "recolor",
+            "move",
+            "remove"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "ATT_01",
+      "domain": "주의력",
+      "subtype": "단일 특징 탐색",
+      "construct": "선택 주의",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "ATT_02",
+      "domain": "주의력",
+      "subtype": "결합 특징 탐색",
+      "construct": "특징 결합",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "ATT_03",
+      "domain": "주의력",
+      "subtype": "목표 물건 계수",
+      "construct": "계수",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "ATT_04",
+      "domain": "주의력",
+      "subtype": "경계 안쪽 선택 주의",
+      "construct": "공간 선택",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "ATT_05",
+      "domain": "주의력",
+      "subtype": "단일 차이 찾기",
+      "construct": "변화 탐지",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "기준",
+          "ops": [
+            "move",
+            "recolor",
+            "remove"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "ATT_06",
+      "domain": "주의력",
+      "subtype": "여러 차이 찾기",
+      "construct": "변화 탐지",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "기준",
+          "ops": [
+            "move",
+            "recolor",
+            "remove"
+          ],
+          "n_changes": 3
+        }
+      ],
+      "response": "open",
+      "answer_kind": "목록"
+    },
+    {
+      "id": "ATT_07",
+      "domain": "주의력",
+      "subtype": "방향 이탈 탐지",
+      "construct": "방향 변별",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "격자좌표"
+    },
+    {
+      "id": "ATT_08",
+      "domain": "주의력",
+      "subtype": "겹친 윤곽 분리",
+      "construct": "도형-배경 분리",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "ATT_09",
+      "domain": "주의력",
+      "subtype": "부분 특징 계수",
+      "construct": "세부 주의",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "ATT_10",
+      "domain": "주의력",
+      "subtype": "지정 구역 선택 주의",
+      "construct": "주의 억제",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "LAN_01",
+      "domain": "언어능력",
+      "subtype": "고빈도 사물 이름 대기",
+      "construct": "이름 대기",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "LAN_02",
+      "domain": "언어능력",
+      "subtype": "저빈도 사물 이름 대기",
+      "construct": "이름 대기",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "LAN_03",
+      "domain": "언어능력",
+      "subtype": "신체 부위 명명",
+      "construct": "어휘 인출",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "LAN_04",
+      "domain": "언어능력",
+      "subtype": "사물의 부분 명명",
+      "construct": "부분 어휘",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "LAN_05",
+      "domain": "언어능력",
+      "subtype": "동작 명명",
+      "construct": "동사 인출",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "동작"
+    },
+    {
+      "id": "LAN_06",
+      "domain": "언어능력",
+      "subtype": "같은 범주 고르기",
+      "construct": "의미 범주",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "LAN_07",
+      "domain": "언어능력",
+      "subtype": "기능 추론",
+      "construct": "의미 지식",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "설명"
+    },
+    {
+      "id": "LAN_08",
+      "domain": "언어능력",
+      "subtype": "그림-문장 정합",
+      "construct": "문장 이해",
+      "panels": [
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "LAN_09",
+      "domain": "언어능력",
+      "subtype": "반의 관계",
+      "construct": "의미 관계",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "LAN_10",
+      "domain": "언어능력",
+      "subtype": "장면 서술",
+      "construct": "담화 산출",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "설명"
+    },
+    {
+      "id": "VIS_01",
+      "domain": "시공간능력",
+      "subtype": "심상 회전",
+      "construct": "심상 회전",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derive": "transform",
+          "derived": true,
+          "edit_of": "기준",
+          "ops": [
+            "rotate"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_02",
+      "domain": "시공간능력",
+      "subtype": "거울 반전 판별",
+      "construct": "반전 변별",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derive": "transform",
+          "derived": true,
+          "edit_of": "기준",
+          "ops": [
+            "mirror",
+            "rotate"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_03",
+      "domain": "시공간능력",
+      "subtype": "회전과 반전 구별",
+      "construct": "변환 변별",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derive": "transform",
+          "derived": true,
+          "edit_of": "기준",
+          "ops": [
+            "rotate",
+            "mirror"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_04",
+      "domain": "시공간능력",
+      "subtype": "부분-전체 맞추기",
+      "construct": "형태 완성",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derive": "crop"
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_05",
+      "domain": "시공간능력",
+      "subtype": "조각 합성",
+      "construct": "심상 조립",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_06",
+      "domain": "시공간능력",
+      "subtype": "대칭 완성",
+      "construct": "대칭 이해",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derive": "transform",
+          "derived": true,
+          "edit_of": "기준",
+          "ops": [
+            "mirror",
+            "move"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_07",
+      "domain": "시공간능력",
+      "subtype": "전개도 접기",
+      "construct": "3차원 심상",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_08",
+      "domain": "시공간능력",
+      "subtype": "위에서 본 모습",
+      "construct": "관점 전환",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_09",
+      "domain": "시공간능력",
+      "subtype": "길이·각도 대응",
+      "construct": "크기 항등",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derive": "transform",
+          "derived": true,
+          "edit_of": "기준",
+          "ops": [
+            "rescale",
+            "rotate"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_10",
+      "domain": "시공간능력",
+      "subtype": "관점 기준 좌우",
+      "construct": "자기중심-대상중심 좌표",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "choice2",
+      "answer_kind": "좌우"
+    },
+    {
+      "id": "EXE_01",
+      "domain": "집행기능",
+      "subtype": "분류 규칙 전환",
+      "construct": "인지 전환",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 2
+        }
+      ],
+      "response": "choice2",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "EXE_02",
+      "domain": "집행기능",
+      "subtype": "익숙한 반응 억제",
+      "construct": "간섭 억제",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "EXE_03",
+      "domain": "집행기능",
+      "subtype": "반복 규칙 완성",
+      "construct": "계열 추론",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "기준",
+          "ops": [
+            "recolor",
+            "rotate"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "EXE_04",
+      "domain": "집행기능",
+      "subtype": "증가 규칙 적용",
+      "construct": "계열 추론",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "EXE_05",
+      "domain": "집행기능",
+      "subtype": "두 규칙 동시 적용",
+      "construct": "규칙 통합",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "기준",
+          "ops": [
+            "recolor",
+            "rescale",
+            "rotate"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "EXE_06",
+      "domain": "집행기능",
+      "subtype": "절차 순서 배열",
+      "construct": "계획",
+      "panels": [
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4
+        }
+      ],
+      "response": "open",
+      "answer_kind": "순서"
+    },
+    {
+      "id": "EXE_07",
+      "domain": "집행기능",
+      "subtype": "최단 경로 계획",
+      "construct": "계획",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "경로"
+    },
+    {
+      "id": "EXE_08",
+      "domain": "집행기능",
+      "subtype": "행·열 제약 추론",
+      "construct": "제약 만족",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "EXE_09",
+      "domain": "집행기능",
+      "subtype": "한 수 이동으로 목표 달성",
+      "construct": "수단-목표 분석",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "기준",
+          "ops": [
+            "move"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "설명"
+    },
+    {
+      "id": "EXE_10",
+      "domain": "집행기능",
+      "subtype": "제한 안에서 선택 최적화",
+      "construct": "의사결정",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "목록"
+    }
+  ]
+}

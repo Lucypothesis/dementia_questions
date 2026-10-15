@@ -1,0 +1,68 @@
+{
+  "slot_id": "ATT_05",
+  "question": "기준 이미지와 검사 이미지를 비교하여 어떤 사물이 변경되었는지 말해보세요.",
+  "answer": "사과",
+  "answer_rationale": "기준 이미지에 빨간 사과가 있고, 검사 이미지에 빨간 사과가 없다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "glass",
+            "name": "안경",
+            "appearance": "검은 뿔테",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "remove",
+          "target": "apple"
+        }
+      ]
+    }
+  ]
+}

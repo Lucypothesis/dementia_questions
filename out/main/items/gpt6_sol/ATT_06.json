@@ -1,0 +1,93 @@
+{
+  "slot_id": "ATT_06",
+  "question": "두 장면을 비교하여 달라진 점 세 가지를 모두 말해 주세요.",
+  "answer": "머그컵이 왼쪽 위에서 오른쪽 아래로 옮겨졌고, 공이 빨간색에서 파란색으로 바뀌었으며, 열쇠가 사라졌습니다.",
+  "answer_rationale": "검사 장면은 기준 장면에서 머그컵 이동, 공의 색 변경, 열쇠 제거만 적용한 장면이므로 달라진 점은 이 세 가지뿐입니다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이가 달린 흰색 낱개 하나",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "ball",
+            "name": "공",
+            "appearance": "매끈한 둥근 공 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "book",
+            "name": "책",
+            "appearance": "표지가 닫힌 초록색 책 한 권",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리가 달리지 않은 금속 열쇠 낱개 하나",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "comb",
+            "name": "빗",
+            "appearance": "손잡이가 달린 검은색 빗 낱개 하나",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "move",
+          "target": "cup",
+          "to_cell": [
+            1,
+            2
+          ]
+        },
+        {
+          "op": "recolor",
+          "target": "ball",
+          "to_color": "파랑"
+        },
+        {
+          "op": "remove",
+          "target": "key"
+        }
+      ]
+    }
+  ]
+}

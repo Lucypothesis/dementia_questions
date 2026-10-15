@@ -1,0 +1,107 @@
+We need answer user's request. Need produce JSON only. Need analyze in Korean? User Korean. Need design item for slot VIS_06. Need output one JSON object no markdown. Need ensure schema. Let's understand slot:
+{
+ id VIS_06, domain 시공간능력, subtype 대칭 완성, construct 대칭 이해,
+ panels: [ {stage 기준, kind scene}, {stage 보기, kind option, n:4, derive transform, derived true, edit_of 기준, ops: [mirror, move]} ],
+ response choice4, answer_kind 보기번호
+}
+Need create one item. Panels max 8. Need include 기준 scene and 4 option panels. Since derived true, options must be kind option with edit_of 기준 and changes using allowed ops mirror, move. Need answer number 1-4. Need question in Korean, no meta. Need answer rationale. Need ensure options are controlled variants. For symmetry completion, likely show a base scene with a shape and a mirror axis? Need ask which option completes symmetry? But only one 기준 panel and 4 options? The test taker sees question and images. Need question: "위 그림을 기준으로, 왼쪽과 오른쪽이 대칭이 되도록 완성한 그림은 어느 것입니까?" But if only base and options, base might be half? Need design such that options are transformations of base. But derived options from base using mirror/move. Need answer unique.
+
+We need think carefully about pipeline: It will render panels. For option panels derived from 기준 by changes. If answer option should be correct symmetry completion. But if options are derived from base by mirror/move, how represent completion? Maybe base scene contains a partial asymmetric arrangement and a vertical mirror line? Options are full scenes? But derived options can only modify base objects, not add new? ops include mirror, move. Could mirror an object to create symmetric counterpart? If base has one object on left of axis, correct option mirrors it to right. Incorrect options move it or mirror wrong? But options are full panels derived from base; if base has only left object, option with mirror target object? The op mirror likely mirrors the target object across panel center? Or maybe mirrors object itself? Need infer. Changes op mirror target ref. It might mirror the object (flip its appearance) or move to mirrored position? The schema doesn't specify. In examples, rotate target shape to_rotation. For symmetry, mirror likely flips object horizontally? But to complete symmetry, need add mirrored copy? op add allowed? Slot ops only mirror, move. Cannot add. So maybe base scene contains both original and a placeholder? Or option panels can mirror an existing object to create symmetric counterpart? If mirror op mirrors target object across vertical axis and leaves original? Not sure.
+
+Alternative: Base scene is a complete asymmetric pattern. Options are transformed versions: one is mirror image (correct), others are moved/rotated? But subtype 대칭 완성: maybe ask which option is the mirror image of 기준. That's symmetry understanding. The slot ops mirror, move. Correct option: mirror the whole scene? But changes target object? Could mirror each object? If base has multiple objects, correct option mirrors all objects across vertical axis. But changes array can include multiple mirror ops for each object. Incorrect options: move one object, or mirror only some? Need ensure unique.
+
+But if options derived from base by mirror/move, and correct is mirror of base, we can set option 1 changes: mirror all objects. Option 2: move one object (no mirror) maybe not symmetric. Option 3: mirror some but move one. Option 4: mirror all but move one? Need controlled variants.
+
+Question: "첫 번째 그림을 세로축으로 대칭 반전시킨 그림은 어느 것입니까?" That is mirror image, not completion. But subtype 대칭 완성 maybe "대칭 완성" could be choose the figure that completes symmetry. If base is half, options are possible completions. But derived options from base with mirror/move: base could contain a vertical divider and a left-side object. Correct option mirrors the left object to right (if mirror op moves to mirrored cell? uncertain). If mirror op only flips object orientation, not position, not enough.
+
+Need design robust to pipeline semantics. We need know likely implementation: scene objects have cell. change op mirror target: probably mirrors object across vertical center? It may set mirrored=true? Or transform position? The schema object has mirrored boolean. change has no to_cell for mirror. It might apply mirror to object's appearance (flip horizontally) not position. But for grid cells, mirror could change cell column? The op name mirror likely mirrors the object (maybe across vertical axis of panel) and updates cell? Since no parameters, likely mirror across vertical center of layout. For grid, if cols known, mirror column = cols-1-col. It may also set mirrored true. That would be useful for symmetry. If target object in cell [0,0] in 2x2, mirror to [0,1] and flip. But if original remains? It says changes applied to copied panel; op mirror target probably transforms that object in place, not add copy. So if base has object left, option mirror target moves/flips it to right, losing left. That would not be completion (both sides). Unless base has two objects: one left original, one right placeholder? Mirror the placeholder? Hmm.
+
+Could use base with a central object and ask which option is mirror image? Then mirror op on all objects transforms positions. Correct option is full mirror of base. That fits derived options and ops mirror/move. But subtype 대칭 완성? Maybe "대칭 완성" can be "which is the symmetric counterpart". Need maybe question: "위 그림과 세로축을 기준으로 대칭이 되는 그림은?" That's mirror image. It tests symmetry understanding.
+
+Need ensure options unique. Base scene: maybe 2x2 grid with two distinct objects: red apple at [0,0], blue cup at [1,1]? Mirror across vertical axis would apple [0,1], cup [1,0]. If option correct mirrors both. Incorrect options: move one object, mirror only one? But if option derived from base, changes can include mirror for some objects and move for others. Need all options are controlled variants of correct mirror. For choice4, answer maybe 2. Need options:
+1: mirror both (correct)
+2: mirror apple only, move cup? But then not full mirror.
+3: move apple, mirror cup? 
+4: mirror both but move one? Need ensure only one exactly mirror.
+
+But if mirror op on object in grid changes cell and flips. If we mirror both, correct. If we mirror one and move the other to its mirrored cell? Could produce same visual? Need avoid ambiguity. Use objects with distinct positions and appearances. If move op can place object to mirrored cell without flipping, visual may differ by orientation if object has facing/asymmetry. Need use objects with clear orientation? But if object is symmetric (apple) orientation not matter. To distinguish mirror vs move, use facing or asymmetric appearance. But if mirror op flips object, a facing object changes facing. Move doesn't. So correct mirror will have facing reversed. Incorrect move will have same facing. Good.
+
+Base: 2x2 grid. Objects:
+- bird? facing left at [0,0]? Mirror across vertical axis should move to [0,1] and facing right.
+- arrow? facing up? Mirror vertical doesn't change up? Maybe use facing left/right.
+Need two objects to make unique. But if one object only, options: mirror (correct), move to right (same position but not flipped), remove? ops only mirror/move. Could have option move to right, option mirror, option move to left? But base at left. Need 4 options. Could use one object with facing left. Correct mirror: to right facing right. Incorrect: move to right facing left; mirror? maybe mirror in place? If mirror op flips in place not move? uncertain. Better multiple objects.
+
+Need consider if mirror op target can be applied to multiple objects. Yes changes array.
+
+Potential issue: If base has objects at [0,0] and [1,1], mirror both yields [0,1] and [1,0]. If option 2: mirror object A only, move object B to [1,0] (same as mirrored position) but B not flipped. If B is symmetric, visual same as correct except A? Wait A mirrored, B moved. If B symmetric, correct and option 2 differ only B orientation? If B symmetric no difference. So use B with facing/asymmetry. Or use move to different cell.
+
+Simpler: Base 1x2 row? layout row? Need rows/cols? For grid, rows 1 cols 2. Object at [0,0] facing left. Mirror across vertical axis -> [0,1] facing right. Options:
+1 correct: mirror obj.
+2 move obj to [0,1] (facing left)
+3 mirror obj? can't duplicate. Need 4 distinct. Could add second object? If only one object, options can be: mirror (correct), move to [0,1], move to [0,0]? no change? But changes minItems 1, cannot no changes. Could move to [0,0] (same cell) maybe no visual change? Not allowed? It would be identical to base, but option panel derived with move to same cell maybe no visual change. But options should be controlled variants. Could use rescale? not allowed. Could mirror then move? If mirror moves to [0,1], then move to [0,0] returns? But facing flipped? Maybe. Need 4 options with allowed ops mirror/move.
+
+Maybe base has two objects, easier.
+
+Need ensure option changes all not identical. Answer unique.
+
+Let's design base scene:
+layout grid rows 2 cols 2 background 흰 바닥.
+objects:
+ref "bird", name "새", appearance "왼쪽을 보는 낱개 하나", facing "왼쪽", cell [0,0], is_target true.
+ref "arrow", name "화살표", appearance "위쪽을 가리키는 낱개 하나", facing "위", cell [1,1], is_target true.
+Maybe arrow facing up unaffected by vertical mirror, so not good for distinguishing mirror vs move. Use facing left/right for both? But if both left, mirror both to right. Base: bird left at [0,0], arrow left at [1,1]? Arrow facing left? An arrow can face left. Mirror vertical -> positions [0,1], [1,0], facing right. Move only -> positions same but facing left. Good.
+But if arrow facing left, appearance "왼쪽을 가리키는 화살표". Mirror flips to right. Good.
+Base objects both facing left. Correct option: mirror bird, mirror arrow.
+Option 2: mirror bird, move arrow to [1,0] (not mirrored orientation). Visual: bird correct, arrow position correct but facing left. Not full mirror.
+Option 3: move bird to [0,1], mirror arrow. Bird facing left at [0,1], arrow correct. Not full.
+Option 4: move bird to [0,1], move arrow to [1,0]. Both positions correct but facing left. Not full.
+This gives 4 distinct, only option 1 full mirror. But is option 4 maybe if objects are symmetric? They are facing left, so not symmetric. Good.
+Need question: "첫 번째 그림을 세로축 기준으로 대칭 반전시킨 그림은 어느 것입니까?" But subtype 대칭 완성? Could phrase "위 그림의 대칭 그림을 완성한 것은?" Maybe "위 그림을 세로축을 기준으로 대칭으로 완성한 그림은?" If base is full, not completion. Maybe "위 그림과 세로축을 기준으로 대칭이 되는 그림은?" That's mirror image. It's acceptable for 대칭 이해. But subtype 대칭 완성 maybe expects completing a half. Could we design base as half and options as completions using mirror/move? Let's explore.
+
+If base has a vertical divider and left-side object. Correct option should have both left and right mirrored. But derived options from base can only modify existing objects, not add. Unless base includes a right-side object that is hidden? Could base include a faint placeholder? Not allowed? Could use object on right that is "흰색"? Hmm.
+
+Maybe base scene includes a central axis and one object on left, and one object on right that is a "대칭 자리" empty? Can't add. But op mirror could mirror the left object to right while leaving original? If mirror op creates a mirrored copy? The spec says changes op mirror target. It might mirror the object, not add. In image editing, "mirror" could flip the object in place, not duplicate. But in pipeline, maybe op mirror applies to object's cell? It likely transforms object, not duplicate. So cannot complete half with one object.
+
+Could base include two objects: left object and right object that is a "ghost" or "outline"? But options derived by mirror/move could turn ghost into correct? Not straightforward.
+
+Thus mirror image task is safer.
+
+Need ensure schema: panels array: first {stage:"기준", kind:"scene", scene:{...}}. Then four {stage:"보기", kind:"option", option_index:1..4, edit_of:"기준", changes:[...]}. For correct option, spec says if answer option same as base omit changes and edit_of only. But here correct is not same, it's mirror. So include changes. For options, kind option requires option_index. It can have edit_of and changes. Schema for option: if kind option then required option_index. It doesn't require scene or edit_of. But derived true means only edit_of allowed? We'll use edit_of.
+
+Need check additionalProperties false for panel: allowed properties stage, kind, option_index, scene, edit_of, changes. Good.
+Change object: required op,target. additionalProperties false. Allowed to_cell, to_pos, to_color, to_rotation, to_scale, object. For mirror no extra. For move need to_cell. Good.
+
+Need ensure target refs exist in 기준: bird, arrow. Good.
+
+Need answer: "1" if option 1 correct. answer_rationale: explain only option 1 mirrors both objects across vertical axis, changing positions and facing; others move without flipping or flip only one.
+
+Need question: Should not include meta. "첫 번째 그림을 세로축 기준으로 대칭 반전시킨 그림은 어느 것입니까?" It references first image? Test taker sees 기준 and options. Could say "위 그림을 세로축 기준으로 대칭으로 바꾼 그림은?" But "위 그림" maybe okay. Need no meta like "이미지에 관한 메타설명을 넣지 않는다". It's about image. Maybe "첫 번째 그림과 세로축을 기준으로 대칭이 되는 그림은?" Good.
+
+But subtype 대칭 완성: maybe "대칭 완성" means choose the option that completes the symmetry of the base. If question says mirror image, maybe mismatch. Could phrase "위 그림을 세로축 기준으로 대칭으로 완성한 그림은?" If base is full, "완성" odd. Could make base a half? Let's see if possible with derived options and ops mirror/move by using base with both sides but one side is "missing"? Maybe base includes a central vertical line and a left object, and a right object that is a "대칭 그림" but wrong? Options can move/mirror the right object to correct? Hmm.
+
+Maybe base scene can contain a left object and a right object that is a "대칭 자리" with a different object? The task: complete symmetry by choosing which option correctly places the missing counterpart. But options are full panels derived from base; correct option could mirror the left object (if mirror op duplicates?) Not sure.
+
+Given slot ops only mirror, move, likely intended for options as transformations of base, not adding. So mirror image is fine.
+
+Need consider if mirror op on facing object in grid: Does it change facing? If pipeline only sets mirrored boolean but not facing? Object has facing enum. If mirrored true, rendering may flip image, so facing visually reversed. But if facing field remains left, maybe renderer flips? We can't rely? We can also include move? For correct option, if mirror op doesn't change facing field, but mirrored true flips visual. Good. If it doesn't flip visual, then correct and move options may look same if position changed? But mirror op likely flips.
+
+Could use objects with asymmetric appearance and also change facing via move? There is no set facing op. Only mirror can flip. So rely on mirror.
+
+Need maybe use "facing" in base and appearance. For mirror, if object is mirrored, facing should be opposite. But if pipeline doesn't update facing, the object's mirrored boolean may handle. Good.
+
+Need ensure no text in image. No annotations needed.
+
+Potential issue: layout grid rows 2 cols 2. Mirror across vertical axis of panel: column 0 -> 1. If object at [1,1] -> [1,0]. Good.
+
+Option changes:
+1: [{"op":"mirror","target":"bird"},{"op":"mirror","target":"arrow"}]
+2: [{"op":"mirror","target":"bird"},{"op":"move","target":"arrow","to_cell":[1,0]}]
+3: [{"op":"move","target":"bird","to_cell":[0,1]},{"op":"mirror","target":"arrow"}]
+4: [{"op":"move","target":"bird","to_cell":[0,1]},{"op":"move","target":"arrow","to_cell":[1,0]}]
+All changes non-empty. Option 1 correct. Are options all distinct? Yes. But option 2 and 3 maybe if bird/arrow same? They are different names/appearance. Good.
+
+Need answer_rationale: "정답 1번은 두 사물 모두 세로축 대칭으로 위치가 반대 열로 바뀌고 왼쪽을 보던 방향이 오른쪽으로 반전된다. 2번은 화살표만 위치만 이동해 방향이 반전되지 않고, 3번은 새만 위치만 이동해 방향이 반전되지 않으며, 4번은 두 사물 모두 위치만 이동해 방향이 반전되지 않는다." Good.
+
+Need ensure question only and images determine answer. Yes.
+
+But maybe "대칭 완성" could require a vertical axis line. We can add annotation divider? The schema annotation type divider. Could add a vertical divider in base and options? But options derived from base will copy annotations? If base scene has annotations, derived options likely copy? It says pipeline copies first panel then applies changes. Annotations maybe part of scene. Could add divider to indicate axis. But if options derived, divider remains. Good. But annotation schema: type divider, maybe target? from/to? Need not. Could add {"type":"divider"}? It requires type only. But additionalProperties false, can include target, from, to, text. For vertical divider maybe from [0.5,0] to [0.5,1]? But type divider maybe draws line? Could use from/to. However, if we add annotation, it may

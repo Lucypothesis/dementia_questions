@@ -1,0 +1,81 @@
+{
+  "slot_id": "LAN_10",
+  "question": "그림에서 무슨 일이 일어나고 있는지, 등장인물의 행동을 연결하여 이야기해 주세요.",
+  "answer": "탁자 위의 컵이 넘어져 물이 쏟아졌습니다. 아이는 컵을 바라보며 손을 뻗고 있고, 어른은 수건으로 물을 닦고 있습니다.",
+  "answer_rationale": "기울어진 컵과 그 옆의 물, 컵을 향해 손을 뻗은 아이, 물을 닦는 어른의 행동을 연결한 설명이다. 아이가 컵을 넘어뜨렸는지는 그림만으로 확정할 수 없으므로 정답에 포함하지 않는다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "밝은 실내 바닥과 벽이 보인다",
+        "objects": [
+          {
+            "ref": "table",
+            "name": "탁자",
+            "appearance": "넓고 평평한 나무 탁자",
+            "pos": [
+              0.52,
+              0.7
+            ]
+          },
+          {
+            "ref": "cup",
+            "name": "유리컵",
+            "appearance": "탁자 위에 옆으로 넘어져 있는 투명한 컵 낱개 하나",
+            "pos": [
+              0.44,
+              0.55
+            ],
+            "rotation": 90,
+            "is_target": true
+          },
+          {
+            "ref": "water",
+            "name": "쏟아진 물",
+            "appearance": "컵 주둥이에서 이어져 탁자 위로 퍼진 물",
+            "pos": [
+              0.54,
+              0.59
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "child",
+            "name": "아이",
+            "appearance": "탁자 왼쪽에서 넘어진 컵을 바라보며 손을 뻗은 아이",
+            "pos": [
+              0.23,
+              0.46
+            ],
+            "facing": "오른쪽",
+            "is_target": true
+          },
+          {
+            "ref": "adult",
+            "name": "어른",
+            "appearance": "탁자 오른쪽에서 수건을 잡고 탁자 위의 물을 닦는 어른",
+            "pos": [
+              0.81,
+              0.45
+            ],
+            "facing": "왼쪽",
+            "is_target": true
+          },
+          {
+            "ref": "towel",
+            "name": "수건",
+            "appearance": "어른의 손 아래에서 쏟아진 물에 닿아 있는 노란색 수건 낱개 하나",
+            "pos": [
+              0.65,
+              0.59
+            ],
+            "color": "노랑",
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

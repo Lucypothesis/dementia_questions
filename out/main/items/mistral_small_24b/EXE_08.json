@@ -1,0 +1,75 @@
+{
+  "slot_id": "EXE_08",
+  "question": "다음 그림에서 사과가 있는 칸의 위치를 말해 주세요.",
+  "answer": "1행 2열",
+  "answer_rationale": "사과가 1행 2열에 위치해 있으므로, 이 위치가 정답입니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "glass",
+            "name": "안경",
+            "appearance": "검은 뿔테",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "book",
+            "name": "책",
+            "appearance": "파란 표지 낱개",
+            "cell": [
+              1,
+              1
+            ]
+          },
+          {
+            "ref": "pen",
+            "name": "펜",
+            "appearance": "검은색 낱개",
+            "cell": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

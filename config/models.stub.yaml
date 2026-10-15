@@ -1,0 +1,101 @@
+# 배선 확인 전용 설정. 실제 모델을 쓰지 않으므로 비용이 0이다.
+#   python3 src/pipeline.py --run wiring --config config/models.stub.yaml
+# 실제 실험 설정은 models.yaml 쪽이다.
+#
+# 전제: 상업 이용 / A100 80GB / 비용 최소화
+#   - 오픈 가중치 라이선스를 반드시 확인한다. 아래 '쓰면 안 되는 것' 참고.
+#   - 로컬 모델은 bf16 기준 80GB 1장에 들어가는 크기로 고른다.
+#
+# 처음에는 stub만 켜고 전 구간을 돌려 배선을 확인한다 (비용 0).
+# 그 다음 주석을 하나씩 푼다.
+
+llms:
+  - name: stub
+    adapter: stub
+    seed: 0
+
+  # ---- 상용 1개 ($2/$10, 50슬롯 ~$0.61) ----
+  # - name: gpt6_sol
+  #   adapter: openai_compat
+  #   model: gpt-6-sol
+  #   base_url: https://api.openai.com/v1
+  #   api_key_env: OPENAI_API_KEY
+  #   temperature: 0.2
+
+  # ---- 오픈 2개 (둘 다 Apache 2.0, 27B dense -> bf16 약 54GB, A100 80GB 1장) ----
+  # vLLM으로 띄우고 openai_compat으로 붙인다. hf_local보다 훨씬 빠르다.
+  #   vllm serve Qwen/Qwen3.8-27B      --max-model-len 16384 --port 8001
+  #   vllm serve google/gemma-4-27b-it --max-model-len 16384 --port 8002
+  # 27B 두 개를 동시에 올리면 80GB 1장에 안 들어간다. 한 번에 하나씩 띄우고
+  # arm 하나씩 돌리거나, GPU를 나눠 쓴다 (CUDA_VISIBLE_DEVICES).
+  #
+  # - name: qwen38_27b
+  #   adapter: openai_compat
+  #   model: Qwen/Qwen3.8-27B
+  #   base_url: http://127.0.0.1:8001/v1
+  #   api_key_env: VLLM_API_KEY
+  #   temperature: 0.2
+  #
+  # - name: gemma4_27b
+  #   adapter: openai_compat
+  #   model: google/gemma-4-27b-it
+  #   base_url: http://127.0.0.1:8002/v1
+  #   api_key_env: VLLM_API_KEY
+  #   temperature: 0.2
+
+renderers:
+  # 코드 합성. 상한선이자 대조군. GPU가 필요 없고 명세와 100% 일치한다.
+  - name: compose
+    adapter: compose
+    size: 768
+
+  # ---- FLUX.2 klein-4B · Apache 2.0 · 13~16GB · 6스텝이라 매우 빠름 ----
+  # - name: flux2_klein_4b
+  #   adapter: diffusion
+  #   model: black-forest-labs/FLUX.2-klein-4B
+  #   pipeline: Flux2KleinPipeline
+  #   cfg_param: guidance_scale
+  #   steps: 6
+  #   guidance: 1.0
+  #   size: 768
+
+  # ---- Qwen-Image-2512 · Apache 2.0 · 20B MMDiT · bf16 48GB+ ----
+  # CFG 인자 이름이 다르다. guidance_scale로 주면 조용히 무시된다.
+  # - name: qwen_image_2512
+  #   adapter: diffusion
+  #   model: Qwen/Qwen-Image-2512
+  #   pipeline: QwenImagePipeline
+  #   cfg_param: true_cfg_scale
+  #   steps: 30
+  #   guidance: 4.0
+  #   size: 768
+  #   negative_prompt: "글자, 숫자, 라벨, 워터마크, 흐릿함, 잘림"
+
+  # ---- SD 3.5 Large · 8.1B · Stability AI Community License ----
+  # 주의: Apache 2.0이 아니다. 연매출 100만 달러 미만 조직만 상업 이용이 무료이고
+  # 그 위로는 엔터프라이즈 계약이 필요하다. 매출 출처와 무관하게 적용된다.
+  # 세대 비교용 참조 arm으로만 쓰고, 배포 후보로는 두지 않는 것을 권한다.
+  # - name: sd35_large
+  #   adapter: diffusion
+  #   model: stabilityai/stable-diffusion-3.5-large
+  #   pipeline: StableDiffusion3Pipeline
+  #   cfg_param: guidance_scale
+  #   steps: 28
+  #   guidance: 3.5
+  #   size: 768
+
+  # ---- 쓰면 안 되는 것 (상업 배포 불가) ----
+  #   black-forest-labs/FLUX.2-klein-9B  BFL 비상용 라이선스 (test_012에서 쓰던 것)
+  #   black-forest-labs/FLUX.2-dev       BFL 비상용 라이선스
+  #   Qwen/Qwen-Image-2.1 (7B)           연구 전용. 더 작고 새롭지만 못 쓴다
+
+judge:
+  name: stub
+  adapter: stub
+
+  # 자동 채점기. 사람 검수 표본과 상관을 확인한 뒤에 전수에 쓴다.
+  # name: vlm_judge
+  # adapter: vlm
+  # model: <비전 모델ID>
+  # base_url: https://<엔드포인트>/v1
+  # api_key_env: JUDGE_API_KEY

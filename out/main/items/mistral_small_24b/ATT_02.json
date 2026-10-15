@@ -1,0 +1,70 @@
+{
+  "slot_id": "ATT_02",
+  "question": "다음 그림에서 빨간색 사과와 노란색 사과의 개수를 각각 몇 개인지 말해 주세요.",
+  "answer": "3, 2",
+  "answer_rationale": "빨간색 사과는 3개, 노란색 사과는 2개로 각각의 개수를 세어 정답을 도출할 수 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_apple1",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_apple2",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_apple3",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "yellow_apple1",
+            "name": "사과",
+            "color": "노랑",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "yellow_apple2",
+            "name": "사과",
+            "color": "노랑",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "LAN_05",
+  "domain": "언어능력",
+  "subtype": "동작 명명",
+  "construct": "동사 인출",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene"
+    }
+  ],
+  "response": "open",
+  "answer_kind": "동작"
+}

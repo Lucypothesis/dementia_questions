@@ -1,0 +1,69 @@
+{
+  "slot_id": "LAN_10",
+  "question": "이 그림을 보고 있는 장면에 대해 설명해 주세요.",
+  "answer": "정답은 수검자의 설명에 따라 다릅니다.",
+  "answer_rationale": "수검자가 그림을 보고 자신의 언어로 설명하는 능력을 평가합니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "tree",
+            "name": "나무",
+            "appearance": "큰 녹색 나무",
+            "pos": [
+              0.2,
+              0.5
+            ],
+            "scale": 0.5
+          },
+          {
+            "ref": "house",
+            "name": "집",
+            "appearance": "빨간 지붕의 작은 집",
+            "pos": [
+              0.7,
+              0.6
+            ],
+            "scale": 0.3
+          },
+          {
+            "ref": "sun",
+            "name": "태양",
+            "appearance": "노란색 원",
+            "pos": [
+              0.8,
+              0.2
+            ],
+            "scale": 0.2
+          },
+          {
+            "ref": "cloud",
+            "name": "구름",
+            "appearance": "흰색 구름",
+            "pos": [
+              0.4,
+              0.1
+            ],
+            "scale": 0.3
+          },
+          {
+            "ref": "bird",
+            "name": "새",
+            "appearance": "작은 파란 새",
+            "pos": [
+              0.5,
+              0.3
+            ],
+            "scale": 0.1,
+            "facing": "오른쪽"
+          }
+        ]
+      }
+    }
+  ]
+}

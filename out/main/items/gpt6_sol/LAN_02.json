@@ -1,0 +1,29 @@
+{
+  "slot_id": "LAN_02",
+  "question": "이 물건의 이름은 무엇인가요?",
+  "answer": "버니어 캘리퍼스",
+  "answer_rationale": "길쭉한 금속 본체, 움직이는 슬라이더, 두 쌍의 측정 턱이 버니어 캘리퍼스의 특징이다. ‘캘리퍼스’와 ‘노기스’도 같은 사물을 가리키는 답으로 인정할 수 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "caliper",
+            "name": "버니어 캘리퍼스",
+            "appearance": "길쭉한 금속 측정 도구 낱개 하나, 직선형 본체와 미끄러지는 슬라이더, 두 쌍의 집게형 측정 턱, 끝의 가느다란 깊이 측정 막대",
+            "color": "은색",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

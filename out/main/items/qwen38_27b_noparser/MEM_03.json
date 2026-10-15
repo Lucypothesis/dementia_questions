@@ -1,0 +1,23 @@
+{
+  "id": "MEM_03",
+  "domain": "기억력",
+  "subtype": "위치 변화 탐지",
+  "construct": "공간 기억",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene"
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "학습",
+      "ops": [
+        "move"
+      ],
+      "n_changes": 1
+    }
+  ],
+  "response": "open",
+  "answer_kind": "사물명"
+}

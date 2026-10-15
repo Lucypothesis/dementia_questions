@@ -1,0 +1,186 @@
+We need answer user's request. Need output JSON only. User Korean. Need design cognitive test item for slot ATT_07: domain attention, subtype direction deviation detection, construct direction discrimination, panels: main scene, response open, answer_kind grid coordinates. Need output one JSON object only, no markdown. Need ensure schema. Need likely create a scene with grid, objects, target direction deviation. Question asks subject to identify coordinate of object that deviates in direction? Since answer_kind grid coordinates. Need open response, answer string maybe "[1,2]"? Need unique. Need panels only main scene kind scene. Need no options. Need scene layout grid rows cols. Need objects with facing for direction. Need is_target true on deviating object. Need question in Korean, no meta. Need answer rationale. Need ensure no text in image. Need maybe use arrows? But arrows are objects with facing? Could use animals or arrows. Direction deviation detection: among several arrows facing same direction, one faces different direction. Need ask "화살표 중 방향이 다른 화살표가 있는 칸의 좌표를 답하세요." But answer_kind grid coordinates. Need image only. Need ensure question only and image. Could use grid 3x3 with 8 arrows facing right, one facing left. But if all arrows same shape, direction deviation. Need specify facing for each arrow. Need maybe use "화살표" as object, appearance "검은색 화살표 낱개 하나", facing "오른쪽" or "왼쪽". Need target is the one facing left. Need answer coordinate. Need ensure unique. Need maybe avoid using arrow as annotation? It's object. Need no labels. Need grid coordinates [row,col]. Need choose target [1,1] maybe center. But if all others right, center left. Need question: "화살표 중 방향이 다른 화살표가 있는 칸의 좌표를 행, 열 순서로 답하세요." But answer_kind grid coordinates. Could answer "[1,1]". Need rationale: all other arrows facing right, only [1,1] facing left. Need ensure objects count 9. Need appearance for each? Could use same appearance. Need ref unique: arrow_0_0 etc. Need facing for each. Need is_target true only target. Need background white. Need layout grid rows 3 cols 3. Need objects each cell. Need maybe use "화살표" name. Need direction: facing enum includes 왼쪽, 오른쪽. Good.
+
+Need consider schema: top-level additionalProperties false, required slot_id, question, answer, panels. We can include answer_rationale. panels array max 8. One panel: stage main, kind scene, scene. Panel additionalProperties false: allowed stage, kind, option_index, scene, edit_of, changes. For kind scene, required scene. Good.
+
+Scene additionalProperties false: layout, rows, cols, background, objects, annotations. Need layout grid requires rows/cols? Schema doesn't enforce but description. We'll include.
+
+Object additionalProperties false: ref, name, appearance, color, cell, rotation, mirrored, scale, facing, is_target. Need ref pattern ^[a-z][a-z0-9_]*$. Use arrow_0_0. Need cell [0,0]. Need facing. Need maybe color. Need appearance: "검은색 화살표 낱개 하나". But if color separate, appearance can be "화살표 낱개 하나". Need no text.
+
+Need question: "화살표 중 방향이 다른 화살표가 있는 칸의 좌표를 행, 열 순서로 답하세요." Is that okay? It mentions image? It's about image. No meta. Need maybe "아래 그림에서 방향이 다른 화살표가 있는 칸의 좌표를 행, 열 순서로 답하세요." But "아래 그림" maybe meta? It's okay? Rule: question only read? It should be about image. Could say "화살표 중 방향이 다른 화살표가 있는 칸의 좌표를 행, 열 순서로 답하세요." Good.
+
+Need answer: "[1,1]"? answer_kind grid coordinates. Could be "1,1" or "[1,1]". Schema answer string. Need likely grid coordinates. Use "[1,1]". Rationale: 3x3 grid, all arrows except [1,1] face right; [1,1] faces left, unique.
+
+Need ensure no other object has different direction. Use 8 right, 1 left. Need maybe target at [1,1]. Need all cells filled. Let's list:
+[0,0] right
+[0,1] right
+[0,2] right
+[1,0] right
+[1,1] left target
+[1,2] right
+[2,0] right
+[2,1] right
+[2,2] right
+
+Need maybe direction deviation could be one arrow facing up? But left is clear. Need ensure facing enum. Good.
+
+Potential issue: "화살표" may be drawn with default orientation? We specify facing. Need appearance maybe "화살표 낱개 하나, 머리 방향이 facing대로". But appearance can't reference facing? Could say "검은색 화살표 낱개 하나". The facing field controls. Need maybe for target "검은색 화살표 낱개 하나". All same.
+
+Need maybe use "direction deviation detection" could require detecting object whose orientation deviates from others. Good.
+
+Need output JSON only. Ensure valid JSON. No trailing commas. Korean strings. Need no markdown.
+
+Double-check schema: top-level properties: slot_id, question, answer, answer_rationale, panels. additionalProperties false. We include exactly. panel: stage enum includes main. kind scene. scene. Good.
+
+Need maybe answer_rationale not required but allowed? top-level additionalProperties false but properties includes answer_rationale, so allowed. Good.
+
+Need ensure object additionalProperties false: we include ref, name, appearance, color, cell, facing, is_target. All allowed. Good.
+
+Need maybe "is_target" default false but include true only target. For others can omit or false. To be explicit maybe include false? Allowed. But not necessary. Could include only target true to reduce. But if additionalProperties false, is_target allowed. Good.
+
+Need maybe "appearance" for rare object? Arrow common. But specify single. "검은색 화살표 낱개 하나". color maybe "검정". If appearance includes color and color field, okay. Could avoid duplicate: appearance "화살표 낱개 하나", color "검정". Good.
+
+Need maybe background: "흰 바닥". Good.
+
+Need maybe annotations none. Not required.
+
+Need self-validation:
+1 question only? It asks coordinate of arrow with different direction. Need image to see. Good.
+2 unique? yes.
+3 rationale includes uniqueness.
+4 no edit.
+5 slot panels: main scene one. Good.
+
+Potential concern: answer_kind grid coordinates maybe expects "1,1" not bracket. But answer string can be "[1,1]". The schema doesn't specify. The example in prompt uses cell [0,0]. For answer_kind grid coordinates, likely answer should be "[1,1]". Good.
+
+Need maybe question should not say "화살표 중" if there are 9 arrows. Good.
+
+Could there be issue with all arrows facing right except one left, but if arrow shape symmetric? Arrow has direction. Good.
+
+Need maybe use "facing": "오른쪽" for right, "왼쪽" for left. Good.
+
+Let's craft JSON:
+{
+ "slot_id": "ATT_07",
+ "question": "화살표 중 방향이 다른 화살표가 있는 칸의 좌표를 행, 열 순서로 답하세요.",
+ "answer": "[1,1]",
+ "answer_rationale": "3×3 격자의 나머지 8개 화살표는 모두 오른쪽을 향하고, [1,1] 칸의 화살표만 왼쪽을 향하므로 방향이 다른 화살표는 [1,1]로 유일하다.",
+ "panels": [
+  {"stage":"main","kind":"scene","scene":{"layout":"grid","rows":3,"cols":3,"background":"흰 바닥","objects":[
+   {"ref":"arrow_0_0","name":"화살표","appearance":"화살표 낱개 하나","color":"검정","cell":[0,0],"facing":"오른쪽"},
+...
+  ]}}
+ ]
+}
+
+Need ensure no invalid characters? Korean okay. JSON strings. Use ×? Could use "3x3" to avoid unicode? Unicode okay. But maybe use "3×3" fine. Could use "3x3". Rationale: "3x3 격자". Good.
+
+Need maybe target is_target true. Add to [1,1]. For others no is_target. Good.
+
+Need maybe all objects have same appearance. Good.
+
+Let's ensure refs pattern: arrow_0_0 starts a, lowercase, digits underscore. Good.
+
+Need maybe object name singular: "화살표" is singular? In Korean no plural. Could say "화살표 낱개". Name: "화살표". Good.
+
+Need maybe "appearance": "검은색 화살표 낱개 하나" and color omitted? But color field allowed. Use both? If appearance includes black and color black, okay. But to be safe: appearance "화살표 낱개 하나", color "검정". Good.
+
+Need maybe "facing" for arrow: enum includes 왼쪽, 오른쪽. Good.
+
+Potential issue: If all arrows are black and same, the one facing left is target. Good.
+
+Need final only JSON. No code fence. Ensure valid. Let's produce.
+</think>
+
+{
+  "slot_id": "ATT_07",
+  "question": "화살표 중 방향이 다른 화살표가 있는 칸의 좌표를 행, 열 순서로 답하세요.",
+  "answer": "[1,1]",
+  "answer_rationale": "3x3 격자의 나머지 8개 화살표는 모두 오른쪽을 향하고, [1,1] 칸의 화살표만 왼쪽을 향하므로 방향이 다른 화살표는 [1,1]로 유일하다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "arrow_0_0",
+            "name": "화살표",
+            "appearance": "화살표 낱개 하나",
+            "color": "검정",
+            "cell": [0, 0],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "arrow_0_1",
+            "name": "화살표",
+            "appearance": "화살표 낱개 하나",
+            "color": "검정",
+            "cell": [0, 1],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "arrow_0_2",
+            "name": "화살표",
+            "appearance": "화살표 낱개 하나",
+            "color": "검정",
+            "cell": [0, 2],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "arrow_1_0",
+            "name": "화살표",
+            "appearance": "화살표 낱개 하나",
+            "color": "검정",
+            "cell": [1, 0],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "arrow_1_1",
+            "name": "화살표",
+            "appearance": "화살표 낱개 하나",
+            "color": "검정",
+            "cell": [1, 1],
+            "facing": "왼쪽",
+            "is_target": true
+          },
+          {
+            "ref": "arrow_1_2",
+            "name": "화살표",
+            "appearance": "화살표 낱개 하나",
+            "color": "검정",
+            "cell": [1, 2],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "arrow_2_0",
+            "name": "화살표",
+            "appearance": "화살표 낱개 하나",
+            "color": "검정",
+            "cell": [2, 0],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "arrow_2_1",
+            "name": "화살표",
+            "appearance": "화살표 낱개 하나",
+            "color": "검정",
+            "cell": [2, 1],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "arrow_2_2",
+            "name": "화살표",
+            "appearance": "화살표 낱개 하나",
+            "color": "검정",
+            "cell": [2, 2],
+            "facing": "오른쪽"
+          }
+        ]
+      }
+    }
+  ]
+}

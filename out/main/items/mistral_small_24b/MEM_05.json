@@ -1,0 +1,76 @@
+{
+  "slot_id": "MEM_05",
+  "question": "이전 단계에서 본 무늬를 찾아보세요.",
+  "answer": "1",
+  "answer_rationale": "정답은 첫 번째 보기에 있는 무늬와 동일합니다. 다른 보기는 색상, 회전, 위치가 변경되었습니다.",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "pattern",
+            "name": "무늬",
+            "appearance": "파란색 원과 빨간색 사각형이 교차하는 무늬",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사 보기",
+      "kind": "option",
+      "option_index": 1,
+      "edit_of": "학습"
+    },
+    {
+      "stage": "검사 보기",
+      "kind": "option",
+      "option_index": 2,
+      "edit_of": "학습",
+      "changes": [
+        {
+          "op": "recolor",
+          "target": "pattern",
+          "to_color": "녹색"
+        }
+      ]
+    },
+    {
+      "stage": "검사 보기",
+      "kind": "option",
+      "option_index": 3,
+      "edit_of": "학습",
+      "changes": [
+        {
+          "op": "rotate",
+          "target": "pattern",
+          "to_rotation": 90
+        }
+      ]
+    },
+    {
+      "stage": "검사 보기",
+      "kind": "option",
+      "option_index": 4,
+      "edit_of": "학습",
+      "changes": [
+        {
+          "op": "move",
+          "target": "pattern",
+          "to_pos": [
+            0.7,
+            0.7
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "slot_id": "ATT_10",
+  "question": "다음 그림에서 빨간색 사과가 몇 개 있나요?",
+  "answer": "2",
+  "answer_rationale": "사과는 빨간색 2개, 녹색 1개로 총 3개지만, 빨간색 사과만 세어야 한다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple_red1",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple_red2",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple_green",
+            "name": "사과",
+            "color": "녹색",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              1,
+              1
+            ]
+          },
+          {
+            "ref": "glass",
+            "name": "안경",
+            "appearance": "검은 뿔테",
+            "cell": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

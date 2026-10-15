@@ -1,0 +1,86 @@
+{
+  "slot_id": "MEM_07",
+  "question": "처음에 보았던 물건 중 지금 사라진 것은 무엇인가요?",
+  "answer": "빗",
+  "answer_rationale": "검사 장면은 학습 장면에서 빗 하나만 삭제한 것이므로 사라진 물건은 빗뿐이다.",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이가 달린 흰색 낱개 하나",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "은색 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "hat",
+            "name": "모자",
+            "appearance": "챙이 있는 파란색 낱개 하나",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "comb",
+            "name": "빗",
+            "appearance": "빗살이 촘촘한 검은색 낱개 하나",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "pencil",
+            "name": "연필",
+            "appearance": "뾰족하게 깎인 노란색 낱개 하나",
+            "cell": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "학습",
+      "changes": [
+        {
+          "op": "remove",
+          "target": "comb"
+        }
+      ]
+    }
+  ]
+}

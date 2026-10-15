@@ -1,0 +1,122 @@
+{
+  "slot_id": "ATT_09",
+  "question": "아래 그림에서 빨간색이고 위쪽을 가리키는 화살표는 몇 개인가요?",
+  "answer": "3",
+  "answer_rationale": "9개의 화살표 중 arrow_1, arrow_4, arrow_8만 color가 빨강이고 facing이 위이다. 나머지 화살표는 빨강이지만 아래 또는 왼쪽을 가리키거나, 위를 가리키지만 파랑이거나, 색과 방향이 모두 다르므로 정답은 3개다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "arrow_1",
+            "name": "화살표",
+            "appearance": "화살표 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "facing": "위",
+            "is_target": true
+          },
+          {
+            "ref": "arrow_2",
+            "name": "화살표",
+            "appearance": "화살표 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "facing": "위"
+          },
+          {
+            "ref": "arrow_3",
+            "name": "화살표",
+            "appearance": "화살표 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              2
+            ],
+            "facing": "아래"
+          },
+          {
+            "ref": "arrow_4",
+            "name": "화살표",
+            "appearance": "화살표 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "facing": "위",
+            "is_target": true
+          },
+          {
+            "ref": "arrow_5",
+            "name": "화살표",
+            "appearance": "화살표 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ],
+            "facing": "아래"
+          },
+          {
+            "ref": "arrow_6",
+            "name": "화살표",
+            "appearance": "화살표 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              2
+            ],
+            "facing": "왼쪽"
+          },
+          {
+            "ref": "arrow_7",
+            "name": "화살표",
+            "appearance": "화살표 하나",
+            "color": "파랑",
+            "cell": [
+              2,
+              0
+            ],
+            "facing": "오른쪽"
+          },
+          {
+            "ref": "arrow_8",
+            "name": "화살표",
+            "appearance": "화살표 하나",
+            "color": "빨강",
+            "cell": [
+              2,
+              1
+            ],
+            "facing": "위",
+            "is_target": true
+          },
+          {
+            "ref": "arrow_9",
+            "name": "화살표",
+            "appearance": "화살표 하나",
+            "color": "파랑",
+            "cell": [
+              2,
+              2
+            ],
+            "facing": "아래"
+          }
+        ]
+      }
+    }
+  ]
+}

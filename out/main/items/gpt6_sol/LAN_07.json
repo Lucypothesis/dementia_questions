@@ -1,0 +1,28 @@
+{
+  "slot_id": "LAN_07",
+  "question": "이 물건은 무엇을 할 때 사용하나요?",
+  "answer": "액체를 입구가 좁은 용기에 옮겨 담을 때 사용한다.",
+  "answer_rationale": "넓은 입구에서 좁은 관으로 이어지는 깔때기이므로, 액체를 좁은 용기 입구로 흘려 넣는 용도가 분명하다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "funnel",
+            "name": "깔때기",
+            "appearance": "위쪽은 넓은 원뿔형 입구이고 아래쪽은 가느다란 관으로 이어진 투명한 낱개 하나",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

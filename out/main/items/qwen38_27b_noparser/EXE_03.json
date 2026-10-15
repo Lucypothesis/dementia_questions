@@ -1,0 +1,25 @@
+{
+  "id": "EXE_03",
+  "domain": "집행기능",
+  "subtype": "반복 규칙 완성",
+  "construct": "계열 추론",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene"
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "n": 4,
+      "derived": true,
+      "edit_of": "기준",
+      "ops": [
+        "recolor",
+        "rotate"
+      ]
+    }
+  ],
+  "response": "choice4",
+  "answer_kind": "보기번호"
+}

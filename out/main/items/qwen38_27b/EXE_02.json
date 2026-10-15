@@ -1,0 +1,61 @@
+{
+  "slot_id": "EXE_02",
+  "question": "그림에 있는 사물 중 사과가 아닌 빨간 사물의 이름을 말하세요.",
+  "answer": "머그컵",
+  "answer_rationale": "사과 두 개는 빨강이지만 사과이므로 제외되고, 열쇠는 파랑이므로 제외되며, 빨간 사물 중 사과가 아닌 사물은 머그컵 하나뿐이다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "apple_1",
+            "name": "사과",
+            "appearance": "빨간 원형 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "apple_2",
+            "name": "사과",
+            "appearance": "빨간 원형 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

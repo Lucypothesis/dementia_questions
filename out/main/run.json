@@ -1,0 +1,166 @@
+{
+  "slots": [
+    "MEM_01",
+    "MEM_02",
+    "MEM_03",
+    "MEM_04",
+    "MEM_05",
+    "MEM_06",
+    "MEM_07",
+    "MEM_08",
+    "MEM_09",
+    "MEM_10",
+    "ATT_01",
+    "ATT_02",
+    "ATT_03",
+    "ATT_04",
+    "ATT_05",
+    "ATT_06",
+    "ATT_07",
+    "ATT_08",
+    "ATT_09",
+    "ATT_10",
+    "LAN_01",
+    "LAN_02",
+    "LAN_03",
+    "LAN_04",
+    "LAN_05",
+    "LAN_06",
+    "LAN_07",
+    "LAN_08",
+    "LAN_09",
+    "LAN_10",
+    "VIS_01",
+    "VIS_02",
+    "VIS_03",
+    "VIS_04",
+    "VIS_05",
+    "VIS_06",
+    "VIS_07",
+    "VIS_08",
+    "VIS_09",
+    "VIS_10",
+    "EXE_01",
+    "EXE_02",
+    "EXE_03",
+    "EXE_04",
+    "EXE_05",
+    "EXE_06",
+    "EXE_07",
+    "EXE_08",
+    "EXE_09",
+    "EXE_10"
+  ],
+  "config": {
+    "llms": [
+      {
+        "name": "gpt6_sol",
+        "adapter": "openai_compat",
+        "model": "gpt-6-sol",
+        "base_url": "https://api.openai.com/v1",
+        "api_key_env": "OPENAI_API_KEY",
+        "temperature": 0.2
+      },
+      {
+        "name": "qwen38_27b",
+        "adapter": "openai_compat",
+        "model": "Qwen/Qwen3.8-27B",
+        "base_url": "http://127.0.0.1:8001/v1",
+        "api_key_env": "VLLM_API_KEY",
+        "temperature": 0.2,
+        "max_tokens": 16384
+      },
+      {
+        "name": "mistral_small_24b",
+        "adapter": "openai_compat",
+        "model": "mistralai/Mistral-Small-24B-Instruct-2501",
+        "base_url": "http://127.0.0.1:8003/v1",
+        "api_key_env": "VLLM_API_KEY",
+        "temperature": 0.2
+      },
+      {
+        "name": "qwen38_27b_noparser",
+        "adapter": "openai_compat",
+        "model": "Qwen/Qwen3.8-27B",
+        "base_url": "http://127.0.0.1:8001/v1",
+        "api_key_env": "VLLM_API_KEY",
+        "max_tokens": 4096,
+        "readonly": true
+      }
+    ],
+    "renderers": [
+      {
+        "name": "flux2_klein_4b",
+        "adapter": "diffusion",
+        "model": "black-forest-labs/FLUX.2-klein-4B",
+        "pipeline": "Flux2KleinPipeline",
+        "cfg_param": "guidance_scale",
+        "steps": 6,
+        "guidance": 1.0,
+        "size": 768
+      },
+      {
+        "name": "z_image_turbo",
+        "adapter": "diffusion",
+        "model": "Tongyi-MAI/Z-Image-Turbo",
+        "pipeline": "ZImagePipeline",
+        "cfg_param": "guidance_scale",
+        "steps": 8,
+        "guidance": 1.0,
+        "size": 768
+      },
+      {
+        "name": "qwen_image_2512",
+        "adapter": "diffusion",
+        "model": "Qwen/Qwen-Image-2512",
+        "pipeline": "QwenImagePipeline",
+        "cfg_param": "true_cfg_scale",
+        "steps": 30,
+        "guidance": 4.0,
+        "size": 768,
+        "negative_prompt": "글자, 숫자, 라벨, 워터마크, 흐릿함, 잘림"
+      },
+      {
+        "name": "qwen_image_2512_lightning",
+        "adapter": "diffusion",
+        "model": "Qwen/Qwen-Image-2512",
+        "pipeline": "QwenImagePipeline",
+        "cfg_param": "true_cfg_scale",
+        "steps": 4,
+        "guidance": 1.0,
+        "size": 768,
+        "lora": "lightx2v/Qwen-Image-2512-Lightning",
+        "lora_weight_name": "Qwen-Image-2512-Lightning-4steps-V1.0-bf16.safetensors"
+      }
+    ],
+    "judge": {
+      "name": "vlm_luna",
+      "adapter": "vlm",
+      "model": "gpt-6-luna",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_API_KEY",
+      "max_tokens": 400,
+      "detail": "auto",
+      "workers": 8
+    },
+    "estimates": {
+      "gpt6_sol": {
+        "price_in": 2.0,
+        "price_out": 10.0
+      },
+      "flux2_klein_4b": {
+        "sec_per_image": 8.0
+      },
+      "z_image_turbo": {
+        "sec_per_image": 9.5
+      },
+      "qwen_image_2512": {
+        "sec_per_image": 45.0
+      },
+      "qwen_image_2512_lightning": {
+        "sec_per_image": 12.0
+      }
+    }
+  },
+  "built": "2026-10-15 15:16:09"
+}

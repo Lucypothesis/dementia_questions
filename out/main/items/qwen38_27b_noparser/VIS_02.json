@@ -1,0 +1,26 @@
+{
+  "id": "VIS_02",
+  "domain": "시공간능력",
+  "subtype": "거울 반전 판별",
+  "construct": "반전 변별",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene"
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "n": 4,
+      "derive": "transform",
+      "derived": true,
+      "edit_of": "기준",
+      "ops": [
+        "mirror",
+        "rotate"
+      ]
+    }
+  ],
+  "response": "choice4",
+  "answer_kind": "보기번호"
+}

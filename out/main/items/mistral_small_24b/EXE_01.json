@@ -1,0 +1,90 @@
+{
+  "slot_id": "EXE_01",
+  "question": "다음 두 그림 중 어떤 그림이 기준 그림과 다른가요?",
+  "answer": "2",
+  "answer_rationale": "기준 그림에는 빨간 사과가 있고, 두 번째 보기에는 파란 사과가 있다. 색상이 다르기 때문에 두 번째 보기가 기준 그림과 다르다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple1",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "apple2",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "apple3",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "apple4",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "edit_of": "기준"
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "recolor",
+          "target": "apple1",
+          "to_color": "파랑"
+        },
+        {
+          "op": "recolor",
+          "target": "apple2",
+          "to_color": "파랑"
+        },
+        {
+          "op": "recolor",
+          "target": "apple3",
+          "to_color": "파랑"
+        },
+        {
+          "op": "recolor",
+          "target": "apple4",
+          "to_color": "파랑"
+        }
+      ]
+    }
+  ]
+}

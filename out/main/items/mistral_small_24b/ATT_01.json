@@ -1,0 +1,48 @@
+{
+  "slot_id": "ATT_01",
+  "question": "다음 그림에 있는 사과의 개수를 세어 보세요.",
+  "answer": "3",
+  "answer_rationale": "사과는 3개로, 각 사과는 다른 위치에 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple1",
+            "name": "사과",
+            "color": "빨강",
+            "pos": [
+              0.2,
+              0.2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple2",
+            "name": "사과",
+            "color": "빨강",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple3",
+            "name": "사과",
+            "color": "빨강",
+            "pos": [
+              0.8,
+              0.8
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

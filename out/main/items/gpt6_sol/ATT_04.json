@@ -1,0 +1,116 @@
+{
+  "slot_id": "ATT_04",
+  "question": "네모 테두리 안쪽에 있는 빨간 동그라미는 모두 몇 개입니까?",
+  "answer": "4",
+  "answer_rationale": "테두리 안쪽의 빨간 동그라미는 4개다. 안쪽의 파란 동그라미와 테두리 바깥의 빨간 동그라미는 세지 않는다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_in_1",
+            "name": "동그라미",
+            "color": "빨강",
+            "pos": [
+              0.3,
+              0.3
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_in_2",
+            "name": "동그라미",
+            "color": "빨강",
+            "pos": [
+              0.55,
+              0.29
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_in_3",
+            "name": "동그라미",
+            "color": "빨강",
+            "pos": [
+              0.36,
+              0.58
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_in_4",
+            "name": "동그라미",
+            "color": "빨강",
+            "pos": [
+              0.67,
+              0.68
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_in_1",
+            "name": "동그라미",
+            "color": "파랑",
+            "pos": [
+              0.69,
+              0.39
+            ]
+          },
+          {
+            "ref": "blue_in_2",
+            "name": "동그라미",
+            "color": "파랑",
+            "pos": [
+              0.52,
+              0.51
+            ]
+          },
+          {
+            "ref": "red_out_1",
+            "name": "동그라미",
+            "color": "빨강",
+            "pos": [
+              0.09,
+              0.27
+            ]
+          },
+          {
+            "ref": "red_out_2",
+            "name": "동그라미",
+            "color": "빨강",
+            "pos": [
+              0.91,
+              0.46
+            ]
+          },
+          {
+            "ref": "red_out_3",
+            "name": "동그라미",
+            "color": "빨강",
+            "pos": [
+              0.42,
+              0.92
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "type": "box",
+            "from": [
+              0.2,
+              0.18
+            ],
+            "to": [
+              0.8,
+              0.8
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

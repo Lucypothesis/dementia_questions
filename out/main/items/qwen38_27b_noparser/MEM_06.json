@@ -1,0 +1,24 @@
+{
+  "id": "MEM_06",
+  "domain": "기억력",
+  "subtype": "제시 순서 기억",
+  "construct": "순서 기억",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene"
+    },
+    {
+      "stage": "검사 보기",
+      "kind": "option",
+      "n": 4,
+      "derived": true,
+      "edit_of": "학습",
+      "ops": [
+        "move"
+      ]
+    }
+  ],
+  "response": "choice4",
+  "answer_kind": "보기번호"
+}

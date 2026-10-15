@@ -1,0 +1,5 @@
+{
+  "op": "rescale",
+  "target": "angle_bar",
+  "to_scale": 0.7
+}

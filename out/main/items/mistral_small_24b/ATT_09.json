@@ -1,0 +1,68 @@
+{
+  "slot_id": "ATT_09",
+  "question": "다음 그림에 있는 별의 개수를 세어보세요.",
+  "answer": "5",
+  "answer_rationale": "별이 5개 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "star1",
+            "name": "별",
+            "color": "노랑",
+            "pos": [
+              0.1,
+              0.2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "star2",
+            "name": "별",
+            "color": "노랑",
+            "pos": [
+              0.3,
+              0.4
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "star3",
+            "name": "별",
+            "color": "노랑",
+            "pos": [
+              0.5,
+              0.6
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "star4",
+            "name": "별",
+            "color": "노랑",
+            "pos": [
+              0.7,
+              0.8
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "star5",
+            "name": "별",
+            "color": "노랑",
+            "pos": [
+              0.9,
+              0.1
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

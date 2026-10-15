@@ -1,0 +1,192 @@
+{
+  "slot_id": "EXE_06",
+  "question": "다음 그림에서 사과를 먹기 위해 필요한 순서를 정렬하세요.",
+  "answer": "1, 2, 3, 4",
+  "answer_rationale": "사과를 먹기 위해서는 먼저 사과를 손에 쥐고, 다음으로 사과를 씻고, 그 다음에 사과를 자르고, 마지막으로 사과를 먹어야 한다.",
+  "panels": [
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "hand",
+            "name": "손",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "water",
+            "name": "물",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "knife",
+            "name": "칼",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "water",
+            "name": "물",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "hand",
+            "name": "손",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "knife",
+            "name": "칼",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 3,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "knife",
+            "name": "칼",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "water",
+            "name": "물",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "hand",
+            "name": "손",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 4,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "knife",
+            "name": "칼",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "hand",
+            "name": "손",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "water",
+            "name": "물",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

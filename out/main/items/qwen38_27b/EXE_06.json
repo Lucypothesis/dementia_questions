@@ -1,0 +1,228 @@
+{
+  "slot_id": "EXE_06",
+  "question": "아래 네 장의 그림을 한 번의 물 따르기 절차가 실제로 일어나는 순서대로 배열하세요. 번호를 '-'로 연결해 답하세요.",
+  "answer": "3-1-4-2",
+  "answer_rationale": "3번은 수전이 닫히고 컵에 물이 없어 시작 상태입니다. 1번은 수전이 열리고 물이 조금 담겨 있습니다. 4번은 수전이 열리고 물이 더 많이 담겨 있습니다. 2번은 수전이 닫히고 물이 가득 차 있어 종료 상태입니다. 물의 양이 증가하고 수전 상태가 닫힘→열림→열림→닫힘으로 이어지는 유일한 순서이므로 3-1-4-2입니다.",
+  "panels": [
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "scene": {
+        "layout": "free",
+        "background": "흰 배경",
+        "objects": [
+          {
+            "ref": "tap",
+            "name": "수전",
+            "appearance": "손잡이가 위로 올라간 열린 주방 수전",
+            "pos": [
+              0.5,
+              0.22
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "cup",
+            "name": "컵",
+            "appearance": "투명 유리컵",
+            "pos": [
+              0.5,
+              0.65
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "stream",
+            "name": "물줄기",
+            "appearance": "수전 끝에서 컵 안으로 떨어지는 가는 파란 물줄기",
+            "color": "파랑",
+            "pos": [
+              0.5,
+              0.42
+            ]
+          },
+          {
+            "ref": "water",
+            "name": "물",
+            "appearance": "컵 안쪽 하단에 낮은 높이로 담긴 파란 물",
+            "color": "파랑",
+            "pos": [
+              0.5,
+              0.68
+            ],
+            "scale": 0.35,
+            "is_target": true
+          }
+        ],
+        "annotations": [
+          {
+            "type": "number",
+            "text": "1",
+            "from": [
+              0.05,
+              0.05
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "scene": {
+        "layout": "free",
+        "background": "흰 배경",
+        "objects": [
+          {
+            "ref": "tap",
+            "name": "수전",
+            "appearance": "손잡이가 아래로 내려간 닫힌 주방 수전",
+            "pos": [
+              0.5,
+              0.22
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "cup",
+            "name": "컵",
+            "appearance": "투명 유리컵",
+            "pos": [
+              0.5,
+              0.65
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "water",
+            "name": "물",
+            "appearance": "컵 안쪽 상단까지 거의 차 있는 파란 물",
+            "color": "파랑",
+            "pos": [
+              0.5,
+              0.6
+            ],
+            "scale": 1.0,
+            "is_target": true
+          }
+        ],
+        "annotations": [
+          {
+            "type": "number",
+            "text": "2",
+            "from": [
+              0.05,
+              0.05
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 3,
+      "scene": {
+        "layout": "free",
+        "background": "흰 배경",
+        "objects": [
+          {
+            "ref": "tap",
+            "name": "수전",
+            "appearance": "손잡이가 아래로 내려간 닫힌 주방 수전",
+            "pos": [
+              0.5,
+              0.22
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "cup",
+            "name": "컵",
+            "appearance": "투명 유리컵",
+            "pos": [
+              0.5,
+              0.65
+            ],
+            "is_target": true
+          }
+        ],
+        "annotations": [
+          {
+            "type": "number",
+            "text": "3",
+            "from": [
+              0.05,
+              0.05
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 4,
+      "scene": {
+        "layout": "free",
+        "background": "흰 배경",
+        "objects": [
+          {
+            "ref": "tap",
+            "name": "수전",
+            "appearance": "손잡이가 위로 올라간 열린 주방 수전",
+            "pos": [
+              0.5,
+              0.22
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "cup",
+            "name": "컵",
+            "appearance": "투명 유리컵",
+            "pos": [
+              0.5,
+              0.65
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "stream",
+            "name": "물줄기",
+            "appearance": "수전 끝에서 컵 안으로 떨어지는 가는 파란 물줄기",
+            "color": "파랑",
+            "pos": [
+              0.5,
+              0.42
+            ]
+          },
+          {
+            "ref": "water",
+            "name": "물",
+            "appearance": "컵 안쪽 중간 높이로 담긴 파란 물",
+            "color": "파랑",
+            "pos": [
+              0.5,
+              0.64
+            ],
+            "scale": 0.65,
+            "is_target": true
+          }
+        ],
+        "annotations": [
+          {
+            "type": "number",
+            "text": "4",
+            "from": [
+              0.05,
+              0.05
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

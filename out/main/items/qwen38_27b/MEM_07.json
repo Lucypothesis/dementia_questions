@@ -1,0 +1,68 @@
+{
+  "slot_id": "MEM_07",
+  "question": "첫 번째 그림과 두 번째 그림을 비교했을 때, 사라진 사물의 이름을 말해 주세요.",
+  "answer": "열쇠",
+  "answer_rationale": "학습 장면에는 머그컵, 열쇠, 사과, 볼펜이 각각 다른 칸에 배치되어 있고, 검사 장면은 edit으로 열쇠만 remove되어 머그컵, 사과, 볼펜만 남습니다. 따라서 사라진 사물은 열쇠로 유일합니다.",
+  "panels": [
+    {
+      "stage": "학습",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개 하나",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "appearance": "빨간색 낱개 하나",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "pen",
+            "name": "볼펜",
+            "appearance": "파란색 낱개 하나",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "검사",
+      "kind": "edit",
+      "edit_of": "학습",
+      "changes": [
+        {
+          "op": "remove",
+          "target": "key"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "slot_id": "LAN_04",
+  "question": "이 그림에서 손잡이 달린 흰색 낱개와 열쇠고리 없는 금속 낱개 하나, 빨간 사과, 검은 뿔테 안경이 각각 무엇인가요?",
+  "answer": "머그컵, 열쇠, 사과, 안경",
+  "answer_rationale": "각 사물의 이름과 특징을 정확히 명명해야 한다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "glass",
+            "name": "안경",
+            "appearance": "검은 뿔테",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

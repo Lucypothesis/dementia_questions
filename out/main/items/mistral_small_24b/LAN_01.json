@@ -1,0 +1,60 @@
+{
+  "slot_id": "LAN_01",
+  "question": "이미지에 있는 사물 이름을 모두 말해보세요.",
+  "answer": "사과, 바나나, 오렌지, 포도",
+  "answer_rationale": "사과, 바나나, 오렌지, 포도 네 가지 사물이 모두 이미지에 포함되어 있으며, 각 사물은 고빈도 사물로 분류된다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "banana",
+            "name": "바나나",
+            "color": "노랑",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "orange",
+            "name": "오렌지",
+            "color": "주황",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "grape",
+            "name": "포도",
+            "color": "보라",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

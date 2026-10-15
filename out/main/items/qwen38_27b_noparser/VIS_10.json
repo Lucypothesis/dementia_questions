@@ -1,0 +1,52 @@
+{
+  "slot_id": "VIS_10",
+  "question": "사람이 바라보는 방향에서 볼 때, 빨간 공은 사람의 왼쪽입니까, 오른쪽입니까?",
+  "answer": "왼쪽",
+  "answer_rationale": "사람이 오른쪽을 바라보고 있으므로, 사람의 좌표계에서 왼쪽은 화면 위쪽이다. 빨간 공은 사람과 같은 열의 위쪽 셀에 있으므로 왼쪽이다. 아래쪽 셀의 파란 사각형은 오른쪽에 해당하지만 질문 대상이 아니다. 따라서 정답은 왼쪽으로 유일하다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "person",
+            "name": "사람",
+            "appearance": "오른쪽을 바라보는 옆모습의 사람, 머리·몸통·다리가 한 단위로 그려진 낱개",
+            "cell": [
+              1,
+              1
+            ],
+            "facing": "오른쪽",
+            "is_target": true
+          },
+          {
+            "ref": "red_ball",
+            "name": "공",
+            "appearance": "원형 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_square",
+            "name": "사각형",
+            "appearance": "정사각형 낱개 하나",
+            "color": "파랑",
+            "cell": [
+              2,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

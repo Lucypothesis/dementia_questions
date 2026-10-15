@@ -1,0 +1,28 @@
+{
+  "slot_id": "LAN_02",
+  "question": "이 그림에 있는 사물 이름을 말해보세요.",
+  "answer": "해머",
+  "answer_rationale": "해머는 희귀한 도구로, 일반적인 도구와는 다른 생김새를 가지고 있어 쉽게 식별할 수 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "hammer",
+            "name": "해머",
+            "appearance": "금속 손잡이와 철제 머리",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

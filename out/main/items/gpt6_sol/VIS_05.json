@@ -1,0 +1,340 @@
+{
+  "slot_id": "VIS_05",
+  "question": "기준의 세 조각을 자르지 않고 돌려서 맞추면 어느 보기의 직사각형을 만들 수 있습니까?",
+  "answer": "1",
+  "answer_rationale": "각 조각의 두 색은 맞붙어 있어야 한다. 1번에서만 빨강·파랑, 초록·노랑, 보라·주황이 각각 변을 맞대고 있어 세 조각으로 만들 수 있다. 다른 보기에는 맞붙지 않은 색 쌍이 있다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "red_blue",
+            "name": "빨강·파랑 직사각형 조각",
+            "appearance": "같은 크기의 정사각형 두 칸이 가로로 맞붙은 낱개 조각, 왼쪽 칸은 빨강, 오른쪽 칸은 파랑",
+            "pos": [
+              0.5,
+              0.2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "green_yellow",
+            "name": "초록·노랑 직사각형 조각",
+            "appearance": "같은 크기의 정사각형 두 칸이 가로로 맞붙은 낱개 조각, 왼쪽 칸은 초록, 오른쪽 칸은 노랑",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "purple_orange",
+            "name": "보라·주황 직사각형 조각",
+            "appearance": "같은 크기의 정사각형 두 칸이 가로로 맞붙은 낱개 조각, 왼쪽 칸은 보라, 오른쪽 칸은 주황",
+            "pos": [
+              0.5,
+              0.8
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "red",
+            "name": "정사각형 칸",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue",
+            "name": "정사각형 칸",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "green",
+            "name": "정사각형 칸",
+            "color": "초록",
+            "cell": [
+              0,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "purple",
+            "name": "정사각형 칸",
+            "color": "보라",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "orange",
+            "name": "정사각형 칸",
+            "color": "주황",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "yellow",
+            "name": "정사각형 칸",
+            "color": "노랑",
+            "cell": [
+              1,
+              2
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "red",
+            "name": "정사각형 칸",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "green",
+            "name": "정사각형 칸",
+            "color": "초록",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue",
+            "name": "정사각형 칸",
+            "color": "파랑",
+            "cell": [
+              0,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "purple",
+            "name": "정사각형 칸",
+            "color": "보라",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "orange",
+            "name": "정사각형 칸",
+            "color": "주황",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "yellow",
+            "name": "정사각형 칸",
+            "color": "노랑",
+            "cell": [
+              1,
+              2
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 3,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "red",
+            "name": "정사각형 칸",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue",
+            "name": "정사각형 칸",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "green",
+            "name": "정사각형 칸",
+            "color": "초록",
+            "cell": [
+              0,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "purple",
+            "name": "정사각형 칸",
+            "color": "보라",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "yellow",
+            "name": "정사각형 칸",
+            "color": "노랑",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "orange",
+            "name": "정사각형 칸",
+            "color": "주황",
+            "cell": [
+              1,
+              2
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 4,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "green",
+            "name": "정사각형 칸",
+            "color": "초록",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "yellow",
+            "name": "정사각형 칸",
+            "color": "노랑",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red",
+            "name": "정사각형 칸",
+            "color": "빨강",
+            "cell": [
+              0,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "purple",
+            "name": "정사각형 칸",
+            "color": "보라",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue",
+            "name": "정사각형 칸",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "orange",
+            "name": "정사각형 칸",
+            "color": "주황",
+            "cell": [
+              1,
+              2
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}
