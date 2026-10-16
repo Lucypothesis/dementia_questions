@@ -3,6 +3,9 @@ __pycache__/
 *.egg-info/
 build/
 dist/
+release/
+.venv/
+.cache/
 .run_all.lock
 
 # 실행 로그·중간 산출물
@@ -16,6 +19,7 @@ out/*/images/
 
 # 데모 실행 결과
 out/demo/
+out/gpu_acceptance/
 
 # 키가 들어갈 수 있는 것
 .env

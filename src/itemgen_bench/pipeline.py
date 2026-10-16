@@ -25,8 +25,8 @@ import traceback
 import warnings
 from pathlib import Path
 
-# /workspace/VLMs/.venv의 requests 2.28은 urllib3 1.26과 버전표가 어긋나 매번 경고를 뱉는다.
-# 실제 호출에는 영향이 없고, 공유 venv를 손대면 test_012가 깨질 수 있으므로 여기서만 끈다.
+# 일부 기존 운영 이미지에서 requests와 urllib3 버전표 경고가 반복된다. 실제 호출 실패와
+# 무관한 알려진 경고만 숨기고 다른 warning은 그대로 표시한다.
 warnings.filterwarnings("ignore", message=".*doesn't match a supported version.*")
 
 from . import models

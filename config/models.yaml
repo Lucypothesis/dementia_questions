@@ -8,21 +8,13 @@
 # 준비
 #   pip install diffusers transformers accelerate safetensors peft   # 렌더용
 #   pip install vllm                                                 # 서빙용
-#   export OPENAI_API_KEY=...   VLLM_API_KEY=dummy
+#   export VLLM_API_KEY=dummy
 #
 # 비용 0으로 배선만 확인하려면
 #   python3 src/pipeline.py --run wiring --config config/models.stub.yaml
 
 llms:
-  # ---- 상용 ----
-  - name: gpt6_sol
-    adapter: openai_compat
-    model: gpt-6-sol
-    base_url: https://api.openai.com/v1
-    api_key_env: OPENAI_API_KEY
-    temperature: 0.2
-
-  # ---- 오픈 (Apache 2.0) ----
+  # ---- 오픈 가중치 (Apache 2.0) ----
   # 추론형 모델이다. 서버에 --reasoning-parser qwen3 를 반드시 붙인다.
   # 안 붙이면 <think>…</think>가 본문으로 쏟아져 길이 한도에 잘리고,
   # 스키마 합격률이 100% -> 20%로 떨어진다. run_all.sh가 이미 붙여서 띄운다.
@@ -43,18 +35,6 @@ llms:
     base_url: http://127.0.0.1:8003/v1
     api_key_env: VLLM_API_KEY
     temperature: 0.2
-
-  # ---- 보존된 비교 조건 (모델이 아니라 기록) ----
-  # 같은 Qwen3.8-27B를 reasoning parser 없이 max_tokens=4096으로 돌린 결과다.
-  # readonly라서 gen 단계가 호출하지 않는다. check·render·sheet에는 그대로 나온다.
-  # "하네스 설정이 결과를 얼마나 바꾸는가"의 대조군이다.
-  - name: qwen38_27b_noparser
-    adapter: openai_compat
-    model: Qwen/Qwen3.8-27B
-    base_url: http://127.0.0.1:8001/v1
-    api_key_env: VLLM_API_KEY
-    max_tokens: 4096
-    readonly: true
 
 renderers:
   # 코드 합성. 추상 도형은 코드로 그리고, 실물은 assets/의 자산을 좌표에 붙인다.
@@ -115,21 +95,14 @@ renderers:
   #   stabilityai/stable-diffusion-3.5-*  Stability Community License (매출 조건부)
 
 judge:
-  # 측정 2. 명세와 이미지를 대조하는 자동 채점기.
-  # 1장당 입력 ~720 / 출력 ~170 토큰. 1,704장에 약 $0.26, 8워커로 15분.
-  # 사람 검수 표본과 상관을 확인한 뒤 결과를 신뢰할 것.
-  name: vlm_luna
-  adapter: vlm
-  model: gpt-6-luna
-  base_url: https://api.openai.com/v1
-  api_key_env: OPENAI_API_KEY
-  max_tokens: 400
-  detail: auto
-  workers: 8
+  # 납품 기본값은 외부 API를 전혀 호출하지 않는다. 이미지 자동 판정 대신
+  # sheet에서 사람이 ok/minor/bad를 판정한다. 로컬 VLM이 있으면 adapter: vlm과
+  # OpenAI 호환 로컬 base_url로 교체할 수 있다.
+  name: human_review
+  adapter: stub
 
 # plan 단계에서 비용·시간을 어림잡는 데만 쓴다. 어댑터에는 전달되지 않는다.
 estimates:
-  gpt6_sol:                  {price_in: 2.0, price_out: 10.0}   # $/1M 토큰
   compose:                   {sec_per_image: 0.2}               # CPU 실측
   flux2_klein_4b:            {sec_per_image: 8.0}
   z_image_turbo:             {sec_per_image: 9.5}               # 실측

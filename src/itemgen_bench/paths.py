@@ -1,12 +1,13 @@
-"""spec/ · config/ · out/ 을 어디서 찾을지 한곳에서 정한다.
+"""spec/ · config/ · assets/ · out/ 을 어디서 찾을지 한곳에서 정한다.
 
 이 코드는 세 가지 방식으로 돌아간다. 어느 쪽이든 같은 파일을 가리켜야 한다.
 
   1. 저장소를 clone 해서 그 안에서 실행       -> 저장소 루트의 spec/ config/
   2. pip install -e . 로 깔고 저장소 안에서    -> 같음
-  3. 다른 디렉터리에서 실행                    -> 현재 작업 디렉터리에 있으면 그것
+  3. wheel을 다른 디렉터리에서 실행             -> wheel에 동봉된 share/itemgen-bench/
+  4. 다른 디렉터리에 자기 파일을 둔 뒤 실행     -> 현재 작업 디렉터리의 파일
 
-규칙은 단순하다. 명시적으로 준 경로 > 현재 작업 디렉터리 > 저장소 루트.
+규칙은 단순하다. 명시적으로 준 경로 > 현재 작업 디렉터리 > 배포 기본 리소스.
 현재 디렉터리를 저장소보다 먼저 보는 이유는, 받는 쪽이 자기 슬롯·명세서로
 바꿔 돌릴 때 원본을 건드리지 않고 자기 폴더에 두면 되게 하기 위해서다.
 """
@@ -14,10 +15,15 @@
 from __future__ import annotations
 
 import os
+import sysconfig
 from pathlib import Path
 
-# src/itemgen_bench/paths.py -> src/itemgen_bench -> src -> 저장소 루트
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+# 소스 checkout에서는 저장소 루트, wheel 설치에서는 sys.prefix/share 아래를 쓴다.
+# 이름은 기존 모듈과 정책 파일의 호환성을 위해 REPO_ROOT로 유지한다.
+SOURCE_ROOT = Path(__file__).resolve().parent.parent.parent
+INSTALLED_ROOT = Path(sysconfig.get_path("data")) / "share" / "itemgen-bench"
+REPO_ROOT = (SOURCE_ROOT if (SOURCE_ROOT / "spec").is_dir()
+             and (SOURCE_ROOT / "config").is_dir() else INSTALLED_ROOT)
 
 
 def _pick(name: str, override: str | Path | None, env: str) -> Path:
@@ -54,6 +60,31 @@ def config_path(override=None) -> Path:
     if here.exists():
         return here.resolve()
     return REPO_ROOT / "config" / "models.yaml"
+
+
+def bundled_config(name: str) -> Path:
+    """현재 작업 디렉터리와 무관한 배포 기본 설정 파일."""
+    path = REPO_ROOT / "config" / name
+    if not path.exists():
+        raise SystemExit(f"동봉 설정 파일이 없다: {path}")
+    return path
+
+
+def assets_dir(override=None) -> Path:
+    """compose 렌더러가 사용하는 단일 사물 자산 디렉터리."""
+    return _pick("assets", override, "ITEMGEN_ASSETS_DIR")
+
+
+def project_root() -> Path:
+    """정책의 out/... 근거 파일을 해석할 작업 루트.
+
+    기술이전 ZIP을 푼 디렉터리처럼 현재 폴더에 spec/과 out/이 있으면 그곳을
+    우선한다. 그렇지 않으면 소스 checkout 또는 wheel의 배포 리소스로 돌아간다.
+    """
+    here = Path.cwd().resolve()
+    if (here / "spec").is_dir() and (here / "out").is_dir():
+        return here
+    return REPO_ROOT
 
 
 def out_dir(override=None) -> Path:

@@ -103,7 +103,7 @@ def main(argv=None) -> None:
     args = ap.parse_args(argv if argv is not None else sys.argv[1:])
 
     run = paths.out_dir(args.out) / args.run
-    adir = Path(args.assets) if args.assets else (paths.REPO_ROOT / "assets")
+    adir = Path(args.assets) if args.assets else paths.assets_dir()
     names = wanted(run)
     names = Counter({k: v for k, v in names.items() if v >= args.min_count})
     if args.only:

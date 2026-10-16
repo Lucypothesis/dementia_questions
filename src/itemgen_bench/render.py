@@ -20,7 +20,7 @@ from pathlib import Path
 from . import paths
 
 # 자산(사물 그림)은 compose 렌더러만 쓴다. 없으면 자리표시로 그린다.
-ASSETS = paths.REPO_ROOT / "assets"
+ASSETS = paths.assets_dir()
 
 STAGE_HINT = {
     "학습": "먼저 제시하는 학습 이미지다.",

@@ -14,14 +14,6 @@ llms:
     adapter: stub
     seed: 0
 
-  # ---- 상용 1개 ($2/$10, 50슬롯 ~$0.61) ----
-  # - name: gpt6_sol
-  #   adapter: openai_compat
-  #   model: gpt-6-sol
-  #   base_url: https://api.openai.com/v1
-  #   api_key_env: OPENAI_API_KEY
-  #   temperature: 0.2
-
   # ---- 오픈 2개 (둘 다 Apache 2.0, 27B dense -> bf16 약 54GB, A100 80GB 1장) ----
   # vLLM으로 띄우고 openai_compat으로 붙인다. hf_local보다 훨씬 빠르다.
   #   vllm serve Qwen/Qwen3.8-27B      --max-model-len 16384 --port 8001
@@ -97,5 +89,5 @@ judge:
   # name: vlm_judge
   # adapter: vlm
   # model: <비전 모델ID>
-  # base_url: https://<엔드포인트>/v1
+  # base_url: http://127.0.0.1:<로컬포트>/v1
   # api_key_env: JUDGE_API_KEY

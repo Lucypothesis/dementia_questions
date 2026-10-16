@@ -10,31 +10,45 @@
 #   - 이미 만든 결과는 건너뛴다. 다시 돌려도 안전하다.
 
 set -uo pipefail
-cd "$(dirname "$0")"
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+cd "$ROOT"
 
 PY=${PY:-python3}
 ITEMGEN=${ITEMGEN:-itemgen}
-VLLM=/workspace/vllm-venv/bin/vllm
-RUN=main
+VLLM=${VLLM:-$(command -v vllm 2>/dev/null || true)}
+RUN=${RUN:-main}
+LLMS=${LLMS:-"qwen38_27b mistral_small_24b"}
+LLM_CSV=$(echo "$LLMS" | tr ' ' ',' | tr -s ',' | sed 's/^,//;s/,$//')
 # 쓸 GPU 후보. 여러 개를 주면 그중 먼저 비는 카드를 잡는다. 쉼표·공백 둘 다 받는다.
 #   GPUS="0 1" bash run_all.sh      # 0번이나 1번 중 비는 쪽
 #   GPU=3 bash run_all.sh           # 3번만
-GPUS=$(echo "${GPUS:-${GPU:-2}}" | tr ',' ' ')
+GPUS=$(echo "${GPUS:-${GPU:-0}}" | tr ',' ' ')
 GPU=""                  # 실제로 고른 카드. pick_gpu가 채운다.
 # 카드가 빌 때까지 기다리는 최대 시간(초). 기본 2시간.
 GPU_WAIT=${GPU_WAIT:-7200}
+RENDERERS=${RENDERERS:-compose}
+SLOT_IDS=${SLOT_IDS:-}
+SLOT_ARGS=()
+if [ -n "$SLOT_IDS" ]; then SLOT_ARGS=(--slot-ids "$SLOT_IDS"); fi
 LOGS=out/$RUN/logs
 DRY=0
 [ "${1:-}" = "--dry-run" ] && DRY=1
 
-# /data가 100% 차 있다(21GB). 캐시를 /workspace로 돌린다.
-# HF_HUB_CACHE가 환경에 이미 /data/hf/hub로 박혀 있고 이게 HF_HOME보다 우선한다.
-# HF_HOME만 바꾸면 조용히 /data로 받다가 공간 부족으로 터진다. 둘 다 덮어쓴다.
-export HF_HOME=/workspace/hf
-export HF_HUB_CACHE=/workspace/hf/hub
-export HF_DATASETS_CACHE=/workspace/hf/datasets
+# 모델 캐시는 납품 디렉터리 아래를 기본으로 쓰되, 운영자가 지정한 값은 존중한다.
+# 모델 두 개를 처음 받으면 100GB 이상 필요하므로 ITEMGEN_CACHE_ROOT를 큰 디스크로
+# 바꿀 수 있다.
+if [ -n "${ITEMGEN_CACHE_ROOT:-}" ]; then
+  export HF_HOME=$ITEMGEN_CACHE_ROOT/huggingface
+  export HF_HUB_CACHE=$HF_HOME/hub
+  export HF_DATASETS_CACHE=$HF_HOME/datasets
+else
+  ITEMGEN_CACHE_ROOT=$ROOT/.cache
+  export HF_HOME=${HF_HOME:-$ITEMGEN_CACHE_ROOT/huggingface}
+  export HF_HUB_CACHE=${HF_HUB_CACHE:-$HF_HOME/hub}
+  export HF_DATASETS_CACHE=${HF_DATASETS_CACHE:-$HF_HOME/datasets}
+fi
 export HF_HUB_ENABLE_HF_TRANSFER=0
-export VLLM_API_KEY=dummy
+export VLLM_API_KEY=${VLLM_API_KEY:-dummy}
 export TOKENIZERS_PARALLELISM=false
 
 mkdir -p "$LOGS"
@@ -54,7 +68,13 @@ fi
 say() { echo "[$(date +%H:%M:%S)] $*" | tee -a "$MAIN_LOG"; }
 fail() { FAILED+=("$1"); say "  !! 실패: $1"; }
 
-SLOT_N=$("$PY" -c "import json;print(len(json.load(open('spec/slots.json'))['slots']))" 2>/dev/null || echo 50)
+if [ -n "$SLOT_IDS" ]; then
+  SLOT_N=$("$PY" -c 'import sys; print(len([x for x in sys.argv[1].split(",") if x.strip()]))' "$SLOT_IDS")
+else
+  SLOT_N=$("$PY" -c "import json;print(len(json.load(open('spec/slots.json'))['slots']))" 2>/dev/null || echo 50)
+fi
+
+want_llm() { [[ ",$LLM_CSV," == *",$1,"* ]]; }
 
 # 이 arm의 문항이 이미 다 있나. 있으면 vLLM을 띄울 이유가 없다.
 # 안 그러면 끝난 arm 때문에 GPU를 2시간 기다리다 뒤 단계가 통째로 밀린다.
@@ -89,9 +109,11 @@ serve_wait() {  # serve_wait <모델> <포트> <로그> [추가인자...]
   say "  vLLM 기동: $model (포트 $port, GPU $GPU, util $util) ${*:+추가인자: $*}"
   # 인자를 함부로 늘리지 않는다. vllm 0.19.1에는 --disable-log-requests가 없어서
   # 넣었다가 기동이 20초 만에 죽었다. 버전마다 있는 인자가 다르다.
-  CUDA_VISIBLE_DEVICES=$GPU "$VLLM" serve "$model" \
-      --max-model-len 32768 --gpu-memory-utilization "$util" \
-      --port "$port" "$@" >>"$log" 2>&1 &
+  # 별도 프로세스 그룹으로 띄워 이 스크립트가 만든 자식만 안전하게 종료한다.
+  setsid env CUDA_VISIBLE_DEVICES=$GPU "$VLLM" serve "$model" \
+        --max-model-len 32768 --gpu-memory-utilization "$util" \
+        --api-key "$VLLM_API_KEY" --host 127.0.0.1 --port "$port" "$@" \
+        >>"$log" 2>&1 &
   VLLM_PID=$!
   # 가중치 내려받기까지 포함해 최대 90분 기다린다 (55GB 다운로드가 있을 수 있다).
   for i in $(seq 1 540); do
@@ -158,14 +180,10 @@ wait_gpu_free() {   # wait_gpu_free <필요GB> <최대대기초>
 
 stop_vllm() {
   [ -n "${VLLM_PID:-}" ] || return 0
-  kill $VLLM_PID 2>/dev/null
+  kill -- -$VLLM_PID 2>/dev/null || kill $VLLM_PID 2>/dev/null
   for _ in $(seq 1 30); do kill -0 $VLLM_PID 2>/dev/null || break; sleep 2; done
-  kill -9 $VLLM_PID 2>/dev/null
+  kill -9 -- -$VLLM_PID 2>/dev/null || kill -9 $VLLM_PID 2>/dev/null
   VLLM_PID=
-  # vLLM은 'VLLM::EngineCore'라는 별도 이름의 자식을 남긴다. 부모만 죽이면
-  # 이 녀석이 GPU 메모리 50GB를 계속 물고 있어 다음 모델이 못 뜬다.
-  pkill -9 -f "VLLM::EngineCore" 2>/dev/null
-  pkill -9 -f "multiprocessing.resource_tracker" 2>/dev/null
   wait_gpu_free 60 180 || say "  !! GPU가 덜 비었다. 다음 단계가 실패할 수 있다."
   say "  vLLM 내림"
 }
@@ -173,79 +191,92 @@ trap stop_vllm EXIT
 
 # ---------------------------------------------------------------- 사전 점검
 say "=============================================================="
-say "run=$RUN  GPU=$GPU  HF_HOME=$HF_HOME  dry-run=$DRY"
+say "run=$RUN  LLM=$LLM_CSV  슬롯=${SLOT_IDS:-전체}  GPU 후보=$GPUS  렌더러=$RENDERERS  dry-run=$DRY"
+say "HF_HOME=$HF_HOME"
 say "=============================================================="
-AVAIL=$(df --output=avail -BG /workspace | tail -1 | tr -dc '0-9')
-say "디스크 여유: ${AVAIL}GB (최소 250GB 필요)"
-[ "$AVAIL" -lt 250 ] && say "  !! 공간 부족. 다운로드가 실패할 수 있다."
-if [ -z "${OPENAI_API_KEY:-}" ]; then
-  say "  !! OPENAI_API_KEY 없음 — 1단계(gpt6_sol)는 건너뛴다"
+AVAIL=$(df --output=avail -BG "$ROOT" | tail -1 | tr -dc '0-9')
+say "디스크 여유: ${AVAIL}GB (두 LLM 최초 다운로드 기준 140GB 이상 권장)"
+[ "$AVAIL" -lt 140 ] && say "  !! 공간 부족. 모델 다운로드가 실패할 수 있다."
+if [ $DRY = 0 ] && [ -z "$VLLM" ]; then
+  say "  !! vllm 명령을 찾지 못했다. VLLM=/경로/vllm 또는 PATH를 설정한다."
+  exit 1
+fi
+if command -v nvidia-smi >/dev/null 2>&1; then
+  nvidia-smi --query-gpu=index,memory.used,memory.total --format=csv,noheader | tee -a "$MAIN_LOG"
 else
-  say "OPENAI_API_KEY 설정됨 (${#OPENAI_API_KEY}자)"
-fi
-nvidia-smi --query-gpu=index,memory.used,memory.total --format=csv,noheader | tee -a "$MAIN_LOG"
-
-# -------------------------------------------------------- 1 상용 arm (보험)
-# 이미 돌렸으면 즉시 건너뛴다. 안 돌렸으면 여기서 채운다.
-if [ -n "${OPENAI_API_KEY:-}" ]; then
-  run "1 gpt6_sol gen+check" "$LOGS/gen_gpt6_sol.log" \
-      "$ITEMGEN" run --run $RUN --stages gen,check --llms gpt6_sol
+  say "  !! nvidia-smi를 찾지 못했다. --dry-run 이외의 실제 생성은 불가능하다."
+  [ $DRY = 0 ] && exit 1
 fi
 
-# ------------------------------------------------------------ 2 Qwen3.8-27B
-say "▶ 2 qwen38_27b"
-if arm_done qwen38_27b; then
+# ------------------------------------------------------------ 1 Qwen3.8-27B
+if ! want_llm qwen38_27b; then
+  say "▶ 1 qwen38_27b 건너뜀 (LLMS=$LLMS)"
+elif arm_done qwen38_27b; then
   say "  건너뜀: 문항 ${SLOT_N}/${SLOT_N} 이미 있음 (vLLM 안 띄움)"
 elif [ $DRY = 1 ]; then
   say "  (dry-run) vllm serve Qwen/Qwen3.8-27B -> gen,check"
 elif serve_wait "Qwen/Qwen3.8-27B" 8001 "$LOGS/vllm_qwen38.log" \
        --reasoning-parser qwen3; then
-  run "2 qwen38_27b gen+check" "$LOGS/gen_qwen38.log" \
-      "$ITEMGEN" run --run $RUN --stages gen,check --llms qwen38_27b
+  run "1 qwen38_27b gen+check" "$LOGS/gen_qwen38.log" \
+      "$ITEMGEN" run --run "$RUN" --stages gen,check --llms qwen38_27b "${SLOT_ARGS[@]}"
   stop_vllm
 else
-  fail "2 qwen38_27b vLLM 기동 (로그: $LOGS/vllm_qwen38.log)"
+  fail "1 qwen38_27b vLLM 기동 (로그: $LOGS/vllm_qwen38.log)"
   stop_vllm
 fi
 
-# ---------------------------------------------------- 3 Mistral-Small-24B
-say "▶ 3 mistral_small_24b"
-if arm_done mistral_small_24b; then
+# ---------------------------------------------------- 2 Mistral-Small-24B
+if ! want_llm mistral_small_24b; then
+  say "▶ 2 mistral_small_24b 건너뜀 (LLMS=$LLMS)"
+elif arm_done mistral_small_24b; then
   say "  건너뜀: 문항 ${SLOT_N}/${SLOT_N} 이미 있음 (vLLM 안 띄움)"
 elif [ $DRY = 1 ]; then
   say "  (dry-run) vllm serve mistralai/Mistral-Small-24B-Instruct-2501 -> gen,check"
 elif serve_wait "mistralai/Mistral-Small-24B-Instruct-2501" 8003 "$LOGS/vllm_mistral.log"; then
-  run "3 mistral_small_24b gen+check" "$LOGS/gen_mistral.log" \
-      "$ITEMGEN" run --run $RUN --stages gen,check --llms mistral_small_24b
+  run "2 mistral_small_24b gen+check" "$LOGS/gen_mistral.log" \
+      "$ITEMGEN" run --run "$RUN" --stages gen,check --llms mistral_small_24b "${SLOT_ARGS[@]}"
   stop_vllm
 else
-  fail "3 mistral_small_24b vLLM 기동 (로그: $LOGS/vllm_mistral.log)"
+  fail "2 mistral_small_24b vLLM 기동 (로그: $LOGS/vllm_mistral.log)"
   stop_vllm
 fi
 
-# ------------------------------------------------------------------ 4 비교
-run "4 check 전체 비교" "$LOGS/check_all.log" \
-    "$ITEMGEN" run --run $RUN --stages check
+# ------------------------------------------------------------------ 3 비교
+run "3 check 전체 비교" "$LOGS/check_all.log" \
+    "$ITEMGEN" run --run "$RUN" --stages check --llms "$LLM_CSV" "${SLOT_ARGS[@]}"
 
-# ------------------------------------------------------------------ 5 렌더
-# 캐시에 있거나 작은 것부터. 앞의 것이 깨져도 뒤가 돈다.
-for R in z_image_turbo flux2_klein_4b qwen_image_2512_lightning qwen_image_2512; do
+# ------------------------------------------------------------------ 4 렌더
+# 기본 compose는 CPU로 실제 자산을 합성한다. diffusion도 보려면 예:
+#   RENDERERS="compose flux2_klein_4b" bash run_all.sh
+for R in $RENDERERS; do
   if [ $DRY = 1 ]; then say "  (dry-run) render $R"; continue; fi
-  say "▶ 5 render $R"
-  # LLM 단계가 끝날 즈음엔 카드 상황이 바뀌어 있다. 렌더마다 다시 고른다.
-  # 가장 큰 Qwen-Image-2512(20B)가 bf16 48GB+ 라 그 기준으로 잡는다.
-  pick_gpu 50 || { fail "5 render $R  GPU 확보 실패"; continue; }
-  if CUDA_VISIBLE_DEVICES=$GPU "$ITEMGEN" run --run $RUN --stages render \
-        --renderers "$R" >>"$LOGS/render_$R.log" 2>&1; then
+  say "▶ 4 render $R"
+  if [ "$R" = compose ]; then
+    run "4 render compose" "$LOGS/render_compose.log" \
+      "$ITEMGEN" run --run "$RUN" --stages render --llms "$LLM_CSV" \
+      --renderers compose "${SLOT_ARGS[@]}"
+    continue
+  fi
+  case "$R" in
+    flux2_klein_4b|z_image_turbo) NEED_GB=20 ;;
+    *) NEED_GB=55 ;;
+  esac
+  pick_gpu "$NEED_GB" || { fail "4 render $R  GPU 확보 실패"; continue; }
+  if CUDA_VISIBLE_DEVICES=$GPU "$ITEMGEN" run --run "$RUN" --stages render \
+        --llms "$LLM_CSV" --renderers "$R" "${SLOT_ARGS[@]}" \
+        >>"$LOGS/render_$R.log" 2>&1; then
     say "  완료: render $R"
   else
-    fail "5 render $R  (로그: $LOGS/render_$R.log)"
+    fail "4 render $R  (로그: $LOGS/render_$R.log)"
   fi
 done
 
-# ------------------------------------------------------- 6 자동채점 + 시트
-run "6 judge" "$LOGS/judge.log" "$ITEMGEN" run --run $RUN --stages judge
-run "6 sheet" "$LOGS/sheet.log" "$ITEMGEN" run --run $RUN --stages sheet
+# ------------------------------------------------------- 5 사람 검수 시트
+# 기본 judge는 외부 API를 호출하지 않는 stub이다. 최종 판정은 HTML에서 사람이 한다.
+run "5 judge 자리표시" "$LOGS/judge.log" "$ITEMGEN" run --run "$RUN" \
+    --stages judge --llms "$LLM_CSV" "${SLOT_ARGS[@]}"
+run "5 sheet" "$LOGS/sheet.log" "$ITEMGEN" run --run "$RUN" \
+    --stages sheet --llms "$LLM_CSV" "${SLOT_ARGS[@]}"
 
 # ------------------------------------------------------------------- 요약
 say "=============================================================="

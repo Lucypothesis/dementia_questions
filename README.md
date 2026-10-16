@@ -48,6 +48,17 @@ itemgen serve --run demo
 
 구조를 먼저 눈으로 확인한 뒤 실제 모델을 꽂는 순서를 권한다.
 
+wheel 납품본을 저장소 없이 설치할 때도 같은 명령이 동작한다. 기본 명세 50개,
+로컬 모델 설정과 compose PNG 97개(실물 자산 96종과 보조 자산)가 함께 들어 있다.
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install package/itemgen_bench-1.0.0-py3-none-any.whl
+itemgen doctor       # 동봉 리소스·필수 모듈 점검
+itemgen selftest     # 68항목
+itemgen demo
+```
+
 ## 디렉터리
 
 ```
@@ -72,9 +83,12 @@ src/itemgen_bench/
   watch.py                실시간 진행 감시기
   serve.py                캐시 없는 정적 서버
   paths.py                spec/·config/·out/ 위치 결정
+  doctor.py               기본 리소스·실제 생성 환경 사전 점검
   cli.py                  `itemgen` 하위명령
 run_all.sh                무인 실행 스크립트
 status.sh                 한 화면 상태 요약
+scripts/acceptance_test.sh wheel 단독 CPU 인수 테스트
+scripts/gpu_acceptance.sh  로컬 Qwen으로 문항 1개 실제 생성 인수 테스트
 out/<run>/                실행 결과
 ```
 
@@ -86,9 +100,40 @@ out/<run>/                실행 결과
 ```bash
 itemgen selftest                              # 자기검증 68항목 (비용 0)
 itemgen run --run main --stages plan          # 규모·비용 계산만
-bash run_all.sh                               # 전 구간 무인 실행
-GPUS="3 0 1" bash run_all.sh                  # 비는 카드를 골라 쓴다
+itemgen doctor --full                         # vLLM·GPU·디스크까지 점검
+bash run_all.sh                               # Qwen+Mistral 생성, compose 렌더, 시트
+GPUS="3 0 1" bash run_all.sh                  # 비는 카드를 골라 순차 실행
 ```
+
+기본 제작 실행은 **외부 API와 OpenAI API 키를 전혀 사용하지 않는다.** Qwen3.8-27B와
+Mistral-Small-24B를 로컬 vLLM으로 한 번에 하나씩 띄운다. 기본 렌더러는 CPU 기반
+`compose`, 자동 judge는 외부 호출이 없는 자리표시이며 최종 판정은 HTML에서 사람이 한다.
+실제 생성 환경은 NVIDIA GPU 메모리 70GB 이상과 모델 캐시 여유 140GB 이상을 권장한다.
+
+먼저 문항 하나만 실제 생성해 인수 테스트하려면:
+
+```bash
+pip install '.[serve]'
+GPU=0 ITEMGEN_CACHE_ROOT=/큰/디스크/cache bash scripts/gpu_acceptance.sh
+```
+
+전체 50문제를 생성하거나 렌더러를 추가할 때는 환경변수로 범위를 바꾼다.
+
+```bash
+# 기본: Qwen + Mistral, 50슬롯, compose
+bash run_all.sh
+
+# Qwen만 5개 슬롯으로 확인
+RUN=pilot LLMS=qwen38_27b SLOT_IDS=MEM_01,ATT_01,LAN_01,VIS_01,EXE_01 \
+  bash run_all.sh
+
+# compose와 FLUX.2 klein을 모두 렌더
+RENDERERS="compose flux2_klein_4b" bash run_all.sh
+```
+
+`VLLM=/경로/vllm`, `ITEMGEN_CACHE_ROOT=/모델/캐시`, `GPUS="0 1"`, `RUN=실행명`도
+환경에 맞게 지정할 수 있다. 모델 서버는 `127.0.0.1`에만 열리고 실행 종료 시 해당
+스크립트가 만든 프로세스 그룹만 정리한다.
 
 compose 렌더러의 자산과 사람 판정 기반 슬롯 선택:
 
@@ -291,9 +336,10 @@ compose에서 두 모델의 결과가 모두 있고 둘 다 `ok`인 슬롯은 16
 
 `config/models.yaml`의 `llms`/`renderers`에 항목을 추가하면 arm이 늘어난다.
 
-- LLM: `openai_compat`(상용 API·vLLM·Ollama 공통) 또는 `hf_local`(transformers)
+- LLM: `openai_compat`(OpenAI 호환 **프로토콜**의 로컬 vLLM·Ollama) 또는
+  `hf_local`(transformers). 납품 기본 설정은 외부 OpenAI 서비스를 쓰지 않는다.
 - 렌더러: `diffusion`(diffusers 파이프라인 아무거나), `compose`(코드 합성), `stub`
-- judge: `vlm`(OpenAI 호환 vision), `stub`
+- judge: `vlm`(OpenAI 호환 프로토콜의 로컬 vision 서버), `stub`
 
 어댑터가 모르는 키는 조립 단계에서 거부된다. API 키는 `api_key_env`에 적은
 환경변수에서 읽고 코드·설정에 넣지 않는다.
@@ -316,9 +362,6 @@ compose에서 두 모델의 결과가 모두 있고 둘 다 `ok`인 슬롯은 16
   게다가 vLLM이 실제로 메모리를 확인하는 건 기동 수십 초 뒤다.
 - **`HF_HUB_CACHE`가 `HF_HOME`보다 우선한다.** 둘 다 덮어쓰지 않으면 엉뚱한
   디스크로 받다가 공간 부족으로 터진다.
-- **최신 OpenAI 모델은 `max_tokens`와 `temperature`를 거부한다.**
-  `max_completion_tokens`를 쓰고 temperature는 기본값만 받는다. 어댑터가 거부당한
-  파라미터를 보고 자동으로 고쳐 재시도한다.
 - **Mistral-Small-3.1 / Ministral-3은 전부 멀티모달이다.** vLLM + transformers 조합에
   따라 `ImportError(PixtralRotaryEmbedding)`로 기동이 안 된다. 크기를 줄여도 같다.
   텍스트 전용인 3.0(=2501)을 쓴다.

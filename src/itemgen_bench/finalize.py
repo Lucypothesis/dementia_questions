@@ -90,7 +90,7 @@ def _validate_final_review(root: Path, policy: dict,
 
 def build(policy_path: Path, run_name: str, *, embed: bool = False,
           filename: str = "sheet_final50.html") -> tuple[Path, dict]:
-    root = paths.REPO_ROOT.resolve()
+    root = paths.project_root().resolve()
     policy = _read_json(policy_path)
     cells = policy.get("selected_cells") or []
     slots_doc = _read_json(paths.spec_dir() / "slots.json")

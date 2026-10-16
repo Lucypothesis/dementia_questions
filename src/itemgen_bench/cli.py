@@ -3,6 +3,7 @@
   itemgen demo            비용 0·GPU 0으로 전 구간을 1초 안에 돌려본다
   itemgen run --stages gen,check --llms gpt6_sol
   itemgen selftest        외부 모델 없이 68항목 자기검증
+  itemgen doctor          wheel 리소스 확인 (`--full`: 실제 생성 환경까지)
   itemgen watch           실시간 진행
   itemgen analyze         judge 결과를 실패 유형별로 집계
   itemgen calibrate       judge가 사람 판정과 얼마나 맞는지 측정
@@ -34,7 +35,7 @@ def main(argv=None) -> None:
         # 받는 사람이 가장 먼저 쳐보는 명령. 실제 모델을 쓰지 않으므로
         # GPU도 API 키도 필요 없고 1초 안에 끝난다. 구조를 눈으로 확인하는 용도다.
         from . import paths, pipeline
-        cfg = paths.REPO_ROOT / "config" / "models.stub.yaml"
+        cfg = paths.bundled_config("models.stub.yaml")
         args = ["--run", "demo", "--slots", "10", "--config", str(cfg)] + rest
         sys.argv = ["itemgen demo"] + args
         pipeline.main()
@@ -51,6 +52,11 @@ def main(argv=None) -> None:
     if cmd == "selftest":
         from . import selftest
         selftest.main()
+        return
+
+    if cmd == "doctor":
+        from . import doctor
+        doctor.main(rest)
         return
 
     if cmd == "watch":
