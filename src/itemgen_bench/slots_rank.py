@@ -10,6 +10,7 @@ readonly 보존 arm은 하네스가 불리했던 기록이므로 품질 판단�
   itemgen slots --run main
   itemgen slots --run main --exclude gpt6_sol,qwen38_27b_noparser --cut 0.5
   itemgen slots --run main --cut 0.4 --write spec/slots_selected.json
+  itemgen slots --ids MEM_01,ATT_01,VIS_01 --write spec/slots_custom.json
 """
 
 from __future__ import annotations
@@ -24,6 +25,29 @@ from . import paths, spec
 
 # 품질 판단에서 기본으로 빼는 arm. 쉼표로 덮어쓸 수 있다.
 DEFAULT_EXCLUDE = ["gpt6_sol", "qwen38_27b_noparser"]
+
+
+def write_selected(ids: str, destination: str, spec_dir=None) -> list[str]:
+    """명시한 슬롯을 원본 순서로 골라 독립적인 slots.json으로 저장한다."""
+    wanted = [x.strip() for x in ids.split(",") if x.strip()]
+    if not wanted:
+        raise SystemExit("--ids가 비어 있다")
+    if len(wanted) != len(set(wanted)):
+        raise SystemExit(f"--ids에 중복이 있다: {wanted}")
+
+    src = spec.load_slots(spec_dir)
+    known = {s["id"] for s in src["slots"]}
+    unknown = [sid for sid in wanted if sid not in known]
+    if unknown:
+        raise SystemExit(f"없는 slot id: {unknown} (가능: {sorted(known)})")
+
+    keep = set(wanted)
+    src["slots"] = [s for s in src["slots"] if s["id"] in keep]
+    src["note"] = (src.get("note", "") +
+                   f" | 제작 정책에서 명시한 슬롯만 선택 ({len(keep)}/{len(known)})")
+    Path(destination).write_text(json.dumps(src, ensure_ascii=False, indent=2),
+                                 encoding="utf-8")
+    return [s["id"] for s in src["slots"]]
 
 
 def collect(run: Path, exclude: list[str], spec_dir=None,
@@ -122,10 +146,22 @@ def main(argv=None) -> None:
     ap.add_argument("--renderers", default=None, help="이 렌더러만 (쉼표 구분)")
     ap.add_argument("--accept", default="ok",
                     help="사람 판정 중 합격으로 칠 것 (ok / ok,minor)")
+    ap.add_argument("--ids", default=None,
+                    help="집계 대신 이 슬롯들만 slots.json으로 저장 (쉼표 구분)")
     ap.add_argument("--write", default=None, help="자른 결과를 slots.json 형식으로 저장")
     ap.add_argument("--out", default=None)
     ap.add_argument("--spec-dir", default=None)
     args = ap.parse_args(argv if argv is not None else sys.argv[1:])
+
+    if args.ids:
+        if not args.write:
+            raise SystemExit("--ids를 쓰려면 --write도 줘야 한다")
+        if args.cut is not None:
+            raise SystemExit("--ids와 --cut은 함께 쓸 수 없다")
+        selected = write_selected(args.ids, args.write, args.spec_dir)
+        print(f"{len(selected)}슬롯 -> {args.write}")
+        print("선택: " + ",".join(selected))
+        return
 
     run = paths.out_dir(args.out) / args.run
     exclude = [x.strip() for x in args.exclude.split(",") if x.strip()]

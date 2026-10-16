@@ -1,0 +1,235 @@
+<!doctype html><meta charset='utf-8'><title>itemgen 검수 — repair_balanced18</title><style>
+*{box-sizing:border-box}
+body{font-family:system-ui,'Noto Sans KR',sans-serif;margin:0;padding:20px;
+     background:#f5f6f8;color:#1b2228;font-size:14px}
+h1{font-size:20px;margin:0 0 4px}
+.sub{color:#5c6672;font-size:13px;margin-bottom:14px}
+.stats{display:flex;gap:16px;flex-wrap:wrap;background:#fff;border:1px solid #dfe3e8;
+       border-radius:9px;padding:10px 14px;margin-bottom:10px;font-size:13px}
+.stats span{color:#5c6672}
+.stats b{color:#1b2228;font-variant-numeric:tabular-nums;font-size:15px}
+.bar{position:sticky;top:0;z-index:10;background:#f5f6f8;padding:10px 0 12px;
+     border-bottom:1px solid #e0e4e9;margin-bottom:16px;display:flex;gap:8px;
+     flex-wrap:wrap;align-items:center}
+.bar select,.bar input,.bar button{font:inherit;padding:6px 10px;border:1px solid #ccd2d9;
+     border-radius:6px;background:#fff}
+.bar button{cursor:pointer}
+.bar .count{color:#5c6672;font-size:13px;margin-left:auto}
+/* ---- 조합 고르기 ---- */
+.picker{background:#fff;border:1px solid #dfe3e8;border-radius:9px;padding:10px 14px;
+        margin-bottom:10px;display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+.pgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.pgroup>b{font-size:12px;color:#49535e;margin-right:2px;white-space:nowrap}
+/* 숨긴 체크박스(display:none) + label 방식은 환경에 따라 클릭이 안 먹는다.
+   버튼에 직접 핸들러를 달고 상태는 data-on 속성으로 들고 간다. */
+.pgroup .chip{font:inherit;font-size:12.5px;cursor:pointer;background:#f4f6f8;
+              border:1px solid #dde2e7;border-radius:999px;padding:4px 11px;
+              user-select:none;white-space:nowrap;color:#49535e}
+.pgroup .chip[data-on="1"]{background:#2b6b8c;color:#fff;border-color:#2b6b8c}
+.pgroup.r .chip[data-on="1"]{background:#8c6b4a;border-color:#8c6b4a}
+.pgroup .mini{font:inherit;font-size:11.5px;padding:3px 8px;border:1px solid #ccd2d9;
+              border-radius:6px;background:#fff;cursor:pointer;color:#5c6672}
+.item{background:#fff;border:1px solid #dfe3e8;border-radius:10px;padding:14px;margin-bottom:14px}
+.head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.id{font-weight:700;font-size:15px}
+.tag{background:#eef1f4;border-radius:999px;padding:2px 9px;font-size:12px;color:#49535e}
+.q{font-size:12.5px;color:#49535e;line-height:1.6;margin-bottom:10px}
+.q b{color:#1b2228}
+.cells{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+.cell{flex:0 0 auto;width:300px;border:1px solid #e6eaee;border-radius:8px;padding:10px}
+.cellhead{display:flex;gap:6px;align-items:center;margin-bottom:7px;flex-wrap:wrap}
+.who{font-size:11.5px;font-weight:700;border-radius:5px;padding:2px 7px;
+     background:#2b6b8c;color:#fff;white-space:nowrap}
+.who.r{background:#8c6b4a}
+.auto{font-size:11.5px;border-radius:5px;padding:2px 7px;white-space:nowrap}
+.auto.y{background:#e3f3e7;color:#1f6b33}
+.auto.n{background:#fbe6e6;color:#8c2b2b}
+.auto.u{background:#eef1f4;color:#5c6672}
+.strip{display:flex;flex-direction:column;gap:8px}
+.shot{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;align-items:start}
+.shot img{width:96px;height:96px;object-fit:contain;background:#fafbfc;
+          border:1px solid #dfe3e8;border-radius:6px;cursor:zoom-in}
+.cap{font-size:11px;color:#5c6672;line-height:1.45}
+.cap b{display:block;color:#1b2228}
+.qa{font-size:12px;color:#49535e;line-height:1.5;background:#f7f9fb;border:1px solid #e4e8ec;
+    border-radius:6px;padding:7px 9px;margin-bottom:8px}
+.qa b{color:#2b6b8c;margin-right:3px}
+.verdict{display:flex;gap:5px;margin-top:9px}
+.verdict button{font:inherit;font-size:12px;flex:1 1 0;padding:6px 4px;border:1px solid #ccd2d9;
+                border-radius:6px;background:#fff;cursor:pointer;color:#49535e}
+.verdict button.on[data-w="ok"]{background:#3f9d58;color:#fff;border-color:#3f9d58}
+.verdict button.on[data-w="minor"]{background:#c98a28;color:#fff;border-color:#c98a28}
+.verdict button.on[data-w="bad"]{background:#cf4040;color:#fff;border-color:#cf4040}
+.note{width:100%;margin-top:6px;font:inherit;font-size:12px;padding:5px 8px;
+      border:1px solid #ccd2d9;border-radius:6px}
+dialog{border:none;border-radius:10px;padding:0;background:transparent;max-width:95vw}
+dialog img{max-width:92vw;max-height:88vh;background:#fff;border-radius:10px;display:block}
+dialog::backdrop{background:rgba(0,0,0,.72)}
+#jserr{display:none;background:#fdecec;border:1px solid #e3b4b4;color:#8c2b2b;
+       padding:10px 14px;border-radius:8px;margin-bottom:12px;font-size:13px;
+       white-space:pre-wrap;font-family:ui-monospace,monospace}
+</style><h1>문항 생성 벤치마크 검수</h1><div class="sub">슬롯 1개 · (LLM × 렌더러) 조합 1개 · 칸 1개 · 이미지 클릭하면 확대 · <b>빌드 11:40:16</b></div><div id="jserr"></div><div class="stats"><span>진행 <b id="s-done">0</b></span><span>쓸만함 <b id="s-ok">0</b></span><span>수정하면 <b id="s-minor">0</b></span><span>못씀 <b id="s-bad">0</b></span><span style="margin-left:auto">칸 1개 · 조합 1개</span></div><div class="picker"><div class="pgroup"><b>LLM</b></div><div class="pgroup " id="p-llm"><button class="chip" data-value="qwen38_27b" data-on="1">qwen38_27b</button><button class="mini" data-group="p-llm" data-act="all">전체</button><button class="mini" data-group="p-llm" data-act="none">해제</button></div><div class="pgroup r"><b>렌더러</b></div><div class="pgroup r" id="p-ren"><button class="chip" data-value="compose" data-on="1">compose</button><button class="mini" data-group="p-ren" data-act="all">전체</button><button class="mini" data-group="p-ren" data-act="none">해제</button></div></div><div class="bar"><select id="f-domain"><option value="">전체 영역</option><option value="집행기능">집행기능</option></select><select id="f-verdict"><option value="">전체 판정</option><option value="none">미판정</option><option value="ok">쓸만함</option><option value="minor">수정하면</option><option value="bad">못씀</option></select><input id="f-text" placeholder="슬롯·질문 검색" size="16"><button id="next">다음 미판정</button><button id="summary">조합별 요약 복사</button><button id="export">JSON 내려받기</button><button id="reset">초기화</button><span class="count"></span></div><div class="item" data-domain="집행기능" data-search="exe_01 분류 규칙 전환 색으로 나누던 규칙을 바꾸고, 모양으로 나누어야 합니다. 두 보기 중 어느 쪽이 모양으로 나눈 것입니까?"><div class="head"><span class="id">EXE_01</span><span class="tag">집행기능</span><span class="tag">분류 규칙 전환</span><span class="tag">인지 전환</span></div><div class="q">인지 전환 · 응답 choice2</div><div class="cells"><div class="cell" id="EXE_01__qwen38_27b__compose" data-slot="EXE_01" data-llm="qwen38_27b" data-renderer="compose" data-combo="qwen38_27b x compose"><div class="cellhead"><span class="who">qwen38_27b</span><span class="who r">compose</span></div><div class="qa"><b>Q</b> 색으로 나누던 규칙을 바꾸고, 모양으로 나누어야 합니다. 두 보기 중 어느 쪽이 모양으로 나눈 것입니까?<br><b>A</b> 2</div><div class="strip"><div class="shot"><img src="images/qwen38_27b/compose/EXE_01_p01_기준.png" loading="lazy"><div class="cap"><b>기준</b><span class="auto u">자동 판정 없음</span><br>사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 단색 원 하나 원 하나. 왼쪽 아래에 빨강 단색 정사각형 하나 정사각형 하나. 오른쪽 위에 파랑 단색 정사각형 하나 정사각형 하나. 오른쪽 아래에 파랑 단색 원 하나 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.</div></div><div class="shot"><img src="images/qwen38_27b/compose/EXE_01_p02_보기_opt1.png" loading="lazy"><div class="cap"><b>보기 1</b><span class="auto u">자동 판정 없음</span><br>사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 단색 원 하나 원 하나. 왼쪽 아래에 파랑 단색 정사각형 하나 정사각형 하나. 오른쪽 위에 빨강 단색 정사각형 하나 정사각형 하나. 오른쪽 아래에 빨강 단색 원 하나 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.</div></div><div class="shot"><img src="images/qwen38_27b/compose/EXE_01_p03_보기_opt2.png" loading="lazy"><div class="cap"><b>보기 2</b><span class="auto u">자동 판정 없음</span><br>사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 단색 원 하나 원 하나. 오른쪽 위에 파랑 단색 원 하나 원 하나. 왼쪽 아래에 파랑 단색 정사각형 하나 정사각형 하나. 오른쪽 아래에 빨강 단색 정사각형 하나 정사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.</div></div></div><div class="verdict"><button data-w="ok" title="문항 자극으로 쓸 수 있다">쓸만함</button><button data-w="minor" title="작은 손질로 쓸 수 있다">수정하면</button><button data-w="bad" title="자극이 명세와 다르거나 정답이 흐려졌다">못씀</button></div><input class="note" placeholder="메모 (선택)"></div></div></div><dialog id="zoom"><img alt=""></dialog><script>window.__CELLS__=["EXE_01__qwen38_27b__compose"];
+window.onerror = function(msg, src, line, col){
+  var box = document.getElementById('jserr');
+  if (box) { box.style.display = 'block';
+             box.textContent = '화면 스크립트 오류 — ' + msg + ' (' + line + ':' + col + ')'; }
+};
+const KEY = 'itemgen-sheet-' + document.title;
+const CELLS = window.__CELLS__;
+let store = JSON.parse(localStorage.getItem(KEY) || '{}');
+function rec(id){
+  if (!store[id]) store[id] = {w:'', n:''};
+  if (store[id].n === undefined) store[id].n = '';
+  return store[id];
+}
+const save = () => localStorage.setItem(KEY, JSON.stringify(store));
+
+function paint(cellId){
+  const box = document.getElementById(cellId);
+  if (!box) return;
+  const r = rec(cellId);
+  box.querySelectorAll('.verdict button').forEach(b =>
+    b.classList.toggle('on', !!r.w && b.dataset.w === r.w));
+  const note = box.querySelector('.note');
+  if (note && note.value !== r.n) note.value = r.n;
+}
+
+document.querySelectorAll('.verdict button').forEach(btn => {
+  btn.onclick = () => {
+    const cell = btn.closest('.cell'), r = rec(cell.id);
+    r.w = r.w === btn.dataset.w ? '' : btn.dataset.w;
+    save(); paint(cell.id); refresh();
+  };
+});
+document.querySelectorAll('.note').forEach(input => {
+  input.oninput = () => { rec(input.closest('.cell').id).n = input.value; save(); };
+});
+
+// 어떤 arm·렌더러를 볼지는 체크박스로 고른다. 16개 조합을 하나씩 고르는 것보다
+// 축별로 켜고 끄는 쪽이 빠르다. 고른 상태는 localStorage에 남겨 새로고침을 견딘다.
+const PICK_KEY = KEY + '::pick';
+function picked(group){
+  const out = new Set();
+  document.querySelectorAll('#' + group + ' .chip').forEach(c => {
+    if (c.dataset.on === '1') out.add(c.dataset.value);
+  });
+  return out;
+}
+function savePick(){
+  localStorage.setItem(PICK_KEY, JSON.stringify(
+    {llm: Array.from(picked('p-llm')), ren: Array.from(picked('p-ren'))}));
+}
+function loadPick(){
+  let s;
+  try { s = JSON.parse(localStorage.getItem(PICK_KEY) || 'null'); } catch (e) { s = null; }
+  if (!s) return;
+  [['p-llm', s.llm], ['p-ren', s.ren]].forEach(([g, want]) => {
+    if (!want) return;
+    document.querySelectorAll('#' + g + ' .chip').forEach(c => {
+      c.dataset.on = (want.indexOf(c.dataset.value) !== -1) ? '1' : '0';
+    });
+  });
+}
+
+function applyFilter(){
+  const dom = document.getElementById('f-domain').value;
+  const ver = document.getElementById('f-verdict').value;
+  const q = document.getElementById('f-text').value.trim().toLowerCase();
+  const L = picked('p-llm'), R = picked('p-ren');
+  let shown = 0;
+  document.querySelectorAll('.item').forEach(card => {
+    let anyCell = false;
+    card.querySelectorAll('.cell').forEach(cell => {
+      const okCombo = L.has(cell.dataset.llm) && R.has(cell.dataset.renderer);
+      const okVer = !ver || (rec(cell.id).w || 'none') === ver;
+      const on = okCombo && okVer;
+      cell.style.display = on ? '' : 'none';
+      if (on) anyCell = true;
+    });
+    const ok = anyCell
+      && (!dom || card.dataset.domain === dom)
+      && (!q || card.dataset.search.includes(q));
+    card.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  });
+  document.querySelector('.count').textContent =
+    shown + ' / ' + document.querySelectorAll('.item').length + ' 슬롯';
+}
+
+function refresh(){
+  const done = CELLS.filter(id => rec(id).w).length;
+  document.getElementById('s-done').textContent = done + '/' + CELLS.length;
+  ['ok','minor','bad'].forEach(w =>
+    document.getElementById('s-' + w).textContent =
+      CELLS.filter(id => rec(id).w === w).length);
+  applyFilter();
+}
+
+document.getElementById('export').onclick = () => {
+  const rows = CELLS.filter(id => rec(id).w).map(id => {
+    const el = document.getElementById(id);
+    return {cell: id, slot_id: el.dataset.slot, llm: el.dataset.llm,
+            renderer: el.dataset.renderer, verdict: rec(id).w, note: rec(id).n};
+  });
+  const blob = new Blob([JSON.stringify(rows, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'human_verdicts.json'; a.click();
+};
+
+document.getElementById('summary').onclick = () => {
+  const combos = Array.from(new Set(CELLS.map(id =>
+    document.getElementById(id).dataset.combo))).sort();
+  const lines = combos.map(c => {
+    const ids = CELLS.filter(id => document.getElementById(id).dataset.combo === c);
+    const n = w => ids.filter(id => rec(id).w === w).length;
+    const judged = ids.filter(id => rec(id).w).length;
+    return c + '  쓸만 ' + n('ok') + ' / 수정 ' + n('minor') + ' / 못씀 ' + n('bad')
+             + '  (판정 ' + judged + '/' + ids.length + ')';
+  });
+  const txt = lines.join('\n');
+  navigator.clipboard.writeText(txt).then(() => alert('복사됨:\n\n' + txt),
+                                          () => prompt('복사하세요:', txt));
+};
+
+document.getElementById('next').onclick = () => {
+  const target = CELLS.map(id => document.getElementById(id))
+    .find(el => el && el.style.display !== 'none' && !rec(el.id).w
+                && el.closest('.item').style.display !== 'none');
+  if (!target) { alert('보이는 칸은 모두 판정했습니다.'); return; }
+  target.scrollIntoView({behavior:'smooth', block:'center'});
+};
+
+document.getElementById('reset').onclick = () => {
+  if (!confirm('판정을 모두 지울까요?')) return;
+  store = {}; save(); CELLS.forEach(paint); refresh();
+};
+
+['f-domain','f-verdict'].forEach(id =>
+  document.getElementById(id).onchange = refresh);
+document.getElementById('f-text').oninput = applyFilter;
+
+document.querySelectorAll('.pgroup .chip').forEach(chip => {
+  chip.onclick = () => {
+    chip.dataset.on = chip.dataset.on === '1' ? '0' : '1';
+    savePick(); refresh();
+  };
+});
+document.querySelectorAll('.pgroup .mini').forEach(btn => {
+  btn.onclick = () => {
+    const want = btn.dataset.act === 'all' ? '1' : '0';
+    document.querySelectorAll('#' + btn.dataset.group + ' .chip')
+      .forEach(c => { c.dataset.on = want; });
+    savePick(); refresh();
+  };
+});
+loadPick();
+
+const dlg = document.getElementById('zoom');
+document.querySelectorAll('.shot img').forEach(img => {
+  img.onclick = () => { dlg.querySelector('img').src = img.src; dlg.showModal(); };
+});
+dlg.onclick = () => dlg.close();
+
+CELLS.forEach(paint);
+refresh();
+</script>

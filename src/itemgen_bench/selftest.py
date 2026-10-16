@@ -178,6 +178,8 @@ def main() -> None:
     akey = pipeline.judge_result_key({**base, "llm": "qwen38_27b"})
     bkey = pipeline.judge_result_key({**base, "llm": "mistral_small_24b"})
     check("LLM이 다른 judge 결과는 키가 다름", akey != bkey)
+    picked = pipeline.pick_slot_ids(list(slots.values()), "EXE_03,VIS_04")
+    check("slot id 지정 순서를 보존", [s["id"] for s in picked] == ["EXE_03", "VIS_04"])
 
     print("\n[7] 산문 생성")
     prose = rnd.scene_to_prose(a)
@@ -193,6 +195,7 @@ def main() -> None:
     check("스키마 치환됨", "{SCHEMA}" not in prompt and "item_schema" not in prompt[:50])
     check("슬롯 치환됨", "{SLOT}" not in prompt and "MEM_03" in prompt)
     check("edit 규칙 포함", "kind: \"edit\"" in prompt or 'kind": "edit' in prompt)
+    check("프롬프트 끝에 임시 입력 없음", "ㄴㅇㄹㄴㅇ" not in prompt)
     from . import models as mdl
     stub = mdl.StubLLM()
     parsed = mdl.extract_json(stub.generate(prompt))

@@ -1,0 +1,168 @@
+{
+  "slot_id": "EXE_03",
+  "question": "다음 그림에서 규칙을 찾아 다음 그림을 완성하세요.",
+  "answer": "3",
+  "answer_rationale": "기준 그림에서 사과와 바나나의 색상과 위치가 규칙적으로 변환되어야 한다. 정답은 3번 보기에서 사과와 바나나의 색상과 위치가 규칙적으로 변환된 경우이다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple1",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "banana1",
+            "name": "바나나",
+            "color": "노랑",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "apple2",
+            "name": "사과",
+            "color": "초록",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "banana2",
+            "name": "바나나",
+            "color": "빨강",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "recolor",
+          "target": "apple1",
+          "to_color": "노랑"
+        },
+        {
+          "op": "recolor",
+          "target": "banana1",
+          "to_color": "초록"
+        },
+        {
+          "op": "recolor",
+          "target": "apple2",
+          "to_color": "빨강"
+        },
+        {
+          "op": "recolor",
+          "target": "banana2",
+          "to_color": "노랑"
+        }
+      ]
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "recolor",
+          "target": "apple1",
+          "to_color": "초록"
+        },
+        {
+          "op": "recolor",
+          "target": "banana1",
+          "to_color": "빨강"
+        },
+        {
+          "op": "recolor",
+          "target": "apple2",
+          "to_color": "노랑"
+        },
+        {
+          "op": "recolor",
+          "target": "banana2",
+          "to_color": "초록"
+        }
+      ]
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 3,
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "recolor",
+          "target": "apple1",
+          "to_color": "빨강"
+        },
+        {
+          "op": "recolor",
+          "target": "banana1",
+          "to_color": "초록"
+        },
+        {
+          "op": "recolor",
+          "target": "apple2",
+          "to_color": "노랑"
+        },
+        {
+          "op": "recolor",
+          "target": "banana2",
+          "to_color": "빨강"
+        }
+      ]
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 4,
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "recolor",
+          "target": "apple1",
+          "to_color": "노랑"
+        },
+        {
+          "op": "recolor",
+          "target": "banana1",
+          "to_color": "빨강"
+        },
+        {
+          "op": "recolor",
+          "target": "apple2",
+          "to_color": "초록"
+        },
+        {
+          "op": "recolor",
+          "target": "banana2",
+          "to_color": "노랑"
+        }
+      ]
+    }
+  ]
+}

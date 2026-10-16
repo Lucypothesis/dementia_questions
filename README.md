@@ -67,7 +67,7 @@ src/itemgen_bench/
   pipeline.py             6단계 오케스트레이터
   sheet.py                사람 검수용 N-way 시트
   slots_rank.py           사람 판정 기반 슬롯 품질 순위·스냅샷
-  selftest.py             외부 모델 없이 도는 자기검증 56항목
+  selftest.py             외부 모델 없이 도는 자기검증 58항목
   watch.py                실시간 진행 감시기
   serve.py                캐시 없는 정적 서버
   paths.py                spec/·config/·out/ 위치 결정
@@ -83,7 +83,7 @@ out/<run>/                실행 결과
 ## 실행
 
 ```bash
-itemgen selftest                              # 자기검증 56항목 (비용 0)
+itemgen selftest                              # 자기검증 58항목 (비용 0)
 itemgen run --run main --stages plan          # 규모·비용 계산만
 bash run_all.sh                               # 전 구간 무인 실행
 GPUS="3 0 1" bash run_all.sh                  # 비는 카드를 골라 쓴다
@@ -116,6 +116,8 @@ itemgen compare --run main \
 itemgen run --run main --stages gen,check --llms gpt6_sol
 itemgen run --run main --stages render --renderers flux2_klein_4b
 itemgen run --run main --stages judge,sheet
+itemgen run --run repair --stages gen,check --llms qwen38_27b --slot-ids EXE_01
+itemgen slots --ids MEM_01,ATT_01,VIS_01 --write spec/slots_custom.json
 ```
 
 모든 단계가 재개 가능하다. 이미 만든 결과는 건너뛰므로 중간에 끊겨도 다시 치면 된다.
@@ -253,6 +255,20 @@ compose에서 두 모델의 결과가 모두 있고 둘 다 `ok`인 슬롯은 16
 - `spec/renderer_policy_final.json`: 영역별 제작 렌더러 정책
 - `spec/slots_selected_final.json`: 두 오픈모델이 모두 통과한 제작용 17슬롯
 
+17슬롯은 수율을 우선해 고른 결과라 기억력 7개, 시공간능력 2개, 집행기능 1개로
+영역이 치우친다. 실제 제작의 기본안은 이를 보정한 **균형형 18슬롯**이다.
+
+| 기억력 | 주의력 | 언어능력 | 시공간능력 | 집행기능 |
+|---:|---:|---:|---:|---:|
+| 5 | 4 | 3 | 3 | 3 |
+
+`MEM_07`, `MEM_08`을 빼고 `VIS_04`, `EXE_02`, `EXE_03`을 넣었다. 추가한 세 슬롯은
+모두 `qwen38_27b × compose`의 사람 판정 `ok` 셀을 고정해 사용한다. 재생성한
+`EXE_01`은 문제 의도가 불명확하다는 사람 판정 `bad`를 받아 채택하지 않았다.
+
+- `spec/slots_selected_balanced_18.json`: 균형형 제작용 18슬롯
+- `spec/renderer_policy_balanced_18.json`: 슬롯별 LLM·렌더러 고정과 판정 근거
+
 ## 설정 바꾸기
 
 `config/models.yaml`의 `llms`/`renderers`에 항목을 추가하면 arm이 늘어난다.
@@ -294,7 +310,7 @@ compose에서 두 모델의 결과가 모두 있고 둘 다 `ok`인 슬롯은 16
 
 ## 자기검증
 
-`itemgen selftest`가 56개 항목을 본다. 외부 모델 없이 돌고 비용이 0이다.
+`itemgen selftest`가 58개 항목을 본다. 외부 모델 없이 돌고 비용이 0이다.
 
 - 나쁜 출력 11종(ref 중복, 격자 범위 초과, 칸 겹침, 없는 ref를 edit, 모르는 op,
   edit 대신 장면 재기술 …)을 검증기가 실제로 잡는지

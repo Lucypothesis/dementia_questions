@@ -58,6 +58,18 @@ def pick_slots(slots: list[dict], limit: int | None) -> list[dict]:
     return out[:limit] if limit < len(out) else out
 
 
+def pick_slot_ids(slots: list[dict], value: str) -> list[dict]:
+    """쉼표로 지정한 슬롯만, 지정한 순서대로 고른다."""
+    want = [x.strip() for x in value.split(",") if x.strip()]
+    if len(want) != len(set(want)):
+        raise SystemExit(f"--slot-ids에 중복이 있다: {want}")
+    by_id = {slot["id"]: slot for slot in slots}
+    unknown = [sid for sid in want if sid not in by_id]
+    if unknown:
+        raise SystemExit(f"없는 slot id: {unknown} (가능: {sorted(by_id)})")
+    return [by_id[sid] for sid in want]
+
+
 # ----------------------------------------------------------------- 1 gen
 
 def stage_gen(run: Path, slots: list[dict], cfg: dict, force: bool) -> None:
@@ -374,6 +386,8 @@ def main() -> None:
     ap.add_argument("--run", default="pilot", help="out/ 아래 실행 이름")
     ap.add_argument("--slots", type=int, default=None,
                     help="영역별로 고르게 이만큼만 쓴다 (파일럿용). 생략하면 50개 전부")
+    ap.add_argument("--slot-ids", default="",
+                    help="이 슬롯만 지정한 순서로 쓴다 (쉼표 구분). --slots와 함께 쓸 수 없음")
     ap.add_argument("--stages", default="gen,check,render,judge,sheet")
     ap.add_argument("--force", default="", help="이 단계는 결과가 있어도 다시 돈다")
     ap.add_argument("--config", default=None,
@@ -397,7 +411,10 @@ def main() -> None:
         if unknown:
             raise SystemExit(f"{key}에 없는 이름: {sorted(unknown)} (있는 것: {sorted(have)})")
         cfg[key] = [e for e in cfg[key] if e["name"] in want]
-    slots = pick_slots(spec.load_slots(args.spec_dir)["slots"], args.slots)
+    if args.slots and args.slot_ids:
+        raise SystemExit("--slots와 --slot-ids는 함께 쓸 수 없다")
+    all_slots = spec.load_slots(args.spec_dir)["slots"]
+    slots = pick_slot_ids(all_slots, args.slot_ids) if args.slot_ids else pick_slots(all_slots, args.slots)
     run = paths.out_dir(args.out) / args.run
     run.mkdir(parents=True, exist_ok=True)
 

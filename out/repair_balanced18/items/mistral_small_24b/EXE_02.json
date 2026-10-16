@@ -1,0 +1,57 @@
+{
+  "slot_id": "EXE_02",
+  "question": "다음 그림에서 빨간 사과를 찾아주세요.",
+  "answer": "사과",
+  "answer_rationale": "사과는 빨간색으로 표시되어 있어 쉽게 찾을 수 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [
+              0,
+              0
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "glass",
+            "name": "안경",
+            "appearance": "검은 뿔테",
+            "cell": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
   itemgen demo            비용 0·GPU 0으로 전 구간을 1초 안에 돌려본다
   itemgen run --stages gen,check --llms gpt6_sol
-  itemgen selftest        외부 모델 없이 56항목 자기검증
+  itemgen selftest        외부 모델 없이 58항목 자기검증
   itemgen watch           실시간 진행
   itemgen analyze         judge 결과를 실패 유형별로 집계
   itemgen calibrate       judge가 사람 판정과 얼마나 맞는지 측정

@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "purpose": "balanced production set; derived after human evaluation",
+  "status": "human-reviewed production only, not an unbiased benchmark",
+  "base_policy": "spec/renderer_policy_final.json",
+  "selection_rule": "start from the 17-slot high-yield set, remove two memory slots, and add one visuospatial plus two executive slots from human-ok Qwen cells",
+  "distribution": {
+    "기억력": 5,
+    "주의력": 4,
+    "언어능력": 3,
+    "시공간능력": 3,
+    "집행기능": 3
+  },
+  "renderer_by_domain": {
+    "기억력": "compose",
+    "주의력": "compose",
+    "언어능력": "flux2_klein_4b",
+    "시공간능력": "compose",
+    "집행기능": "compose"
+  },
+  "default_eligible_llms": [
+    "qwen38_27b",
+    "mistral_small_24b"
+  ],
+  "default_applies_to": [
+    "MEM_01",
+    "MEM_02",
+    "MEM_05",
+    "MEM_09",
+    "MEM_10",
+    "ATT_01",
+    "ATT_03",
+    "ATT_05",
+    "ATT_10",
+    "LAN_01",
+    "LAN_02",
+    "LAN_08",
+    "VIS_01",
+    "VIS_09",
+    "EXE_08"
+  ],
+  "cell_overrides": {
+    "VIS_04": {
+      "llm": "qwen38_27b",
+      "renderer": "compose",
+      "verdict": "ok",
+      "source": "out/main/human_verdicts_v02.json"
+    },
+    "EXE_02": {
+      "llm": "qwen38_27b",
+      "renderer": "compose",
+      "verdict": "ok",
+      "source": "out/main/human_verdicts_v02.json"
+    },
+    "EXE_03": {
+      "llm": "qwen38_27b",
+      "renderer": "compose",
+      "verdict": "ok",
+      "source": "out/main/human_verdicts_v02.json"
+    }
+  },
+  "removed_for_balance": [
+    "MEM_07",
+    "MEM_08"
+  ],
+  "rejected_repair_cells": [
+    {
+      "slot_id": "EXE_01",
+      "llm": "qwen38_27b",
+      "renderer": "compose",
+      "verdict": "bad",
+      "note": "문제가 무엇을 원하는지 불명확해",
+      "source": "out/repair_balanced18/human_verdicts_v03.json"
+    }
+  ],
+  "selected_slots": [
+    "MEM_01",
+    "MEM_02",
+    "MEM_05",
+    "MEM_09",
+    "MEM_10",
+    "ATT_01",
+    "ATT_03",
+    "ATT_05",
+    "ATT_10",
+    "LAN_01",
+    "LAN_02",
+    "LAN_08",
+    "VIS_01",
+    "VIS_04",
+    "VIS_09",
+    "EXE_02",
+    "EXE_03",
+    "EXE_08"
+  ],
+  "selected_slot_count": 18
+}

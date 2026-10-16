@@ -1,0 +1,10 @@
+[
+  {
+    "cell": "EXE_01__qwen38_27b__compose",
+    "slot_id": "EXE_01",
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "verdict": "bad",
+    "note": "문제가 무엇을 원하는지 불명확해"
+  }
+]

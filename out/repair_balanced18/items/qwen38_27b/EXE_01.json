@@ -1,0 +1,178 @@
+{
+  "slot_id": "EXE_01",
+  "question": "색으로 나누던 규칙을 바꾸고, 모양으로 나누어야 합니다. 두 보기 중 어느 쪽이 모양으로 나눈 것입니까?",
+  "answer": "2",
+  "answer_rationale": "2번 보기의 위 행에는 원이, 아래 행에는 정사각형이 모여 있어 모양 기준으로 분류된다. 1번 보기는 왼쪽 열이 파랑, 오른쪽 열이 빨강으로 색 기준이며, 위 행과 아래 행 모두 원과 정사각형이 섞여 있어 모양 기준이 아니다. 따라서 규칙 전환에 맞는 보기는 2번뿐이다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "원",
+            "appearance": "단색 원 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_square",
+            "name": "정사각형",
+            "appearance": "단색 정사각형 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_square",
+            "name": "정사각형",
+            "appearance": "단색 정사각형 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_circle",
+            "name": "원",
+            "appearance": "단색 원 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "blue_circle",
+            "name": "원",
+            "appearance": "단색 원 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_square",
+            "name": "정사각형",
+            "appearance": "단색 정사각형 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_square",
+            "name": "정사각형",
+            "appearance": "단색 정사각형 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_circle",
+            "name": "원",
+            "appearance": "단색 원 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "원",
+            "appearance": "단색 원 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_circle",
+            "name": "원",
+            "appearance": "단색 원 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_square",
+            "name": "정사각형",
+            "appearance": "단색 정사각형 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_square",
+            "name": "정사각형",
+            "appearance": "단색 정사각형 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}
