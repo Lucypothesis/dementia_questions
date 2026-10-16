@@ -6,6 +6,7 @@
   itemgen watch           실시간 진행
   itemgen analyze         judge 결과를 실패 유형별로 집계
   itemgen calibrate       judge가 사람 판정과 얼마나 맞는지 측정
+  itemgen compare         두 렌더러의 사람 판정을 같은 셀끼리 비교
   itemgen slots           슬롯을 생성 품질로 줄 세운다 (체리피킹용)
   itemgen assets          compose용 사물 자산 생성 (GPU)
   itemgen thumbs          검수용 축소본 생성 (저장소에 넣을 용도)
@@ -60,6 +61,11 @@ def main(argv=None) -> None:
     if cmd == "calibrate":
         from . import calibrate
         calibrate.main(rest)
+        return
+
+    if cmd == "compare":
+        from . import human_compare
+        human_compare.main(rest)
         return
 
     if cmd == "slots":

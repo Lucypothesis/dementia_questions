@@ -1,0 +1,213 @@
+{
+  "version": "1.0",
+  "inputs": {
+    "compose_human": "out/main/human_verdicts_v02.json",
+    "compose_human_sha256": "1ea724741d483390468e836a50cfad73d5e3b24e79dbae9f7198ac5d8adc6a12",
+    "baseline_human": "out/main/human_verdicts.json",
+    "baseline_human_sha256": "3b0b4c3ce2bda0e6cf414e9eee1388903016bdc0b4084f607c17027b7d2b06c0"
+  },
+  "criteria": {
+    "llms": [
+      "qwen38_27b",
+      "mistral_small_24b"
+    ],
+    "compose": {
+      "accepted_verdicts": [
+        "ok"
+      ]
+    },
+    "flux2_klein_4b": {
+      "accepted_verdicts": [
+        "ok",
+        "minor"
+      ]
+    }
+  },
+  "coverage": {
+    "paired_cells": 94,
+    "slots": 50
+  },
+  "summaries": [
+    {
+      "scope": "overall",
+      "group": "all",
+      "renderer": "compose",
+      "usable": 53,
+      "n": 94,
+      "rate": 0.56383
+    },
+    {
+      "scope": "llm",
+      "group": "qwen38_27b",
+      "renderer": "compose",
+      "usable": 32,
+      "n": 50,
+      "rate": 0.64
+    },
+    {
+      "scope": "llm",
+      "group": "mistral_small_24b",
+      "renderer": "compose",
+      "usable": 21,
+      "n": 44,
+      "rate": 0.477273
+    },
+    {
+      "scope": "domain",
+      "group": "기억력",
+      "renderer": "compose",
+      "usable": 17,
+      "n": 18,
+      "rate": 0.944444
+    },
+    {
+      "scope": "domain",
+      "group": "주의력",
+      "renderer": "compose",
+      "usable": 13,
+      "n": 19,
+      "rate": 0.684211
+    },
+    {
+      "scope": "domain",
+      "group": "언어능력",
+      "renderer": "compose",
+      "usable": 7,
+      "n": 20,
+      "rate": 0.35
+    },
+    {
+      "scope": "domain",
+      "group": "시공간능력",
+      "renderer": "compose",
+      "usable": 9,
+      "n": 18,
+      "rate": 0.5
+    },
+    {
+      "scope": "domain",
+      "group": "집행기능",
+      "renderer": "compose",
+      "usable": 7,
+      "n": 19,
+      "rate": 0.368421
+    },
+    {
+      "scope": "overall",
+      "group": "all",
+      "renderer": "flux2_klein_4b",
+      "usable": 40,
+      "n": 94,
+      "rate": 0.425532
+    },
+    {
+      "scope": "llm",
+      "group": "qwen38_27b",
+      "renderer": "flux2_klein_4b",
+      "usable": 21,
+      "n": 50,
+      "rate": 0.42
+    },
+    {
+      "scope": "llm",
+      "group": "mistral_small_24b",
+      "renderer": "flux2_klein_4b",
+      "usable": 19,
+      "n": 44,
+      "rate": 0.431818
+    },
+    {
+      "scope": "domain",
+      "group": "기억력",
+      "renderer": "flux2_klein_4b",
+      "usable": 12,
+      "n": 18,
+      "rate": 0.666667
+    },
+    {
+      "scope": "domain",
+      "group": "주의력",
+      "renderer": "flux2_klein_4b",
+      "usable": 9,
+      "n": 19,
+      "rate": 0.473684
+    },
+    {
+      "scope": "domain",
+      "group": "언어능력",
+      "renderer": "flux2_klein_4b",
+      "usable": 12,
+      "n": 20,
+      "rate": 0.6
+    },
+    {
+      "scope": "domain",
+      "group": "시공간능력",
+      "renderer": "flux2_klein_4b",
+      "usable": 4,
+      "n": 18,
+      "rate": 0.222222
+    },
+    {
+      "scope": "domain",
+      "group": "집행기능",
+      "renderer": "flux2_klein_4b",
+      "usable": 3,
+      "n": 19,
+      "rate": 0.157895
+    }
+  ],
+  "paired": {
+    "both_usable": 32,
+    "compose_only": 21,
+    "baseline_only": 8,
+    "neither_usable": 33,
+    "absolute_difference": 0.138298,
+    "mcnemar_exact_two_sided_p": 0.024119544774
+  },
+  "judge_vs_human_compose": {
+    "tp": 26,
+    "fp": 12,
+    "fn": 27,
+    "tn": 29,
+    "accuracy": 0.585106,
+    "precision": 0.684211,
+    "recall": 0.490566,
+    "specificity": 0.707317,
+    "cohen_kappa": 0.190013
+  },
+  "production_policy": {
+    "status": "data-derived; production only, not an unbiased benchmark",
+    "selection_rule": "domain winner; require every listed LLM to be human-usable",
+    "renderer_by_domain": {
+      "기억력": "compose",
+      "주의력": "compose",
+      "언어능력": "flux2_klein_4b",
+      "시공간능력": "compose",
+      "집행기능": "compose"
+    },
+    "observed_usable": 58,
+    "observed_n": 94,
+    "observed_rate": 0.617021,
+    "selected_slots": [
+      "MEM_01",
+      "MEM_02",
+      "MEM_05",
+      "MEM_07",
+      "MEM_08",
+      "MEM_09",
+      "MEM_10",
+      "ATT_01",
+      "ATT_03",
+      "ATT_05",
+      "ATT_10",
+      "LAN_01",
+      "LAN_02",
+      "LAN_08",
+      "VIS_01",
+      "VIS_09",
+      "EXE_08"
+    ],
+    "selected_slot_count": 17
+  }
+}

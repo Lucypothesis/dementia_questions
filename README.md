@@ -62,6 +62,7 @@ src/itemgen_bench/
   render.py               scene -> 산문 / 이미지, edit 적용
   shapes.py               원·다각형·회전·반전·면별 정육면체 코드 합성
   assets_build.py         compose용 단일 사물 자산 생성·배경 제거
+  human_compare.py        동일 셀 사람 판정 비교·제작 정책 산출
   models.py               LLM · 렌더러 · judge 어댑터
   pipeline.py             6단계 오케스트레이터
   sheet.py                사람 검수용 N-way 시트
@@ -96,6 +97,17 @@ CUDA_VISIBLE_DEVICES=2 itemgen assets --run main --build
 itemgen slots --run main --human out/main/human_verdicts.json \
   --renderers flux2_klein_4b --accept ok,minor --cut 1.0 \
   --write spec/slots_selected_13.json
+```
+
+두 렌더러의 전수 사람 판정을 짝비교하고 제작용 정책·슬롯을 재생성하려면:
+
+```bash
+itemgen compare --run main \
+  --compose-human out/main/human_verdicts_v02.json \
+  --baseline-human out/main/human_verdicts.json \
+  --write-prefix out/main/human_comparison_v02 \
+  --write-policy spec/renderer_policy_final.json \
+  --write-spec spec/slots_selected_final.json
 ```
 
 단계별로 돌리려면:
@@ -229,6 +241,17 @@ itemgen slots --run main --human out/main/human_verdicts_v02.json \
 관측 셀에서도 22/24 (91.7%)가 `ok`였다. `LAN_01`의 Mistral과 `VIS_06`의 Qwen이
 실패했고, `VIS_06`·`VIS_10`의 Mistral 셀은 생성 결과가 없어 시트에 포함되지 않았다.
 compose에서 두 모델의 결과가 모두 있고 둘 다 `ok`인 슬롯은 16개다.
+
+실제 제작에는 영역별 사람 판정 우세 렌더러를 쓰는 정책을 별도로 고정했다. 기억력·주의력·
+시공간능력·집행기능은 compose, 언어능력은 klein-4B를 쓴다. 관측 수율은 58/94 (61.7%)이고,
+선택된 렌더러에서 Qwen/Mistral이 모두 통과한 제작용 슬롯은 17개다. 이는 평가 결과를 보고
+만든 **제작용 정책**이며, 편향 없는 벤치마크 수치로 사용하면 안 된다.
+
+- `out/main/human_comparison_v02.json`: 기준·해시·짝비교·judge 일치도·제작 정책
+- `out/main/human_comparison_v02.csv`: 모델·영역별 요약표
+- `out/main/human_comparison_v02_cells.csv`: 94개 셀의 렌더러별 판정
+- `spec/renderer_policy_final.json`: 영역별 제작 렌더러 정책
+- `spec/slots_selected_final.json`: 두 오픈모델이 모두 통과한 제작용 17슬롯
 
 ## 설정 바꾸기
 

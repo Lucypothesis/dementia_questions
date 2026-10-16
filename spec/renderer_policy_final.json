@@ -1,0 +1,49 @@
+{
+  "version": "1.0",
+  "purpose": "production only; derived after evaluation",
+  "llms": [
+    "qwen38_27b",
+    "mistral_small_24b"
+  ],
+  "accepted_verdicts": {
+    "compose": [
+      "ok"
+    ],
+    "flux2_klein_4b": [
+      "ok",
+      "minor"
+    ]
+  },
+  "status": "data-derived; production only, not an unbiased benchmark",
+  "selection_rule": "domain winner; require every listed LLM to be human-usable",
+  "renderer_by_domain": {
+    "기억력": "compose",
+    "주의력": "compose",
+    "언어능력": "flux2_klein_4b",
+    "시공간능력": "compose",
+    "집행기능": "compose"
+  },
+  "observed_usable": 58,
+  "observed_n": 94,
+  "observed_rate": 0.617021,
+  "selected_slots": [
+    "MEM_01",
+    "MEM_02",
+    "MEM_05",
+    "MEM_07",
+    "MEM_08",
+    "MEM_09",
+    "MEM_10",
+    "ATT_01",
+    "ATT_03",
+    "ATT_05",
+    "ATT_10",
+    "LAN_01",
+    "LAN_02",
+    "LAN_08",
+    "VIS_01",
+    "VIS_09",
+    "EXE_08"
+  ],
+  "selected_slot_count": 17
+}

@@ -1,0 +1,347 @@
+{
+  "version": "1.0",
+  "note": "문항 슬롯 50개. 영역 5개 x 10개. LLM은 이 칸을 채우기만 한다. 슬롯을 고정해야 모델 간 문항이 1:1 대응되고 렌더러 비교가 공정해진다. | 제작용: 영역별 사람 판정 우세 렌더러를 쓰고 Qwen/Mistral 모두 사용 가능한 슬롯만 선택 (17/50)",
+  "panel_grammar": {
+    "scene": "장면을 처음부터 기술하는 패널",
+    "edit": "앞선 패널을 복제하고 선언된 변경만 적용하는 패널. 동일성이 보장된다",
+    "option": "보기 카드 한 장. option_index로 번호를 매긴다"
+  },
+  "slots": [
+    {
+      "id": "MEM_01",
+      "domain": "기억력",
+      "subtype": "물건 목록 회상",
+      "construct": "시각 자극 즉시 회상",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "목록"
+    },
+    {
+      "id": "MEM_02",
+      "domain": "기억력",
+      "subtype": "지연 재인",
+      "construct": "재인 기억",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사 보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "학습",
+          "ops": [
+            "recolor",
+            "move",
+            "rescale"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "MEM_05",
+      "domain": "기억력",
+      "subtype": "시각 무늬 재인",
+      "construct": "비언어 재인",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사 보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "학습",
+          "ops": [
+            "recolor",
+            "rotate",
+            "move"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "MEM_07",
+      "domain": "기억력",
+      "subtype": "사물 삭제 탐지",
+      "construct": "변화 탐지",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "학습",
+          "ops": [
+            "remove"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "MEM_08",
+      "domain": "기억력",
+      "subtype": "사물 추가 탐지",
+      "construct": "변화 탐지",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "학습",
+          "ops": [
+            "add"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "MEM_09",
+      "domain": "기억력",
+      "subtype": "속성 변화 탐지",
+      "construct": "세부 기억",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "학습",
+          "ops": [
+            "recolor"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "MEM_10",
+      "domain": "기억력",
+      "subtype": "장면 세부 기억",
+      "construct": "일화 기억",
+      "panels": [
+        {
+          "stage": "학습",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사 보기",
+          "kind": "option",
+          "n": 4,
+          "derived": true,
+          "edit_of": "학습",
+          "ops": [
+            "recolor",
+            "move",
+            "remove"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "ATT_01",
+      "domain": "주의력",
+      "subtype": "단일 특징 탐색",
+      "construct": "선택 주의",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "ATT_03",
+      "domain": "주의력",
+      "subtype": "목표 물건 계수",
+      "construct": "계수",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "ATT_05",
+      "domain": "주의력",
+      "subtype": "단일 차이 찾기",
+      "construct": "변화 탐지",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "검사",
+          "kind": "edit",
+          "edit_of": "기준",
+          "ops": [
+            "move",
+            "recolor",
+            "remove"
+          ],
+          "n_changes": 1
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "ATT_10",
+      "domain": "주의력",
+      "subtype": "지정 구역 선택 주의",
+      "construct": "주의 억제",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "개수"
+    },
+    {
+      "id": "LAN_01",
+      "domain": "언어능력",
+      "subtype": "고빈도 사물 이름 대기",
+      "construct": "이름 대기",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "LAN_02",
+      "domain": "언어능력",
+      "subtype": "저빈도 사물 이름 대기",
+      "construct": "이름 대기",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    },
+    {
+      "id": "LAN_08",
+      "domain": "언어능력",
+      "subtype": "그림-문장 정합",
+      "construct": "문장 이해",
+      "panels": [
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_01",
+      "domain": "시공간능력",
+      "subtype": "심상 회전",
+      "construct": "심상 회전",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derive": "transform",
+          "derived": true,
+          "edit_of": "기준",
+          "ops": [
+            "rotate"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "VIS_09",
+      "domain": "시공간능력",
+      "subtype": "길이·각도 대응",
+      "construct": "크기 항등",
+      "panels": [
+        {
+          "stage": "기준",
+          "kind": "scene"
+        },
+        {
+          "stage": "보기",
+          "kind": "option",
+          "n": 4,
+          "derive": "transform",
+          "derived": true,
+          "edit_of": "기준",
+          "ops": [
+            "rescale",
+            "rotate"
+          ]
+        }
+      ],
+      "response": "choice4",
+      "answer_kind": "보기번호"
+    },
+    {
+      "id": "EXE_08",
+      "domain": "집행기능",
+      "subtype": "행·열 제약 추론",
+      "construct": "제약 만족",
+      "panels": [
+        {
+          "stage": "main",
+          "kind": "scene"
+        }
+      ],
+      "response": "open",
+      "answer_kind": "사물명"
+    }
+  ]
+}
