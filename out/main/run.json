@@ -90,6 +90,11 @@
     ],
     "renderers": [
       {
+        "name": "compose",
+        "adapter": "compose",
+        "size": 768
+      },
+      {
         "name": "flux2_klein_4b",
         "adapter": "diffusion",
         "model": "black-forest-labs/FLUX.2-klein-4B",
@@ -162,5 +167,5 @@
       }
     }
   },
-  "built": "2026-10-15 15:16:09"
+  "built": "2026-10-16 00:27:41"
 }

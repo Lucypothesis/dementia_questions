@@ -222,19 +222,34 @@ def stage_render(run: Path, slots: list[dict], cfg: dict, force: bool) -> None:
 
 # --------------------------------------------------------------- 4 judge
 
+def judge_result_key(rec: dict) -> tuple[str, str, str]:
+    """판정 하나를 유일하게 식별한다."""
+    return rec["llm"], rec["renderer"], rec["name"]
+
 def stage_judge(run: Path, slots: list[dict], cfg: dict, force: bool) -> None:
-    panels = json.loads((run / "panels.json").read_text(encoding="utf-8"))
+    all_panels = json.loads((run / "panels.json").read_text(encoding="utf-8"))
+    allowed_llms = {x["name"] for x in cfg["llms"]}
+    allowed_renderers = {x["name"] for x in cfg["renderers"]}
+    panels = [r for r in all_panels
+              if r["llm"] in allowed_llms and r["renderer"] in allowed_renderers]
     by_id = {s["id"]: s for s in slots}
     out_path = run / "judge.json"
+    previous = (json.loads(out_path.read_text(encoding="utf-8"))
+                if out_path.exists() else [])
+    # panel name은 LLM arm 사이에서 같을 수 있다. llm을 빼면 Qwen의 MEM_01과
+    # Mistral의 MEM_01 판정이 서로 덮어써져 재사용·부분 재채점 결과가 오염된다.
+    scope = {judge_result_key(r) for r in panels}
+    # --llms/--renderers로 일부만 강제 재채점해도 범위 밖의 기존 결과는 보존한다.
+    preserved = [r for r in previous if judge_result_key(r) not in scope]
     done = {}
-    if out_path.exists() and not force:
-        done = {r["name"] + "|" + r["renderer"]: r
-                for r in json.loads(out_path.read_text(encoding="utf-8"))}
+    if not force:
+        done = {judge_result_key(r): r for r in previous if judge_result_key(r) in scope}
     judge = models.build("judge", cfg["judge"])
-    todo = [r for r in panels if (r["name"] + "|" + r["renderer"]) not in done]
-    rows = [done[r["name"] + "|" + r["renderer"]] for r in panels
-            if (r["name"] + "|" + r["renderer"]) in done]
-    log(f"judge[{cfg['judge'].get('name')}] 채점 대상 {len(todo)} / 재사용 {len(rows)}")
+    todo = [r for r in panels if judge_result_key(r) not in done]
+    rows = preserved + [done[judge_result_key(r)] for r in panels
+                        if judge_result_key(r) in done]
+    log(f"judge[{cfg['judge'].get('name')}] 채점 대상 {len(todo)} / "
+        f"범위 내 재사용 {len(rows)-len(preserved)} / 범위 밖 보존 {len(preserved)}")
 
     def one(rec):
         item = json.loads((run / "items" / rec["llm"] / f"{rec['slot_id']}.json")

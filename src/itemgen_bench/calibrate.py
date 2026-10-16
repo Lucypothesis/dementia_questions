@@ -32,6 +32,22 @@ def cell_id(rec: dict) -> str:
     return f"{rec['slot_id']}__{rec['llm']}__{rec['renderer']}"
 
 
+def all_cells(run: Path) -> list[dict]:
+    """judge.json을 칸 단위로 접는다. 칸은 패널이 전부 통과해야 '쓸만'이다."""
+    rows = json.loads((run / "judge.json").read_text(encoding="utf-8"))
+    by_cell: dict[str, list[dict]] = defaultdict(list)
+    for r in rows:
+        by_cell[cell_id(r)].append(r)
+    out = []
+    for cid, recs in by_cell.items():
+        vs = [r["verdict"].get("usable") for r in recs]
+        if any(v is None for v in vs):
+            continue
+        out.append({"cell": cid, "slot_id": recs[0]["slot_id"], "llm": recs[0]["llm"],
+                    "renderer": recs[0]["renderer"], "judge": all(vs), "n_panels": len(recs)})
+    return out
+
+
 # ------------------------------------------------------------------ 표본 추출
 
 def sample(run: Path, n: int, seed: int, spec_dir=None) -> list[dict]:
@@ -162,7 +178,18 @@ def main(argv=None) -> None:
         print("  itemgen calibrate score --human <내려받은 파일>")
         return
 
-    picked = json.loads((run / "calibration_sample.json").read_text(encoding="utf-8"))
     raw = json.loads(Path(args.human).read_text(encoding="utf-8"))
     human = {r["cell"]: r["verdict"] for r in raw}
+
+    # 표본 파일에 얽매이지 않는다. 사람이 판정한 칸이 무엇이든 judge와 맞춰본다.
+    # 시트를 필터해서 본 경우(예: 렌더러 하나만) 그 범위가 곧 비교 대상이 된다.
+    cells = all_cells(run)
+    picked = [c for c in cells if c["cell"] in human]
+    if not picked:
+        raise SystemExit("사람 판정과 겹치는 칸이 없다.")
+    cov = Counter((c["llm"], c["renderer"]) for c in picked)
+    print(f"비교 대상 {len(picked)}칸 — 조합 {len(cov)}종")
+    for k, n in sorted(cov.items()):
+        print(f"  {k[0]:22} x {k[1]:26} {n}")
+    print()
     _print(score(picked, human))

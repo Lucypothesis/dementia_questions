@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import re
 from pathlib import Path
 
 from . import paths
@@ -193,13 +194,49 @@ def _font(size: int):
     return ImageFont.load_default()
 
 
+def _tint(art, obj: dict):
+    """자산에 명세의 색을 입힌다.
+
+    자산은 흰 바탕의 선화로 만들어진다. 명세가 color를 지정했는데 그대로 쓰면
+    '빨간 사과 3개'가 흰 사과 3개로 나와 색 기반 문항이 통째로 깨진다.
+    어두운 외곽선은 남기고 밝은 안쪽만 칠한다.
+    """
+    from . import shapes
+    if not (obj.get("color") or "").strip():
+        return art
+    rgb = shapes.pick_color(obj)
+    if rgb == shapes.DEFAULT_FILL:          # 색 이름을 못 알아들었으면 그대로 둔다
+        return art
+    px = art.load()
+    w, h = art.size
+    for y in range(h):
+        for x in range(w):
+            r, g, b, a = px[x, y]
+            if a < 16:
+                continue
+            lum = (r * 299 + g * 587 + b * 114) / 1000
+            if lum < 110:                   # 외곽선은 보존
+                continue
+            f = min(1.0, lum / 255 + 0.15)  # 밝을수록 색을 진하게 받는다
+            px[x, y] = (int(rgb[0] * f), int(rgb[1] * f), int(rgb[2] * f), a)
+    return art
+
+
+def asset_stem(name: str) -> str:
+    """자산 생성기와 렌더러가 공유하는 안전한 파일명."""
+    return re.sub(r"[^\w가-힣]+", "_", name).strip("_")
+
+
 def _asset(name: str):
     """자산 은행에서 사물 그림을 찾는다. 없으면 None."""
     from PIL import Image
-    for ext in (".png", ".webp", ".jpg"):
-        path = ASSETS / f"{name}{ext}"
-        if path.exists():
-            return Image.open(path).convert("RGBA")
+    # 예전 자산은 원문 이름, 현재 생성기는 공백·구두점을 '_'로 바꾼 이름을 쓴다.
+    # 둘 다 찾아 기존 결과와의 호환성을 유지한다.
+    for stem in dict.fromkeys((name, asset_stem(name))):
+        for ext in (".png", ".webp", ".jpg"):
+            path = ASSETS / f"{stem}{ext}"
+            if path.exists():
+                return Image.open(path).convert("RGBA")
     return None
 
 
@@ -236,7 +273,16 @@ def render_compose(scene: dict, size: int = 768):
             cy = pad + cell_h * (r + 0.5)
 
         box = int(min(cell_w, cell_h) * 0.78 * float(obj.get("scale", 1.0)))
+        # 코드 도형 -> 자산 파일 -> 자리표시 순으로 찾는다. 도형 자산 파일이 우연히
+        # 있어도 코드 경로를 우선해야 회전·반전·면 색이 정확하다.
+        from . import shapes
+        shape = shapes.render_object(obj, box)
+        if shape is not None:
+            canvas.paste(shape, (int(cx - box / 2), int(cy - box / 2)), shape)
+            continue
         art = _asset(obj["name"])
+        if art is not None:
+            art = _tint(art.copy(), obj)
         if art is not None:
             art = art.resize((box, box), Image.LANCZOS)
             if obj.get("mirrored"):

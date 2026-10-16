@@ -1,0 +1,1234 @@
+[
+  {
+    "cell": "MEM_01__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_01",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_01__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "MEM_01",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_01__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_01",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_02__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_02",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_02__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "MEM_02",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_02__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_02",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_03__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_03",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_03__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_03",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_04__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_04",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_04__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "MEM_04",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_04__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_04",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_05__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_05",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_05__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "MEM_05",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_05__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_05",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_06__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_06",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_06__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_06",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_07__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_07",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_07__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "MEM_07",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_07__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_07",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_08__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_08",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_08__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "MEM_08",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_08__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_08",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_09__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_09",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_09__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "MEM_09",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_09__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_09",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "MEM_10__gpt6_sol__flux2_klein_4b",
+    "slot_id": "MEM_10",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "MEM_10__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "MEM_10",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "minor",
+    "note": ""
+  },
+  {
+    "cell": "MEM_10__qwen38_27b__flux2_klein_4b",
+    "slot_id": "MEM_10",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_01__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_01",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_01__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "ATT_01",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_01__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_01",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_02__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_02",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_02__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "ATT_02",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_02__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_02",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_02__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "ATT_02",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_03__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_03",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_03__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "ATT_03",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_03__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_03",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_04__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_04",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_04__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "ATT_04",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_04__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_04",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_05__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_05",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_05__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "ATT_05",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "minor",
+    "note": ""
+  },
+  {
+    "cell": "ATT_05__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_05",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_06__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_06",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_06__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_06",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_07__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_07",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_07__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "ATT_07",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_07__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_07",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_08__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_08",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_08__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "ATT_08",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_08__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_08",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_09__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_09",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_09__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "ATT_09",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_09__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_09",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_09__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "ATT_09",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_10__gpt6_sol__flux2_klein_4b",
+    "slot_id": "ATT_10",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "ATT_10__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "ATT_10",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "ATT_10__qwen38_27b__flux2_klein_4b",
+    "slot_id": "ATT_10",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_01__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_01",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_01__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_01",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_01__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_01",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_01__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "LAN_01",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_02__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_02",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_02__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_02",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_02__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_02",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_03__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_03",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_03__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_03",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_03__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_03",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_03__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "LAN_03",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_04__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_04",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_04__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_04",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_04__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_04",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_05__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_05",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_05__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_05",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_05__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_05",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_06__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_06",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_06__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_06",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_06__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_06",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_06__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "LAN_06",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_07__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_07",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_07__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_07",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_07__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_07",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_07__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "LAN_07",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_08__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_08",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_08__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_08",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_08__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_08",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_09__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_09",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_09__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_09",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_09__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_09",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_10__gpt6_sol__flux2_klein_4b",
+    "slot_id": "LAN_10",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "LAN_10__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "LAN_10",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "LAN_10__qwen38_27b__flux2_klein_4b",
+    "slot_id": "LAN_10",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "VIS_01__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_01",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_01__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "VIS_01",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_01__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_01",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_01__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "VIS_01",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "VIS_02__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_02",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_02__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "VIS_02",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_02__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_02",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_03__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_03",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_03__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "VIS_03",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_03__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_03",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_04__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_04",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "VIS_04__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "VIS_04",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "minor",
+    "note": ""
+  },
+  {
+    "cell": "VIS_04__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_04",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_05__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_05",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_05__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "VIS_05",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_05__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_05",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_06__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_06",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_06__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_06",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "minor",
+    "note": ""
+  },
+  {
+    "cell": "VIS_07__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_07",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_07__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "VIS_07",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_07__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_07",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_08__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_08",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_08__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "VIS_08",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_08__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_08",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "VIS_09__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_09",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_09__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "VIS_09",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_09__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_09",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "VIS_10__gpt6_sol__flux2_klein_4b",
+    "slot_id": "VIS_10",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "VIS_10__qwen38_27b__flux2_klein_4b",
+    "slot_id": "VIS_10",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "VIS_10__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "VIS_10",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "EXE_01__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_01",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "EXE_01__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "EXE_01",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "EXE_01__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_01",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_02__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_02",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_02__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "EXE_02",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_02__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_02",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_02__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "EXE_02",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_03__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_03",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_03__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "EXE_03",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_03__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_03",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_04__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_04",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_04__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "EXE_04",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_04__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_04",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_05__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_05",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_05__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "EXE_05",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_05__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_05",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_06__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_06",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_06__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "EXE_06",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_06__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_06",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_07__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_07",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_07__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "EXE_07",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_07__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_07",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_08__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_08",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_08__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "EXE_08",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "EXE_08__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_08",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "EXE_09__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_09",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "ok",
+    "note": ""
+  },
+  {
+    "cell": "EXE_09__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_09",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_10__gpt6_sol__flux2_klein_4b",
+    "slot_id": "EXE_10",
+    "llm": "gpt6_sol",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_10__mistral_small_24b__flux2_klein_4b",
+    "slot_id": "EXE_10",
+    "llm": "mistral_small_24b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_10__qwen38_27b__flux2_klein_4b",
+    "slot_id": "EXE_10",
+    "llm": "qwen38_27b",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  },
+  {
+    "cell": "EXE_10__qwen38_27b_noparser__flux2_klein_4b",
+    "slot_id": "EXE_10",
+    "llm": "qwen38_27b_noparser",
+    "renderer": "flux2_klein_4b",
+    "verdict": "bad",
+    "note": ""
+  }
+]

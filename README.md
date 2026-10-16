@@ -60,10 +60,13 @@ config/models.stub.yaml   비용 0 배선 확인용
 src/itemgen_bench/
   spec.py                 명세서 조립 · 스키마 검증 · 룰 채점
   render.py               scene -> 산문 / 이미지, edit 적용
+  shapes.py               원·다각형·회전·반전·면별 정육면체 코드 합성
+  assets_build.py         compose용 단일 사물 자산 생성·배경 제거
   models.py               LLM · 렌더러 · judge 어댑터
   pipeline.py             6단계 오케스트레이터
   sheet.py                사람 검수용 N-way 시트
-  selftest.py             외부 모델 없이 도는 자기검증 48항목
+  slots_rank.py           사람 판정 기반 슬롯 품질 순위·스냅샷
+  selftest.py             외부 모델 없이 도는 자기검증 56항목
   watch.py                실시간 진행 감시기
   serve.py                캐시 없는 정적 서버
   paths.py                spec/·config/·out/ 위치 결정
@@ -79,10 +82,20 @@ out/<run>/                실행 결과
 ## 실행
 
 ```bash
-itemgen selftest                              # 자기검증 48항목 (비용 0)
+itemgen selftest                              # 자기검증 56항목 (비용 0)
 itemgen run --run main --stages plan          # 규모·비용 계산만
 bash run_all.sh                               # 전 구간 무인 실행
 GPUS="3 0 1" bash run_all.sh                  # 비는 카드를 골라 쓴다
+```
+
+compose 렌더러의 자산과 사람 판정 기반 슬롯 선택:
+
+```bash
+itemgen assets --run main --list
+CUDA_VISIBLE_DEVICES=2 itemgen assets --run main --build
+itemgen slots --run main --human out/main/human_verdicts.json \
+  --renderers flux2_klein_4b --accept ok,minor --cut 1.0 \
+  --write spec/slots_selected_13.json
 ```
 
 단계별로 돌리려면:
@@ -156,6 +169,67 @@ reasoning parser 없이 `max_tokens=4096`으로 돌린 1차 결과다. 사고 �
 **이 수치는 전부 자동 채점이다.** 사람 검수 표본과의 상관을 확인하기 전에는
 확정된 결과로 쓰지 말 것.
 
+### 측정 3 · compose 하이브리드 렌더러
+
+도형은 코드로, 실물은 GPU 2에서 생성한 단일 사물 자산 96종으로 합성했다. 비교에는
+오픈모델 `qwen38_27b`, `mistral_small_24b`만 넣었고, `gpt6_sol`과
+`qwen38_27b_noparser`는 완전히 제외했다.
+
+자동 VLM judge 결과(구현 점검용):
+
+| 렌더러 | 패널 사용가능 | 문항 사용가능 |
+|---|---:|---:|
+| **compose** | **131/267 (49.1%)** | **38/94 (40.4%)** |
+| flux2_klein_4b | 104/267 (39.0%) | 19/94 (20.2%) |
+
+분모에는 judge 미판정도 실패로 넣었다(compose 패널 37건, klein-4B 39건).
+
+동일한 Qwen/Mistral 94칸을 사람이 전수 검수한 결과다. compose 판정 파일에는
+`ok`/`bad`만 있고, klein-4B는 `ok`와 `minor`를 사용 가능으로 셌다.
+
+| 범위 | compose | klein-4B |
+|---|---:|---:|
+| **전체** | **53/94 (56.4%)** | 40/94 (42.6%) |
+| qwen38_27b | **32/50 (64.0%)** | 21/50 (42.0%) |
+| mistral_small_24b | **21/44 (47.7%)** | 19/44 (43.2%) |
+
+| 영역 | compose | klein-4B |
+|---|---:|---:|
+| 기억력 | **17/18 (94.4%)** | 12/18 (66.7%) |
+| 주의력 | **13/19 (68.4%)** | 9/19 (47.4%) |
+| 시공간능력 | **9/18 (50.0%)** | 4/18 (22.2%) |
+| 집행기능 | **7/19 (36.8%)** | 3/19 (15.8%) |
+| 언어능력 | 7/20 (35.0%) | **12/20 (60.0%)** |
+
+두 렌더러 모두 성공 32칸, compose만 성공 21칸, klein-4B만 성공 8칸, 둘 다 실패
+33칸이다. 짝지은 정확 McNemar 검정은 `p=0.024`로, 이 표본에서는 compose의 13.8%p
+개선이 유의하다. 다만 언어능력에서는 klein-4B가 더 높아 렌더러를 한 종류로만 고정하는
+것이 최선인지는 별도 판단이 필요하다.
+
+94칸은 원본 셀과 정확히 일치하며 중복·누락이 없다. 자동 judge를 compose의 같은 칸
+문항 판정과 비교하면 TP/FP/FN/TN = 26/12/27/29, 정확도 58.5%, 재현율 49.1%,
+Cohen kappa 0.190이다. 즉 자동 judge가 사람이 쓸 수 있다고 본 문항의 절반가량을 놓쳐
+compose 수율을 40.4%로 과소평가했다.
+
+```bash
+itemgen serve --run main
+# http://127.0.0.1:8012/sheet_compose.html
+```
+
+이 시트에는 Qwen/Mistral × compose만 들어 있다. 현재 판정 파일은
+`out/main/human_verdicts_v02.json`이며 다음처럼 재집계한다.
+
+```bash
+itemgen slots --run main --human out/main/human_verdicts_v02.json \
+  --renderers compose --accept ok
+```
+
+기존 klein-4B 사람 판정에서 두 오픈모델 모두 `ok` 또는 `minor`였던 13개 슬롯은
+`spec/slots_selected_13.json`에 별도 스냅샷으로 보존했다. 이 13개는 compose 전수 검수의
+관측 셀에서도 22/24 (91.7%)가 `ok`였다. `LAN_01`의 Mistral과 `VIS_06`의 Qwen이
+실패했고, `VIS_06`·`VIS_10`의 Mistral 셀은 생성 결과가 없어 시트에 포함되지 않았다.
+compose에서 두 모델의 결과가 모두 있고 둘 다 `ok`인 슬롯은 16개다.
+
 ## 설정 바꾸기
 
 `config/models.yaml`의 `llms`/`renderers`에 항목을 추가하면 arm이 늘어난다.
@@ -197,11 +271,13 @@ reasoning parser 없이 `max_tokens=4096`으로 돌린 1차 결과다. 사고 �
 
 ## 자기검증
 
-`itemgen selftest`가 48개 항목을 본다. 외부 모델 없이 돌고 비용이 0이다.
+`itemgen selftest`가 56개 항목을 본다. 외부 모델 없이 돌고 비용이 0이다.
 
 - 나쁜 출력 11종(ref 중복, 격자 범위 초과, 칸 겹침, 없는 ref를 edit, 모르는 op,
   edit 대신 장면 재기술 …)을 검증기가 실제로 잡는지
 - `edit` 적용 후 **달라진 사물이 정확히 1개**이고 나머지는 완전히 동일한지
 - 파생 보기 4장의 사물 구성이 같고 변환만 다른지, 전부 같은 변형이면 거부하는지
 - 같은 scene은 같은 픽셀, edit된 scene은 다른 픽셀이 나오는지
+- 거북선/직사각형/반원/사분원/정육면체 도형 분류와 안전한 자산 파일명
+- judge 재사용 키가 LLM arm별 결과를 서로 덮어쓰지 않는지
 - 시트 JS에 날 줄바꿈 리터럴이 없는지 (있으면 스크립트 전체가 죽어 버튼이 먹통이 된다)

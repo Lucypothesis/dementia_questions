@@ -33122,5 +33122,5197 @@
       "usable": false,
       "why": "사람·빨간 원·파란 사각형은 있으나 원과 사각형이 각각 두 개씩 좌우에 추가되어 명세와 개수 및 배치가 다릅니다."
     }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_01",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_01_p01_main",
+    "image": "images/mistral_small_24b/compose/ATT_01_p01_main.png",
+    "prose": "왼쪽 위에 빨강 사과 하나. 가운데 중간에 빨강 사과 하나. 오른쪽 아래에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사과 세 개가 흰 배경에 서로 닿지 않게 왼쪽 위, 가운데, 오른쪽 아래에 배치되어 있고 글자는 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_02",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_02_p01_main",
+    "image": "images/mistral_small_24b/compose/ATT_02_p01_main.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 가운데 위에 빨강 사과 하나. 오른쪽 위에 빨강 사과 하나. 왼쪽 아래에 노랑 사과 하나. 가운데 아래에 노랑 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 5,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사과 세 개가 윗줄에, 노란 사과 두 개가 아랫줄 왼쪽과 가운데에 놓여 명세와 일치합니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_03",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_03_p01_main",
+    "image": "images/mistral_small_24b/compose/ATT_03_p01_main.png",
+    "prose": "왼쪽 위에 빨강 사과 하나. 가운데 중간에 빨강 사과 하나. 가운데 중간에 빨강 사과 하나. 오른쪽 아래에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "빨강 사과 네 개와 흰 배경은 맞지만 사과들이 대각선으로 겹쳐 있어 명세의 넉넉한 간격과 배치에 맞지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_04",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_04_p01_main",
+    "image": "images/mistral_small_24b/compose/ATT_04_p01_main.png",
+    "prose": "왼쪽 위에 빨강 사과 하나. 가운데 아래에 빨강 사과 하나. 오른쪽 중간에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨강 사과 세 개가 지정된 위치에 서로 닿지 않게 놓여 있고 흰 배경이며 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_05",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "ATT_05_p01_기준",
+    "image": "images/mistral_small_24b/compose/ATT_05_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 각각 올바른 위치에 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_05",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "ATT_05_p02_검사",
+    "image": "images/mistral_small_24b/compose/ATT_05_p02_검사.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 손잡이 머그컵, 열쇠고리 없는 열쇠, 검은 뿔테 안경이 지정된 위치에 서로 떨어져 있고 글자도 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_07",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_07_p01_main",
+    "image": "images/mistral_small_24b/compose/ATT_07_p01_main.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 검은색 화살표 화살표 하나 (오른쪽을 향한 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 검은색 오른쪽 화살표 하나가 배치되어 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "ATT_08_p01_기준",
+    "image": "images/mistral_small_24b/compose/ATT_08_p01_기준.png",
+    "prose": "가운데 중간에 빨간색 삼각형 도형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "가운데에는 도형 하나가 있지만 빨간 삼각형이 아니라 검은색 둥근 사각형이다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "ATT_08_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/ATT_08_p02_보기_opt1.png",
+    "prose": "가운데 중간에 빨간색 삼각형 도형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "가운데에 도형 하나가 있지만 빨간 삼각형이 아니라 검은 테두리의 둥근 사각형입니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "ATT_08_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/ATT_08_p03_보기_opt2.png",
+    "prose": "가운데 중간에 빨간색 삼각형 도형 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "중앙에 도형 하나가 있지만 빨간색 삼각형이 아니라 검은색 둥근 사각형입니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "ATT_08_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/ATT_08_p04_보기_opt3.png",
+    "prose": "가운데 중간에 빨간색 삼각형 도형 하나 (좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "명세된 빨간색 삼각형 대신 검은색 테두리의 사각형이 있어 자극으로 사용할 수 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "ATT_08_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/ATT_08_p05_보기_opt4.png",
+    "prose": "가운데 중간에 빨간색 삼각형 도형 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "빨간 삼각형 대신 큰 검은색 둥근 사각형이 중앙에 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_09",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_09_p01_main",
+    "image": "images/mistral_small_24b/compose/ATT_09_p01_main.png",
+    "prose": "왼쪽 위에 노랑 별 하나. 왼쪽 중간에 노랑 별 하나. 가운데 중간에 노랑 별 하나. 오른쪽 아래에 노랑 별 하나. 오른쪽 위에 노랑 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 5,
+    "verdict": {
+      "usable": null,
+      "why": "HTTPError: 400 Client Error: Bad Request for url: https://api.openai.com/v1/chat/completions"
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "ATT_10",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_10_p01_main",
+    "image": "images/mistral_small_24b/compose/ATT_10_p01_main.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 가운데 위에 빨강 사과 하나. 오른쪽 위에 녹색 사과 하나. 왼쪽 아래에 손잡이 달린 흰색 낱개 머그컵 하나. 가운데 아래에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 6,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물들이 정확한 개수와 위치에 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_01",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "EXE_01_p01_기준",
+    "image": "images/mistral_small_24b/compose/EXE_01_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 빨강 사과 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사과 네 개가 흰 배경에 서로 닿지 않게 2행 2열로 배치되어 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_01",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "EXE_01_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/EXE_01_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 빨강 사과 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사과 네 개가 흰 배경에 서로 닿지 않게 2행 2열로 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_01",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "EXE_01_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/EXE_01_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 사과 하나. 오른쪽 위에 파랑 사과 하나. 왼쪽 아래에 파랑 사과 하나. 오른쪽 아래에 파랑 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "파란 사과 네 개가 흰 배경에 서로 닿지 않게 2행 2열로 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_02",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "EXE_02_p01_main",
+    "image": "images/mistral_small_24b/compose/EXE_02_p01_main.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세의 네 사물이 각각 한 개씩 올바른 위치에 배치되어 있고, 글자나 숫자 없이 서로 충분히 떨어져 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "EXE_03_p01_기준",
+    "image": "images/mistral_small_24b/compose/EXE_03_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨간색 사각형 사각형 하나. 오른쪽 위에 파란색 원 원 하나. 왼쪽 아래에 초록색 삼각형 삼각형 하나. 오른쪽 아래에 빨간색 사각형 사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 도형이 흰 배경에 지정된 위치와 색상으로 배치되어 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "EXE_03_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/EXE_03_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 빨간색 사각형 사각형 하나 (시계 방향 90도 돌아간 상태). 오른쪽 위에 파란색 원 원 하나. 왼쪽 아래에 초록색 삼각형 삼각형 하나. 오른쪽 아래에 빨간색 사각형 사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "EXE_03_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/EXE_03_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨간색 사각형 사각형 하나. 오른쪽 위에 초록 파란색 원 원 하나 (시계 방향 180도 돌아간 상태). 왼쪽 아래에 초록색 삼각형 삼각형 하나. 오른쪽 아래에 빨간색 사각형 사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사각형 2개, 파란 원 1개, 초록 삼각형 1개가 명세된 위치에 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "EXE_03_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/EXE_03_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨간색 사각형 사각형 하나. 오른쪽 위에 파란색 원 원 하나. 왼쪽 아래에 빨강 초록색 삼각형 삼각형 하나 (시계 방향 270도 돌아간 상태). 오른쪽 아래에 빨간색 사각형 사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "왼쪽 아래 삼각형에 초록색이 없고 빨간색으로만 보여 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "EXE_03_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/EXE_03_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨간색 사각형 사각형 하나. 오른쪽 위에 파란색 원 원 하나. 왼쪽 아래에 초록색 삼각형 삼각형 하나. 오른쪽 아래에 파랑 빨간색 사각형 사각형 하나 (시계 방향 180도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "오른쪽 아래 사각형이 명세의 파랑·빨강이 아니라 빨간색만 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_04",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "EXE_04_p01_기준",
+    "image": "images/mistral_small_24b/compose/EXE_04_p01_기준.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 가운데 위에 빨강 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 주황 오렌지 하나. 가운데 아래에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 5,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "왼쪽 아래 사물이 주황색 오렌지가 아니라 갈색 원으로 보입니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_04",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "EXE_04_p02_검사",
+    "image": "images/mistral_small_24b/compose/EXE_04_p02_검사.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 가운데 위에 빨강 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 주황 오렌지 하나. 가운데 아래에 빨강 사과 하나. 오른쪽 아래에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 6,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "왼쪽 아래의 주황 오렌지 대신 갈색 원형 사물이 있어 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "EXE_05_p01_기준",
+    "image": "images/mistral_small_24b/compose/EXE_05_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 원 하나. 오른쪽 위에 파랑 사각형 하나. 왼쪽 아래에 초록 삼각형 하나. 오른쪽 아래에 노랑 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 명세된 색과 모양의 사물 네 개가 지정된 2행 2열 위치에 서로 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "EXE_05_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/EXE_05_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 원 하나. 오른쪽 위에 파랑 사각형 하나 (작게). 왼쪽 아래에 초록 삼각형 하나 (시계 방향 90도 돌아간 상태). 오른쪽 아래에 노랑 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각 위치와 방향에 맞게 배치되어 있고 서로 떨어져 있으며 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "EXE_05_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/EXE_05_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 초록 원 하나. 오른쪽 위에 파랑 사각형 하나 (크게). 왼쪽 아래에 초록 삼각형 하나 (시계 방향 180도 돌아간 상태). 오른쪽 아래에 노랑 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 색상과 방향 및 2×2 배치에 맞게 흰 배경 위에 서로 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "EXE_05_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/EXE_05_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 노랑 원 하나. 오른쪽 위에 파랑 사각형 하나 (크게). 왼쪽 아래에 초록 삼각형 하나 (시계 방향 270도 돌아간 상태). 오른쪽 아래에 노랑 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 종류와 배치는 맞지만 원과 사각형, 사각형과 별이 서로 닿아 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "EXE_05_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/EXE_05_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 원 하나. 오른쪽 위에 파랑 사각형 하나 (작게). 왼쪽 아래에 초록 삼각형 하나 (시계 방향 45도 돌아간 상태). 오른쪽 아래에 노랑 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세의 네 사물이 색상과 배치에 맞게 서로 떨어져 흰 배경에 놓여 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_06",
+    "panel_index": 1,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "EXE_06_p01_보기_opt1",
+    "image": "images/mistral_small_24b/compose/EXE_06_p01_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 손 하나. 왼쪽 아래에 물 하나. 오른쪽 아래에 칼 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사과·손·물방울은 있으나 오른쪽 아래 물체가 칼로 식별되지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_06",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "EXE_06_p02_보기_opt2",
+    "image": "images/mistral_small_24b/compose/EXE_06_p02_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 물 하나. 왼쪽 아래에 손 하나. 오른쪽 아래에 칼 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사과·물방울·손은 보이지만 오른쪽 아래 사물은 칼로 알아보기 어려운 단순한 세로 막대 모양이다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_06",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "EXE_06_p03_보기_opt3",
+    "image": "images/mistral_small_24b/compose/EXE_06_p03_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 칼 하나. 왼쪽 아래에 물 하나. 오른쪽 아래에 손 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "오른쪽 위 사물이 칼로 알아보기 어려워 명세와 맞지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_06",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "EXE_06_p04_보기_opt4",
+    "image": "images/mistral_small_24b/compose/EXE_06_p04_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 칼 하나. 왼쪽 아래에 손 하나. 오른쪽 아래에 물 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "오른쪽 위 사물이 칼로 식별되지 않아 명세의 사물이 모두 표현되지 않았습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_07",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "EXE_07_p01_main",
+    "image": "images/mistral_small_24b/compose/EXE_07_p01_main.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 아래에 파랑 사과 하나. 가운데 가운데에 빨강 사과 하나. 왼쪽 아래에 파랑 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사과 네 개가 색상과 위치에 맞게 넉넉히 떨어져 배치되어 있고, 흰 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_08",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "EXE_08_p01_main",
+    "image": "images/mistral_small_24b/compose/EXE_08_p01_main.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 가운데 위에 빨강 사과 하나. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 검은 뿔테 안경 하나. 가운데 아래에 파란 표지 낱개 책 하나. 오른쪽 아래에 검은색 낱개 펜 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 6,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물은 모두 있으나 책 표지가 파란색이 아니고 펜도 검은색으로 보이지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "EXE_10",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "EXE_10_p01_main",
+    "image": "images/mistral_small_24b/compose/EXE_10_p01_main.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 아래에 빨강 빨간색 사과 하나. 오른쪽 아래에 노랑 노란색 사과 하나. 왼쪽 위에 초록 초록색 사과 하나. 오른쪽 위에 파랑 파란색 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "사과 네 개가 지정된 색과 위치에 하나씩 넉넉히 떨어져 있고 흰 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_01",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_01_p01_main",
+    "image": "images/mistral_small_24b/compose/LAN_01_p01_main.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 주황 오렌지 하나. 오른쪽 아래에 보라 포도 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "왼쪽 아래의 주황 오렌지 대신 갈색 둥근 사물이 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_02",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_02_p01_main",
+    "image": "images/mistral_small_24b/compose/LAN_02_p01_main.png",
+    "prose": "가운데 중간에 금속 손잡이와 철제 머리 해머 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "가운데에 도구 하나가 있지만 해머보다 도끼처럼 보입니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_03",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_03_p01_main",
+    "image": "images/mistral_small_24b/compose/LAN_03_p01_main.png",
+    "prose": "왼쪽 위에 왼쪽 눈 눈 하나. 오른쪽 위에 오른쪽 눈 눈 하나. 가운데 중간에 코 코 하나. 가운데 중간에 입 입 하나. 왼쪽 중간에 왼쪽 귀 귀 하나. 오른쪽 중간에 오른쪽 귀 귀 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 6,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "눈·귀·코·입이 서로 겹쳐 얼굴처럼 뭉쳐 있고 명세된 개수와 배치를 분명히 확인하기 어렵습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_04",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_04_p01_main",
+    "image": "images/mistral_small_24b/compose/LAN_04_p01_main.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 가지가 각각 하나씩 올바른 위치에 넉넉히 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_05",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_05_p01_main",
+    "image": "images/mistral_small_24b/compose/LAN_05_p01_main.png",
+    "prose": "가운데 중간에 나무 문 문 하나 (정면을 향한 상태). 가운데 중간에 사람의 손 손 하나 (오른쪽을 향한 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "문과 손은 각각 하나씩 있으나 손이 오른쪽을 향하지 않고 문과 겹쳐 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "LAN_06_p01_기준",
+    "image": "images/mistral_small_24b/compose/LAN_06_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 주황 당근 하나. 왼쪽 아래에 노랑 바나나 하나. 오른쪽 아래에 빨강 토마토 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 지정된 위치에 하나씩 넉넉히 떨어져 있고 흰 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "LAN_06_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/LAN_06_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사과 하나가 흰 배경의 왼쪽 위에 있고 글자나 불필요한 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "LAN_06_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/LAN_06_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 오른쪽 위에 주황 당근 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "주황 당근 하나가 흰 배경의 오른쪽 위에 놓여 있고 다른 사물이나 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "LAN_06_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/LAN_06_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 아래에 노랑 바나나 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "노란 바나나 하나가 흰 배경의 왼쪽 아래에 놓여 있고 글자나 다른 사물은 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "LAN_06_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/LAN_06_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 오른쪽 아래에 빨강 토마토 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨강 토마토 하나가 흰 배경의 오른쪽 아래에 놓여 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_07",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_07_p01_main",
+    "image": "images/mistral_small_24b/compose/LAN_07_p01_main.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 위에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰색 손잡이 머그컵과 빨간 사과 두 개가 명세된 위치에 서로 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_08",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "LAN_08_p01_기준",
+    "image": "images/mistral_small_24b/compose/LAN_08_p01_기준.png",
+    "prose": "가운데 중간에 초록색 잎이 있는 나무 나무 하나 (작게). 가운데 위에 빨강 사과 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "나무 잎이 초록색이 아니며 사과가 나무에 닿아 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_08",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "LAN_08_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/LAN_08_p02_보기_opt1.png",
+    "prose": "가운데 중간에 초록색 잎이 있는 나무 나무 하나 (작게). 가운데 위에 빨강 사과 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "나무 잎이 초록색이 아니고 사과가 나무에 닿아 있어 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_08",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "LAN_08_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/LAN_08_p03_보기_opt2.png",
+    "prose": "가운데 중간에 초록색 잎이 있는 나무 나무 하나 (작게). 가운데 아래에 빨강 사과 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "나무 잎이 초록색이 아니고 사과가 나무 밑동에 닿아 있어 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_08",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "LAN_08_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/LAN_08_p04_보기_opt3.png",
+    "prose": "가운데 중간에 초록색 잎이 있는 나무 나무 하나 (작게). 왼쪽 중간에 빨강 사과 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "나무 잎이 초록색이 아니고 사과가 나무에 닿아 있어 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_08",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "LAN_08_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/LAN_08_p05_보기_opt4.png",
+    "prose": "가운데 중간에 초록색 잎이 있는 나무 나무 하나 (작게). 오른쪽 중간에 빨강 사과 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "나무 잎이 초록색이 아니고 사과가 나무에 닿아 있어 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "LAN_09_p01_기준",
+    "image": "images/mistral_small_24b/compose/LAN_09_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 주황 당근 하나. 오른쪽 아래에 빨강 토마토 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 색상과 위치에 맞게 서로 떨어져 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "LAN_09_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/LAN_09_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 빨강 당근 하나. 오른쪽 아래에 노랑 토마토 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 종류와 배치는 맞지만 오른쪽 아래 토마토가 노란색이 아니라 빨간색이다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "LAN_09_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/LAN_09_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 노랑 사과 하나. 오른쪽 위에 빨강 바나나 하나. 왼쪽 아래에 주황 당근 하나. 오른쪽 아래에 빨강 토마토 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 색상과 위치에 맞게 각각 하나씩 배치되어 있고, 글자 없이 흰 배경에서 서로 충분히 떨어져 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "LAN_09_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/LAN_09_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 노랑 당근 하나. 오른쪽 아래에 빨강 토마토 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 색상과 위치에 맞게 넉넉히 떨어져 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "LAN_09_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/LAN_09_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 주황 사과 하나. 오른쪽 위에 빨강 바나나 하나. 왼쪽 아래에 주황 당근 하나. 오른쪽 아래에 빨강 토마토 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 주황 사과, 빨강 바나나, 주황 당근, 빨강 토마토가 각각 지정된 위치에 하나씩 넉넉히 떨어져 있고 흰 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "LAN_10",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_10_p01_main",
+    "image": "images/mistral_small_24b/compose/LAN_10_p01_main.png",
+    "prose": "왼쪽 중간에 큰 녹색 나무 나무 하나 (작게). 오른쪽 중간에 빨간 지붕의 작은 집 집 하나 (작게). 오른쪽 위에 노란색 원 태양 하나 (작게). 가운데 위에 흰색 구름 구름 하나 (작게). 가운데 위에 작은 파란 새 새 하나 (오른쪽을 향한 상태, 작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 5,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "나무·구름·태양은 있으나 색상이 명세와 다르고 집과 오른쪽을 향한 새 대신 원형 도형들이 있어 사물 수와 배치가 맞지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_01",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_01_p01_학습",
+    "image": "images/mistral_small_24b/compose/MEM_01_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 각각 지정된 위치에 충분히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_02_p01_학습",
+    "image": "images/mistral_small_24b/compose/MEM_02_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 주황 오렌지 하나. 오른쪽 아래에 보라 포도 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "왼쪽 아래 사물은 주황색 오렌지로 보이지 않고 오른쪽 아래 사물도 포도송이가 아닙니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 2,
+    "stage": "검사 보기",
+    "option_index": 1,
+    "name": "MEM_02_p02_검사보기_opt1",
+    "image": "images/mistral_small_24b/compose/MEM_02_p02_검사보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 주황 오렌지 하나. 오른쪽 아래에 보라 포도 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "왼쪽 아래 사물이 주황색 오렌지가 아니라 갈색 원형으로 보입니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 3,
+    "stage": "검사 보기",
+    "option_index": 2,
+    "name": "MEM_02_p03_검사보기_opt2",
+    "image": "images/mistral_small_24b/compose/MEM_02_p03_검사보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 주황 오렌지 하나. 오른쪽 아래에 보라 포도 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "보라색 포도 대신 포도알 하나처럼 보이는 단일 과일이 그려져 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 4,
+    "stage": "검사 보기",
+    "option_index": 3,
+    "name": "MEM_02_p04_검사보기_opt3",
+    "image": "images/mistral_small_24b/compose/MEM_02_p04_검사보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 왼쪽 아래에 노랑 바나나 하나. 왼쪽 아래에 주황 오렌지 하나. 오른쪽 아래에 보라 포도 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "바나나와 오렌지가 겹쳐 있고 오렌지와 포도도 명세와 다른 색·형태로 보여 사용할 수 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 5,
+    "stage": "검사 보기",
+    "option_index": 4,
+    "name": "MEM_02_p05_검사보기_opt4",
+    "image": "images/mistral_small_24b/compose/MEM_02_p05_검사보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 노랑 바나나 하나. 왼쪽 아래에 주황 오렌지 하나 (작게). 오른쪽 아래에 보라 포도 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "오렌지는 주황색이 아닌 갈색 원이고 포도는 포도송이가 아닌 보라색 열매 하나로 그려져 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_04_p01_학습",
+    "image": "images/mistral_small_24b/compose/MEM_04_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세의 네 사물이 각각 지정된 위치에 하나씩 놓여 있고 서로 떨어져 있으며 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 2,
+    "stage": "검사 보기",
+    "option_index": 1,
+    "name": "MEM_04_p02_검사보기_opt1",
+    "image": "images/mistral_small_24b/compose/MEM_04_p02_검사보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 컵, 열쇠, 사과, 검은 뿔테 안경이 각 위치에 하나씩 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 3,
+    "stage": "검사 보기",
+    "option_index": 2,
+    "name": "MEM_04_p03_검사보기_opt2",
+    "image": "images/mistral_small_24b/compose/MEM_04_p03_검사보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "四种物品各一个且没有文字，但苹果和眼镜都在右下方并彼此重叠，未形成要求的分散四格布局。"
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 4,
+    "stage": "검사 보기",
+    "option_index": 3,
+    "name": "MEM_04_p04_검사보기_opt3",
+    "image": "images/mistral_small_24b/compose/MEM_04_p04_검사보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 위에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "명세의 사물은 모두 있으나 사과와 컵이 겹쳐 닿아 있고 넉넉히 떨어져 있지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 5,
+    "stage": "검사 보기",
+    "option_index": 4,
+    "name": "MEM_04_p05_검사보기_opt4",
+    "image": "images/mistral_small_24b/compose/MEM_04_p05_검사보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 위에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_05_p01_학습",
+    "image": "images/mistral_small_24b/compose/MEM_05_p01_학습.png",
+    "prose": "가운데 중간에 파란색 원과 빨간색 사각형이 교차하는 무늬 무늬 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "흰 배경 중앙에 검은 윤곽의 원 하나만 있어 파란 원과 빨간 사각형이 교차하는 무늬가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 2,
+    "stage": "검사 보기",
+    "option_index": 1,
+    "name": "MEM_05_p02_검사보기_opt1",
+    "image": "images/mistral_small_24b/compose/MEM_05_p02_검사보기_opt1.png",
+    "prose": "가운데 중간에 파란색 원과 빨간색 사각형이 교차하는 무늬 무늬 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "파란 원과 빨간 사각형이 교차하는 무늬 대신 검은 윤곽의 원 하나만 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 3,
+    "stage": "검사 보기",
+    "option_index": 2,
+    "name": "MEM_05_p03_검사보기_opt2",
+    "image": "images/mistral_small_24b/compose/MEM_05_p03_검사보기_opt2.png",
+    "prose": "가운데 중간에 녹색 파란색 원과 빨간색 사각형이 교차하는 무늬 무늬 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "명세의 파란색 원과 빨간색 사각형 대신 빨간색 둥근 도형 하나만 있어 문항 자극으로 적합하지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 4,
+    "stage": "검사 보기",
+    "option_index": 3,
+    "name": "MEM_05_p04_검사보기_opt3",
+    "image": "images/mistral_small_24b/compose/MEM_05_p04_검사보기_opt3.png",
+    "prose": "가운데 중간에 파란색 원과 빨간색 사각형이 교차하는 무늬 무늬 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "이미지에는 검은색 윤곽의 원형 도형만 있고 명세의 파란 원과 빨간 사각형이 교차한 무늬가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 5,
+    "stage": "검사 보기",
+    "option_index": 4,
+    "name": "MEM_05_p05_검사보기_opt4",
+    "image": "images/mistral_small_24b/compose/MEM_05_p05_검사보기_opt4.png",
+    "prose": "오른쪽 아래에 파란색 원과 빨간색 사각형이 교차하는 무늬 무늬 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "오른쪽 아래에 검은색 윤곽의 원형 도형만 있고 파란색 원과 빨간색 사각형이 교차한 무늬가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_07",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_07_p01_학습",
+    "image": "images/mistral_small_24b/compose/MEM_07_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세의 사물이 각각 하나씩 지정된 위치에 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_07",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "MEM_07_p02_검사",
+    "image": "images/mistral_small_24b/compose/MEM_07_p02_검사.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰색 손잡이 머그컵, 열쇠고리 없는 열쇠, 검은 뿔테 안경이 지정된 위치에 서로 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_08",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_08_p01_학습",
+    "image": "images/mistral_small_24b/compose/MEM_08_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 머그컵, 열쇠, 검은 뿔테 안경이 지정된 위치에 서로 떨어져 있고 글자나 불필요한 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_08",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "MEM_08_p02_검사",
+    "image": "images/mistral_small_24b/compose/MEM_08_p02_검사.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 검은 뿔테 안경 하나. 오른쪽 아래에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 올바른 위치에 넉넉히 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_09",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_09_p01_학습",
+    "image": "images/mistral_small_24b/compose/MEM_09_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 각각 지정된 위치에 넉넉히 떨어져 있고 글자나 불필요한 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_09",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "MEM_09_p02_검사",
+    "image": "images/mistral_small_24b/compose/MEM_09_p02_검사.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 초록 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 손잡이 컵, 낱개 열쇠, 초록 사과, 검은 뿔테 안경이 지정된 위치에 각각 하나씩 있고 글자 없이 흰 배경에 넉넉히 떨어져 있다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_10_p01_학습",
+    "image": "images/mistral_small_24b/compose/MEM_10_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 각각 지정된 위치에 하나씩 놓여 있고, 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 2,
+    "stage": "검사 보기",
+    "option_index": 1,
+    "name": "MEM_10_p02_검사보기_opt1",
+    "image": "images/mistral_small_24b/compose/MEM_10_p02_검사보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 각 위치에 떨어져 배치되어 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 3,
+    "stage": "검사 보기",
+    "option_index": 2,
+    "name": "MEM_10_p03_검사보기_opt2",
+    "image": "images/mistral_small_24b/compose/MEM_10_p03_검사보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 초록 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 지정된 위치에 하나씩 놓여 있고 서로 떨어져 있으며 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 4,
+    "stage": "검사 보기",
+    "option_index": 3,
+    "name": "MEM_10_p04_검사보기_opt3",
+    "image": "images/mistral_small_24b/compose/MEM_10_p04_검사보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 아래에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 5,
+    "stage": "검사 보기",
+    "option_index": 4,
+    "name": "MEM_10_p05_검사보기_opt4",
+    "image": "images/mistral_small_24b/compose/MEM_10_p05_검사보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰색 손잡이 머그컵, 열쇠고리 없는 열쇠, 빨간 사과가 지정된 위치에 각각 하나씩 있고 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_01_p01_기준",
+    "image": "images/mistral_small_24b/compose/VIS_01_p01_기준.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경 중앙에 검은 테두리가 있는 빨간 삼각형 하나가 있고 글자는 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_01_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/VIS_01_p02_보기_opt1.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "가운데에 시계 방향으로 90도 회전한 빨간 삼각형 하나가 흰 배경에 있고 글자는 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_01_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/VIS_01_p03_보기_opt2.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나 (시계 방향 180도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경 중앙에 빨간색 역삼각형 하나가 넉넉히 떨어져 있고 글자나 다른 사물은 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_01_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/VIS_01_p04_보기_opt3.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나 (시계 방향 270도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경 중앙에 왼쪽을 향한 빨간 삼각형 하나가 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_01_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/VIS_01_p05_보기_opt4.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나 (시계 방향 360도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경 중앙에 검은 테두리가 있는 빨간 삼각형 하나가 있고 글자나 다른 사물은 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_02_p01_기준",
+    "image": "images/mistral_small_24b/compose/VIS_02_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 5각형 별 하나. 오른쪽 위에 빨간색 원 하나. 왼쪽 아래에 파란색 삼각형 하나. 오른쪽 아래에 녹색 사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 도형이 각각 지정된 색과 위치에 넉넉히 떨어져 배치되어 있고, 흰 배경이며 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_02_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/VIS_02_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 5각형 별 하나 (좌우가 뒤집힌 상태). 오른쪽 위에 빨간색 원 하나 (좌우가 뒤집힌 상태). 왼쪽 아래에 파란색 삼각형 하나 (좌우가 뒤집힌 상태). 오른쪽 아래에 녹색 사각형 하나 (좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 가지 도형이 색상과 위치에 맞게 배치되어 있고 서로 떨어져 있으며 배경에 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_02_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/VIS_02_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 5각형 별 하나 (좌우가 뒤집힌 상태). 오른쪽 위에 빨간색 원 하나 (좌우가 뒤집힌 상태). 왼쪽 아래에 파란색 삼각형 하나 (좌우가 뒤집힌 상태). 오른쪽 아래에 녹색 사각형 하나 (좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 색상과 배치에 맞게 흰 배경에 있고 글자나 불필요한 요소가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_02_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/VIS_02_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 5각형 별 하나 (시계 방향 90도 돌아간 상태). 오른쪽 위에 빨간색 원 하나 (시계 방향 90도 돌아간 상태). 왼쪽 아래에 파란색 삼각형 하나 (시계 방향 90도 돌아간 상태). 오른쪽 아래에 녹색 사각형 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "다섯 꼭짓점 별, 빨간 원, 파란 삼각형, 녹색 사각형이 명세된 위치에 각각 하나씩 있고 흰 배경에 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_02_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/VIS_02_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 5각형 별 하나 (시계 방향 180도 돌아간 상태). 오른쪽 위에 빨간색 원 하나 (시계 방향 180도 돌아간 상태). 왼쪽 아래에 파란색 삼각형 하나 (시계 방향 180도 돌아간 상태). 오른쪽 아래에 녹색 사각형 하나 (시계 방향 180도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "지정된 네 사물이 각각 올바른 위치와 방향에 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_03_p01_기준",
+    "image": "images/mistral_small_24b/compose/VIS_03_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨간색 삼각형 삼각형 하나. 오른쪽 위에 파란색 원 원 하나. 왼쪽 아래에 초록색 사각형 사각형 하나. 오른쪽 아래에 노란색 별 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 색상과 위치에 맞게 각각 하나씩 배치되어 있고, 서로 떨어져 있으며 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_03_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/VIS_03_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨간색 삼각형 삼각형 하나. 오른쪽 위에 파란색 원 원 하나. 왼쪽 아래에 초록색 사각형 사각형 하나. 오른쪽 아래에 노란색 별 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 가지 사물이 각각 지정된 색과 위치에 하나씩 있고, 서로 떨어져 있으며 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_03_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/VIS_03_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨간색 삼각형 삼각형 하나 (시계 방향 90도 돌아간 상태). 오른쪽 위에 파란색 원 원 하나. 왼쪽 아래에 초록색 사각형 사각형 하나. 오른쪽 아래에 노란색 별 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 한 개씩 지정된 위치와 색상·방향으로 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_03_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/VIS_03_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨간색 삼각형 삼각형 하나. 오른쪽 위에 파란색 원 원 하나 (좌우가 뒤집힌 상태). 왼쪽 아래에 초록색 사각형 사각형 하나. 오른쪽 아래에 노란색 별 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 삼각형, 파란 원, 초록 사각형, 노란 별이 각각 지정된 위치에 하나씩 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_03_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/VIS_03_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨간색 삼각형 삼각형 하나. 오른쪽 위에 파란색 원 원 하나. 왼쪽 아래에 초록색 사각형 사각형 하나 (시계 방향 180도 돌아간 상태). 오른쪽 아래에 노란색 별 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세의 사물 네 개가 색상과 배치에 맞게 있고 글자가 없으며, 사각형의 180도 회전은 외관상 구별되지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_04_p01_기준",
+    "image": "images/mistral_small_24b/compose/VIS_04_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 사각형 하나. 오른쪽 위에 빨강 삼각형 하나. 왼쪽 아래에 노랑 원 하나. 오른쪽 아래에 초록 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세의 네 가지 사물이 흰 배경에 올바른 위치와 색상으로 하나씩 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_04_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/VIS_04_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 사각형 하나. 오른쪽 위에 빨강 삼각형 하나. 왼쪽 아래에 노랑 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "파란 사각형, 빨간 삼각형, 노란 원이 지정된 위치에 각각 하나씩 있고 서로 떨어져 있으며 흰 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_04_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/VIS_04_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 사각형 하나. 오른쪽 아래에 초록 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "파란 사각형과 초록 별이 각각 하나씩 흰 배경의 왼쪽 위와 오른쪽 아래에 충분히 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_04_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/VIS_04_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 아래에 노랑 원 하나. 오른쪽 아래에 초록 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "노란 원과 초록 별이 각각 왼쪽 아래와 오른쪽 아래에 넉넉히 떨어져 있고, 흰 배경에 글자나 다른 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_04_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/VIS_04_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 사각형 하나. 오른쪽 위에 빨강 삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "파란 사각형과 빨간 삼각형이 흰 배경의 위쪽 좌우에 떨어져 배치되어 있고 글자는 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_05_p01_기준",
+    "image": "images/mistral_small_24b/compose/VIS_05_p01_기준.png",
+    "prose": "왼쪽 위에 빨간색 사각형 사각형 하나. 가운데 중간에 파란색 원 원 하나. 오른쪽 아래에 초록색 삼각형 삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "세 도형은 모두 맞는 위치에 있지만 서로 겹치거나 닿아 있어 넉넉히 떨어져 있지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_05_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/VIS_05_p02_보기_opt1.png",
+    "prose": "왼쪽 위에 빨간색 사각형 사각형 하나. 가운데 중간에 파란색 원 원 하나. 오른쪽 아래에 초록색 삼각형 삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 종류와 배치는 맞지만 도형끼리 겹쳐 넉넉히 떨어져 있지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_05_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/VIS_05_p03_보기_opt2.png",
+    "prose": "왼쪽 위에 빨간색 사각형 사각형 하나 (시계 방향 90도 돌아간 상태). 가운데 중간에 파란색 원 원 하나 (시계 방향 90도 돌아간 상태). 오른쪽 아래에 초록색 삼각형 삼각형 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "세 도형은 명세된 위치에 있지만 서로 겹치고 초록색 삼각형이 이미지 가장자리에서 잘려 문항 자극으로 쓰기 어렵습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_05_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/VIS_05_p04_보기_opt3.png",
+    "prose": "왼쪽 위에 빨간색 사각형 사각형 하나 (시계 방향 180도 돌아간 상태). 가운데 중간에 파란색 원 원 하나 (시계 방향 180도 돌아간 상태). 오른쪽 아래에 초록색 삼각형 삼각형 하나 (시계 방향 180도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "세 도형의 종류와 개수, 대략적인 배치는 맞지만 서로 겹쳐 있어 넉넉히 떨어져 있지 않습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_05_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/VIS_05_p05_보기_opt4.png",
+    "prose": "왼쪽 위에 빨간색 사각형 사각형 하나 (시계 방향 270도 돌아간 상태). 가운데 중간에 파란색 원 원 하나 (시계 방향 270도 돌아간 상태). 오른쪽 아래에 초록색 삼각형 삼각형 하나 (시계 방향 270도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_07_p01_기준",
+    "image": "images/mistral_small_24b/compose/VIS_07_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 정사각형 하나. 오른쪽 위에 빨강 정사각형 하나. 왼쪽 아래에 빨강 정사각형 하나. 오른쪽 아래에 빨강 정사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 정사각형 네 개가 흰 배경에 서로 떨어져 2행 2열로 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_07_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/VIS_07_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 정사각형 하나. 오른쪽 위에 빨강 정사각형 하나. 왼쪽 아래에 빨강 정사각형 하나. 오른쪽 아래에 빨강 정사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 정사각형 네 개가 흰 배경에 서로 떨어져 2행 2열로 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_07_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/VIS_07_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 정사각형 하나. 오른쪽 위에 빨강 정사각형 하나. 왼쪽 아래에 빨강 정사각형 하나. 오른쪽 아래에 빨강 정사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 정사각형 네 개가 흰 배경에 서로 떨어져 2행 2열로 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_07_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/VIS_07_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 정사각형 하나. 오른쪽 위에 빨강 정사각형 하나. 왼쪽 아래에 빨강 정사각형 하나. 오른쪽 아래에 빨강 정사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 빨간 정사각형 네 개가 서로 떨어져 2행 2열로 정확히 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_07_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/VIS_07_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 정사각형 하나. 오른쪽 위에 빨강 정사각형 하나. 왼쪽 아래에 빨강 정사각형 하나. 오른쪽 아래에 빨강 정사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 정사각형 네 개가 흰 배경에 서로 떨어져 명세대로 2행 2열로 배치되어 있고 글자는 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_08_p01_기준",
+    "image": "images/mistral_small_24b/compose/VIS_08_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 왼쪽 아래에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 지정된 위치에 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_08_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/VIS_08_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나. 오른쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 왼쪽 아래에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 지정된 위치에 서로 떨어져 놓여 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_08_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/VIS_08_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나 (시계 방향 90도 돌아간 상태). 오른쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 왼쪽 아래에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 올바른 위치에 넉넉히 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_08_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/VIS_08_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나 (시계 방향 180도 돌아간 상태). 오른쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 왼쪽 아래에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 지정된 위치에 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_08_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/VIS_08_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 사과 하나 (시계 방향 270도 돌아간 상태). 오른쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 왼쪽 아래에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 아래에 검은 뿔테 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 올바른 위치에 있고 사과 방향과 흰 배경도 적절하며 글자나 불필요한 물체가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_09_p01_기준",
+    "image": "images/mistral_small_24b/compose/VIS_09_p01_기준.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경 중앙에 빨간색 삼각형 하나가 있고 글자나 다른 사물은 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_09_p02_보기_opt1",
+    "image": "images/mistral_small_24b/compose/VIS_09_p02_보기_opt1.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "가운데에 빨간 삼각형 하나가 있지만 크기가 명세보다 크고 검은 테두리가 있습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_09_p03_보기_opt2",
+    "image": "images/mistral_small_24b/compose/VIS_09_p03_보기_opt2.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "가운데에 검은 테두리가 있는 빨간 삼각형 하나가 시계 방향으로 90도 돌아가 있고 흰 배경에 다른 사물이나 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_09_p04_보기_opt3",
+    "image": "images/mistral_small_24b/compose/VIS_09_p04_보기_opt3.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경 중앙에 검은 테두리가 있는 빨간 삼각형 하나가 있고 글자는 없습니다."
+    }
+  },
+  {
+    "llm": "mistral_small_24b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_09_p05_보기_opt4",
+    "image": "images/mistral_small_24b/compose/VIS_09_p05_보기_opt4.png",
+    "prose": "가운데 중간에 빨간색 삼각형 삼각형 하나 (크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "가운데에 검은 테두리가 있는 큰 빨간 삼각형 하나가 흰 배경에 있고 글자는 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_01",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_01_p01_main",
+    "image": "images/qwen38_27b/compose/ATT_01_p01_main.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 빨강 빨간색 원형 버튼 하나 빨간색 원형 버튼 하나. 가운데 위에 파랑 파란색 원형 버튼 하나 파란색 원형 버튼 하나. 오른쪽 위에 빨강 빨간색 원형 버튼 하나 빨간색 원형 버튼 하나. 왼쪽 가운데에 파랑 파란색 원형 버튼 하나 파란색 원형 버튼 하나. 가운데 가운데에 빨강 빨간색 원형 버튼 하나 빨간색 원형 버튼 하나. 오른쪽 가운데에 파랑 파란색 원형 버튼 하나 파란색 원형 버튼 하나. 왼쪽 아래에 파랑 파란색 원형 버튼 하나 파란색 원형 버튼 하나. 가운데 아래에 빨강 빨간색 원형 버튼 하나 빨간색 원형 버튼 하나. 오른쪽 아래에 파랑 파란색 원형 버튼 하나 파란색 원형 버튼 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 9,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨강·파랑 원형 버튼 9개가 명세된 3×3 배치로 흰 배경에 놓여 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_02",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_02_p01_main",
+    "image": "images/qwen38_27b/compose/ATT_02_p01_main.png",
+    "prose": "사물을 2행 4열 격자로 놓는다. 1열 위에 빨강 단색 원형 동그라미 하나. 2열 위에 파랑 단색 사각형 네모 하나. 3열 위에 빨강 단색 사각형 네모 하나. 4열 위에 파랑 단색 원형 동그라미 하나. 1열 아래에 초록 단색 원형 동그라미 하나. 2열 아래에 빨강 단색 원형 동그라미 하나. 3열 아래에 파랑 단색 삼각형 삼각형 하나. 4열 아래에 빨강 단색 원형 동그라미 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 8,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 색과 모양의 사물 8개가 2행 4열의 올바른 위치에 서로 떨어져 배치되어 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_03",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_03_p01_main",
+    "image": "images/qwen38_27b/compose/ATT_03_p01_main.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 빨강 빨간색 사과 낱개 하나 사과 하나. 가운데 위에 초록 초록색 사과 낱개 하나 사과 하나. 오른쪽 위에 주황 주황색 오렌지 낱개 하나 오렌지 하나. 왼쪽 가운데에 빨강 빨간색 사과 낱개 하나 사과 하나. 가운데 가운데에 노랑 노란 바나나 낱개 하나 바나나 하나. 오른쪽 가운데에 빨강 빨간색 사과 낱개 하나 사과 하나. 왼쪽 아래에 초록 초록색 사과 낱개 하나 사과 하나. 가운데 아래에 주황 주황색 오렌지 낱개 하나 오렌지 하나. 오른쪽 아래에 노랑 노란 바나나 낱개 하나 바나나 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 9,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_04",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_04_p01_main",
+    "image": "images/qwen38_27b/compose/ATT_04_p01_main.png",
+    "prose": "가운데 중간에 빨강 빨간 사과 낱개 하나 사과 하나. 가운데 중간에 빨강 빨간 사과 낱개 하나 사과 하나. 가운데 중간에 빨강 빨간 사과 낱개 하나 사과 하나. 왼쪽 위에 빨강 빨간 사과 낱개 하나 사과 하나. 오른쪽 아래에 빨강 빨간 사과 낱개 하나 사과 하나. 가운데 중간에 파랑 파란 원 낱개 하나 파란 원 하나. 가운데 중간에 파랑 파란 원 낱개 하나 파란 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 7,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "가운데 사과가 하나 부족하고 사물들이 겹쳐 있으며, 명세에 없는 반투명 사각형도 보입니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_05",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "ATT_05_p01_기준",
+    "image": "images/qwen38_27b/compose/ATT_05_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 원형 낱개 하나 사과 하나. 오른쪽 아래에 검은 뿔테 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 머그컵, 금속 열쇠, 빨간 사과, 검은 뿔테 안경이 각각 지정된 위치에 하나씩 놓여 있고 글자나 불필요한 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_05",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "ATT_05_p02_검사",
+    "image": "images/qwen38_27b/compose/ATT_05_p02_검사.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 파랑 원형 낱개 하나 사과 하나. 오른쪽 아래에 검은 뿔테 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 한 개씩 지정된 위치에 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_06",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "ATT_06_p01_기준",
+    "image": "images/qwen38_27b/compose/ATT_06_p01_기준.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 가운데 위에 은색 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 가운데에 빨강 둥근 낱개 하나 사과 하나. 가운데 가운데에 검은 뿔테 안경 낱개 하나 안경 하나. 오른쪽 아래에 노란색 몸체에 검은색 심이 있는 낱개 하나 연필 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 5,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "열쇠와 연필이 명세의 은색과 노란색 몸체로 표현되지 않고 흑백 선화로 되어 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_06",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "ATT_06_p02_검사",
+    "image": "images/qwen38_27b/compose/ATT_06_p02_검사.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 오른쪽 위에 은색 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 가운데에 노랑 둥근 낱개 하나 사과 하나. 오른쪽 아래에 노란색 몸체에 검은색 심이 있는 낱개 하나 연필 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 종류와 배치는 맞지만 열쇠가 은색으로 표현되지 않았고 연필 몸체도 노란색이 아닙니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_07",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_07_p01_main",
+    "image": "images/qwen38_27b/compose/ATT_07_p01_main.png",
+    "prose": "사물을 4행 4열 격자로 놓는다. 1열 1행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 2열 1행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 3열 1행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 4열 1행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 1열 2행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 2열 2행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 3열 2행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 4열 2행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 1열 3행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 2열 3행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 3열 3행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 4열 3행에 검정 검은색 화살표 낱개 하나 화살표 하나 (왼쪽을 향한 상태). 1열 4행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 2열 4행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 3열 4행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 4열 4행에 검정 검은색 화살표 낱개 하나 화살표 하나 (오른쪽을 향한 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 16,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "검정 화살표 16개가 4×4 격자에 배치되어 있지만 3행 4열 화살표가 왼쪽이 아닌 오른쪽을 향합니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "ATT_08_p01_기준",
+    "image": "images/qwen38_27b/compose/ATT_08_p01_기준.png",
+    "prose": "가운데 중간에 검정 검은색 직선 하나 직선 하나 (시계 방향 25도 돌아간 상태, 크게). 가운데 중간에 검정 검은색 직선 하나 직선 하나 (시계 방향 115도 돌아간 상태, 크게). 가운데 중간에 빨강 위쪽 꼭짓점이 있는 빨간색 정삼각형 윤곽 하나 정삼각형 하나. 가운데 중간에 검정 검은색 직선 하나 직선 하나 (시계 방향 205도 돌아간 상태, 크게). 가운데 중간에 회색 회색 원형 윤곽 하나 원 하나 (크게). 가운데 중간에 검정 검은색 정사각형 윤곽 하나 정사각형 하나 (시계 방향 18도 돌아간 상태, 크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 6,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "명세된 도형 대신 화면 대부분을 덮는 큰 검은색 물체가 있어 사물과 개수, 배치가 맞지 않습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "ATT_08_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/ATT_08_p02_보기_opt1.png",
+    "prose": "가운데 중간에 빨강 위쪽 꼭짓점이 있는 빨간색 정삼각형 윤곽 하나 정삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "가운데 위쪽 꼭짓점의 빨간 정삼각형은 있으나 내부가 빨갛게 채워지고 윤곽은 검은색입니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "ATT_08_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/ATT_08_p03_보기_opt2.png",
+    "prose": "가운데 중간에 빨강 아래쪽 꼭짓점이 있는 빨간색 정삼각형 윤곽 하나 정삼각형 하나 (시계 방향 180도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "ATT_08_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/ATT_08_p04_보기_opt3.png",
+    "prose": "가운데 중간에 파랑 위쪽 꼭짓점이 있는 파란색 정삼각형 윤곽 하나 정삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_08",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "ATT_08_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/ATT_08_p05_보기_opt4.png",
+    "prose": "가운데 중간에 빨강 빨간색 정사각형 윤곽 하나 정사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "중앙에 정사각형 하나가 있지만 빨간 윤곽이 아니라 검은 테두리와 빨간색 채움으로 되어 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_09",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_09_p01_main",
+    "image": "images/qwen38_27b/compose/ATT_09_p01_main.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 빨강 화살표 하나 화살표 하나 (위을 향한 상태). 가운데 위에 파랑 화살표 하나 화살표 하나 (위을 향한 상태). 오른쪽 위에 빨강 화살표 하나 화살표 하나 (아래을 향한 상태). 왼쪽 가운데에 빨강 화살표 하나 화살표 하나 (위을 향한 상태). 가운데 가운데에 파랑 화살표 하나 화살표 하나 (아래을 향한 상태). 오른쪽 가운데에 빨강 화살표 하나 화살표 하나 (왼쪽을 향한 상태). 왼쪽 아래에 파랑 화살표 하나 화살표 하나 (오른쪽을 향한 상태). 가운데 아래에 빨강 화살표 하나 화살표 하나 (위을 향한 상태). 오른쪽 아래에 파랑 화살표 하나 화살표 하나 (아래을 향한 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 9,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "화살표 9개의 색상과 위치는 맞지만 모두 오른쪽을 향해 있어 지정된 방향과 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "ATT_10",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "ATT_10_p01_main",
+    "image": "images/qwen38_27b/compose/ATT_10_p01_main.png",
+    "prose": "왼쪽 위에 빨강 낱개 하나 빨간 사과 하나 (작게). 가운데 위에 빨강 낱개 하나 빨간 사과 하나 (작게). 왼쪽 중간에 빨강 낱개 하나 빨간 사과 하나 (작게). 가운데 중간에 초록 낱개 하나 초록 사과 하나 (작게). 오른쪽 위에 빨강 낱개 하나 빨간 사과 하나 (작게). 오른쪽 중간에 빨강 낱개 하나 빨간 사과 하나 (작게). 왼쪽 아래에 빨강 낱개 하나 빨간 사과 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 7,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사과 7개의 종류와 배치는 맞지만 이미지에 명세에 없는 파란 테두리가 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_01",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "EXE_01_p01_기준",
+    "image": "images/qwen38_27b/compose/EXE_01_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 단색의 작은 원 하나 동그라미 하나. 오른쪽 위에 파랑 단색의 작은 사각형 하나 네모 하나. 왼쪽 아래에 빨강 단색의 작은 사각형 하나 네모 하나. 오른쪽 아래에 파랑 단색의 작은 원 하나 동그라미 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨강·파랑 원과 사각형 네 개가 지정된 위치에 놓여 있고 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_01",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "EXE_01_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/EXE_01_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 단색의 작은 원 하나 동그라미 하나. 오른쪽 위에 빨강 단색의 작은 사각형 하나 네모 하나. 왼쪽 아래에 파랑 단색의 작은 원 하나 동그라미 하나. 오른쪽 아래에 파랑 단색의 작은 사각형 하나 네모 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_01",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "EXE_01_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/EXE_01_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 단색의 작은 원 하나 동그라미 하나. 오른쪽 위에 파랑 단색의 작은 원 하나 동그라미 하나. 왼쪽 아래에 빨강 단색의 작은 사각형 하나 네모 하나. 오른쪽 아래에 파랑 단색의 작은 사각형 하나 네모 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨강·파랑 원과 사각형이 지정된 2×2 배치로 놓여 있고 글자나 불필요한 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_02",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "EXE_02_p01_main",
+    "image": "images/qwen38_27b/compose/EXE_02_p01_main.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 빨간 원형 낱개 하나 사과 하나. 오른쪽 위에 빨강 빨간 원형 낱개 하나 사과 하나. 왼쪽 아래에 빨강 손잡이 달린 낱개 하나 머그컵 하나. 오른쪽 아래에 파랑 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사과 두 개와 손잡이가 있는 빨간 머그컵, 파란 금속 열쇠가 흰 배경에 명세된 위치대로 서로 떨어져 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "EXE_03_p01_기준",
+    "image": "images/qwen38_27b/compose/EXE_03_p01_기준.png",
+    "prose": "사물을 1행 3열 격자로 놓는다. 첫째 칸에 빨강 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나. 둘째 칸에 파랑 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나 (시계 방향 90도 돌아간 상태). 셋째 칸에 빨강 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨강 위쪽 삼각형, 오른쪽을 향한 파랑 삼각형, 빨강 위쪽 삼각형이 한 행에 간격을 두고 배치되어 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "EXE_03_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/EXE_03_p02_보기_opt1.png",
+    "prose": "사물을 1행 3열 격자로 놓는다. 첫째 칸에 파랑 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나 (시계 방향 90도 돌아간 상태). 둘째 칸에 빨강 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나. 셋째 칸에 파랑 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "파란색 오른쪽 방향 삼각형, 빨간색 위쪽 방향 삼각형, 파란색 오른쪽 방향 삼각형이 한 행에 각각 놓여 있고 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "EXE_03_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/EXE_03_p03_보기_opt2.png",
+    "prose": "사물을 1행 3열 격자로 놓는다. 첫째 칸에 파랑 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나 (시계 방향 90도 돌아간 상태). 둘째 칸에 빨강 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나. 셋째 칸에 빨강 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "파란색 오른쪽 방향 삼각형 하나와 빨간색 위쪽 방향 삼각형 두 개가 한 행에 간격을 두고 배치되어 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "EXE_03_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/EXE_03_p04_보기_opt3.png",
+    "prose": "사물을 1행 3열 격자로 놓는다. 첫째 칸에 파랑 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나 (시계 방향 90도 돌아간 상태). 둘째 칸에 파랑 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나 (시계 방향 90도 돌아간 상태). 셋째 칸에 파랑 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "파란색 삼각형 세 개가 오른쪽을 향해 한 줄로 넉넉히 떨어져 배치되어 있고 흰 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_03",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "EXE_03_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/EXE_03_p05_보기_opt4.png",
+    "prose": "사물을 1행 3열 격자로 놓는다. 첫째 칸에 빨강 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나. 둘째 칸에 빨강 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나. 셋째 칸에 파랑 기본 방향이 위를 향하는 삼각형 낱개 하나 삼각형 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간색 위쪽 삼각형 두 개와 시계 방향으로 90도 회전한 파란색 삼각형 하나가 흰 배경에 한 줄로 적절히 배치되어 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_04",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "EXE_04_p01_기준",
+    "image": "images/qwen38_27b/compose/EXE_04_p01_기준.png",
+    "prose": "사물을 3행 4열 격자로 놓는다. 1열 위에 빨강 단색 빨간 원 하나 빨간 원 하나. 1열 가운데에 빨강 단색 빨간 원 하나 빨간 원 하나. 2열 가운데에 빨강 단색 빨간 원 하나 빨간 원 하나. 1열 아래에 빨강 단색 빨간 원 하나 빨간 원 하나. 2열 아래에 빨강 단색 빨간 원 하나 빨간 원 하나. 3열 아래에 빨강 단색 빨간 원 하나 빨간 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 6,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 원 6개가 명세된 위치에 배치되어 있고 흰 배경에 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "EXE_05_p01_기준",
+    "image": "images/qwen38_27b/compose/EXE_05_p01_기준.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 화살촉이 오른쪽을 향하는 낱개 빨간 화살표 하나 (오른쪽을 향한 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 오른쪽을 향한 빨간 화살표 하나가 단독으로 배치되어 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "EXE_05_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/EXE_05_p02_보기_opt1.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 파랑 화살촉이 오른쪽을 향하는 낱개 빨간 화살표 하나 (시계 방향 90도 돌아간 상태, 오른쪽을 향한 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "화살표 하나는 있지만 화살촉이 파란색이 아니고 아래쪽을 향합니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "EXE_05_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/EXE_05_p03_보기_opt2.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 파랑 화살촉이 오른쪽을 향하는 낱개 빨간 화살표 하나 (오른쪽을 향한 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "화살표는 하나이고 오른쪽을 향하지만 화살촉이 파란색이 아니라 검은색 테두리에 빨간색으로 채워져 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "EXE_05_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/EXE_05_p04_보기_opt3.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 화살촉이 오른쪽을 향하는 낱개 빨간 화살표 하나 (시계 방향 90도 돌아간 상태, 오른쪽을 향한 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "빨간 화살표는 하나지만 오른쪽이 아니라 아래쪽을 향합니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_05",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "EXE_05_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/EXE_05_p05_보기_opt4.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 파랑 화살촉이 오른쪽을 향하는 낱개 빨간 화살표 하나 (시계 방향 180도 돌아간 상태, 오른쪽을 향한 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "화살표가 왼쪽을 향하고 화살촉도 파란색이 아니라 검은색 테두리라 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_06",
+    "panel_index": 1,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "EXE_06_p01_보기_opt1",
+    "image": "images/qwen38_27b/compose/EXE_06_p01_보기_opt1.png",
+    "prose": "가운데 위에 손잡이가 위로 올라간 열린 주방 수전 수전 하나. 가운데 중간에 투명 유리컵 컵 하나. 가운데 중간에 파랑 수전 끝에서 컵 안으로 떨어지는 가는 파란 물줄기 물줄기 하나. 가운데 아래에 파랑 컵 안쪽 하단에 낮은 높이로 담긴 파란 물 물 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 배경이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": false,
+      "usable": false,
+      "why": "손잡이가 있는 수전과 투명 유리컵 대신 수전이 불분명하고 손잡이 달린 불투명 컵이 있으며, 물줄기가 지나치게 굵고 컵 안의 물도 낮게 담긴 형태가 아니며 숫자 1이 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_06",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "EXE_06_p02_보기_opt2",
+    "image": "images/qwen38_27b/compose/EXE_06_p02_보기_opt2.png",
+    "prose": "가운데 위에 손잡이가 아래로 내려간 닫힌 주방 수전 수전 하나. 가운데 중간에 투명 유리컵 컵 하나. 가운데 중간에 파랑 컵 안쪽 상단까지 거의 차 있는 파란 물 물 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 배경이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": false,
+      "usable": false,
+      "why": "수전이 없고 컵 안에는 물 대신 파란 물방울 모양이 있으며, 불필요한 사각형과 숫자 2가 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_06",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "EXE_06_p03_보기_opt3",
+    "image": "images/qwen38_27b/compose/EXE_06_p03_보기_opt3.png",
+    "prose": "가운데 위에 손잡이가 아래로 내려간 닫힌 주방 수전 수전 하나. 가운데 중간에 투명 유리컵 컵 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 배경이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": false,
+      "usable": false,
+      "why": "수전이 없고 투명 유리컵 대신 손잡이 달린 컵이 있으며 사각형과 숫자 3이 추가되어 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_06",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "EXE_06_p04_보기_opt4",
+    "image": "images/qwen38_27b/compose/EXE_06_p04_보기_opt4.png",
+    "prose": "가운데 위에 손잡이가 위로 올라간 열린 주방 수전 수전 하나. 가운데 중간에 투명 유리컵 컵 하나. 가운데 중간에 파랑 수전 끝에서 컵 안으로 떨어지는 가는 파란 물줄기 물줄기 하나. 가운데 중간에 파랑 컵 안쪽 중간 높이로 담긴 파란 물 물 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 배경이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": false,
+      "usable": false,
+      "why": "수전이 보이지 않고 위쪽에 사각형만 있으며 물줄기와 컵이 크게 겹쳐 있고 숫자 4가 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_07",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "EXE_07_p01_main",
+    "image": "images/qwen38_27b/compose/EXE_07_p01_main.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 초록색 원형 마커 하나 시작 마커 하나. 오른쪽 아래에 빨간색 별 마커 하나 도착 마커 하나. 왼쪽 가운데에 회색 직사각형 벽돌 하나 벽돌 하나. 오른쪽 위에 회색 직사각형 벽돌 하나 벽돌 하나. 오른쪽 가운데에 회색 직사각형 벽돌 하나 벽돌 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥에 격자선이 보인다이다.",
+    "n_objects": 5,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 개수와 배치는 맞지만 색상이 지정과 다르고 오른쪽 아래 마커가 별이 아닌 물방울 모양이며 격자선도 보이지 않습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_08",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "EXE_08_p01_main",
+    "image": "images/qwen38_27b/compose/EXE_08_p01_main.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 가운데 위에 노랑 바나나 하나. 오른쪽 위에 빨강 사과 하나. 왼쪽 가운데에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 가운데 가운데에 노란색 나무 연필 낱개 하나 연필 하나. 오른쪽 가운데에 검은 뿔테 낱개 하나 안경 하나. 왼쪽 아래에 흰색 정육면체 낱개 하나 주사위 하나. 가운데 아래에 파란색 접힌 우산 낱개 하나 우산 하나. 오른쪽 아래에 둥근 아날로그 시계 낱개 하나 시계 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 9,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "우산이 파란색 접힌 우산이 아니라 흰색으로 펼쳐진 우산이다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_09",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "EXE_09_p01_기준",
+    "image": "images/qwen38_27b/compose/EXE_09_p01_기준.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 빨강 빨간색 공 낱개 하나 빨간 공 하나. 가운데 위에 파랑 열린 파란색 컵 낱개 하나 파란 컵 하나. 가운데 가운데에 초록 초록색 정육면체 낱개 하나 초록색 블록 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 공, 열린 파란 컵, 초록 정육면체가 지정된 위치에 각각 하나씩 넉넉히 떨어져 있고 흰 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_09",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "EXE_09_p02_검사",
+    "image": "images/qwen38_27b/compose/EXE_09_p02_검사.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 오른쪽 위에 빨강 빨간색 공 낱개 하나 빨간 공 하나. 가운데 위에 파랑 열린 파란색 컵 낱개 하나 파란 컵 하나. 가운데 가운데에 초록 초록색 정육면체 낱개 하나 초록색 블록 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 공, 열린 파란 컵, 초록 정육면체가 지정된 위치에 각각 하나씩 있고 서로 떨어져 있으며 글자는 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "EXE_10",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "EXE_10_p01_main",
+    "image": "images/qwen38_27b/compose/EXE_10_p01_main.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 빨강 단색 원 하나 빨간 원 하나 (크게). 가운데 위에 파랑 단색 원 하나 파란 원 하나 (크게). 오른쪽 위에 초록 단색 삼각형 하나 초록 삼각형 하나 (크게). 왼쪽 아래에 빨강 단색 사각형 하나 빨간 사각형 하나 (크게). 가운데 아래에 파랑 단색 사각형 하나 파란 사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 5,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 종류와 개수는 맞지만 위쪽 사물들이 서로 겹치고 빨간 원이 화면 가장자리에 잘려 문항 자극으로 쓰기 어렵습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_01",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_01_p01_main",
+    "image": "images/qwen38_27b/compose/LAN_01_p01_main.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사과 하나가 흰 배경에 단독으로 놓여 있고 글자나 다른 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_02",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_02_p01_main",
+    "image": "images/qwen38_27b/compose/LAN_02_p01_main.png",
+    "prose": "가운데 중간에 등에 뿔이 달린 조선시대 전함, 갑판 위에 뿔이 여러 개, 검은색 갑판과 갈색 돛대 거북선 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "배는 하나이고 중앙에 있지만 조선시대 거북선이 아니며 등에 뿔이 없고 갑판과 돛대의 색도 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_03",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_03_p01_main",
+    "image": "images/qwen38_27b/compose/LAN_03_p01_main.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 단순한 만화 눈, 검은색, 낱개 하나 눈 하나. 오른쪽 위에 단순한 만화 눈, 검은색, 낱개 하나 눈 하나. 왼쪽 가운데에 단순한 만화 귀, 살색, 낱개 하나 귀 하나. 가운데 가운데에 단순한 만화 코, 살색, 낱개 하나 코 하나. 오른쪽 가운데에 단순한 만화 귀, 살색, 낱개 하나 귀 하나. 가운데 아래에 단순한 만화 입, 검은색 선, 낱개 하나 입 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 배경이다.",
+    "n_objects": 6,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "눈·귀·코·입 위치에는 사물이 있지만 귀와 코가 살색이 아니고 아래 가운데의 입이 원형으로 그려져 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_04",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_04_p01_main",
+    "image": "images/qwen38_27b/compose/LAN_04_p01_main.png",
+    "prose": "가운데 중간에 갈색 갈색 나무 문, 직사각형 낱개 하나, 문 몸체는 갈색이고 오른쪽 중간에 빨간색 원형 손잡이 하나가 붙어 있다 문 하나 (크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "중앙에 빨간 직사각형만 있고 갈색 문과 오른쪽 중간의 빨간 원형 손잡이가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_05",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_05_p01_main",
+    "image": "images/qwen38_27b/compose/LAN_05_p01_main.png",
+    "prose": "가운데 중간에 흰 상의 입은 사람 하나, 정면으로 서서 입에 칫솔을 대고 있는 자세 사람 하나 (정면을 향한 상태). 가운데 중간에 파란 손잡이 칫솔 하나 칫솔 하나. 가운데 아래에 흰 세면대 하나 세면대 하나. 가운데 중간에 크롬 수도꼭지 하나 수도꼭지 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 벽과 바닥이 보이는 욕실이다.",
+    "n_objects": 4,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "LAN_06_p01_기준",
+    "image": "images/qwen38_27b/compose/LAN_06_p01_기준.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 빨간 사과 하나가 있어 명세와 일치합니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "LAN_06_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/LAN_06_p02_보기_opt1.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 노랑 노란 바나나 낱개 하나 바나나 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 노란 바나나 하나가 첫째 칸에 단독으로 있어 명세에 맞습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "LAN_06_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/LAN_06_p03_보기_opt2.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 주황 주황색 당근 낱개 하나 당근 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 주황색 당근 하나가 단독으로 놓여 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "LAN_06_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/LAN_06_p04_보기_opt3.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 갈색 갈색 바게트 빵 낱개 하나 빵 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "갈색 빵 한 개는 있지만 길쭉한 바게트가 아니라 둥근 빵 모양입니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_06",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "LAN_06_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/LAN_06_p05_보기_opt4.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 흰색 흰색 우유 팩 하나 우유 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "우유 팩 대신 우유병 하나가 있어 명세의 사물과 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_07",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_07_p01_main",
+    "image": "images/qwen38_27b/compose/LAN_07_p01_main.png",
+    "prose": "가운데 중간에 손잡이가 달린 반달 모양의 날이 하나 있는 낫 낫 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "가운데에 물체 하나가 있지만 낫이 아니라 세로로 긴 둥근 고리 모양입니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_08",
+    "panel_index": 1,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "LAN_08_p01_보기_opt1",
+    "image": "images/qwen38_27b/compose/LAN_08_p01_보기_opt1.png",
+    "prose": "사물을 1행 2열 격자로 놓는다. 첫째 칸에 파랑 파란 유리잔 낱개 하나 유리잔 하나. 둘째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "파란 유리잔 하나와 빨간 사과 하나가 흰 배경에 좌우로 충분히 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_08",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "LAN_08_p02_보기_opt2",
+    "image": "images/qwen38_27b/compose/LAN_08_p02_보기_opt2.png",
+    "prose": "사물을 1행 2열 격자로 놓는다. 첫째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 둘째 칸에 파랑 파란 유리잔 낱개 하나 유리잔 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사과 하나와 파란 유리잔 하나가 흰 배경에 좌우로 넉넉히 떨어져 배치되어 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_08",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "LAN_08_p03_보기_opt3",
+    "image": "images/qwen38_27b/compose/LAN_08_p03_보기_opt3.png",
+    "prose": "사물을 1행 2열 격자로 놓는다. 첫째 칸에 파랑 파란 유리잔 낱개 하나 유리잔 하나. 둘째 칸에 초록 초록 사과 낱개 하나 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "파란 유리잔 하나와 초록 사과 하나가 흰 배경의 한 행 두 칸에 서로 떨어져 배치되어 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_08",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "LAN_08_p04_보기_opt4",
+    "image": "images/qwen38_27b/compose/LAN_08_p04_보기_opt4.png",
+    "prose": "사물을 1행 2열 격자로 놓는다. 첫째 칸에 빨강 빨간 유리잔 낱개 하나 유리잔 하나. 둘째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 유리잔 하나와 빨간 사과 하나가 흰 배경에 좌우로 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "LAN_09_p01_기준",
+    "image": "images/qwen38_27b/compose/LAN_09_p01_기준.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 매끄러운 빨간 공 낱개 하나 공 하나 (크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "빨간 공이 아니라 검은 테두리가 있는 평면 원으로 보입니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "LAN_09_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/LAN_09_p02_보기_opt1.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 매끄러운 빨간 공 낱개 하나 공 하나 (크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "빨간 공이 아니라 검은 테두리가 있는 평면 원으로 보여 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "LAN_09_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/LAN_09_p03_보기_opt2.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 매끄러운 빨간 공 낱개 하나 공 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 빨간 공 하나가 중앙에 있고 글자나 다른 사물은 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "LAN_09_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/LAN_09_p04_보기_opt3.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 매끄러운 빨간 공 낱개 하나 공 하나 (크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "빨간 공 하나처럼 보이지만 검은 테두리가 있는 납작한 원형 그림이라 매끄러운 공 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_09",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "LAN_09_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/LAN_09_p05_보기_opt4.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 매끄러운 빨간 공 낱개 하나 공 하나 (크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "빨간 공 대신 검은 테두리가 있는 평면 원형 도형이 그려져 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "LAN_10",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "LAN_10_p01_main",
+    "image": "images/qwen38_27b/compose/LAN_10_p01_main.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 가운데 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 오른쪽 위에 빨강 낱개 하나 사과 하나. 오른쪽 아래에 검은 뿔테 안경 한 쌍 안경 하나. 가운데 아래에 검은 플라스틱 빗 낱개 하나 빗 하나. 왼쪽 아래에 나무 연필 낱개 하나 연필 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 6,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_01",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_01_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_01_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 머그컵 하나 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 열쇠 하나 열쇠 하나. 왼쪽 아래에 빨강 빨간 사과 하나 사과 하나. 오른쪽 아래에 검은 뿔테 안경 한 벌 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 사물 네 개가 각각 지정된 위치에 서로 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_02_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_02_p01_학습.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 둥근 낱개 사과 하나. 오른쪽 아래에 노랑 다섯 꼭짓점 낱개 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 지정된 위치에 하나씩 놓여 있고, 글자나 불필요한 사물 없이 흰 배경에서 넉넉히 떨어져 있다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 2,
+    "stage": "검사 보기",
+    "option_index": 1,
+    "name": "MEM_02_p02_검사보기_opt1",
+    "image": "images/qwen38_27b/compose/MEM_02_p02_검사보기_opt1.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 둥근 낱개 사과 하나. 오른쪽 아래에 노랑 다섯 꼭짓점 낱개 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 올바른 위치에 하나씩 놓여 있고 글자나 불필요한 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 3,
+    "stage": "검사 보기",
+    "option_index": 2,
+    "name": "MEM_02_p03_검사보기_opt2",
+    "image": "images/qwen38_27b/compose/MEM_02_p03_검사보기_opt2.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 파랑 둥근 낱개 사과 하나. 오른쪽 아래에 노랑 다섯 꼭짓점 낱개 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 지정된 위치에 있고 서로 떨어져 있으며 글자나 숫자 없이 흰 배경에 보입니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 4,
+    "stage": "검사 보기",
+    "option_index": 3,
+    "name": "MEM_02_p04_검사보기_opt3",
+    "image": "images/qwen38_27b/compose/MEM_02_p04_검사보기_opt3.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 가운데 가운데에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 둥근 낱개 사과 하나. 오른쪽 아래에 노랑 다섯 꼭짓점 낱개 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 지정된 위치에 하나씩 넉넉히 떨어져 배치되어 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_02",
+    "panel_index": 5,
+    "stage": "검사 보기",
+    "option_index": 4,
+    "name": "MEM_02_p05_검사보기_opt4",
+    "image": "images/qwen38_27b/compose/MEM_02_p05_검사보기_opt4.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 둥근 낱개 사과 하나. 오른쪽 아래에 노랑 다섯 꼭짓점 낱개 별 하나 (크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 올바른 위치에 하나씩 있고 서로 떨어져 있으며, 글자 없이 흰 배경에 선명하게 보입니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_03",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_03_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_03_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 빨간색 원형 낱개 하나 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰색 손잡이 컵, 열쇠, 빨간 사과가 각각 지정된 위치에 하나씩 놓여 있고 글자 없이 흰 배경으로 제시되어 있다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_03",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "MEM_03_p02_검사",
+    "image": "images/qwen38_27b/compose/MEM_03_p02_검사.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 아래에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 빨간색 원형 낱개 하나 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰색 머그컵, 빨간 사과, 열쇠가 지정된 위치에 각각 하나씩 있고 서로 떨어져 있으며 글자나 불필요한 사물은 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_04_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_04_p01_학습.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 빨강 손잡이 달린 낱개 하나 머그컵 하나. 가운데 위에 파랑 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 초록 둥근 낱개 하나 사과 하나. 가운데 아래에 노랑 다섯 꼭대기 낱개 하나 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 색상과 위치에 맞게 넉넉히 떨어져 배치되어 있고, 흰 배경에 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 2,
+    "stage": "검사 보기",
+    "option_index": 1,
+    "name": "MEM_04_p02_검사보기_opt1",
+    "image": "images/qwen38_27b/compose/MEM_04_p02_검사보기_opt1.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 파랑 손잡이 달린 낱개 하나 머그컵 하나. 가운데 위에 파랑 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 초록 둥근 낱개 하나 사과 하나. 가운데 아래에 노랑 다섯 꼭대기 낱개 하나 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 지정된 위치에 하나씩 놓여 있고, 서로 떨어져 있으며 흰 배경에 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 3,
+    "stage": "검사 보기",
+    "option_index": 2,
+    "name": "MEM_04_p03_검사보기_opt2",
+    "image": "images/qwen38_27b/compose/MEM_04_p03_검사보기_opt2.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 빨강 손잡이 달린 낱개 하나 머그컵 하나. 가운데 위에 파랑 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 초록 둥근 낱개 하나 사과 하나. 가운데 아래에 노랑 다섯 꼭대기 낱개 하나 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 지정된 위치에 하나씩 있고 서로 떨어져 있으며, 흰 배경에 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 4,
+    "stage": "검사 보기",
+    "option_index": 3,
+    "name": "MEM_04_p04_검사보기_opt3",
+    "image": "images/qwen38_27b/compose/MEM_04_p04_검사보기_opt3.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 빨강 손잡이 달린 낱개 하나 머그컵 하나. 오른쪽 위에 파랑 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 초록 둥근 낱개 하나 사과 하나. 가운데 아래에 노랑 다섯 꼭대기 낱개 하나 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 머그컵, 열쇠, 사과, 별이 각각 지정된 위치에 있고 서로 떨어져 있으며 흰 배경에 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_04",
+    "panel_index": 5,
+    "stage": "검사 보기",
+    "option_index": 4,
+    "name": "MEM_04_p05_검사보기_opt4",
+    "image": "images/qwen38_27b/compose/MEM_04_p05_검사보기_opt4.png",
+    "prose": "사물을 2행 3열 격자로 놓는다. 왼쪽 위에 빨강 손잡이 달린 낱개 하나 머그컵 하나. 가운데 위에 파랑 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 초록 둥근 낱개 하나 사과 하나. 가운데 아래에 초록 다섯 꼭대기 낱개 하나 별 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 손잡이 머그컵, 파란 열쇠, 초록 사과와 다섯 꼭짓점 별이 지정된 위치에 서로 떨어져 있고 흰 배경에 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_05_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_05_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 꼭대기가 왼쪽을 향하는 비대칭 삼각형 하나 삼각형 하나. 오른쪽 위에 빨강 가로로 긴 직사각형 하나 직사각형 하나. 왼쪽 아래에 노랑 둥근 원 하나 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 개수와 위치는 맞지만 파란 삼각형의 꼭대기가 왼쪽이 아니라 위를 향합니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 2,
+    "stage": "검사 보기",
+    "option_index": 1,
+    "name": "MEM_05_p02_검사보기_opt1",
+    "image": "images/qwen38_27b/compose/MEM_05_p02_검사보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 꼭대기가 왼쪽을 향하는 비대칭 삼각형 하나 삼각형 하나. 오른쪽 위에 빨강 가로로 긴 직사각형 하나 직사각형 하나. 왼쪽 아래에 노랑 둥근 원 하나 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "삼각형의 꼭대기가 왼쪽을 향하지 않고 위를 향하며 비대칭 삼각형도 아닙니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 3,
+    "stage": "검사 보기",
+    "option_index": 2,
+    "name": "MEM_05_p03_검사보기_opt2",
+    "image": "images/qwen38_27b/compose/MEM_05_p03_검사보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 초록 꼭대기가 왼쪽을 향하는 비대칭 삼각형 하나 삼각형 하나. 오른쪽 위에 빨강 가로로 긴 직사각형 하나 직사각형 하나. 왼쪽 아래에 노랑 둥근 원 하나 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 4,
+    "stage": "검사 보기",
+    "option_index": 3,
+    "name": "MEM_05_p04_검사보기_opt3",
+    "image": "images/qwen38_27b/compose/MEM_05_p04_검사보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 꼭대기가 왼쪽을 향하는 비대칭 삼각형 하나 삼각형 하나 (시계 방향 90도 돌아간 상태). 오른쪽 위에 빨강 가로로 긴 직사각형 하나 직사각형 하나. 왼쪽 아래에 노랑 둥근 원 하나 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "파란 삼각형이 왼쪽이 아니라 오른쪽을 향해 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_05",
+    "panel_index": 5,
+    "stage": "검사 보기",
+    "option_index": 4,
+    "name": "MEM_05_p05_검사보기_opt4",
+    "image": "images/qwen38_27b/compose/MEM_05_p05_검사보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 파랑 꼭대기가 왼쪽을 향하는 비대칭 삼각형 하나 삼각형 하나. 오른쪽 위에 빨강 가로로 긴 직사각형 하나 직사각형 하나. 오른쪽 아래에 노랑 둥근 원 하나 원 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_06",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_06_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_06_p01_학습.png",
+    "prose": "사물을 1행 5열 격자로 놓는다. 첫째 칸에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 둘째 칸에 금속 열쇠 낱개 하나 열쇠 하나. 셋째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 넷째 칸에 검은 뿔테 안경 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_06",
+    "panel_index": 2,
+    "stage": "검사 보기",
+    "option_index": 1,
+    "name": "MEM_06_p02_검사보기_opt1",
+    "image": "images/qwen38_27b/compose/MEM_06_p02_검사보기_opt1.png",
+    "prose": "사물을 1행 5열 격자로 놓는다. 첫째 칸에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 둘째 칸에 금속 열쇠 낱개 하나 열쇠 하나. 셋째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 넷째 칸에 검은 뿔테 안경 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_06",
+    "panel_index": 3,
+    "stage": "검사 보기",
+    "option_index": 2,
+    "name": "MEM_06_p03_검사보기_opt2",
+    "image": "images/qwen38_27b/compose/MEM_06_p03_검사보기_opt2.png",
+    "prose": "사물을 1행 5열 격자로 놓는다. 다섯째 칸에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 둘째 칸에 금속 열쇠 낱개 하나 열쇠 하나. 셋째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 넷째 칸에 검은 뿔테 안경 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "열쇠, 빨간 사과, 검은 뿔테 안경, 흰 머그컵이 지정된 칸에 각각 하나씩 놓여 있고 글자나 불필요한 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_06",
+    "panel_index": 4,
+    "stage": "검사 보기",
+    "option_index": 3,
+    "name": "MEM_06_p04_검사보기_opt3",
+    "image": "images/qwen38_27b/compose/MEM_06_p04_검사보기_opt3.png",
+    "prose": "사물을 1행 5열 격자로 놓는다. 첫째 칸에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 다섯째 칸에 금속 열쇠 낱개 하나 열쇠 하나. 셋째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 넷째 칸에 검은 뿔테 안경 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 해당 칸에 배치되어 있고, 글자나 불필요한 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_06",
+    "panel_index": 5,
+    "stage": "검사 보기",
+    "option_index": 4,
+    "name": "MEM_06_p05_검사보기_opt4",
+    "image": "images/qwen38_27b/compose/MEM_06_p05_검사보기_opt4.png",
+    "prose": "사물을 1행 5열 격자로 놓는다. 첫째 칸에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 둘째 칸에 금속 열쇠 낱개 하나 열쇠 하나. 다섯째 칸에 빨강 빨간 사과 낱개 하나 사과 하나. 넷째 칸에 검은 뿔테 안경 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_07",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_07_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_07_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨간색 낱개 하나 사과 하나. 오른쪽 아래에 파란색 낱개 하나 볼펜 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사과와 필기구가 지정된 색이 아니고 오른쪽 아래 사물은 볼펜이 아니라 연필입니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_07",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "MEM_07_p02_검사",
+    "image": "images/qwen38_27b/compose/MEM_07_p02_검사.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 왼쪽 아래에 빨간색 낱개 하나 사과 하나. 오른쪽 아래에 파란색 낱개 하나 볼펜 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "머그컵·사과·볼펜의 배치와 개수는 맞지만 사과가 빨간색이 아니고 볼펜이 파란색이 아닙니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_08",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_08_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_08_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨간색 낱개 하나 사과 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "머그컵·열쇠·사과의 개수와 배치는 맞지만 사과가 빨간색으로 표현되지 않았습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_08",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "MEM_08_p02_검사",
+    "image": "images/qwen38_27b/compose/MEM_08_p02_검사.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨간색 낱개 하나 사과 하나. 오른쪽 아래에 노란색 낱개 하나 연필 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 종류와 배치는 맞지만 사과가 빨간색이고 연필이 노란색이어야 한다는 색상 조건을 충족하지 않습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_09",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_09_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_09_p01_학습.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨간색인 낱개 하나 사과 하나. 오른쪽 아래에 검은 뿔테 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사과가 빨간색이 아니며 흰 바닥도 구분되지 않습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_09",
+    "panel_index": 2,
+    "stage": "검사",
+    "option_index": null,
+    "name": "MEM_09_p02_검사",
+    "image": "images/qwen38_27b/compose/MEM_09_p02_검사.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 손잡이 달린 흰색 낱개 하나 머그컵 하나. 오른쪽 위에 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 파랑 빨간색인 낱개 하나 사과 하나. 오른쪽 아래에 검은 뿔테 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 종류와 배치는 맞지만 사과가 빨강·파랑이 아니라 빨간색으로만 보입니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 1,
+    "stage": "학습",
+    "option_index": null,
+    "name": "MEM_10_p01_학습",
+    "image": "images/qwen38_27b/compose/MEM_10_p01_학습.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 흰색 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 은색 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 낱개 하나 사과 하나. 오른쪽 아래에 검정 검은 뿔테 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물 네 개의 종류와 배치는 맞지만 열쇠가 은색이 아니라 흰색 바탕의 검은 윤곽선으로 그려져 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 2,
+    "stage": "검사 보기",
+    "option_index": 1,
+    "name": "MEM_10_p02_검사보기_opt1",
+    "image": "images/qwen38_27b/compose/MEM_10_p02_검사보기_opt1.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 흰색 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 은색 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 낱개 하나 사과 하나. 오른쪽 아래에 검정 검은 뿔테 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 3,
+    "stage": "검사 보기",
+    "option_index": 2,
+    "name": "MEM_10_p03_검사보기_opt2",
+    "image": "images/qwen38_27b/compose/MEM_10_p03_검사보기_opt2.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 흰색 손잡이 달린 흰색 낱개 머그컵 하나. 오른쪽 위에 은색 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 파랑 낱개 하나 사과 하나. 오른쪽 아래에 검정 검은 뿔테 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "사물의 종류와 배치는 맞지만 열쇠가 은색 금속으로 표현되지 않았습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 4,
+    "stage": "검사 보기",
+    "option_index": 3,
+    "name": "MEM_10_p04_검사보기_opt3",
+    "image": "images/qwen38_27b/compose/MEM_10_p04_검사보기_opt3.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 왼쪽 위에 흰색 손잡이 달린 흰색 낱개 머그컵 하나. 가운데 가운데에 은색 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 낱개 하나 사과 하나. 오른쪽 아래에 검정 검은 뿔테 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "명세된 네 사물이 각각 올바른 위치에 넉넉히 떨어져 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "MEM_10",
+    "panel_index": 5,
+    "stage": "검사 보기",
+    "option_index": 4,
+    "name": "MEM_10_p05_검사보기_opt4",
+    "image": "images/qwen38_27b/compose/MEM_10_p05_검사보기_opt4.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 오른쪽 위에 은색 열쇠고리 없는 금속 낱개 하나 열쇠 하나. 왼쪽 아래에 빨강 낱개 하나 사과 하나. 오른쪽 아래에 검정 검은 뿔테 낱개 하나 안경 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "열쇠·사과·안경은 배치와 개수가 맞지만 열쇠가 은색 금속으로 표현되지 않았습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_01_p01_기준",
+    "image": "images/qwen38_27b/compose/VIS_01_p01_기준.png",
+    "prose": "가운데 중간에 검정 긴 팔이 위를 향하고 짧은 팔이 오른쪽으로 뻗은 검은색 L자형 낱개 L자형 블록 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경 중앙에 위로 긴 팔과 오른쪽으로 뻗은 짧은 팔을 가진 검은색 L자형 블록 하나가 있고 글자나 숫자는 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_01_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/VIS_01_p02_보기_opt1.png",
+    "prose": "가운데 중간에 검정 긴 팔이 위를 향하고 짧은 팔이 오른쪽으로 뻗은 검은색 L자형 낱개 L자형 블록 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_01_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/VIS_01_p03_보기_opt2.png",
+    "prose": "가운데 중간에 검정 긴 팔이 위를 향하고 짧은 팔이 오른쪽으로 뻗은 검은색 L자형 낱개 L자형 블록 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_01_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/VIS_01_p04_보기_opt3.png",
+    "prose": "가운데 중간에 검정 긴 팔이 위를 향하고 짧은 팔이 오른쪽으로 뻗은 검은색 L자형 낱개 L자형 블록 하나 (시계 방향 180도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_01",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_01_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/VIS_01_p05_보기_opt4.png",
+    "prose": "가운데 중간에 검정 긴 팔이 위를 향하고 짧은 팔이 오른쪽으로 뻗은 검은색 L자형 낱개 L자형 블록 하나 (시계 방향 270도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "검은색 L자형 블록 하나가 있지만 짧은 팔이 오른쪽이 아니라 왼쪽으로 뻗어 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_02_p01_기준",
+    "image": "images/qwen38_27b/compose/VIS_02_p01_기준.png",
+    "prose": "가운데 중간에 파랑 왼쪽 변이 길고 아래 변이 짧은 직각삼각형 하나 직각삼각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_02_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/VIS_02_p02_보기_opt1.png",
+    "prose": "가운데 중간에 파랑 왼쪽 변이 길고 아래 변이 짧은 직각삼각형 하나 직각삼각형 하나 (좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "명세의 직각삼각형 두 개 대신 파란 삼각형 하나만 있어 개수와 모양, 배치가 맞지 않습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_02_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/VIS_02_p03_보기_opt2.png",
+    "prose": "가운데 중간에 파랑 왼쪽 변이 길고 아래 변이 짧은 직각삼각형 하나 직각삼각형 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_02_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/VIS_02_p04_보기_opt3.png",
+    "prose": "가운데 중간에 파랑 왼쪽 변이 길고 아래 변이 짧은 직각삼각형 하나 직각삼각형 하나 (시계 방향 180도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_02",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_02_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/VIS_02_p05_보기_opt4.png",
+    "prose": "가운데 중간에 파랑 왼쪽 변이 길고 아래 변이 짧은 직각삼각형 하나 직각삼각형 하나 (시계 방향 270도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_03_p01_기준",
+    "image": "images/qwen38_27b/compose/VIS_03_p01_기준.png",
+    "prose": "가운데 중간에 검정 짧은 팔이 오른쪽으로, 긴 팔이 아래로 뻗은 검은색 L자형 블록 하나 L자형 블록 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_03_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/VIS_03_p02_보기_opt1.png",
+    "prose": "가운데 중간에 검정 짧은 팔이 오른쪽으로, 긴 팔이 아래로 뻗은 검은색 L자형 블록 하나 L자형 블록 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_03_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/VIS_03_p03_보기_opt2.png",
+    "prose": "가운데 중간에 검정 짧은 팔이 오른쪽으로, 긴 팔이 아래로 뻗은 검은색 L자형 블록 하나 L자형 블록 하나 (좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_03_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/VIS_03_p04_보기_opt3.png",
+    "prose": "가운데 중간에 검정 짧은 팔이 오른쪽으로, 긴 팔이 아래로 뻗은 검은색 L자형 블록 하나 L자형 블록 하나 (시계 방향 90도 돌아간 상태, 좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_03",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_03_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/VIS_03_p05_보기_opt4.png",
+    "prose": "가운데 중간에 검정 짧은 팔이 오른쪽으로, 긴 팔이 아래로 뻗은 검은색 L자형 블록 하나 L자형 블록 하나 (시계 방향 180도 돌아간 상태, 좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_04_p01_기준",
+    "image": "images/qwen38_27b/compose/VIS_04_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 빨강 빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향 사분원 조각 하나 (시계 방향 270도 돌아간 상태). 오른쪽 위에 빨강 빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향 사분원 조각 하나. 왼쪽 아래에 빨강 빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향 사분원 조각 하나 (시계 방향 180도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 3,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_04_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/VIS_04_p02_보기_opt1.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향 사분원 조각 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨간 사분원 조각 하나가 직각 꼭짓점이 왼쪽 아래인 방향으로 흰 배경에 놓여 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_04_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/VIS_04_p03_보기_opt2.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향 사분원 조각 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_04_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/VIS_04_p04_보기_opt3.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향 사분원 조각 하나 (시계 방향 180도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "빨간 사분원 조각은 하나 있지만 직각 꼭짓점이 왼쪽 아래가 아니라 오른쪽 위에 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_04",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_04_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/VIS_04_p05_보기_opt4.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향 사분원 조각 하나 (시계 방향 270도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이 보인다이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "빨간 사분원 조각은 하나 있지만 직각 꼭짓점이 오른쪽 아래에 있어 명세의 왼쪽 아래 방향과 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_05_p01_기준",
+    "image": "images/qwen38_27b/compose/VIS_05_p01_기준.png",
+    "prose": "왼쪽 위에 빨강 한 변이 같은 정사각형 낱개 하나 빨간 정사각형 조각 하나 (작게). 오른쪽 위에 파랑 한 변이 같은 정사각형 낱개 하나 파란 정사각형 조각 하나 (작게). 왼쪽 아래에 초록 한 변이 같은 정사각형 낱개 하나 초록 정사각형 조각 하나 (작게). 오른쪽 아래에 노랑 한 변이 같은 정사각형 낱개 하나 노란 정사각형 조각 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "각 위치에 색깔별 큰 정사각형 하나만 있어 명세의 작은 정사각형 조각이 빠져 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_05_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/VIS_05_p02_보기_opt1.png",
+    "prose": "가운데 중간에 빨강 한 변이 같은 정사각형 낱개 하나 빨간 정사각형 조각 하나 (작게). 가운데 중간에 파랑 한 변이 같은 정사각형 낱개 하나 파란 정사각형 조각 하나 (작게). 가운데 중간에 초록 한 변이 같은 정사각형 낱개 하나 초록 정사각형 조각 하나 (작게). 가운데 중간에 노랑 한 변이 같은 정사각형 낱개 하나 노란 정사각형 조각 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨강·파랑·초록·노랑의 같은 크기 정사각형 네 개가 서로 떨어져 가운데에 배치되어 있고 글자나 불필요한 사물이 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_05_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/VIS_05_p03_보기_opt2.png",
+    "prose": "가운데 중간에 빨강 한 변이 같은 정사각형 낱개 하나 빨간 정사각형 조각 하나 (작게). 가운데 중간에 파랑 한 변이 같은 정사각형 낱개 하나 파란 정사각형 조각 하나 (작게). 가운데 중간에 초록 한 변이 같은 정사각형 낱개 하나 초록 정사각형 조각 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 3,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨강·파랑·초록 정사각형 세 개가 서로 떨어져 중앙에 배치되어 있고 글자나 불필요한 요소가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_05_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/VIS_05_p04_보기_opt3.png",
+    "prose": "가운데 중간에 빨강 한 변이 같은 정사각형 낱개 하나 빨간 정사각형 조각 하나 (작게). 가운데 중간에 파랑 한 변이 같은 정사각형 낱개 하나 파란 정사각형 조각 하나 (작게). 가운데 중간에 초록 한 변이 같은 정사각형 낱개 하나 초록 정사각형 조각 하나 (작게). 가운데 중간에 노랑 한 변이 같은 정사각형 낱개 하나 노란 정사각형 조각 하나 (작게). 가운데 위에 보라 한 변이 같은 정사각형 낱개 하나 보라색 정사각형 조각 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 5,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "색상과 개수 및 배치는 맞지만 빨강·파랑·초록·노랑 정사각형이 명세의 작은 크기보다 크게 그려져 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_05",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_05_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/VIS_05_p05_보기_opt4.png",
+    "prose": "가운데 중간에 빨강 한 변이 같은 정사각형 낱개 하나 빨간 정사각형 조각 하나 (작게). 가운데 중간에 파랑 한 변이 같은 정사각형 낱개 하나 파란 정사각형 조각 하나 (작게). 가운데 중간에 초록 한 변이 같은 정사각형 낱개 하나 초록 정사각형 조각 하나 (작게). 오른쪽 아래에 노랑 한 변이 같은 정사각형 낱개 하나 노란 정사각형 조각 하나 (작게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 4,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "빨강·파랑·초록 정사각형은 가운데에 있고 노랑 정사각형은 오른쪽 아래에 있으며, 서로 떨어져 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_06",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_06_p01_기준",
+    "image": "images/qwen38_27b/compose/VIS_06_p01_기준.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 주황 왼쪽을 향하는 주황색 삼각형 낱개 하나 삼각형 하나 (왼쪽을 향한 상태). 왼쪽 아래에 파랑 파란색 정사각형 낱개 하나 사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "주황색 삼각형이 왼쪽을 향하지 않고 위를 향합니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_06",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_06_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/VIS_06_p02_보기_opt1.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 오른쪽 위에 주황 왼쪽을 향하는 주황색 삼각형 낱개 하나 삼각형 하나 (왼쪽을 향한 상태). 오른쪽 아래에 파랑 파란색 정사각형 낱개 하나 사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "주황색 삼각형이 왼쪽을 향하지 않고 위를 향하고 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_06",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_06_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/VIS_06_p03_보기_opt2.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 오른쪽 위에 주황 왼쪽을 향하는 주황색 삼각형 낱개 하나 삼각형 하나 (좌우가 뒤집힌 상태, 왼쪽을 향한 상태). 오른쪽 아래에 파랑 파란색 정사각형 낱개 하나 사각형 하나 (좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "주황 삼각형이 위쪽을 향해 있어 왼쪽을 향해야 한다는 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_06",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_06_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/VIS_06_p04_보기_opt3.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 왼쪽 위에 주황 왼쪽을 향하는 주황색 삼각형 낱개 하나 삼각형 하나 (좌우가 뒤집힌 상태, 왼쪽을 향한 상태). 왼쪽 아래에 파랑 파란색 정사각형 낱개 하나 사각형 하나 (좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "주황색 삼각형이 왼쪽이 아닌 위쪽을 향하고 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_06",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_06_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/VIS_06_p05_보기_opt4.png",
+    "prose": "사물을 2행 2열 격자로 놓는다. 오른쪽 아래에 주황 왼쪽을 향하는 주황색 삼각형 낱개 하나 삼각형 하나 (좌우가 뒤집힌 상태, 왼쪽을 향한 상태). 오른쪽 위에 파랑 파란색 정사각형 낱개 하나 사각형 하나 (좌우가 뒤집힌 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_07_p01_기준",
+    "image": "images/qwen38_27b/compose/VIS_07_p01_기준.png",
+    "prose": "사물을 3행 4열 격자로 놓는다. 2열 위에 빨강 단색 정사각형 하나 정사각형 하나. 1열 가운데에 파랑 단색 정사각형 하나 정사각형 하나. 2열 가운데에 보라 단색 정사각형 하나 정사각형 하나. 3열 가운데에 노랑 단색 정사각형 하나 정사각형 하나. 4열 가운데에 주황 단색 정사각형 하나 정사각형 하나. 2열 아래에 초록 단색 정사각형 하나 정사각형 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 6,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "정사각형 여섯 개가 지정된 색과 위치에 놓여 있고 배경이 흰색이며 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_07_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/VIS_07_p02_보기_opt1.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 위면 빨강, 앞면 보라, 오른쪽면 노랑으로 보이는 정육면체 하나 정육면체 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 명세대로 빨강·보라·노랑 면의 정육면체 하나가 1행 1열로 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_07_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/VIS_07_p03_보기_opt2.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 위면 빨강, 앞면 보라, 오른쪽면 파랑으로 보이는 정육면체 하나 정육면체 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 빨강 윗면, 보라 앞면, 파랑 오른쪽면의 정육면체 하나가 1행 1열로 놓여 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_07_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/VIS_07_p04_보기_opt3.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 위면 빨강, 앞면 초록, 오른쪽면 노랑으로 보이는 정육면체 하나 정육면체 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "지정된 색면을 가진 정육면체 하나가 흰 배경의 1행 1열 배치로 놓여 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_07",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_07_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/VIS_07_p05_보기_opt4.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 위면 빨강, 앞면 주황, 오른쪽면 노랑으로 보이는 정육면체 하나 정육면체 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 위면이 빨강, 앞면이 주황, 오른쪽면이 노랑인 정육면체 하나가 1행 1열로 배치되어 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_08_p01_기준",
+    "image": "images/qwen38_27b/compose/VIS_08_p01_기준.png",
+    "prose": "사물을 3행 3열 격자로 놓는다. 가운데 가운데에 위에서 본 사람, 머리 쪽이 방향을 가리키는 화살표 모양 사람 하나 (아래을 향한 상태). 오른쪽 가운데에 빨강 단색 원형 색판 하나 원형 색판 하나. 왼쪽 가운데에 파랑 단색 원형 색판 하나 원형 색판 하나. 가운데 위에 초록 단색 원형 색판 하나 원형 색판 하나. 가운데 아래에 노랑 단색 원형 색판 하나 원형 색판 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 5,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "사람이 위에서 본 아래쪽 화살표 모양이 아니며 원판으로 이어지는 빨간 선이 추가되어 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_08_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/VIS_08_p02_보기_opt1.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 빨강 단색 원형 색판 하나 원형 색판 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "흰 배경에 빨간 원형 색판 하나가 단독으로 배치되어 있고 글자나 숫자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_08_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/VIS_08_p03_보기_opt2.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 파랑 단색 원형 색판 하나 원형 색판 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": false,
+      "count_ok": false,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": false,
+      "why": "명세에는 원형 색판이 두 개지만 이미지에는 파란 원형 색판 하나만 있습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_08_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/VIS_08_p04_보기_opt3.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 초록 단색 원형 색판 하나 원형 색판 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_08",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_08_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/VIS_08_p05_보기_opt4.png",
+    "prose": "사물을 1행 1열 격자로 놓는다. 첫째 칸에 노랑 단색 원형 색판 하나 원형 색판 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "노란색 원형 색판 하나가 흰 배경의 첫째 칸에 있고 글자가 없습니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 1,
+    "stage": "기준",
+    "option_index": null,
+    "name": "VIS_09_p01_기준",
+    "image": "images/qwen38_27b/compose/VIS_09_p01_기준.png",
+    "prose": "가운데 중간에 검정 긴 팔이 아래로 뻗고 짧은 팔이 오른쪽으로 뻗은 검은색 꺾인 막대 낱개 하나 꺾인 막대 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 2,
+    "stage": "보기",
+    "option_index": 1,
+    "name": "VIS_09_p02_보기_opt1",
+    "image": "images/qwen38_27b/compose/VIS_09_p02_보기_opt1.png",
+    "prose": "가운데 중간에 검정 긴 팔이 아래로 뻗고 짧은 팔이 오른쪽으로 뻗은 검은색 꺾인 막대 낱개 하나 꺾인 막대 하나 (시계 방향 90도 돌아간 상태, 크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": false,
+      "no_text": true,
+      "usable": false,
+      "why": "검은색 꺾인 막대 하나는 있으나 긴 팔이 아래가 아니라 오른쪽으로 뻗어 명세와 다릅니다."
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 3,
+    "stage": "보기",
+    "option_index": 2,
+    "name": "VIS_09_p03_보기_opt2",
+    "image": "images/qwen38_27b/compose/VIS_09_p03_보기_opt2.png",
+    "prose": "가운데 중간에 검정 긴 팔이 아래로 뻗고 짧은 팔이 오른쪽으로 뻗은 검은색 꺾인 막대 낱개 하나 꺾인 막대 하나 (시계 방향 90도 돌아간 상태). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 4,
+    "stage": "보기",
+    "option_index": 3,
+    "name": "VIS_09_p04_보기_opt3",
+    "image": "images/qwen38_27b/compose/VIS_09_p04_보기_opt3.png",
+    "prose": "가운데 중간에 검정 긴 팔이 아래로 뻗고 짧은 팔이 오른쪽으로 뻗은 검은색 꺾인 막대 낱개 하나 꺾인 막대 하나 (크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_09",
+    "panel_index": 5,
+    "stage": "보기",
+    "option_index": 4,
+    "name": "VIS_09_p05_보기_opt4",
+    "image": "images/qwen38_27b/compose/VIS_09_p05_보기_opt4.png",
+    "prose": "가운데 중간에 검정 긴 팔이 아래로 뻗고 짧은 팔이 오른쪽으로 뻗은 검은색 꺾인 막대 낱개 하나 꺾인 막대 하나 (시계 방향 180도 돌아간 상태, 크게). 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 1,
+    "verdict": {
+      "usable": null,
+      "why": "판정 파싱 실패"
+    }
+  },
+  {
+    "llm": "qwen38_27b",
+    "renderer": "compose",
+    "slot_id": "VIS_10",
+    "panel_index": 1,
+    "stage": "main",
+    "option_index": null,
+    "name": "VIS_10_p01_main",
+    "image": "images/qwen38_27b/compose/VIS_10_p01_main.png",
+    "prose": "사물을 1행 3열 격자로 놓는다. 둘째 칸에 정면을 보는 어린이, 양팔이 몸통 옆에 내려가 있다 어린이 하나 (정면을 향한 상태). 셋째 칸에 빨강 원형 낱개 하나 빨간 공 하나. 사물끼리 닿지 않고 넉넉히 떨어져 있다. 배경은 흰 바닥이다.",
+    "n_objects": 2,
+    "verdict": {
+      "objects_ok": true,
+      "count_ok": true,
+      "layout_ok": true,
+      "no_text": true,
+      "usable": true,
+      "why": "어린이는 가운데에서 정면을 보고 있고 빨간 공은 오른쪽에 따로 놓여 있으며, 글자나 불필요한 사물이 없습니다."
+    }
   }
 ]

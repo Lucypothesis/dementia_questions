@@ -158,6 +158,27 @@ def main() -> None:
     rot["objects"][0]["rotation"] = 90
     check("회전 반영됨", png(a) != png(rot))
 
+    print("\n[6b] 도형 분류와 자산 파일명")
+    from . import shapes
+    check("거북선을 선으로 오인하지 않음", shapes.shape_key("거북선") is None)
+    check("직사각형 분류", shapes.shape_key("직사각형") == "rect")
+    check("반원 분류", shapes.shape_key("반원") == "semicircle")
+    check("사분원 분류", shapes.shape_key("사분원 조각") == "quarter_circle")
+    check("정육면체 분류", shapes.shape_key("정육면체") == "cube")
+    cube = shapes.render_object({"name": "정육면체",
+                                 "appearance": "위면 빨강, 앞면 보라, 오른쪽면 노랑"}, 128)
+    check("면별 정육면체 렌더", cube is not None and cube.getbbox() is not None)
+    check("공백 자산 파일명 정규화",
+          rnd.asset_stem("깨진 달걀의 내용물") == "깨진_달걀의_내용물")
+
+    print("\n[6c] judge 재사용 키")
+    # 같은 패널명·렌더러라도 LLM arm이 다르면 별도 결과여야 한다.
+    from . import pipeline
+    base = {"renderer": "compose", "name": "MEM_01_p01_학습"}
+    akey = pipeline.judge_result_key({**base, "llm": "qwen38_27b"})
+    bkey = pipeline.judge_result_key({**base, "llm": "mistral_small_24b"})
+    check("LLM이 다른 judge 결과는 키가 다름", akey != bkey)
+
     print("\n[7] 산문 생성")
     prose = rnd.scene_to_prose(a)
     check("격자 문구 포함", f"{a['rows']}행 {a['cols']}열" in prose, prose[:60])

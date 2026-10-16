@@ -57,6 +57,13 @@ llms:
     readonly: true
 
 renderers:
+  # 코드 합성. 추상 도형은 코드로 그리고, 실물은 assets/의 자산을 좌표에 붙인다.
+  # 회전·반전·개수·배치가 명세와 정확히 일치한다. 디퓨전이 못 하는 지점이다.
+  # 자산은 `itemgen assets --build`로 만든다 (사물 하나당 1장, GPU 1~2분).
+  - name: compose
+    adapter: compose
+    size: 768
+
   # FLUX.2 klein-4B · Apache 2.0 · 13~16GB · 6스텝
   - name: flux2_klein_4b
     adapter: diffusion
@@ -123,6 +130,7 @@ judge:
 # plan 단계에서 비용·시간을 어림잡는 데만 쓴다. 어댑터에는 전달되지 않는다.
 estimates:
   gpt6_sol:                  {price_in: 2.0, price_out: 10.0}   # $/1M 토큰
+  compose:                   {sec_per_image: 0.2}               # CPU 실측
   flux2_klein_4b:            {sec_per_image: 8.0}
   z_image_turbo:             {sec_per_image: 9.5}               # 실측
   qwen_image_2512:           {sec_per_image: 45.0}
