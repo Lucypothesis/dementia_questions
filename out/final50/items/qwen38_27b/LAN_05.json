@@ -1,0 +1,57 @@
+{
+  "slot_id": "LAN_05",
+  "question": "그림에서 사람이 하고 있는 동작을 말하세요.",
+  "answer": "양치하다",
+  "answer_rationale": "사람이 정면으로 서서 칫솔을 입에 대고 있고, 세면대와 수도꼭지가 함께 보여 칫솔로 이를 닦는 동작이 유일하게 지시된다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 벽과 바닥이 보이는 욕실",
+        "objects": [
+          {
+            "ref": "person",
+            "name": "사람",
+            "appearance": "흰 상의 입은 사람 하나, 정면으로 서서 입에 칫솔을 대고 있는 자세",
+            "pos": [
+              0.5,
+              0.42
+            ],
+            "facing": "정면",
+            "is_target": true
+          },
+          {
+            "ref": "toothbrush",
+            "name": "칫솔",
+            "appearance": "파란 손잡이 칫솔 하나",
+            "pos": [
+              0.57,
+              0.36
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "sink",
+            "name": "세면대",
+            "appearance": "흰 세면대 하나",
+            "pos": [
+              0.5,
+              0.78
+            ]
+          },
+          {
+            "ref": "faucet",
+            "name": "수도꼭지",
+            "appearance": "크롬 수도꼭지 하나",
+            "pos": [
+              0.5,
+              0.66
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

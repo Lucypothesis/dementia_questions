@@ -20,6 +20,7 @@ import re
 # 도형으로 잡으므로 독립된 단어일 때만 허용한다.
 ALIASES: list[tuple[str, str]] = [
     (r"정육면체", "cube"),
+    (r"비대칭\s*도형|F자", "asym"),
     (r"사분원", "quarter_circle"),
     (r"반원", "semicircle"),
     (r"타원", "ellipse"),
@@ -68,7 +69,13 @@ def shape_key(name: str) -> str | None:
 
 
 def pick_color(obj: dict):
-    text = f"{obj.get('color') or ''} {obj.get('appearance') or ''} {obj.get('name') or ''}"
+    # recolor는 명시적인 color만 바꾼다. 이름/appearance에 예전 색이 남아 있어도
+    # 새 color가 이겨야 한다. 예: color=파랑, name=빨간 화살표.
+    explicit = str(obj.get("color") or "").strip()
+    for word, rgb in COLORS.items():
+        if word in explicit:
+            return rgb
+    text = f"{obj.get('appearance') or ''} {obj.get('name') or ''}"
     for word, rgb in COLORS.items():
         if word in text:
             return rgb
@@ -148,6 +155,14 @@ def draw(key: str, box: int, fill, line_w: int = 0):
         d.polygon([(pad, pad), (pad + t, pad), (pad + t, b - pad - t),
                    (b - pad, b - pad - t), (b - pad, b - pad), (pad, b - pad)],
                   fill=fill, outline=OUTLINE, width=w)
+    elif key == "asym":
+        # F형은 거울 반전이 어떤 회전과도 같아지지 않아 회전/반전 변별에 적합하다.
+        t = b * 0.18
+        d.polygon([(pad, pad), (b - pad, pad), (b - pad, pad + t),
+                   (pad + t, pad + t), (pad + t, b * 0.43),
+                   (b * 0.72, b * 0.43), (b * 0.72, b * 0.43 + t),
+                   (pad + t, b * 0.43 + t), (pad + t, b - pad),
+                   (pad, b - pad)], fill=fill, outline=OUTLINE, width=w)
     elif key == "arrow":
         # 오른쪽을 향한 화살표. 회전은 바깥에서 준다.
         y, t, head = b / 2, b * 0.13, b * 0.34

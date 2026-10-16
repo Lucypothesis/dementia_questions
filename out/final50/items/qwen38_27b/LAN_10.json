@@ -1,0 +1,81 @@
+{
+  "slot_id": "LAN_10",
+  "question": "그림에 있는 사물 여섯 개의 위치를 왼쪽 위부터 시계 방향으로 설명하세요.",
+  "answer": "왼쪽 위에는 머그컵이, 위 가운데에는 열쇠가, 오른쪽 위에는 사과가, 오른쪽 아래에는 안경이, 아래 가운데에는 빗이, 왼쪽 아래에는 연필이 있다.",
+  "answer_rationale": "2행 3열 격자의 가장자리 6칸을 왼쪽 위부터 시계 방향으로 읽으면 머그컵, 열쇠, 사과, 안경, 빗, 연필 순서가 유일하게 결정된다. 사물 이름과 위치 중 하나라도 어긋나면 오답이다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개 하나",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "appearance": "낱개 하나",
+            "cell": [
+              0,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "glasses",
+            "name": "안경",
+            "appearance": "검은 뿔테 안경 한 쌍",
+            "cell": [
+              1,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "comb",
+            "name": "빗",
+            "appearance": "검은 플라스틱 빗 낱개 하나",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "pencil",
+            "name": "연필",
+            "appearance": "나무 연필 낱개 하나",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

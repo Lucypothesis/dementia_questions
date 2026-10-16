@@ -45,7 +45,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 3
     },
     {
       "id": "MEM_03",
@@ -93,7 +94,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 1
     },
     {
       "id": "MEM_05",
@@ -119,7 +121,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 4
     },
     {
       "id": "MEM_06",
@@ -143,7 +146,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 2
     },
     {
       "id": "MEM_07",
@@ -238,7 +242,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 1
     },
     {
       "id": "ATT_01",
@@ -377,7 +382,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 4
     },
     {
       "id": "ATT_09",
@@ -494,7 +500,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 2
     },
     {
       "id": "LAN_07",
@@ -523,13 +530,19 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 3
     },
     {
       "id": "LAN_09",
       "domain": "언어능력",
       "subtype": "반의 관계",
       "construct": "의미 관계",
+      "generation_guidance": [
+        "크다-작다처럼 그림만으로 즉시 식별되는 반의 관계를 사용한다.",
+        "모든 scale은 0.45 이상 1.0 이하로 두어 잘리거나 겹치지 않게 한다.",
+        "오답은 색 또는 모양만 바뀌고 크기는 기준과 같게 하여 정답 하나만 작게 만든다."
+      ],
       "panels": [
         {
           "stage": "기준",
@@ -542,7 +555,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 4
     },
     {
       "id": "LAN_10",
@@ -581,7 +595,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 1
     },
     {
       "id": "VIS_02",
@@ -607,13 +622,19 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 2
     },
     {
       "id": "VIS_03",
       "domain": "시공간능력",
       "subtype": "회전과 반전 구별",
       "construct": "변환 변별",
+      "generation_guidance": [
+        "단순 L자는 반전도 회전으로 같아질 수 있으므로 쓰지 않는다.",
+        "assets/비대칭_도형.png로 렌더되는 이름 '비대칭 도형' 한 개를 기준 자극으로 쓴다.",
+        "정답은 회전만 적용하고, 오답은 반드시 mirror를 포함해 회전만으로는 같아지지 않게 한다."
+      ],
       "panels": [
         {
           "stage": "기준",
@@ -633,7 +654,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 3
     },
     {
       "id": "VIS_04",
@@ -653,13 +675,19 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 4
     },
     {
       "id": "VIS_05",
       "domain": "시공간능력",
       "subtype": "조각 합성",
       "construct": "심상 조립",
+      "generation_guidance": [
+        "같은 크기의 정사각형 조각 4개만 사용한다.",
+        "정답은 네 조각이 빈틈 없이 2x2 큰 정사각형을 이루게 하고, 오답은 한 조각의 위치만 어긋나게 한다.",
+        "free 배치에서 scale은 0.30 안팎, 인접 중심 간격은 약 0.24로 맞춰 실제로 맞닿게 한다."
+      ],
       "panels": [
         {
           "stage": "기준",
@@ -672,13 +700,19 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 1
     },
     {
       "id": "VIS_06",
       "domain": "시공간능력",
       "subtype": "대칭 완성",
       "construct": "대칭 이해",
+      "generation_guidance": [
+        "좌우 반전이 눈에 보이는 화살표를 사용하고 원·정사각형·정삼각형처럼 좌우 대칭인 도형은 쓰지 않는다.",
+        "정답만 화살표를 반대쪽 대응 칸으로 move한 뒤 mirror한다.",
+        "오답은 위치만 이동, 반전만 적용, 잘못된 행으로 이동 중 하나씩만 위반한다."
+      ],
       "panels": [
         {
           "stage": "기준",
@@ -698,7 +732,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 2
     },
     {
       "id": "VIS_07",
@@ -717,7 +752,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 3
     },
     {
       "id": "VIS_08",
@@ -736,7 +772,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 4
     },
     {
       "id": "VIS_09",
@@ -762,7 +799,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 1
     },
     {
       "id": "VIS_10",
@@ -783,6 +821,11 @@
       "domain": "집행기능",
       "subtype": "분류 규칙 전환",
       "construct": "인지 전환",
+      "generation_guidance": [
+        "기준은 빨강/파랑 두 색과 원/정사각형 두 모양을 모두 포함하고 색별로 같은 행에 배치한다.",
+        "질문에 '기준은 색깔별 분류였지만 이제 원끼리 한 행, 정사각형끼리 한 행으로 바꾼다'고 새 규칙을 구체적으로 쓴다.",
+        "보기 1은 기존 색 규칙, 보기 2는 새 모양 규칙으로 만들어 답을 그림만 보고도 명확히 고르게 한다."
+      ],
       "panels": [
         {
           "stage": "기준",
@@ -795,7 +838,8 @@
         }
       ],
       "response": "choice2",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 2
     },
     {
       "id": "EXE_02",
@@ -834,7 +878,8 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 3
     },
     {
       "id": "EXE_04",
@@ -855,6 +900,11 @@
       "domain": "집행기능",
       "subtype": "두 규칙 동시 적용",
       "construct": "규칙 통합",
+      "generation_guidance": [
+        "기준 자극은 오른쪽을 향한 빨간 화살표 하나로 단순화한다.",
+        "두 규칙은 파란색으로 recolor와 시계 방향 90도 rotate로 명시한다.",
+        "정답만 두 변경을 모두 적용하고 오답은 색만, 회전만, 잘못된 회전각을 적용한다."
+      ],
       "panels": [
         {
           "stage": "기준",
@@ -874,13 +924,19 @@
         }
       ],
       "response": "choice4",
-      "answer_kind": "보기번호"
+      "answer_kind": "보기번호",
+      "target_answer": 4
     },
     {
       "id": "EXE_06",
       "domain": "집행기능",
       "subtype": "절차 순서 배열",
       "construct": "계획",
+      "generation_guidance": [
+        "물 따르기처럼 한 그림 안에서 자산이 겹치는 장면은 피한다.",
+        "2x2 격자에 색 정사각형 조각을 한 개씩 추가해 1개, 2개, 3개, 4개가 되는 누적 조립 순서를 만든다.",
+        "보기 번호 순서는 실제 절차 순서와 다르게 섞고 answer에 번호 순서를 쓴다."
+      ],
       "panels": [
         {
           "stage": "보기",
@@ -896,6 +952,11 @@
       "domain": "집행기능",
       "subtype": "최단 경로 계획",
       "construct": "계획",
+      "generation_guidance": [
+        "3x3 또는 4x4 grid를 쓰고 background에 반드시 '격자'를 포함한다.",
+        "시작 마커는 color 초록, 도착 마커는 color 빨강을 명시하고 벽돌로 유일한 최단 경로를 만든다.",
+        "상하좌우 인접 칸만 이동하며 좌표 또는 방향 순서로 답하게 한다."
+      ],
       "panels": [
         {
           "stage": "main",
@@ -947,6 +1008,11 @@
       "domain": "집행기능",
       "subtype": "제한 안에서 선택 최적화",
       "construct": "의사결정",
+      "generation_guidance": [
+        "2x3 grid의 서로 다른 칸에 추상 도형 5개를 놓고 겹치지 않게 한다.",
+        "모든 scale은 0.50 이상 1.00 이하로 제한하되 서로 다른 크기를 사용한다.",
+        "정확히 3개 선택, 빨강과 파랑을 각각 하나 이상 포함, 크기 합 최대화 조건으로 유일한 정답을 만든다."
+      ],
       "panels": [
         {
           "stage": "main",

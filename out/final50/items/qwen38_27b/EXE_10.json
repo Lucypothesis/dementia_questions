@@ -1,0 +1,78 @@
+{
+  "slot_id": "EXE_10",
+  "question": "그림에 있는 도형 5개에서 정확히 3개를 선택하세요. 선택한 도형에는 빨강 도형과 파랑 도형이 각각 하나 이상 포함되어야 합니다. 선택한 도형의 크기 합이 가장 크도록 하세요. 선택한 도형의 색과 이름을 크기 순서대로 적으세요.",
+  "answer": "빨강 원, 파랑 사각형, 초록 삼각형",
+  "answer_rationale": "크기(scale)가 가장 큰 3개는 빨강 원(1.0), 파랑 사각형(0.9), 초록 삼각형(0.8)입니다. 이 조합은 빨강과 파랑을 각각 하나씩 포함하고 정확히 3개이며, 다른 어떤 3개 조합보다 크기 합이 큽니다. 빨강과 파랑은 각각 하나씩만 있으므로 제약을 만족하려면 반드시 이 두 개를 포함해야 하고, 나머지 하나로는 초록 삼각형이 최대이므로 정답이 유일합니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "원",
+            "appearance": "단색의 원 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "scale": 1.0,
+            "is_target": true
+          },
+          {
+            "ref": "blue_square",
+            "name": "사각형",
+            "appearance": "단색의 정사각형 낱개 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "scale": 0.9,
+            "is_target": true
+          },
+          {
+            "ref": "green_triangle",
+            "name": "삼각형",
+            "appearance": "단색의 정삼각형 낱개 하나",
+            "color": "초록",
+            "cell": [
+              0,
+              2
+            ],
+            "scale": 0.8,
+            "is_target": true
+          },
+          {
+            "ref": "yellow_diamond",
+            "name": "마름모",
+            "appearance": "단색의 마름모 낱개 하나",
+            "color": "노랑",
+            "cell": [
+              1,
+              0
+            ],
+            "scale": 0.7
+          },
+          {
+            "ref": "purple_star",
+            "name": "별",
+            "appearance": "단색의 5각 별 낱개 하나",
+            "color": "보라",
+            "cell": [
+              1,
+              1
+            ],
+            "scale": 0.6
+          }
+        ]
+      }
+    }
+  ]
+}

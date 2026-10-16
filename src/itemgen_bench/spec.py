@@ -10,6 +10,7 @@ jsonschema 패키지에 의존하지 않는다. 설치 없이 돌아가는 게 �
 
 from __future__ import annotations
 
+import copy
 import json
 import re
 from pathlib import Path
@@ -38,6 +39,68 @@ def load_slots(spec_dir=None) -> dict:
 
 def load_schema(spec_dir=None) -> dict:
     return json.loads((paths.spec_dir(spec_dir) / "item_schema.json").read_text(encoding="utf-8"))
+
+
+def _renumber_rationale(text: str, mapping: dict[int, int]) -> str:
+    """해설에서 보기 번호로 쓰인 숫자만 동시에 치환한다.
+
+    회전각 90·180도, 2x2, 좌표 같은 내용 숫자는 건드리지 않는다.
+    """
+    pattern = re.compile(
+        r"(보기\s+)([1-4](?:\s*(?:[·,]|및|와|과)\s*[1-4])*)"
+        r"|([1-4])번"
+        r"|(정답(?:은|이)?\s*)([1-4])(?!\d)")
+
+    def replace(match):
+        if match.group(1):
+            numbers = re.sub(
+                r"[1-4]",
+                lambda n: str(mapping.get(int(n.group(0)), int(n.group(0)))),
+                match.group(2))
+            return match.group(1) + numbers
+        if match.group(3):
+            number = int(match.group(3))
+            return f"{mapping.get(number, number)}번"
+        number = int(match.group(5))
+        return match.group(4) + str(mapping.get(number, number))
+
+    return pattern.sub(replace, text)
+
+
+def rebalance_item(item: dict, target_answer: int) -> tuple[dict, dict[int, int]]:
+    """정답 보기와 목표 번호를 맞바꾸고 문항의 모든 번호 참조를 갱신한다."""
+    out = copy.deepcopy(item)
+    try:
+        old_answer = int(str(out.get("answer", "")).strip())
+    except ValueError as exc:
+        raise ValueError(f"숫자 단일정답 문항이 아니다: {out.get('slot_id')}") from exc
+
+    options = [panel for panel in out.get("panels", [])
+               if panel.get("kind") == "option"]
+    indices = {panel.get("option_index") for panel in options}
+    if (not all(isinstance(index, int) for index in indices)
+            or old_answer not in indices or target_answer not in indices):
+        raise ValueError(
+            f"보기 번호 범위 오류: {out.get('slot_id')} "
+            f"answer={old_answer}, target={target_answer}, options={sorted(indices)}")
+
+    mapping = {int(index): int(index) for index in indices}
+    mapping[old_answer], mapping[target_answer] = target_answer, old_answer
+    for panel in options:
+        panel["option_index"] = mapping[panel["option_index"]]
+
+    # 보기 패널이 있던 자리 안에서만 새 번호순으로 정렬한다. 기준·학습 패널의
+    # 위치와 edit_of 관계는 그대로 유지된다.
+    option_positions = [i for i, panel in enumerate(out["panels"])
+                        if panel.get("kind") == "option"]
+    for position, panel in zip(
+            option_positions, sorted(options, key=lambda p: p["option_index"])):
+        out["panels"][position] = panel
+
+    out["answer"] = str(target_answer)
+    out["answer_rationale"] = _renumber_rationale(
+        str(out.get("answer_rationale", "")), mapping)
+    return out, mapping
 
 
 def build_prompt(slot: dict, spec_dir=None) -> str:
@@ -231,6 +294,12 @@ def _check_slot_fit(item: dict, slot: dict) -> list[str]:
         errs.append(f"보기 패널 {want_opts}장이 필요한데 {got_opts}장이다")
     if not want_opts and got_opts:
         errs.append(f"보기 패널을 요구하지 않은 슬롯인데 {got_opts}장 있다")
+    if want_opts:
+        got_indices = [p.get("option_index") for p in panels
+                       if p.get("kind") == "option"]
+        expected_indices = list(range(1, want_opts + 1))
+        if sorted(i for i in got_indices if isinstance(i, int)) != expected_indices:
+            errs.append(f"보기 번호가 {expected_indices}여야 하는데 {got_indices}다")
     if want_derived:
         # 보기가 기준의 통제된 변형이어야 하는 슬롯. 장면을 새로 쓰면 보기끼리 도형이 달라진다.
         for p in panels:
@@ -259,8 +328,17 @@ def _check_slot_fit(item: dict, slot: dict) -> list[str]:
         n_got = len(made[0].get("changes") or [])
         if n_want and n_got != n_want:
             errs.append(f"'{want['stage']}' 변경 수: {n_want}개여야 하는데 {n_got}개다")
-    if slot.get("response") == "choice4" and not re.fullmatch(r"[1-4]", str(item.get("answer", "")).strip()):
-        errs.append(f"보기형 슬롯인데 answer가 {item.get('answer')!r} (1~4 숫자여야 한다)")
+    if slot.get("answer_kind") == "보기번호":
+        if not re.fullmatch(rf"[1-{want_opts}]", str(item.get("answer", "")).strip()):
+            errs.append(f"보기형 슬롯인데 answer가 {item.get('answer')!r} "
+                        f"(1~{want_opts} 숫자여야 한다)")
+        target_answer = slot.get("target_answer")
+        if target_answer is not None:
+            if not isinstance(target_answer, int) or not 1 <= target_answer <= want_opts:
+                errs.append(f"슬롯 target_answer={target_answer!r}가 보기 범위를 벗어난다")
+            elif str(item.get("answer", "")).strip() != str(target_answer):
+                errs.append(f"정답 위치가 {item.get('answer')!r}이다 — "
+                            f"이 슬롯은 target_answer={target_answer}이어야 한다")
     return errs
 
 

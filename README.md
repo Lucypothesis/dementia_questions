@@ -63,11 +63,12 @@ src/itemgen_bench/
   shapes.py               원·다각형·회전·반전·면별 정육면체 코드 합성
   assets_build.py         compose용 단일 사물 자산 생성·배경 제거
   human_compare.py        동일 셀 사람 판정 비교·제작 정책 산출
+  finalize.py             여러 run의 선택 셀을 최종 50문제 HTML로 조립
   models.py               LLM · 렌더러 · judge 어댑터
   pipeline.py             6단계 오케스트레이터
   sheet.py                사람 검수용 N-way 시트
   slots_rank.py           사람 판정 기반 슬롯 품질 순위·스냅샷
-  selftest.py             외부 모델 없이 도는 자기검증 58항목
+  selftest.py             외부 모델 없이 도는 자기검증 68항목
   watch.py                실시간 진행 감시기
   serve.py                캐시 없는 정적 서버
   paths.py                spec/·config/·out/ 위치 결정
@@ -83,7 +84,7 @@ out/<run>/                실행 결과
 ## 실행
 
 ```bash
-itemgen selftest                              # 자기검증 58항목 (비용 0)
+itemgen selftest                              # 자기검증 68항목 (비용 0)
 itemgen run --run main --stages plan          # 규모·비용 계산만
 bash run_all.sh                               # 전 구간 무인 실행
 GPUS="3 0 1" bash run_all.sh                  # 비는 카드를 골라 쓴다
@@ -109,6 +110,23 @@ itemgen compare --run main \
   --write-policy spec/renderer_policy_final.json \
   --write-spec spec/slots_selected_final.json
 ```
+
+사람 검수를 통과한 셀을 영역별 10개씩 최종 50문제로 조립하려면:
+
+```bash
+itemgen finalize --policy spec/renderer_policy_final_50.json --run final50 --embed
+itemgen serve --run final50
+# http://127.0.0.1:8012/sheet_final50.html
+```
+
+`spec/slots.json`의 객관식 21개 슬롯에는 `target_answer`가 미리 배정되어 있다.
+분포는 1번 5개, 2번 5개, 3번 5개, 4번 6개다. 생성 모델이 다른 번호로 쓰더라도
+`gen` 저장 직전에 정답 보기·`answer`·해설 번호를 함께 교환하고, 검증기가 목표 번호를
+다시 확인하므로 번호가 치우친 문항은 렌더 단계로 넘어가지 않는다.
+
+현재 최종 정책은 `out/final50/human_verdicts_v04.json`의 50개 판정을 근거로 한다.
+48개 `ok`, 2개 `minor`(`LAN_10`, `EXE_02`), 0개 `bad`이며 두 `minor`는 제작용으로
+명시적으로 허용했다. 보완 생성한 9개 셀은 모두 `ok`다.
 
 단계별로 돌리려면:
 
@@ -310,7 +328,7 @@ compose에서 두 모델의 결과가 모두 있고 둘 다 `ok`인 슬롯은 16
 
 ## 자기검증
 
-`itemgen selftest`가 58개 항목을 본다. 외부 모델 없이 돌고 비용이 0이다.
+`itemgen selftest`가 68개 항목을 본다. 외부 모델 없이 돌고 비용이 0이다.
 
 - 나쁜 출력 11종(ref 중복, 격자 범위 초과, 칸 겹침, 없는 ref를 edit, 모르는 op,
   edit 대신 장면 재기술 …)을 검증기가 실제로 잡는지
@@ -319,4 +337,5 @@ compose에서 두 모델의 결과가 모두 있고 둘 다 `ok`인 슬롯은 16
 - 같은 scene은 같은 픽셀, edit된 scene은 다른 픽셀이 나오는지
 - 거북선/직사각형/반원/사분원/정육면체 도형 분류와 안전한 자산 파일명
 - judge 재사용 키가 LLM arm별 결과를 서로 덮어쓰지 않는지
+- 객관식 목표 정답 분포와 불일치 거부, 보기·정답·해설의 동시 번호 이동
 - 시트 JS에 날 줄바꿈 리터럴이 없는지 (있으면 스크립트 전체가 죽어 버튼이 먹통이 된다)

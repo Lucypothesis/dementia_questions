@@ -256,6 +256,17 @@ def render_compose(scene: dict, size: int = 768):
     cell_w = (size - 2 * pad) / max(cols, 1)
     cell_h = (size - 2 * pad) / max(rows, 1)
 
+    # 경로·행열 추론 문항은 칸 경계 자체가 정보다. background가 격자를 명시한
+    # 장면에만 선을 그려 기존 일반 grid 장면의 외관은 바꾸지 않는다.
+    if scene.get("layout") == "grid" and "격자" in str(scene.get("background", "")):
+        color = "#d8dde3"
+        for c in range(cols + 1):
+            x = round(pad + cell_w * c)
+            draw.line([x, pad, x, size - pad], fill=color, width=2)
+        for r in range(rows + 1):
+            y = round(pad + cell_h * r)
+            draw.line([pad, y, size - pad, y], fill=color, width=2)
+
     for k, obj in enumerate(scene["objects"]):
         if "cell" in obj:
             r, c = obj["cell"]

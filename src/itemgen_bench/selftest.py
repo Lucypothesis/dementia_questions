@@ -11,6 +11,7 @@ from __future__ import annotations
 import copy
 import json
 import sys
+from collections import Counter
 from pathlib import Path
 
 from . import render as rnd
@@ -57,6 +58,10 @@ def main() -> None:
     bad_stage = [s["id"] for s in slots.values()
                  for p in s["panels"] if p["stage"] not in spec.STAGES]
     check("슬롯 stage가 전부 스키마 enum 안", not bad_stage, str(bad_stage))
+    targets = [s["target_answer"] for s in slots.values() if "target_answer" in s]
+    check("객관식 목표 정답 21개", len(targets) == 21, str(len(targets)))
+    check("목표 정답 분포 5·5·5·6",
+          sorted(Counter(targets).values()) == [5, 5, 5, 6], str(Counter(targets)))
 
     print("\n[2] 정상 문항은 통과해야 한다")
     item = good_item()
@@ -161,6 +166,9 @@ def main() -> None:
     print("\n[6b] 도형 분류와 자산 파일명")
     from . import shapes
     check("거북선을 선으로 오인하지 않음", shapes.shape_key("거북선") is None)
+    check("명시 color가 이름의 예전 색보다 우선",
+          shapes.pick_color({"name": "빨간 화살표", "color": "파랑"}) == shapes.COLORS["파랑"])
+    check("비대칭 도형은 코드 F형으로 분류", shapes.shape_key("비대칭 도형") == "asym")
     check("직사각형 분류", shapes.shape_key("직사각형") == "rect")
     check("반원 분류", shapes.shape_key("반원") == "semicircle")
     check("사분원 분류", shapes.shape_key("사분원 조각") == "quarter_circle")
@@ -217,6 +225,11 @@ def main() -> None:
         except Exception as exc:
             bad.append((sid, f"패널 해석 실패: {exc}"))
     check(f"50슬롯 전부 생성-검증-해석 통과", not bad, json.dumps(bad[:5], ensure_ascii=False))
+    wrong_target = mdl.extract_json(stub.generate(spec.build_prompt(slots["MEM_02"])))
+    wrong_target["answer"] = "1"
+    target_errs = spec.validate_item(wrong_target, slots["MEM_02"])
+    check("목표와 다른 정답 번호를 거부",
+          any("target_answer=3" in error for error in target_errs), str(target_errs))
 
     print("\n[10] 검수 시트 JS 구문")
     from . import sheet
@@ -227,6 +240,32 @@ def main() -> None:
     else:
         check("JS 모든 행 따옴표 짝 맞음", True)
     check("JS에 날 줄바꿈 리터럴 없음", "\\n" in js and "lines.join('\n')" not in js)
+
+    print("\n[10b] 최종 객관식 정답 위치 재배열")
+    choice = {
+        "slot_id": "TEST_01",
+        "question": "정답을 고르세요.",
+        "answer": "1",
+        "answer_rationale": "보기 1은 정답, 보기 2·3·4는 오답이라 정답은 1번이다.",
+        "panels": [
+            {"stage": "기준", "kind": "scene", "payload": "base"},
+            *[{"stage": "보기", "kind": "option", "option_index": n,
+               "payload": f"old-{n}"} for n in range(1, 5)],
+        ],
+    }
+    balanced, mapping = spec.rebalance_item(choice, 3)
+    options = [p for p in balanced["panels"] if p.get("kind") == "option"]
+    check("정답 1번을 3번으로 이동", balanced["answer"] == "3")
+    check("정답 그림도 3번으로 함께 이동",
+          next(p for p in options if p["option_index"] == 3)["payload"] == "old-1")
+    check("보기 번호가 1~4 순서를 유지",
+          [p["option_index"] for p in options] == [1, 2, 3, 4])
+    check("해설의 보기 번호를 동시에 치환",
+          balanced["answer_rationale"] ==
+          "보기 3은 정답, 보기 2·1·4는 오답이라 정답은 3번이다.",
+          balanced["answer_rationale"])
+    check("원본 문항은 변형하지 않음",
+          choice["answer"] == "1" and mapping == {1: 3, 2: 2, 3: 1, 4: 4})
 
     print(f"\n{'='*60}\n통과 {len(PASS)} / 실패 {len(FAIL)}")
     if FAIL:

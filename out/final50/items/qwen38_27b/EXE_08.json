@@ -1,0 +1,102 @@
+{
+  "slot_id": "EXE_08",
+  "question": "사과와 같은 행에 있고, 열쇠와 같은 열에 있는 사물의 이름을 말하세요.",
+  "answer": "머그컵",
+  "answer_rationale": "그림은 3행 3열 격자이다. 사과는 첫 번째 행에 있고, 열쇠는 첫 번째 열에 있다. 사과의 행과 열쇠의 열이 만나는 칸에 있는 사물은 머그컵뿐이다. 다른 사물은 사과의 행에 있지 않거나 열쇠의 열에 있지 않아 정답이 유일하다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "cup",
+            "name": "머그컵",
+            "appearance": "손잡이 달린 흰색 낱개",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "banana",
+            "name": "바나나",
+            "color": "노랑",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "apple",
+            "name": "사과",
+            "color": "빨강",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "key",
+            "name": "열쇠",
+            "appearance": "열쇠고리 없는 금속 낱개 하나",
+            "cell": [
+              1,
+              0
+            ]
+          },
+          {
+            "ref": "pencil",
+            "name": "연필",
+            "appearance": "노란색 나무 연필 낱개 하나",
+            "cell": [
+              1,
+              1
+            ]
+          },
+          {
+            "ref": "glasses",
+            "name": "안경",
+            "appearance": "검은 뿔테 낱개 하나",
+            "cell": [
+              1,
+              2
+            ]
+          },
+          {
+            "ref": "dice",
+            "name": "주사위",
+            "appearance": "흰색 정육면체 낱개 하나",
+            "cell": [
+              2,
+              0
+            ]
+          },
+          {
+            "ref": "umbrella",
+            "name": "우산",
+            "appearance": "파란색 접힌 우산 낱개 하나",
+            "cell": [
+              2,
+              1
+            ]
+          },
+          {
+            "ref": "clock",
+            "name": "시계",
+            "appearance": "둥근 아날로그 시계 낱개 하나",
+            "cell": [
+              2,
+              2
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

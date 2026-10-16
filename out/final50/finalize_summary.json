@@ -1,0 +1,24 @@
+{
+  "slots": 50,
+  "distribution": {
+    "기억력": 10,
+    "주의력": 10,
+    "언어능력": 10,
+    "시공간능력": 10,
+    "집행기능": 10
+  },
+  "panels": 141,
+  "images": 141,
+  "thumbs": 21,
+  "source_human_ok": 50,
+  "human_ok": 48,
+  "accepted_minor": 2,
+  "human_bad": 0,
+  "pending_user_review": 0,
+  "answer_distribution": {
+    "1": 5,
+    "2": 5,
+    "3": 5,
+    "4": 6
+  }
+}

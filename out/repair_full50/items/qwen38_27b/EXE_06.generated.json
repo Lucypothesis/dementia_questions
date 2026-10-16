@@ -1,0 +1,103 @@
+{
+  "slot_id": "EXE_06",
+  "question": "달걀부침을 만드는 순서대로 보기 번호를 적으세요.",
+  "answer": "2,4,1,3",
+  "answer_rationale": "조리 순서는 달걀 하나 → 깨진 달걀의 내용물 → 푼 달걀 → 달걀부침이다. 보기 1은 푼 달걀, 보기 2는 달걀 하나, 보기 3은 달걀부침, 보기 4는 깨진 달걀의 내용물이므로 유일한 정답은 2,4,1,3이다.",
+  "panels": [
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "beaten",
+            "name": "푼 달걀",
+            "appearance": "노른자와 흰자가 섞인 노란색 달걀물 한 덩어리",
+            "color": "노란색",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "egg",
+            "name": "달걀 하나",
+            "appearance": "흰 껍질의 달걀 낱개 하나",
+            "color": "흰색",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 3,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "omelet",
+            "name": "달걀부침",
+            "appearance": "노란색 달걀부침 한 장",
+            "color": "노란색",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 4,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "cracked",
+            "name": "깨진 달걀의 내용물",
+            "appearance": "노른자와 흰자가 따로 담긴 깨진 달걀 껍데기 하나",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

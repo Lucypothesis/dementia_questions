@@ -1,0 +1,150 @@
+{
+  "slot_id": "VIS_04",
+  "question": "첫 번째 그림의 빈칸에 들어갈 조각을 고르세요.",
+  "answer": "4",
+  "answer_rationale": "기준 장면의 2x2 격자에서 오른쪽 아래 칸이 비어 있다. 나머지 세 사분원 조각은 각각 시계 방향으로 270도, 0도, 180도 회전되어 중심을 향하므로, 빈칸에는 기본 방향에서 시계 방향으로 90도 회전된 사분원 조각이 들어간다. 보기 4만 90도 회전 조각이므로 정답이 유일하다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 2,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "q_tl",
+            "name": "사분원 조각",
+            "appearance": "빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "rotation": 270
+          },
+          {
+            "ref": "q_tr",
+            "name": "사분원 조각",
+            "appearance": "빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ],
+            "rotation": 0
+          },
+          {
+            "ref": "q_bl",
+            "name": "사분원 조각",
+            "appearance": "빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "rotation": 180
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "opt1",
+            "name": "사분원 조각",
+            "appearance": "빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "rotation": 0
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "opt4",
+            "name": "사분원 조각",
+            "appearance": "빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "rotation": 270
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 3,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "opt3",
+            "name": "사분원 조각",
+            "appearance": "빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "rotation": 180
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 4,
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "opt2",
+            "name": "사분원 조각",
+            "appearance": "빨간색 사분원 조각 낱개 하나, 직각 꼭짓점이 왼쪽 아래에 있는 기본 방향",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "rotation": 90,
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

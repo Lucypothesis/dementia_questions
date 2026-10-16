@@ -1,0 +1,28 @@
+{
+  "slot_id": "LAN_02",
+  "question": "그림에 있는 사물의 이름을 말해 주세요.",
+  "answer": "거북선",
+  "answer_rationale": "장면에는 등 위에 뿔이 달린 조선시대 전함 하나만 제시되어 있어, 그 사물은 거북선으로 유일하게 식별된다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "turtle_ship",
+            "name": "거북선",
+            "appearance": "등에 뿔이 달린 조선시대 전함, 갑판 위에 뿔이 여러 개, 검은색 갑판과 갈색 돛대",
+            "pos": [
+              0.5,
+              0.5
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

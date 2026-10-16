@@ -1,0 +1,152 @@
+{
+  "slot_id": "EXE_01",
+  "question": "위 그림은 색깔별로 같은 행에 배치한 기준입니다. 기준은 색깔별 분류였지만 이제 원끼리 한 행, 정사각형끼리 한 행으로 바꾼다. 색은 상관없이, 아래 보기 중 새 규칙에 맞는 그림을 고르십시오.",
+  "answer": "2",
+  "answer_rationale": "보기 1은 빨간 사물이 한 행, 파란 사물이 한 행이므로 기존 색 규칙입니다. 보기 2는 원이 한 행, 정사각형이 한 행이므로 새 모양 규칙입니다. 따라서 새 규칙에 맞는 것은 보기 2뿐입니다.",
+  "panels": [
+    {
+      "stage": "기준",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 2,
+        "cols": 3,
+        "background": "흰 바닥이 보인다",
+        "objects": [
+          {
+            "ref": "red_circle",
+            "name": "빨간 원",
+            "appearance": "단색 원 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "red_square",
+            "name": "빨간 정사각형",
+            "appearance": "단색 정사각형 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_circle",
+            "name": "파란 원",
+            "appearance": "단색 원 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "blue_square",
+            "name": "파란 정사각형",
+            "appearance": "단색 정사각형 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 1,
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "move",
+          "target": "red_square",
+          "to_cell": [
+            0,
+            2
+          ]
+        },
+        {
+          "op": "move",
+          "target": "red_circle",
+          "to_cell": [
+            0,
+            1
+          ]
+        },
+        {
+          "op": "move",
+          "target": "red_square",
+          "to_cell": [
+            0,
+            0
+          ]
+        },
+        {
+          "op": "move",
+          "target": "blue_square",
+          "to_cell": [
+            1,
+            2
+          ]
+        },
+        {
+          "op": "move",
+          "target": "blue_circle",
+          "to_cell": [
+            1,
+            1
+          ]
+        },
+        {
+          "op": "move",
+          "target": "blue_square",
+          "to_cell": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "보기",
+      "kind": "option",
+      "option_index": 2,
+      "edit_of": "기준",
+      "changes": [
+        {
+          "op": "move",
+          "target": "red_square",
+          "to_cell": [
+            0,
+            2
+          ]
+        },
+        {
+          "op": "move",
+          "target": "blue_circle",
+          "to_cell": [
+            0,
+            1
+          ]
+        },
+        {
+          "op": "move",
+          "target": "red_square",
+          "to_cell": [
+            1,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

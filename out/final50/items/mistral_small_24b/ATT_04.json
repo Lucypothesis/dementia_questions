@@ -1,0 +1,48 @@
+{
+  "slot_id": "ATT_04",
+  "question": "다음 그림에서 사과가 몇 개 있나요?",
+  "answer": "3",
+  "answer_rationale": "사과가 3개 있다. 각 사과는 다른 위치에 있다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "free",
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "apple1",
+            "name": "사과",
+            "color": "빨강",
+            "pos": [
+              0.2,
+              0.3
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple2",
+            "name": "사과",
+            "color": "빨강",
+            "pos": [
+              0.5,
+              0.7
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "apple3",
+            "name": "사과",
+            "color": "빨강",
+            "pos": [
+              0.8,
+              0.4
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

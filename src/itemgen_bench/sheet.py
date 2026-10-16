@@ -283,7 +283,8 @@ def _auto_badge(verdict: dict | None) -> str:
 def build(run: Path, slots: list[dict], embed: bool = True,
           only: set | None = None, filename: str = "sheet.html",
           title_suffix: str = "",
-          size: int = 320, quality: int = 78) -> Path:
+          size: int = 320, quality: int = 78,
+          default_all_renderers: bool = False) -> Path:
     panels_path = run / "panels.json"
     if not panels_path.exists():
         raise SystemExit(f"{panels_path}가 없다. render 단계를 먼저 돌려라")
@@ -394,7 +395,8 @@ def build(run: Path, slots: list[dict], embed: bool = True,
 
     # 렌더러를 전부 켜면 한 슬롯에 16칸이 가로로 늘어서 비교가 어렵다. 기본은
     # 가장 성적이 좋은 하나(klein-4B)만 켜고 LLM은 전부 켠다. 칩으로 바꿀 수 있다.
-    default_ren = [n for n in ren_names if "klein" in n] or ren_names[:1]
+    default_ren = (ren_names if default_all_renderers
+                   else ([n for n in ren_names if "klein" in n] or ren_names[:1]))
     picker = ('<div class="picker">'
               '<div class="pgroup"><b>LLM</b></div>' + chips("p-llm", arm_names) +
               '<div class="pgroup r"><b>렌더러</b></div>'

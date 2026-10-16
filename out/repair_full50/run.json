@@ -1,0 +1,65 @@
+{
+  "slots": [
+    "LAN_09",
+    "VIS_03",
+    "VIS_05",
+    "VIS_06",
+    "EXE_01",
+    "EXE_05",
+    "EXE_06",
+    "EXE_07",
+    "EXE_10"
+  ],
+  "config": {
+    "llms": [
+      {
+        "name": "qwen38_27b",
+        "adapter": "openai_compat",
+        "model": "Qwen/Qwen3.8-27B",
+        "base_url": "http://127.0.0.1:8001/v1",
+        "api_key_env": "VLLM_API_KEY",
+        "temperature": 0.2,
+        "max_tokens": 16384
+      }
+    ],
+    "renderers": [
+      {
+        "name": "compose",
+        "adapter": "compose",
+        "size": 768
+      }
+    ],
+    "judge": {
+      "name": "vlm_luna",
+      "adapter": "vlm",
+      "model": "gpt-6-luna",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_API_KEY",
+      "max_tokens": 400,
+      "detail": "auto",
+      "workers": 8
+    },
+    "estimates": {
+      "gpt6_sol": {
+        "price_in": 2.0,
+        "price_out": 10.0
+      },
+      "compose": {
+        "sec_per_image": 0.2
+      },
+      "flux2_klein_4b": {
+        "sec_per_image": 8.0
+      },
+      "z_image_turbo": {
+        "sec_per_image": 9.5
+      },
+      "qwen_image_2512": {
+        "sec_per_image": 45.0
+      },
+      "qwen_image_2512_lightning": {
+        "sec_per_image": 12.0
+      }
+    }
+  },
+  "built": "2026-10-16 13:55:07"
+}

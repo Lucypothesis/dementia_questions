@@ -97,15 +97,19 @@ class StubLLM(LLM):
         for p in slot["panels"]:
             if p.get("kind") == "option":
                 n = p.get("n", 4)
+                target_answer = int(slot.get("target_answer", 1))
                 if p.get("derived"):
-                    # 보기를 기준에서 파생시킨다. 1번은 기준 그대로(정답), 나머지는 변형.
+                    # 보기를 기준에서 파생시킨다. target_answer는 기준 그대로인 정답,
+                    # 나머지는 서로 다른 변형이다.
                     op = (p.get("ops") or ["rotate"])[0]
                     target = base["objects"][0]["ref"]
+                    variants = iter(range(2, n + 1))
                     for k in range(1, n + 1):
                         panel = {"stage": p["stage"], "kind": "option",
                                  "option_index": k, "edit_of": p["edit_of"]}
-                        if k > 1:
-                            panel["changes"] = [self._variant(op, target, k, base)]
+                        if k != target_answer:
+                            variant = next(variants)
+                            panel["changes"] = [self._variant(op, target, variant, base)]
                         panels.append(panel)
                 else:
                     for k in range(1, n + 1):
@@ -158,7 +162,8 @@ class StubLLM(LLM):
                 base = sc
                 panels.append({"stage": p["stage"], "kind": "scene", "scene": sc})
 
-        answer = "1" if slot.get("response") in ("choice4", "choice2") else "머그컵"
+        answer = (str(slot.get("target_answer", 1))
+                  if slot.get("answer_kind") == "보기번호" else "머그컵")
         if slot.get("answer_kind") == "개수":
             answer = "4"
         elif slot.get("answer_kind") == "좌우":

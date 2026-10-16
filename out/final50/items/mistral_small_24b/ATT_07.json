@@ -1,0 +1,30 @@
+{
+  "slot_id": "ATT_07",
+  "question": "다음 그림에서 화살표가 가리키는 방향을 적어주세요.",
+  "answer": "오른쪽",
+  "answer_rationale": "화살표가 오른쪽을 가리키고 있으므로 정답은 오른쪽입니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 1,
+        "cols": 1,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "arrow",
+            "name": "화살표",
+            "appearance": "검은색 화살표",
+            "cell": [
+              0,
+              0
+            ],
+            "facing": "오른쪽"
+          }
+        ]
+      }
+    }
+  ]
+}

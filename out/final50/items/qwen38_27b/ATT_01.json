@@ -1,0 +1,119 @@
+{
+  "slot_id": "ATT_01",
+  "question": "빨간색 원형 버튼을 모두 찾아 개수를 답하세요.",
+  "answer": "4",
+  "answer_rationale": "main 장면의 objects에서 빨간색 원형 버튼은 t1, t2, t3, t4의 4개이고, 나머지 d1~d5는 파란색 원형 버튼이므로 빨간색 원형 버튼의 개수는 4로 유일하다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "t1",
+            "name": "빨간색 원형 버튼",
+            "appearance": "빨간색 원형 버튼 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "d1",
+            "name": "파란색 원형 버튼",
+            "appearance": "파란색 원형 버튼 하나",
+            "color": "파랑",
+            "cell": [
+              0,
+              1
+            ],
+            "is_target": false
+          },
+          {
+            "ref": "t2",
+            "name": "빨간색 원형 버튼",
+            "appearance": "빨간색 원형 버튼 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "d2",
+            "name": "파란색 원형 버튼",
+            "appearance": "파란색 원형 버튼 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": false
+          },
+          {
+            "ref": "t3",
+            "name": "빨간색 원형 버튼",
+            "appearance": "빨간색 원형 버튼 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "d3",
+            "name": "파란색 원형 버튼",
+            "appearance": "파란색 원형 버튼 하나",
+            "color": "파랑",
+            "cell": [
+              1,
+              2
+            ],
+            "is_target": false
+          },
+          {
+            "ref": "d4",
+            "name": "파란색 원형 버튼",
+            "appearance": "파란색 원형 버튼 하나",
+            "color": "파랑",
+            "cell": [
+              2,
+              0
+            ],
+            "is_target": false
+          },
+          {
+            "ref": "t4",
+            "name": "빨간색 원형 버튼",
+            "appearance": "빨간색 원형 버튼 하나",
+            "color": "빨강",
+            "cell": [
+              2,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "d5",
+            "name": "파란색 원형 버튼",
+            "appearance": "파란색 원형 버튼 하나",
+            "color": "파랑",
+            "cell": [
+              2,
+              2
+            ],
+            "is_target": false
+          }
+        ]
+      }
+    }
+  ]
+}

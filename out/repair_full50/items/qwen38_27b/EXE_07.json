@@ -1,0 +1,92 @@
+{
+  "slot_id": "EXE_07",
+  "question": "시작 마커에서 도착 마커까지 벽돌을 통과하지 않고 상하좌우 인접 칸으로만 이동할 때, 가장 짧은 경로를 칸 좌표 순서로 답하세요. 좌표는 [행, 열]이고 왼쪽 위가 [0,0]입니다.",
+  "answer": "[0,0] → [0,1] → [1,1] → [2,1] → [2,2] → [3,2] → [3,3]",
+  "answer_rationale": "시작 [0,0]에서 도착 [3,3]까지 맨해튼 거리는 6칸이므로 최단 경로는 오른쪽 3번과 아래 3번만 포함한다. 벽돌이 [1,0], [0,2], [1,2], [3,1], [2,3]에 있어 첫 이동은 오른쪽, [0,1]에서는 아래, [1,1]에서는 아래, [2,1]에서는 오른쪽, [2,2]에서는 아래, [3,2]에서는 오른쪽으로만 가능하다. 따라서 제시한 좌표 순서만 유일한 최단 경로이다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 4,
+        "cols": 4,
+        "background": "흰 격자 바닥",
+        "objects": [
+          {
+            "ref": "start",
+            "name": "시작 마커",
+            "appearance": "초록색 원형 마커 낱개 하나",
+            "color": "초록",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "goal",
+            "name": "도착 마커",
+            "appearance": "빨강색 원형 마커 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              3,
+              3
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "wall_a",
+            "name": "벽돌",
+            "appearance": "회색 직사각형 벽돌 낱개 하나",
+            "cell": [
+              0,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "wall_b",
+            "name": "벽돌",
+            "appearance": "회색 직사각형 벽돌 낱개 하나",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "wall_c",
+            "name": "벽돌",
+            "appearance": "회색 직사각형 벽돌 낱개 하나",
+            "cell": [
+              1,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "wall_d",
+            "name": "벽돌",
+            "appearance": "회색 직사각형 벽돌 낱개 하나",
+            "cell": [
+              3,
+              1
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "wall_e",
+            "name": "벽돌",
+            "appearance": "회색 직사각형 벽돌 낱개 하나",
+            "cell": [
+              2,
+              3
+            ],
+            "is_target": true
+          }
+        ]
+      }
+    }
+  ]
+}

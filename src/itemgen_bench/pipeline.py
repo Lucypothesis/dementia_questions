@@ -109,8 +109,18 @@ def stage_gen(run: Path, slots: list[dict], cfg: dict, force: bool) -> None:
                     result = f"파싱실패 ({len(raw):,}자)"
                     (out / f"{slot['id']}.raw.txt").write_text(raw, encoding="utf-8")
                 else:
+                    adjusted = False
+                    if slot.get("target_answer") is not None:
+                        try:
+                            item, mapping = spec.rebalance_item(
+                                item, int(slot["target_answer"]))
+                            adjusted = any(old != new for old, new in mapping.items())
+                        except ValueError:
+                            # 구조가 잘못된 출력은 그대로 저장한다. check가 구체적인
+                            # 스키마 오류를 남기고 render 단계 진입을 막는다.
+                            pass
                     made += 1
-                    result = "OK"
+                    result = "OK (정답위치 보정)" if adjusted else "OK"
                     path.write_text(json.dumps(item, ensure_ascii=False, indent=2),
                                     encoding="utf-8")
             # 슬롯 하나가 끝날 때마다 남긴다. arm이 끝나야 한 줄 찍으면 그 사이가 깜깜하다.

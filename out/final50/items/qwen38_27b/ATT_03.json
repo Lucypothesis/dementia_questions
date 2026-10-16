@@ -1,0 +1,113 @@
+{
+  "slot_id": "ATT_03",
+  "question": "그림에서 빨간 사과는 몇 개입니까?",
+  "answer": "3",
+  "answer_rationale": "빨간색 사과는 red_apple_1, red_apple_2, red_apple_3의 3개뿐입니다. 초록 사과, 오렌지, 바나나는 빨간 사과가 아니므로 3이 유일한 정답입니다.",
+  "panels": [
+    {
+      "stage": "main",
+      "kind": "scene",
+      "scene": {
+        "layout": "grid",
+        "rows": 3,
+        "cols": 3,
+        "background": "흰 바닥",
+        "objects": [
+          {
+            "ref": "red_apple_1",
+            "name": "사과",
+            "appearance": "빨간색 사과 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              0,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "green_apple_1",
+            "name": "사과",
+            "appearance": "초록색 사과 낱개 하나",
+            "color": "초록",
+            "cell": [
+              0,
+              1
+            ]
+          },
+          {
+            "ref": "orange_1",
+            "name": "오렌지",
+            "appearance": "주황색 오렌지 낱개 하나",
+            "color": "주황",
+            "cell": [
+              0,
+              2
+            ]
+          },
+          {
+            "ref": "red_apple_2",
+            "name": "사과",
+            "appearance": "빨간색 사과 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              0
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "banana_1",
+            "name": "바나나",
+            "appearance": "노란 바나나 낱개 하나",
+            "color": "노랑",
+            "cell": [
+              1,
+              1
+            ]
+          },
+          {
+            "ref": "red_apple_3",
+            "name": "사과",
+            "appearance": "빨간색 사과 낱개 하나",
+            "color": "빨강",
+            "cell": [
+              1,
+              2
+            ],
+            "is_target": true
+          },
+          {
+            "ref": "green_apple_2",
+            "name": "사과",
+            "appearance": "초록색 사과 낱개 하나",
+            "color": "초록",
+            "cell": [
+              2,
+              0
+            ]
+          },
+          {
+            "ref": "orange_2",
+            "name": "오렌지",
+            "appearance": "주황색 오렌지 낱개 하나",
+            "color": "주황",
+            "cell": [
+              2,
+              1
+            ]
+          },
+          {
+            "ref": "banana_2",
+            "name": "바나나",
+            "appearance": "노란 바나나 낱개 하나",
+            "color": "노랑",
+            "cell": [
+              2,
+              2
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
