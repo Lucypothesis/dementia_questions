@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""wheel·문서·최종 예시·최소 재조립 근거를 기술이전 ZIP으로 묶는다."""
+"""wheel·최종 예시·최소 재조립 근거를 기술이전 ZIP으로 묶는다."""
 
 from __future__ import annotations
 
@@ -15,12 +15,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 
-def copy_tree(source: Path, destination: Path) -> None:
+def copy_tree(
+    source: Path,
+    destination: Path,
+    *,
+    ignore_patterns: tuple[str, ...] = (),
+) -> None:
     if not source.exists():
         raise SystemExit(f"필수 경로가 없다: {source}")
     shutil.copytree(
         source, destination, dirs_exist_ok=True,
-        ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
+        ignore=shutil.ignore_patterns("__pycache__", "*.pyc", *ignore_patterns),
     )
 
 
@@ -79,13 +84,18 @@ def copy_minimal_evidence(stage: Path, policy: dict) -> None:
         copy_file(ROOT / relative, stage / relative)
 
 
-def build(version: str, output_dir: Path) -> tuple[Path, Path]:
+def build(
+    version: str,
+    output_dir: Path,
+    *,
+    include_word: bool = False,
+) -> tuple[Path, Path]:
     wheel = next(iter(sorted((ROOT / "dist").glob("itemgen_bench-*.whl"))), None)
     sdist = next(iter(sorted((ROOT / "dist").glob("itemgen_bench-*.tar.gz"))), None)
-    docx = ROOT / "docs" / "인지검사_문항생성_파이프라인_기술이전서_v1.0.docx"
+    docx = ROOT / "docs" / "인지검사_문항생성_파이프라인_기술이전서_v2.11.docx"
     if not wheel or not sdist:
         raise SystemExit("dist/의 wheel과 source distribution을 먼저 빌드한다")
-    if not docx.is_file():
+    if include_word and not docx.is_file():
         raise SystemExit("Word 문서를 먼저 생성한다: python scripts/build_word_doc.py")
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -96,13 +106,23 @@ def build(version: str, output_dir: Path) -> tuple[Path, Path]:
 
     for name in ("README.md", "LICENSE", "RELEASE_NOTES.md", "run_all.sh", "status.sh"):
         copy_file(ROOT / name, stage / name)
-    for name in ("config", "spec", "assets", "scripts"):
+    for name in ("config", "spec", "assets"):
         copy_tree(ROOT / name, stage / name)
-    copy_file(docx, stage / "docs" / docx.name)
+    copy_tree(
+        ROOT / "scripts",
+        stage / "scripts",
+        ignore_patterns=("build_word_v23.py",),
+    )
+    if include_word:
+        copy_file(docx, stage / "docs" / docx.name)
     copy_file(ROOT / "docs" / "TECH_TRANSFER.md", stage / "docs" / "TECH_TRANSFER.md")
     copy_file(wheel, stage / "package" / wheel.name)
     copy_file(sdist, stage / "package" / sdist.name)
-    copy_tree(ROOT / "out" / "final50", stage / "out" / "final50")
+    copy_tree(
+        ROOT / "out" / "final50",
+        stage / "out" / "final50",
+        ignore_patterns=("sheet_final50_redesign_preview.html",),
+    )
 
     policy = json.loads(
         (ROOT / "spec" / "renderer_policy_final_50.json").read_text(encoding="utf-8"))
@@ -137,7 +157,10 @@ def build(version: str, output_dir: Path) -> tuple[Path, Path]:
     shutil.rmtree(stage)
 
     published = []
-    for source in (wheel, sdist, docx):
+    standalone_files = [wheel, sdist]
+    if include_word:
+        standalone_files.append(docx)
+    for source in standalone_files:
         destination = output_dir / source.name
         copy_file(source, destination)
         published.append(destination)
@@ -151,10 +174,19 @@ def build(version: str, output_dir: Path) -> tuple[Path, Path]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--version", default="1.0.0")
+    parser.add_argument("--version", default="1.1.0")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "release")
+    parser.add_argument(
+        "--include-word",
+        action="store_true",
+        help="Word 기술이전서를 ZIP과 release/ 목록에 포함한다.",
+    )
     args = parser.parse_args()
-    archive, checksums = build(args.version, args.output_dir.resolve())
+    archive, checksums = build(
+        args.version,
+        args.output_dir.resolve(),
+        include_word=args.include_word,
+    )
     print(archive)
     print(checksums)
 
