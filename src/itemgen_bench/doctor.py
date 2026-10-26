@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -32,6 +33,50 @@ def _gpu_memory_mib() -> list[int]:
         except ValueError:
             continue
     return values
+
+
+def _vllm_python(vllm: str) -> str:
+    """vLLM 콘솔 스크립트가 실제로 사용하는 Python을 찾는다."""
+    try:
+        first_line = Path(vllm).read_text(encoding="utf-8", errors="replace").splitlines()[0]
+        command = shlex.split(first_line[2:]) if first_line.startswith("#!") else []
+    except (OSError, IndexError, ValueError):
+        command = []
+
+    if command and Path(command[0]).name == "env":
+        program = next((arg for arg in command[1:] if not arg.startswith("-")), "")
+        return shutil.which(program) or sys.executable
+    if command and Path(command[0]).is_file():
+        return command[0]
+    return sys.executable
+
+
+def _probe_vllm_cuda(vllm: str) -> tuple[bool, str]:
+    """vLLM 환경에서 PyTorch가 GPU를 실제 초기화할 수 있는지 확인한다."""
+    code = """
+import importlib.metadata
+import torch
+
+torch.cuda.init()
+torch.empty(1, device="cuda")
+print(
+    f"vLLM {importlib.metadata.version('vllm')}, "
+    f"PyTorch {torch.__version__}, CUDA {torch.version.cuda}, "
+    f"{torch.cuda.get_device_name(0)}"
+)
+"""
+    python = _vllm_python(vllm)
+    try:
+        result = subprocess.run(
+            [python, "-c", code], capture_output=True, text=True, timeout=45,
+        )
+    except (OSError, subprocess.SubprocessError) as exc:
+        return False, f"{python}: {exc}"
+
+    output = [line.strip() for line in (result.stdout + "\n" + result.stderr).splitlines()
+              if line.strip()]
+    detail = output[-1] if output else f"종료 코드 {result.returncode}"
+    return result.returncode == 0, detail
 
 
 def main(argv=None) -> None:
@@ -99,6 +144,9 @@ def main(argv=None) -> None:
         vllm_value = os.environ.get("VLLM") or "vllm"
         vllm = shutil.which(vllm_value)
         check(bool(vllm), "vLLM 실행 파일", str(vllm or "PATH에서 찾지 못함"))
+        if vllm:
+            cuda_ok, cuda_detail = _probe_vllm_cuda(vllm)
+            check(cuda_ok, "vLLM 환경의 PyTorch CUDA 초기화", cuda_detail)
         check(bool(shutil.which("setsid")), "프로세스 그룹 명령: setsid")
         check(bool(shutil.which("flock")), "중복 실행 잠금 명령: flock")
         check(bool(shutil.which("nvidia-smi")), "NVIDIA 드라이버 명령")

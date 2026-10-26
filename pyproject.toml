@@ -28,7 +28,9 @@ render = [
     "peft>=0.10",          # Lightning LoRA. 없으면 LoRA 렌더가 전량 실패한다
 ]
 # 오픈 가중치 모델을 직접 서빙할 때만 필요하다.
-serve = ["vllm>=0.19"]
+# 검증된 CUDA 12.8 조합을 유지한다. 상한 없는 범위는 CUDA 13용 PyTorch를
+# 설치해 CUDA 12.8 드라이버에서 기동하지 못할 수 있다.
+serve = ["vllm==0.19.1"]
 # 납품 artifact를 다시 만들 때만 필요하다. 실행 wheel의 필수 의존성은 아니다.
 transfer = [
     "build>=1.2",

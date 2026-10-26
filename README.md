@@ -120,6 +120,8 @@ GPUS="3 0 1" bash run_all.sh                  # 비는 카드를 골라 순차 �
 Mistral-Small-24B를 로컬 vLLM으로 한 번에 하나씩 띄운다. 기본 렌더러는 CPU 기반
 `compose`, 자동 judge는 외부 호출이 없는 자리표시이며 최종 판정은 HTML에서 사람이 한다.
 실제 생성 환경은 NVIDIA GPU 메모리 70GB 이상과 모델 캐시 여유 140GB 이상을 권장한다.
+`itemgen doctor --full`은 vLLM이 사용하는 PyTorch 환경에서 CUDA를 직접 초기화해
+드라이버와 PyTorch CUDA 빌드의 호환성도 검사한다.
 
 먼저 문항 하나만 실제 생성해 인수 테스트하려면:
 
@@ -127,6 +129,10 @@ Mistral-Small-24B를 로컬 vLLM으로 한 번에 하나씩 띄운다. 기본 �
 pip install '.[serve]'
 GPU=0 ITEMGEN_CACHE_ROOT=/큰/디스크/cache bash scripts/gpu_acceptance.sh
 ```
+
+`serve` 추가 의존성은 검증된 `vLLM 0.19.1`로 고정되어 있다. 상한 없는 최신 vLLM을
+별도로 설치하면 서버 드라이버보다 새로운 CUDA용 PyTorch가 설치될 수 있으므로,
+운영 환경에서 임의로 업그레이드하지 않는다.
 
 전체 50문제를 생성하거나 렌더러를 추가할 때는 환경변수로 범위를 바꾼다.
 
