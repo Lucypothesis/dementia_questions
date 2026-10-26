@@ -11,7 +11,8 @@ LLMS=qwen38_27b
 RENDERERS=compose
 export RUN SLOT_IDS LLMS RENDERERS
 
-bash "$ROOT/run_all.sh"
+# run_all의 자동 서빙은 끄고 아래 파일 검증이 모두 끝난 뒤 한 번만 연다.
+SERVE=0 bash "$ROOT/run_all.sh"
 
 test -s "$ROOT/out/$RUN/items/qwen38_27b/${SLOT_IDS%%,*}.json"
 test -s "$ROOT/out/$RUN/check.json"

@@ -134,7 +134,8 @@ GPU=0 ITEMGEN_CACHE_ROOT=/큰/디스크/cache bash scripts/gpu_acceptance.sh
 별도로 설치하면 서버 드라이버보다 새로운 CUDA용 PyTorch가 설치될 수 있으므로,
 운영 환경에서 임의로 업그레이드하지 않는다.
 
-GPU 인수 테스트가 대화형 터미널에서 성공하면 검수 HTML 서버가 자동으로 시작된다.
+GPU 인수 테스트와 `run_all.sh` 전체 실행이 대화형 터미널에서 성공하면 검수 HTML
+서버가 자동으로 시작된다.
 브라우저에서 `http://127.0.0.1:8012/sheet.html`을 열고, 종료할 때는 `Ctrl+C`를 누른다.
 서빙 없이 테스트만 마치려면 `SERVE=0`, 다른 포트는 `SERVE_PORT=8013`처럼 지정한다.
 

@@ -33,6 +33,15 @@ if [ -n "$SLOT_IDS" ]; then SLOT_ARGS=(--slot-ids "$SLOT_IDS"); fi
 LOGS=out/$RUN/logs
 DRY=0
 [ "${1:-}" = "--dry-run" ] && DRY=1
+SERVE=${SERVE:-auto}
+SERVE_PORT=${SERVE_PORT:-8012}
+SHOULD_SERVE=0
+case "$SERVE" in
+  1|true|yes) SHOULD_SERVE=1 ;;
+  0|false|no) SHOULD_SERVE=0 ;;
+  auto) [ -t 1 ] && SHOULD_SERVE=1 ;;
+  *) echo "SERVE는 auto, 1, 0 중 하나여야 합니다: $SERVE" >&2; exit 2 ;;
+esac
 
 # 모델 캐시는 납품 디렉터리 아래를 기본으로 쓰되, 운영자가 지정한 값은 존중한다.
 # 모델 두 개를 처음 받으면 100GB 이상 필요하므로 ITEMGEN_CACHE_ROOT를 큰 디스크로
@@ -288,3 +297,9 @@ else
 fi
 say "결과: out/$RUN/   시트: out/$RUN/sheet.html   로그: $LOGS/"
 say "=============================================================="
+
+if [ ${#FAILED[@]} -eq 0 ] && [ "$DRY" -eq 0 ] && [ "$SHOULD_SERVE" -eq 1 ]; then
+  say "검수 HTML 서빙: http://127.0.0.1:$SERVE_PORT/sheet.html"
+  say "종료하려면 Ctrl+C를 누르세요."
+  exec "$ITEMGEN" serve --run "$RUN" --port "$SERVE_PORT"
+fi
