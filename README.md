@@ -16,6 +16,13 @@
 측정 지점이 둘인 이유: 최종 이미지만 보면 실패가 LLM 탓인지 렌더러 탓인지 분리되지
 않는다. LLM N개 × 렌더러 D개를 섞으면 더 심해진다.
 
+## 바로 확인하기
+
+- 웹 데모: [https://dementia-questions.netlify.app/](https://dementia-questions.netlify.app/)
+- 실행 패키지·기술이전서: [GitHub Release v1.1.0](https://github.com/Lucypothesis/dementia_questions/releases/tag/v1.1.0)
+
+웹 데모와 `itemgen demo`가 생성하는 로컬 결과는 같은 카드형 UI를 사용한다.
+
 ## 핵심 설계 세 가지
 
 **1. 장면을 산문이 아니라 구조로 받는다.** `image_spec`을 문장으로 쓰게 하면 문체가
@@ -42,6 +49,10 @@ pip install -e .
 itemgen demo        # 1초 안에 전 구간: 문항 생성 -> 검증 -> 렌더 -> 채점 -> 시트
 itemgen serve --run demo
 ```
+
+브라우저에서 `http://127.0.0.1:8012/sheet.html`을 열면 새 카드형 UI로 생성 결과를
+확인할 수 있다. 문항카드는 2열이며, 각 카드 안에는 문제 → 이미지 → 정답 순서로 표시된다.
+`검수 정보 보기`를 누르면 모델·렌더러 정보와 사람 판정 기능이 나타난다.
 
 `itemgen: command not found`가 나오면 설치한 가상환경이 활성화되지 않은 것이다.
 `source <venv>/bin/activate` 하거나 `<venv>/bin/itemgen` 전체 경로로 부른다.

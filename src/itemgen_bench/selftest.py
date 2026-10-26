@@ -233,7 +233,7 @@ def main() -> None:
 
     print("\n[10] 검수 시트 JS 구문")
     from . import sheet
-    js = sheet.JS
+    js = sheet.JS + sheet.PRESENTATION_JS
     for n, line in enumerate(js.split("\n"), 1):
         if line.count("'") % 2 or line.count('"') % 2:
             check(f"JS {n}행 따옴표 짝 맞음", False, repr(line[:70])); break
